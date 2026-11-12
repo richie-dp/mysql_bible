@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 8-2　聚簇索引与二级索引：叶子存主键，所以要回表</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">两条路径共用一次「根 → 叶」下降；差别在拿到二级索引叶子之后</text>
+<rect x="85" y="96" width="280" height="34" rx="17.0" ry="17.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="225.0" y="117.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >二级索引 idx_buyer_id</text>
+<rect x="595" y="96" width="280" height="34" rx="17.0" ry="17.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="735.0" y="117.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >聚簇索引 PRIMARY（表本身）</text>
+<rect x="125" y="150" width="200" height="54" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="225.0" y="172.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >根页</text>
+<text x="225.0" y="192.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >buyer_id 区间路由</text>
+<rect x="635" y="150" width="200" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="735.0" y="172.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >根页</text>
+<text x="735.0" y="192.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >id 区间路由</text>
+<rect x="55" y="240" width="150" height="90" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="130.0" y="280.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >8842 → 1024</text>
+<text x="130.0" y="300.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >索引列 → 主键值</text>
+<rect x="245" y="240" width="150" height="90" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="320.0" y="280.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >8843 → 1030</text>
+<text x="320.0" y="300.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >索引列 → 主键值</text>
+<rect x="565" y="240" width="150" height="90" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="640.0" y="280.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >id = 1024</text>
+<text x="640.0" y="300.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >整行：买家 / 金额 / 状态</text>
+<rect x="755" y="240" width="150" height="90" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="830.0" y="280.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >id = 1030</text>
+<text x="830.0" y="300.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >整行：买家 / 金额 / 状态</text>
+<path d="M 225.0,204.0 L 225.0,222.0 L 130.0,222.0 L 130.0,240.0" fill="none" stroke="#9333ea" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<path d="M 225.0,204.0 L 225.0,222.0 L 320.0,222.0 L 320.0,240.0" fill="none" stroke="#9333ea" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<path d="M 735.0,204.0 L 735.0,222.0 L 640.0,222.0 L 640.0,240.0" fill="none" stroke="#2563eb" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 735.0,204.0 L 735.0,222.0 L 830.0,222.0 L 830.0,240.0" fill="none" stroke="#2563eb" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 395.0,286.0 L 480.0,286.0 L 480.0,177.0 L 635.0,177.0" fill="none" stroke="#ea580c" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<text x="505" y="204" font-size="12" fill="#ea580c" text-anchor="start" font-weight="600" >回表</text>
+<text x="505" y="222" font-size="10" fill="#ea580c" text-anchor="start" font-weight="400" >拿 1024 再下降一次</text>
+<rect x="40" y="380" width="370" height="56" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="225.0" y="403.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >路径 A｜覆盖索引，到这里结束</text>
+<text x="225.0" y="423.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >需要的列已经在叶子里，不再下降</text>
+<rect x="550" y="380" width="370" height="56" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="735.0" y="403.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >路径 B｜非覆盖，必须回表</text>
+<text x="735.0" y="423.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >二级索引 → 主键 → 聚簇索引 → 整行</text>
+<path d="M 130.0,330.0 L 130.0,380.0" fill="none" stroke="#16a34a" stroke-width="1.6" stroke-linejoin="round" stroke-dasharray="5,3" marker-end="url(#m_e_16a34a)"/>
+<path d="M 640.0,330.0 L 640.0,380.0" fill="none" stroke="#ea580c" stroke-width="1.6" stroke-linejoin="round" stroke-dasharray="5,3" marker-end="url(#m_e_ea580c)"/>
+<rect x="40" y="452" width="880" height="168" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="474" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >为什么叶子存主键，而不是存行地址</text>
+<text x="60" y="502" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >二级索引叶子存的是 (索引列, 主键值)。拿到主键后必须回聚簇索引再下降一次，这一次就是回表。</text>
+<text x="60" y="528" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >反过来，如果叶子存的是行地址：页分裂时一半的行会搬到新页，指向它们的每一个二级索引项都得跟着改。</text>
+<text x="60" y="554" font-size="12" fill="#2563eb" text-anchor="start" font-weight="400" >存主键把「行搬家」变成「键不变」，二级索引零维护；代价是每次非覆盖查询多一次随机 IO。</text>
+<text x="60" y="580" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" >覆盖索引之所以快，是它把这次下降整个省掉了，而不是因为「索引更小」。</text>
+</svg>

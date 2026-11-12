@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="600" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 16-1　ACID 四个字母，四笔不同的账</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">A / D / I 由 InnoDB 的组件兑现；C 的虚线框那一半，只有写代码的人能兑现</text>
+<text x="60" y="92" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >字母</text>
+<text x="180" y="92" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >真正买单的组件</text>
+<text x="700" y="92" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >它不成立时，坏在哪</text>
+<rect x="60" y="112" width="84" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="102.0" y="139.0" font-size="22" fill="#111827" text-anchor="middle" font-weight="600" >A</text>
+<text x="102.0" y="159.0" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400" >原子性</text>
+<path d="M 144.0,144.0 L 180.0,144.0" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="180" y="112" width="470" height="64" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="415.0" y="139.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >undo log</text>
+<text x="415.0" y="159.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >记前镜像，回滚时按 undo_no 逆序撤销</text>
+<text x="700" y="142" font-size="11.5" fill="#374151" text-anchor="start" font-weight="500" >撤销本身也要写 redo</text>
+<text x="700" y="162" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >大事务回滚可能比执行更久</text>
+<rect x="60" y="216" width="84" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="102.0" y="243.0" font-size="22" fill="#111827" text-anchor="middle" font-weight="600" >D</text>
+<text x="102.0" y="263.0" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400" >持久性</text>
+<path d="M 144.0,248.0 L 180.0,248.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="180" y="216" width="215" height="64" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="287.5" y="243.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >redo log</text>
+<text x="287.5" y="263.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >提交时 fsync，组提交摊薄</text>
+<rect x="435" y="216" width="215" height="64" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="542.5" y="243.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >doublewrite</text>
+<text x="542.5" y="263.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >防 16KB 页被写坏一半</text>
+<text x="415" y="254" font-size="15" fill="#6b7280" text-anchor="middle" font-weight="400" >+</text>
+<text x="700" y="246" font-size="11.5" fill="#374151" text-anchor="start" font-weight="500" >只防页被撕，不防日志没刷</text>
+<text x="700" y="266" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >两层缺一层，D 都不成立</text>
+<rect x="60" y="320" width="84" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="102.0" y="347.0" font-size="22" fill="#111827" text-anchor="middle" font-weight="600" >I</text>
+<text x="102.0" y="367.0" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400" >隔离性</text>
+<path d="M 144.0,352.0 L 180.0,352.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="180" y="320" width="215" height="64" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="287.5" y="347.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >行锁 / Next-Key</text>
+<text x="287.5" y="367.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >写写互斥，当前读走这条</text>
+<rect x="435" y="320" width="215" height="64" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="542.5" y="347.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >MVCC + ReadView</text>
+<text x="542.5" y="367.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >读写不互斥，快照读走这条</text>
+<text x="415" y="358" font-size="15" fill="#6b7280" text-anchor="middle" font-weight="400" >+</text>
+<text x="700" y="350" font-size="11.5" fill="#374151" text-anchor="start" font-weight="500" >锁管写写，版本管读写</text>
+<text x="700" y="370" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >两套机制共用一个 trx_id</text>
+<rect x="60" y="424" width="84" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="102.0" y="451.0" font-size="22" fill="#111827" text-anchor="middle" font-weight="600" >C</text>
+<text x="102.0" y="471.0" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="400" >一致性</text>
+<path d="M 144.0,456.0 L 180.0,456.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="180" y="424" width="215" height="64" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="287.5" y="451.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >约束</text>
+<text x="287.5" y="471.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >PK · UK · FK · CHECK</text>
+<rect x="435" y="424" width="215" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="542.5" y="451.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >应用逻辑与边界</text>
+<text x="542.5" y="471.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >跨行、跨表、跨服务</text>
+<rect x="435" y="424" width="215" height="64" rx="8" ry="8" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="6,4"/>
+<text x="415" y="462" font-size="15" fill="#6b7280" text-anchor="middle" font-weight="400" >+</text>
+<text x="700" y="454" font-size="11.5" fill="#374151" text-anchor="start" font-weight="500" >约束只覆盖它看得见的</text>
+<text x="700" y="474" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >其余不变式靠事务边界</text>
+<rect x="60" y="508" width="840" height="62" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1.2"/>
+<text x="76" y="532" font-size="12" fill="#dc2626" text-anchor="start" font-weight="600" >C 是四个字母里唯一一个「数据库只能提供工具、不能提供结果」的</text>
+<text x="76" y="554" font-size="11" fill="#7f1d1d" text-anchor="start" font-weight="400" >库存不为负、借贷要平衡、跨服务要一致——取决于事务边界和 SQL 的写法，不取决于你用了哪个隔离级别。</text>
+</svg>

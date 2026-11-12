@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 22-2　同一个事务：位点是字节偏移，GTID 是事务身份</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">主库一换，位点指向别的字节且不报错；GTID 还是那一个，缺什么由集合差决定</text>
+<rect x="50" y="86" width="420" height="470" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="64" y="108" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >坐标 A：位点 = 字节偏移</text>
+<rect x="75" y="130" width="370" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="260.0" y="154.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">T1　@ 4</text>
+<rect x="75" y="184" width="370" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="260.0" y="208.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">T2　@ 890</text>
+<rect x="75" y="238" width="370" height="40" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="260.0" y="262.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">T3　@ 1234</text>
+<rect x="75" y="292" width="370" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="260.0" y="316.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">T4　@ 1560</text>
+<rect x="75" y="346" width="370" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="260.0" y="370.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">T5　@ 2024</text>
+<text x="52" y="412" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >pos 只在单个文件内自洽</text>
+<rect x="75" y="428" width="370" height="72" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="260.0" y="459.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >主库切换后：1234 指向别的字节</text>
+<text x="260.0" y="479.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >位点失效，而且不报错</text>
+<rect x="490" y="86" width="420" height="470" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="504" y="108" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >坐标 B：GTID = 事务身份</text>
+<rect x="515" y="130" width="370" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="700.0" y="154.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">3e11c4a2:1</text>
+<rect x="515" y="184" width="370" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="700.0" y="208.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">3e11c4a2:2</text>
+<rect x="515" y="238" width="370" height="40" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="700.0" y="262.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">3e11c4a2:3</text>
+<rect x="515" y="292" width="370" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="700.0" y="316.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">3e11c4a2:4</text>
+<rect x="515" y="346" width="370" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="700.0" y="370.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">3e11c4a2:5</text>
+<text x="492" y="412" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >格式：server_uuid:transaction_id</text>
+<rect x="515" y="428" width="370" height="72" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="700.0" y="459.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >主库切换后：集合里有的跳过</text>
+<text x="700.0" y="479.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >缺哪些事务与文件位置无关</text>
+<text x="75" y="528" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >同一个 1234 在另一个文件里是另一个位置</text>
+<text x="515" y="528" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >差集 = 主库有、从库没有的那些事务</text>
+<text x="52" y="588" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >位点回答&quot;从哪接着读&quot;，GTID 回答&quot;还缺哪些&quot;。前者一旦数错就静默跳过一段，后者天然幂等。</text>
+</svg>

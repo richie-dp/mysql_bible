@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="600" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 11-2　EXPLAIN 的行序，就是执行树的嵌套顺序</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">三表 join：order_main o ⋈ order_item i ⋈ sku s，左深嵌套循环</text>
+<rect x="40" y="88" width="500" height="320" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="110" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >EXPLAIN 输出（为排版只留 6 列）</text>
+<rect x="52" y="134" width="476" height="164" rx="0" ry="0" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<rect x="52" y="134" width="476" height="32" rx="0" ry="0" fill="#f9fafb" stroke="none" stroke-width="1"/>
+<rect x="52" y="134" width="476" height="1" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<rect x="52" y="166" width="476" height="1" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<rect x="52" y="210" width="476" height="1" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<rect x="52" y="254" width="476" height="1" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<rect x="52" y="298" width="476" height="1" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<rect x="52" y="134" width="1" height="164" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<rect x="84" y="134" width="1" height="164" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<rect x="184" y="134" width="1" height="164" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<rect x="250" y="134" width="1" height="164" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<rect x="406" y="134" width="1" height="164" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<rect x="452" y="134" width="1" height="164" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<rect x="528" y="134" width="1" height="164" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<text x="59" y="155" font-size="10" fill="#6b7280" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">id</text>
+<text x="91" y="155" font-size="10" fill="#6b7280" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">table</text>
+<text x="191" y="155" font-size="10" fill="#6b7280" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">type</text>
+<text x="257" y="155" font-size="10" fill="#6b7280" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">key</text>
+<text x="413" y="155" font-size="10" fill="#6b7280" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">rows</text>
+<text x="459" y="155" font-size="10" fill="#6b7280" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Extra</text>
+<text x="59" y="193" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">1</text>
+<text x="91" y="193" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">① o</text>
+<text x="191" y="193" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">range</text>
+<text x="257" y="193" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">idx_status_created</text>
+<text x="413" y="193" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">312</text>
+<text x="459" y="193" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Using where</text>
+<text x="59" y="237" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">1</text>
+<text x="91" y="237" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">② i</text>
+<text x="191" y="237" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">ref</text>
+<text x="257" y="237" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">idx_order_id</text>
+<text x="413" y="237" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">3</text>
+<text x="459" y="237" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">NULL</text>
+<text x="59" y="281" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">1</text>
+<text x="91" y="281" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">③ s</text>
+<text x="191" y="281" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">eq_ref</text>
+<text x="257" y="281" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PRIMARY</text>
+<text x="413" y="281" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">1</text>
+<text x="459" y="281" font-size="9" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">NULL</text>
+<text x="56" y="344" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >三行 id 相同 → 同一个 query block；行序 = 嵌套顺序</text>
+<text x="56" y="366" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >第一行是驱动表，后面每行按上一行的每一行执行一次</text>
+<rect x="580" y="88" width="340" height="320" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="594" y="110" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >执行树（左深嵌套循环）</text>
+<rect x="660" y="116" width="180" height="34" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="750.0" y="136.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >Limit: 20</text>
+<rect x="635" y="176" width="230" height="34" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="750.0" y="196.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >Nested loop inner join</text>
+<rect x="645" y="236" width="210" height="34" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="750.0" y="256.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >Nested loop inner join</text>
+<rect x="616" y="290" width="112" height="46" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="672.0" y="308.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >① Index range</text>
+<text x="672.0" y="328.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >o · 312 行 · 1 次</text>
+<rect x="768" y="290" width="112" height="46" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="824.0" y="308.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >② Index lookup</text>
+<text x="824.0" y="328.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >i · 3 行 × 312 次</text>
+<rect x="700" y="352" width="160" height="44" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="780.0" y="369.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >③ Single-row</text>
+<text x="780.0" y="389.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >s · 1 行 × 936 次</text>
+<path d="M 750.0,150.0 L 750.0,176.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 750.0,210.0 L 750.0,236.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 750.0,270.0 L 750.0,280.0 L 672.0,280.0 L 672.0,290.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 750.0,270.0 L 750.0,280.0 L 824.0,280.0 L 824.0,290.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 865.0,193.0 L 898.0,193.0 L 898.0,374.0 L 860.0,374.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="40" y="424" width="880" height="150" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="446" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >怎么读这张对应关系</text>
+<text x="60" y="474" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >① 表格的行序就是树的从左到右：o 是驱动表，i 是它的内层，s 是再上一层 join 的内层。</text>
+<text x="60" y="498" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >② 三行 id 都是 1，属于同一个 query block；只有派生表、子查询才会出现 id=2、3。</text>
+<text x="60" y="522" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >③ rows 是单次循环的行数：i 执行 312 次、每次 3 行；s 执行 312×3=936 次、每次 1 行。</text>
+<text x="60" y="546" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >④ 把每层的 rows 乘起来，才是真实的读取量——这也是 EXPLAIN 最容易骗人的地方。</text>
+</svg>

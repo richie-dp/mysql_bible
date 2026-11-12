@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 19-2　非唯一索引等值命中：为什么是“记录 + 后面的间隙”</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">WHERE c = 15；idx_c 的一个索引项 = (c, id)，锁在索引项上，不是锁在行上</text>
+<rect x="40" y="90" width="880" height="210" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="112" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >① idx_c 叶子：找到 15 之后必须再读一条 20，才能确定没有第二个 15</text>
+<rect x="90" y="140" width="130" height="60" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="155.0" y="165.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >c=10</text>
+<text x="155.0" y="185.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >id=2</text>
+<rect x="330" y="140" width="130" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="395.0" y="165.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >c=15</text>
+<text x="395.0" y="185.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >id=3</text>
+<rect x="570" y="140" width="130" height="60" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="635.0" y="165.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >c=20</text>
+<text x="635.0" y="185.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >id=5</text>
+<rect x="155" y="226" width="240" height="14" rx="4" ry="4" fill="#16a34a" stroke="#16a34a" stroke-width="1" opacity="0.88"/>
+<path d="M 395 222 L 395 244" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 155 225 L 155 241" stroke="#16a34a" stroke-width="1.2" stroke-dasharray="2,2"/>
+<text x="275.0" y="236.6" font-size="10" fill="#ffffff" text-anchor="middle" font-weight="600" >(10,15]</text>
+<rect x="395" y="226" width="240" height="14" rx="4" ry="4" fill="#dc2626" stroke="#dc2626" stroke-width="1" opacity="0.88"/>
+<path d="M 635 222 L 635 244" stroke="#dc2626" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 395 225 L 395 241" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="2,2"/>
+<text x="515.0" y="236.6" font-size="10" fill="#ffffff" text-anchor="middle" font-weight="600" >(15,20)</text>
+<text x="120" y="262" font-size="10" fill="#16a34a" text-anchor="start" font-weight="400" >临键锁：间隙 + 记录</text>
+<text x="455" y="262" font-size="10" fill="#dc2626" text-anchor="start" font-weight="400" >间隙锁：只锁空隙</text>
+<path d="M 395.0,202.0 L 395.0,388.0" fill="none" stroke="#ea580c" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="400.0" y="274.1" width="68.5" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="403.0" y="284.12" font-size="11" fill="#ea580c" text-anchor="start" font-weight="500" >回表 → 锁行</text>
+<text x="410" y="322" font-size="10" fill="#ea580c" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">X,REC_NOT_GAP</text>
+<rect x="40" y="330" width="880" height="150" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="90" y="392" width="130" height="60" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="155.0" y="417.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >id=2</text>
+<text x="155.0" y="437.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >整行数据</text>
+<rect x="330" y="392" width="130" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="395.0" y="417.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >id=3</text>
+<text x="395.0" y="437.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >整行数据</text>
+<rect x="570" y="392" width="130" height="60" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="635.0" y="417.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >id=5</text>
+<text x="635.0" y="437.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >整行数据</text>
+<text x="60" y="474" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >② PRIMARY：只有被命中的那一行才回表，未命中的 20 不产生 PK 锁</text>
+<rect x="40" y="500" width="880" height="116" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="52" y="517" font-size="11" fill="#94a3b8" text-anchor="start" font-weight="400" >performance_schema.data_locks（输出形态，未实跑）</text>
+<text x="52" y="538" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">INDEX_NAME  LOCK_MODE        LOCK_STATUS  LOCK_DATA</text>
+<text x="52" y="555" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">idx_c       X               GRANTED      15, 3      &lt;- 临键锁 (10,15]</text>
+<text x="52" y="572" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">idx_c       X,GAP           GRANTED      20, 5      &lt;- 间隙锁 (15,20)</text>
+<text x="52" y="589" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PRIMARY     X,REC_NOT_GAP   GRANTED      3          &lt;- 回表锁住命中的行</text>
+</svg>

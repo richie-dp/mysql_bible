@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="540" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 22-3　relay_log_recovery：丢掉未执行的 relay log，重新拉一遍</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">8.0 默认 ON；代价是把&quot;已收到未应用&quot;的那段网络传输再付一次</text>
+<text x="60" y="104" font-size="12" fill="#6b7280" text-anchor="start" font-weight="600" >① 崩溃前</text>
+<text x="360" y="104" font-size="12" fill="#6b7280" text-anchor="start" font-weight="600" >② 崩溃 → 重启</text>
+<text x="660" y="104" font-size="12" fill="#6b7280" text-anchor="start" font-weight="600" >③ 重新拉取</text>
+<rect x="60" y="130" width="260" height="38" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="190.0" y="153.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >T1　已应用</text>
+<rect x="60" y="176" width="260" height="38" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="190.0" y="199.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >T2　已应用</text>
+<rect x="60" y="222" width="260" height="38" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="190.0" y="245.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >T3　已应用</text>
+<rect x="60" y="268" width="260" height="38" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="190.0" y="291.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >T4　已收到</text>
+<rect x="60" y="314" width="260" height="38" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="190.0" y="337.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >T5　已收到</text>
+<text x="60" y="372" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >应用位点停在 T3</text>
+<rect x="360" y="150" width="260" height="70" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="490.0" y="180.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >从库崩溃</text>
+<text x="490.0" y="200.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >未提交事务被 InnoDB 回滚</text>
+<path d="M 490.0,220.0 L 490.0,250.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="360" y="250" width="260" height="90" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="490.0" y="290.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >丢弃 T4、T5</text>
+<text x="490.0" y="310.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >relay_log_recovery=ON（默认）</text>
+<rect x="660" y="150" width="260" height="70" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="790.0" y="180.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >receiver 重连</text>
+<text x="790.0" y="200.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >把 gtid_executed 发给主库</text>
+<path d="M 790.0,220.0 L 790.0,250.0" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="660" y="250" width="260" height="90" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="790.0" y="290.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >只发 T4、T5</text>
+<text x="790.0" y="310.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >集合里已有的直接跳过</text>
+<path d="M 320.0,287.0 L 358.0,287.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="5,4" marker-end="url(#m_e_475569)"/>
+<rect x="325.0" y="269.0" width="28.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="339.0" y="279.0" font-size="11" fill="#475569" text-anchor="middle" font-weight="500" >重传</text>
+<path d="M 620.0,295.0 L 658.0,295.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="5,4" marker-end="url(#m_e_475569)"/>
+<rect x="625.0" y="277.0" width="28.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="639.0" y="287.0" font-size="11" fill="#475569" text-anchor="middle" font-weight="500" >差集</text>
+<rect x="60" y="396" width="860" height="120" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="418" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >两条前提</text>
+<text x="76" y="446" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >崩在 T4 应用到一半：InnoDB 回滚这条未提交事务，位点表与数据在同一事务里提交（8.0 默认 TABLE），T4 整条重放，不会半条。</text>
+<text x="76" y="470" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >sync_relay_log=10000 意味着 relay log 尾部本来就可能没落盘，所以&quot;整段丢弃&quot;比&quot;原地续放&quot;更可靠。</text>
+<text x="76" y="494" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >代价是延迟放大：放大的量等于崩溃那一刻积压的传输量，追平后才回到常态。</text>
+</svg>

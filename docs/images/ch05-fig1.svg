@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker></defs>
+<rect width="960" height="580" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 5-1　一行记录的版本链：当前行 → undo v2 → v1 → v0</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">DB_ROLL_PTR 指向 undo 页里的物理位置；undo 只存被改列的前镜像，旧版本是「走一步、拼一次」拼出来的</text>
+<rect x="40" y="84" width="880" height="116" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >聚簇索引页 page 3 · 当前版本（磁盘上唯一真实存在的行）</text>
+<rect x="60" y="112" width="110" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="115.0" y="139.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >id</text>
+<text x="115.0" y="159.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >8801</text>
+<rect x="200" y="112" width="140" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="270.0" y="139.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >status</text>
+<text x="270.0" y="159.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >&#x27;已发货&#x27;</text>
+<rect x="370" y="112" width="140" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="440.0" y="139.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >amount</text>
+<text x="440.0" y="159.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >268.00</text>
+<rect x="540" y="112" width="140" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="610.0" y="139.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >DB_TRX_ID</text>
+<text x="610.0" y="159.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >912</text>
+<rect x="710" y="112" width="190" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="805.0" y="139.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >DB_ROLL_PTR</text>
+<text x="805.0" y="159.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >rseg 7 / page 5 / off 112</text>
+<path d="M 805.0,176.0 L 805.0,298.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="5,4" marker-end="url(#m_e_475569)"/>
+<rect x="744.7" y="231.0" width="55.3" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="797.0" y="241.0" font-size="11" fill="#475569" text-anchor="end" font-weight="500" >roll_ptr</text>
+<rect x="40" y="250" width="880" height="190" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="272" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >undo 表空间 undo_001 · 同一行的历史版本（全部是 update undo）</text>
+<rect x="56" y="300" width="250" height="96" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="181.0" y="343.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >undo 记录 v0</text>
+<text x="181.0" y="363.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >trx 901 · 链的末端</text>
+<text x="181" y="383" font-size="10" fill="#ea580c" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">roll_ptr = NULL</text>
+<rect x="356" y="300" width="250" height="96" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="481.0" y="343.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >undo 记录 v1</text>
+<text x="481.0" y="363.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >trx 903 · amount 前镜像</text>
+<text x="481" y="383" font-size="10" fill="#ea580c" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">roll_ptr → v0</text>
+<rect x="656" y="300" width="250" height="96" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="781.0" y="343.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >undo 记录 v2</text>
+<text x="781.0" y="363.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >trx 905 · status 前镜像</text>
+<text x="781" y="383" font-size="10" fill="#ea580c" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">roll_ptr → v1</text>
+<path d="M 656.0,348.0 L 606.0,348.0" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="617.0" y="330.0" width="28.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="631.0" y="340.0" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="500" >回溯</text>
+<path d="M 356.0,348.0 L 306.0,348.0" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="317.0" y="330.0" width="28.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="331.0" y="340.0" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="500" >回溯</text>
+<text x="56" y="424" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >记录头里的 trx_id 决定「这个版本能不能给我看」，记录体的前镜像决定「拼出来的旧值是多少」</text>
+<text x="40" y="472" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >链长 = 这行被改过多少次且还没被 purge；走 N 步才能读到第 N 个旧版本——长事务拖慢查询，物理上就是这么发生的。</text>
+<path d="M 60 508 L 86 508" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="93" y="512" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >update undo 记录</text>
+<path d="M 60 528 L 86 528" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="93" y="532" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >当前版本（数据页）</text>
+<path d="M 60 548 L 86 548" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="5,4" marker-end="url(#m_e_475569)"/>
+<text x="93" y="552" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >DB_ROLL_PTR 指针</text>
+</svg>

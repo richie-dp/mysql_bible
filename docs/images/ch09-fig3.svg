@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 9-3　索引失效的五个断点：二十种写法归到五类</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">先定位断在哪一类，再改 SQL；同一类里的修法往往是同一个</text>
+<rect x="380" y="90" width="200" height="54" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="112.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >索引失效 20 例</text>
+<text x="480.0" y="132.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >五个断点，二十种写法</text>
+<rect x="40" y="200" width="156" height="272" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="52" y="212" width="132" height="40" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="118.0" y="236.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >类型转换</text>
+<path d="M 480.0,144.0 L 480.0,174.0 L 118.0,174.0 L 118.0,200.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="52" y="304" width="132" height="34" rx="17.0" ry="17.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="118.0" y="324.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >字符串列传数字</text>
+<rect x="52" y="344" width="132" height="34" rx="17.0" ry="17.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="118.0" y="364.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >字符串列 = 0</text>
+<rect x="52" y="384" width="132" height="34" rx="17.0" ry="17.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="118.0" y="404.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >JOIN collation 不一致</text>
+<rect x="221" y="200" width="156" height="272" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="233" y="212" width="132" height="40" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="299.0" y="236.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >函数包裹</text>
+<path d="M 480.0,144.0 L 480.0,174.0 L 299.0,174.0 L 299.0,200.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="233" y="284" width="132" height="34" rx="17.0" ry="17.0" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="299.0" y="304.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >DATE(paid_at)</text>
+<rect x="233" y="324" width="132" height="34" rx="17.0" ry="17.0" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="299.0" y="344.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >amount + 100</text>
+<rect x="233" y="364" width="132" height="34" rx="17.0" ry="17.0" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="299.0" y="384.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >COALESCE / IFNULL</text>
+<rect x="233" y="404" width="132" height="34" rx="17.0" ry="17.0" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="299.0" y="424.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >JSON_EXTRACT</text>
+<rect x="402" y="200" width="156" height="272" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="414" y="212" width="132" height="40" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="480.0" y="236.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >结构不对</text>
+<path d="M 480.0,144.0 L 480.0,174.0 L 480.0,174.0 L 480.0,200.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="414" y="264" width="132" height="34" rx="17.0" ry="17.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="480.0" y="284.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >LIKE &#x27;%退款%&#x27;</text>
+<rect x="414" y="304" width="132" height="34" rx="17.0" ry="17.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="480.0" y="324.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >OR 一侧无索引</text>
+<rect x="414" y="344" width="132" height="34" rx="17.0" ry="17.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="480.0" y="364.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >范围列之后的列</text>
+<rect x="414" y="384" width="132" height="34" rx="17.0" ry="17.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="480.0" y="404.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >缺最左列</text>
+<rect x="414" y="424" width="132" height="34" rx="17.0" ry="17.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="480.0" y="444.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >排序方向不一致</text>
+<rect x="583" y="200" width="156" height="272" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="595" y="212" width="132" height="40" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="661.0" y="236.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >优化器权衡</text>
+<path d="M 480.0,144.0 L 480.0,174.0 L 661.0,174.0 L 661.0,200.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="595" y="264" width="132" height="34" rx="17.0" ry="17.0" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="661.0" y="284.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >!= / &lt;&gt;</text>
+<rect x="595" y="304" width="132" height="34" rx="17.0" ry="17.0" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="661.0" y="324.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >NOT IN 子查询</text>
+<rect x="595" y="344" width="132" height="34" rx="17.0" ry="17.0" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="661.0" y="364.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >IS NOT NULL 高占比</text>
+<rect x="595" y="384" width="132" height="34" rx="17.0" ry="17.0" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="661.0" y="404.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >排序与过滤不同索引</text>
+<rect x="595" y="424" width="132" height="34" rx="17.0" ry="17.0" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="661.0" y="444.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >低选择性 IN 列表</text>
+<rect x="764" y="200" width="156" height="272" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="776" y="212" width="132" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="842.0" y="236.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >统计与参数</text>
+<path d="M 480.0,144.0 L 480.0,174.0 L 842.0,174.0 L 842.0,200.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="776" y="304" width="132" height="34" rx="17.0" ry="17.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="842.0" y="324.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >统计信息过期</text>
+<rect x="776" y="344" width="132" height="34" rx="17.0" ry="17.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="842.0" y="364.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >LIMIT 诱导早停</text>
+<rect x="776" y="384" width="132" height="34" rx="17.0" ry="17.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="842.0" y="404.325" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >预处理默认选择性</text>
+<rect x="40" y="486" width="880" height="134" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="508" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >这张图怎么用</text>
+<text x="60" y="538" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >从左往右读，是排查顺序：先看两侧类型（能不能直接比对），再看列有没有被包住，再看索引结构撑不撑得起这条条件，</text>
+<text x="60" y="562" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >最后才怀疑优化器与统计信息——前两类改 SQL 或改表结构，后三类多半要改索引、补 ANALYZE，或者干脆接受全表扫更便宜。</text>
+<text x="60" y="592" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >红线：改完必须用 EXPLAIN 复核 key 与 rows，不能靠「应该走索引了」判断。EXPLAIN ANALYZE [8.0.18+] 能看到实际行数。</text>
+</svg>

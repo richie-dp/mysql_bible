@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" width="960" height="700">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="700" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 15-2　20 个改写案例的病灶决策树</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">先按 EXPLAIN 的信号分四类，再回 15.1.8 查对应案例编号</text>
+<polygon points="480,72.0 640.0,100 480,128.0 320.0,100" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="480" y="104.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >EXPLAIN 先看哪一列？</text>
+<rect x="60" y="150" width="185" height="500" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="70" y="162" width="165" height="54" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="152.5" y="184.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >A　索引没用上</text>
+<text x="152.5" y="204.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >type=ALL / key=NULL</text>
+<rect x="70" y="258" width="165" height="56" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="152.5" y="281.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >函数 / 运算 / 转换</text>
+<text x="152.5" y="301.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >案例 1 / 2 / 3</text>
+<rect x="70" y="334" width="165" height="56" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="152.5" y="357.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >OR / 前置通配</text>
+<text x="152.5" y="377.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >案例 4 / 5</text>
+<rect x="285" y="150" width="185" height="500" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="295" y="162" width="165" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="377.5" y="184.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >B　扫得太多</text>
+<text x="377.5" y="204.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >rows 远大于结果集</text>
+<rect x="295" y="258" width="165" height="56" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="377.5" y="281.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >深分页：扫了不用的行</text>
+<text x="377.5" y="301.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >案例 6 / 7</text>
+<rect x="295" y="334" width="165" height="56" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="377.5" y="357.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >SELECT * / 全表统计</text>
+<text x="377.5" y="377.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >案例 8 / 9</text>
+<rect x="295" y="410" width="165" height="56" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="377.5" y="433.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >大 IN / JOIN 放大</text>
+<text x="377.5" y="453.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >案例 10 / 11</text>
+<rect x="295" y="486" width="165" height="56" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="377.5" y="509.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >子查询逐行 / 反连接</text>
+<text x="377.5" y="529.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >案例 12 / 13</text>
+<rect x="510" y="150" width="185" height="500" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="520" y="162" width="165" height="54" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="602.5" y="184.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >C　排了不该排的</text>
+<text x="602.5" y="204.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >filesort / temporary</text>
+<rect x="520" y="258" width="165" height="56" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="602.5" y="281.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >RAND / LIMIT 选错索引</text>
+<text x="602.5" y="301.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >案例 14 / 17</text>
+<rect x="520" y="334" width="165" height="56" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="602.5" y="357.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >GROUP BY / UNION 去重</text>
+<text x="602.5" y="377.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >案例 15 / 16</text>
+<rect x="735" y="150" width="185" height="500" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="745" y="162" width="165" height="54" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="827.5" y="184.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >D　锁得太久</text>
+<text x="827.5" y="204.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >Waiting for lock</text>
+<rect x="745" y="258" width="165" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="827.5" y="281.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >批量 DML / 幂等写入</text>
+<text x="827.5" y="301.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >案例 18 / 19 / 20</text>
+<path d="M 480.0,128.0 L 152.0,162.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 480.0,128.0 L 377.0,162.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 480.0,128.0 L 602.0,162.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 480.0,128.0 L 827.0,162.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<text x="745" y="380" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >写路径的慢，</text>
+<text x="745" y="398" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >在 processlist 里</text>
+<text x="745" y="416" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >是 Waiting for lock</text>
+<text x="745" y="434" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >或 metadata lock。</text>
+<text x="60" y="676" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >四类病灶互斥地对应四种改法：补索引 / 减行数 / 去排序 / 缩事务。一条 SQL 可以同时命中两类，但一次只能治一类。</text>
+</svg>

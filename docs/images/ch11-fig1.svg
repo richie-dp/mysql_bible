@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 11-1　type 等级谱系：从精确到粗放，代价沿轴上升</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">横轴是访问方式的精确度，不是实测耗时；index_merge 与 fulltext 不在这条主序上</text>
+<path d="M 46.0,104.0 L 892.0,104.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="411.0" y="86.0" width="116.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="469.0" y="96.0" font-size="11" fill="#475569" text-anchor="middle" font-weight="500" >单位行的访问代价递增</text>
+<rect x="40" y="132" width="90" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="85.0" y="159.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >system</text>
+<text x="85.0" y="179.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >唯一 1 行</text>
+<path d="M 85.0,198.0 L 85.0,224.0" fill="none" stroke="#d1d5db" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="85" y="252" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >1 页</text>
+<rect x="172" y="132" width="90" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="217.0" y="159.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >const</text>
+<text x="217.0" y="179.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >唯一索引等值</text>
+<path d="M 217.0,198.0 L 217.0,224.0" fill="none" stroke="#d1d5db" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="217" y="252" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >3~4 页</text>
+<rect x="303" y="132" width="90" height="64" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="348.0" y="159.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >eq_ref</text>
+<text x="348.0" y="179.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >唯一索引关联</text>
+<path d="M 348.0,198.0 L 348.0,224.0" fill="none" stroke="#d1d5db" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="348" y="252" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >外层每行 3~4 页</text>
+<rect x="435" y="132" width="90" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480.0" y="159.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >ref</text>
+<text x="480.0" y="179.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >非唯一等值</text>
+<path d="M 480.0,198.0 L 480.0,224.0" fill="none" stroke="#d1d5db" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="480" y="252" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >1 次下降 + k 条</text>
+<rect x="566" y="132" width="90" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="611.0" y="159.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >range</text>
+<text x="611.0" y="179.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >索引范围扫</text>
+<path d="M 611.0,198.0 L 611.0,224.0" fill="none" stroke="#d1d5db" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="611" y="252" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >1 次下降 + 区间</text>
+<rect x="698" y="132" width="90" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="743.0" y="159.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >index</text>
+<text x="743.0" y="179.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >全索引扫描</text>
+<path d="M 743.0,198.0 L 743.0,224.0" fill="none" stroke="#d1d5db" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="743" y="252" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >整棵索引</text>
+<rect x="830" y="132" width="90" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="875.0" y="159.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >ALL</text>
+<text x="875.0" y="179.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >全表扫描</text>
+<path d="M 875.0,198.0 L 875.0,224.0" fill="none" stroke="#d1d5db" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="875" y="252" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >整张表</text>
+<path d="M 40.0,224.0 L 920.0,224.0" fill="none" stroke="#475569" stroke-width="1.6" stroke-linejoin="round"/>
+<rect x="40" y="300" width="880" height="180" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="322" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >旁支：不在这条主序上的 5 个取值</text>
+<rect x="62" y="340" width="132" height="38" rx="19.0" ry="19.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="128.0" y="362.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >ref_or_null</text>
+<text x="128" y="400" font-size="10" fill="#111827" text-anchor="middle" font-weight="400" >ref + IS NULL</text>
+<text x="128" y="420" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >≈ 2 × ref</text>
+<rect x="238" y="340" width="132" height="38" rx="19.0" ry="19.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="304.0" y="362.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >index_merge</text>
+<text x="304" y="400" font-size="10" fill="#111827" text-anchor="middle" font-weight="400" >多索引合并</text>
+<text x="304" y="420" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >路数越多越贵</text>
+<rect x="414" y="340" width="132" height="38" rx="19.0" ry="19.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="480.0" y="362.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >unique_subquery</text>
+<text x="480" y="400" font-size="10" fill="#111827" text-anchor="middle" font-weight="400" >IN 子查询·唯一</text>
+<text x="480" y="420" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >≈ eq_ref</text>
+<rect x="590" y="340" width="132" height="38" rx="19.0" ry="19.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="656.0" y="362.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >index_subquery</text>
+<text x="656" y="400" font-size="10" fill="#111827" text-anchor="middle" font-weight="400" >IN 子查询·非唯一</text>
+<text x="656" y="420" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >≈ ref</text>
+<rect x="766" y="340" width="132" height="38" rx="19.0" ry="19.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="832.0" y="362.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >fulltext</text>
+<text x="832" y="400" font-size="10" fill="#111827" text-anchor="middle" font-weight="400" >FULLTEXT 倒排</text>
+<text x="832" y="420" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >与 B+ 树不可比</text>
+<text x="62" y="456" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >文档把 index_merge 排在 range 之前，但它可能同时扫两条索引再合并——位置不代表更便宜。</text>
+</svg>

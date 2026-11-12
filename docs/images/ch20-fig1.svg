@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 20-1　wait-for graph 与环检测</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">节点是事务，边是「我在等你的锁」；检测从刚进入等待的那个事务出发，走回自己就是环</text>
+<rect x="40" y="84" width="880" height="380" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >wait-for graph：T1 → T2 → T3 → T1 构成环，T4 只是环外排队</text>
+<rect x="70" y="130" width="130" height="50" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="135.0" y="150.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >T1 订单扣减</text>
+<text x="135.0" y="170.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >持有 A 的 X 锁</text>
+<rect x="390" y="130" width="130" height="50" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="455.0" y="150.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >T2 库存回补</text>
+<text x="455.0" y="170.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >持有 B 的 X 锁</text>
+<rect x="710" y="130" width="130" height="50" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="775.0" y="150.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >T3 账单核销</text>
+<text x="775.0" y="170.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >持有 C 的 X 锁</text>
+<path d="M 200.0,155.0 L 390.0,155.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="280.3" y="137.0" width="29.3" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="295.0" y="147.0" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >等 B</text>
+<path d="M 520.0,155.0 L 710.0,155.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="600.3" y="137.0" width="29.3" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="615.0" y="147.0" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >等 C</text>
+<path d="M 775.0,180.0 L 775.0,310.0 L 135.0,310.0 L 135.0,180.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="310.3" y="316.0" width="73.3" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="347.0" y="326.0" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >等 A：环闭合</text>
+<rect x="390" y="240" width="130" height="50" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="455.0" y="260.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >T4 对账任务</text>
+<text x="455.0" y="280.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >只想读 B</text>
+<path d="M 455.0,240.0 L 455.0,180.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="5,4" marker-end="url(#m_e_475569)"/>
+<rect x="460.0" y="204.0" width="51.3" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="463.0" y="214.0" font-size="11" fill="#475569" text-anchor="start" font-weight="500" >也在等 B</text>
+<text x="70" y="378" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >T4 不在环上：它只是在排队，不会被选为牺牲者。</text>
+<text x="70" y="402" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >环上的事务才是死锁的当事人。</text>
+<path d="M 745 350 L 771 350" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="778" y="354" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >环上的等待</text>
+<path d="M 745 370 L 771 370" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="5,4" marker-end="url(#m_e_475569)"/>
+<text x="778" y="374" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >环外排队</text>
+<text x="60" y="512" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >牺牲者怎么选：只在环上挑 → 比较已产生的 undo 记录数，选干活少的 → 整事务回滚，返回 1213</text>
+</svg>

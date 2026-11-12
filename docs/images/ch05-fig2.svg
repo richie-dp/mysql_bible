@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="620" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 5-2　history list 与 purge 边界：谁挡住了回收</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">purge 只认最老的那个 ReadView；一个两小时前的只读快照，就能让上千万条 undo 原地罚站</text>
+<rect x="48" y="84" width="340" height="52" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="218.0" y="105.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >ReadView A：财务报表事务，开了 2 小时</text>
+<text x="218.0" y="125.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >up_limit_id = 903 —— 最老的那个</text>
+<rect x="480" y="84" width="380" height="52" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="670.0" y="105.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >ReadView B：刚刚开始的普通查询</text>
+<text x="670.0" y="125.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >up_limit_id = 906 —— 更年轻，不决定水位</text>
+<path d="M 218.0,136.0 L 218.0,152.0 L 331.0,152.0 L 331.0,302.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="5,4"/>
+<rect x="298.0" y="156.5" width="28.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="323.0" y="166.5" font-size="11" fill="#dc2626" text-anchor="end" font-weight="500" >水位</text>
+<rect x="40" y="176" width="880" height="164" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="198" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >history list（左老右新）</text>
+<rect x="52" y="214" width="264" height="86" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.2" stroke-dasharray="4,3"/>
+<rect x="344" y="214" width="558" height="86" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.2" stroke-dasharray="4,3"/>
+<rect x="60" y="224" width="104" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="112.0" y="251.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >#1</text>
+<text x="112.0" y="271.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >trx 901</text>
+<rect x="206" y="224" width="104" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="258.0" y="251.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >#2</text>
+<text x="258.0" y="271.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >trx 902</text>
+<rect x="352" y="224" width="104" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="404.0" y="251.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >#3</text>
+<text x="404.0" y="271.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >trx 903</text>
+<rect x="498" y="224" width="104" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="550.0" y="251.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >#4</text>
+<text x="550.0" y="271.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >trx 904</text>
+<rect x="644" y="224" width="104" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="696.0" y="251.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >#5</text>
+<text x="696.0" y="271.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >trx 905</text>
+<rect x="790" y="224" width="104" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="842.0" y="251.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >#6</text>
+<text x="842.0" y="271.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >trx 906</text>
+<text x="184" y="314" font-size="11" fill="#16a34a" text-anchor="middle" font-weight="400" >可回收（trx &lt; 903）</text>
+<text x="623" y="314" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="400" >不可回收：还有人在读</text>
+<rect x="60" y="356" width="420" height="120" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="72" y="373" font-size="11" fill="#94a3b8" text-anchor="start" font-weight="400" >SHOW ENGINE INNODB STATUS</text>
+<text x="72" y="394" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">------------</text>
+<text x="72" y="411" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">TRANSACTIONS</text>
+<text x="72" y="428" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">------------</text>
+<text x="72" y="445" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">History list length  41283902</text>
+<text x="72" y="462" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Purge done for trx&#x27;s n:o &lt; 4211003</text>
+<text x="520" y="370" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >八位数 = 上千万条 undo 在等一个读者</text>
+<text x="520" y="396" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >purge 一直在跑，只是水位一步没动</text>
+<text x="520" y="422" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >同一个回滚段只能串行清，加线程也没用</text>
+<text x="520" y="448" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >积压按小时计才能清完，不会因为停止写入归零</text>
+<text x="60" y="504" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >水位由「最老的读者」决定，不由「最新的写入」决定——这是本章唯一需要背下来的因果。</text>
+<path d="M 60 532 L 86 532" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="93" y="536" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >update undo 记录</text>
+<path d="M 60 552 L 86 552" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="93" y="556" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >可被 purge 回收</text>
+<path d="M 60 572 L 86 572" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="93" y="576" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >被最老视图钉住</text>
+</svg>

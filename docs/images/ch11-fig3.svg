@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="600" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 11-3　三个工具能回答的问题，不是同一批</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">EXPLAIN 说「打算怎么跑」，EXPLAIN ANALYZE 说「实际怎么跑」，optimizer_trace 说「为什么这么选」</text>
+<rect x="40" y="92" width="264" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="172.0" y="116.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >EXPLAIN</text>
+<text x="172.0" y="136.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >估算，不执行语句</text>
+<rect x="40" y="170" width="264" height="250" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="192" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >能回答 / 不能回答</text>
+<text x="58" y="214" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >✓</text>
+<text x="78" y="214" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >用哪个索引、什么 type</text>
+<text x="58" y="240" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >✓</text>
+<text x="78" y="240" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >估算扫多少行</text>
+<text x="58" y="266" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >✓</text>
+<text x="78" y="266" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >有没有排序 / 临时表</text>
+<text x="58" y="292" font-size="12" fill="#dc2626" text-anchor="start" font-weight="700" >✗</text>
+<text x="78" y="292" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >实际读了多少行</text>
+<text x="58" y="318" font-size="12" fill="#dc2626" text-anchor="start" font-weight="700" >✗</text>
+<text x="78" y="318" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >每个算子花了多久</text>
+<text x="58" y="344" font-size="12" fill="#dc2626" text-anchor="start" font-weight="700" >✗</text>
+<text x="78" y="344" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >为什么放弃另一个索引</text>
+<rect x="56" y="356" width="232" height="1" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<text x="58" y="382" font-size="11" fill="#2563eb" text-anchor="start" font-weight="600" >适合：改完 SQL 的第一眼</text>
+<rect x="348" y="92" width="264" height="58" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="480.0" y="116.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >EXPLAIN ANALYZE</text>
+<text x="480.0" y="136.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >真跑，给实测（8.0.18+）</text>
+<rect x="348" y="170" width="264" height="250" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="362" y="192" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >能回答 / 不能回答</text>
+<text x="366" y="214" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >✓</text>
+<text x="386" y="214" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >上面全部</text>
+<text x="366" y="240" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >✓</text>
+<text x="386" y="240" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >实际行数 / 循环次数</text>
+<text x="366" y="266" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >✓</text>
+<text x="386" y="266" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >每个算子的真实耗时</text>
+<text x="366" y="292" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >✓</text>
+<text x="386" y="292" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >估算与实际的差距</text>
+<text x="366" y="318" font-size="12" fill="#dc2626" text-anchor="start" font-weight="700" >✗</text>
+<text x="386" y="318" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >成本是怎么算出来的</text>
+<text x="366" y="344" font-size="12" fill="#dc2626" text-anchor="start" font-weight="700" >✗</text>
+<text x="386" y="344" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >为什么选 A 不选 B</text>
+<rect x="364" y="356" width="232" height="1" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<text x="366" y="382" font-size="11" fill="#0d9488" text-anchor="start" font-weight="600" >适合：怀疑估算、复现慢查询</text>
+<rect x="656" y="92" width="264" height="58" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="788.0" y="116.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >optimizer_trace</text>
+<text x="788.0" y="136.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >给决策过程与成本对比</text>
+<rect x="656" y="170" width="264" height="250" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="670" y="192" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >能回答 / 不能回答</text>
+<text x="674" y="214" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >✓</text>
+<text x="694" y="214" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >候选索引与各自成本</text>
+<text x="674" y="240" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >✓</text>
+<text x="694" y="240" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >各种 join 顺序的成本</text>
+<text x="674" y="266" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >✓</text>
+<text x="694" y="266" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >哪一步被 prune 掉了</text>
+<text x="674" y="292" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >✓</text>
+<text x="694" y="292" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >改写前后的成本差</text>
+<text x="674" y="318" font-size="12" fill="#dc2626" text-anchor="start" font-weight="700" >✗</text>
+<text x="694" y="318" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >真实耗时</text>
+<text x="674" y="344" font-size="12" fill="#dc2626" text-anchor="start" font-weight="700" >✗</text>
+<text x="694" y="344" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >实际返回多少行</text>
+<rect x="672" y="356" width="232" height="1" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="1"/>
+<text x="674" y="382" font-size="11" fill="#9333ea" text-anchor="start" font-weight="600" >适合：计划反直觉、要原因</text>
+<text x="40" y="458" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >推荐的排查顺序：形状 → 实测 → 原因</text>
+<rect x="40" y="476" width="250" height="44" rx="22.0" ry="22.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="165.0" y="502.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >EXPLAIN 看形状</text>
+<rect x="355" y="476" width="250" height="44" rx="22.0" ry="22.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="480.0" y="502.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >ANALYZE 看真实</text>
+<rect x="670" y="476" width="250" height="44" rx="22.0" ry="22.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="795.0" y="502.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >trace 看决策</text>
+<path d="M 290.0,498.0 L 353.0,498.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="296.5" y="479.0" width="50.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="321.5" y="489.0" font-size="11" fill="#475569" text-anchor="middle" font-weight="500" >估算可疑</text>
+<path d="M 605.0,498.0 L 668.0,498.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="606.0" y="479.0" width="61.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="636.5" y="489.0" font-size="11" fill="#475569" text-anchor="middle" font-weight="500" >结果反直觉</text>
+<text x="40" y="556" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >三者不是替代关系：前两个告诉你「跑成什么样」，最后一个告诉你「为什么」。</text>
+</svg>

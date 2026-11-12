@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 756" width="960" height="756">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="756" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 13-1　同一个 IN，五种执行形态：扫几遍、靠什么去重</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">前提是子查询位于 WHERE 顶层、是 AND 的一项，且无 UNION / 聚合 / LIMIT；策略由成本在五种里选一种，不是按写法选</text>
+<rect x="40" y="76" width="880" height="50" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="52" y="94" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">SELECT o.order_no FROM order_main o</text>
+<text x="52" y="110" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">WHERE o.id IN (SELECT order_id FROM order_item WHERE sku_id = 8842);</text>
+<rect x="40" y="146" width="420" height="146" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="52" y="158" width="396" height="40" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="250.0" y="173.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >Table Pullout</text>
+<text x="250.0" y="193.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >把子查询表拉进外层</text>
+<text x="60" y="218" font-size="10" fill="#2563eb" text-anchor="start" font-weight="600" >前提</text>
+<text x="118" y="218" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >连接列是主键或唯一键</text>
+<text x="60" y="237" font-size="10" fill="#2563eb" text-anchor="start" font-weight="600" >EXPLAIN</text>
+<text x="118" y="237" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >无标记，select_type 变 SIMPLE</text>
+<text x="60" y="256" font-size="10" fill="#2563eb" text-anchor="start" font-weight="600" >扫描</text>
+<text x="118" y="256" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >等同普通 join，外层每行 eq_ref</text>
+<text x="60" y="275" font-size="10" fill="#2563eb" text-anchor="start" font-weight="600" >去重</text>
+<text x="118" y="275" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >唯一键保证一行最多匹配一次</text>
+<rect x="500" y="146" width="420" height="146" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="512" y="158" width="396" height="40" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="710.0" y="173.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >FirstMatch</text>
+<text x="710.0" y="193.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >命中第一条就收工</text>
+<text x="520" y="218" font-size="10" fill="#16a34a" text-anchor="start" font-weight="600" >前提</text>
+<text x="578" y="218" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >子查询连接列上有可用索引</text>
+<text x="520" y="237" font-size="10" fill="#16a34a" text-anchor="start" font-weight="600" >EXPLAIN</text>
+<text x="578" y="237" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >Extra 出现 FirstMatch(外层别名)</text>
+<text x="520" y="256" font-size="10" fill="#16a34a" text-anchor="start" font-weight="600" >扫描</text>
+<text x="578" y="256" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >外层每行一次索引下降，不扫完</text>
+<text x="520" y="275" font-size="10" fill="#16a34a" text-anchor="start" font-weight="600" >去重</text>
+<text x="578" y="275" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >短路：一个外层行只输出一次</text>
+<rect x="40" y="332" width="420" height="146" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="52" y="344" width="396" height="40" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="250.0" y="359.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >LooseScan</text>
+<text x="250.0" y="379.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >顺着索引跳着扫</text>
+<text x="60" y="404" font-size="10" fill="#0d9488" text-anchor="start" font-weight="600" >前提</text>
+<text x="118" y="404" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >连接列是索引前缀，值成组有序</text>
+<text x="60" y="423" font-size="10" fill="#0d9488" text-anchor="start" font-weight="600" >EXPLAIN</text>
+<text x="118" y="423" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >Extra 出现 LooseScan(m..n)</text>
+<text x="60" y="442" font-size="10" fill="#0d9488" text-anchor="start" font-weight="600" >扫描</text>
+<text x="118" y="442" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >子查询表扫一遍，每组只取一行</text>
+<text x="60" y="461" font-size="10" fill="#0d9488" text-anchor="start" font-weight="600" >去重</text>
+<text x="118" y="461" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >索引有序性本身就是去重</text>
+<rect x="500" y="332" width="420" height="146" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="512" y="344" width="396" height="40" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="710.0" y="359.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >Materialization</text>
+<text x="710.0" y="379.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >先算完，再当表用</text>
+<text x="520" y="404" font-size="10" fill="#9333ea" text-anchor="start" font-weight="600" >前提</text>
+<text x="578" y="404" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >拉不出来、内层又没有可用索引</text>
+<text x="520" y="423" font-size="10" fill="#9333ea" text-anchor="start" font-weight="600" >EXPLAIN</text>
+<text x="578" y="423" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >多一行 MATERIALIZED + &lt;subquery2&gt;</text>
+<text x="520" y="442" font-size="10" fill="#9333ea" text-anchor="start" font-weight="600" >扫描</text>
+<text x="578" y="442" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >子查询算一次 → 临时表 → 外层探测</text>
+<text x="520" y="461" font-size="10" fill="#9333ea" text-anchor="start" font-weight="600" >代价</text>
+<text x="578" y="461" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >物化是一次写入，结果大就吃 temptable</text>
+<rect x="40" y="518" width="420" height="146" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="52" y="530" width="396" height="40" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="250.0" y="545.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >DuplicateWeedout</text>
+<text x="250.0" y="565.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >先连，再按 rowid 去重</text>
+<text x="60" y="590" font-size="10" fill="#ea580c" text-anchor="start" font-weight="600" >前提</text>
+<text x="118" y="590" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >成本选中了子查询侧先驱动的顺序</text>
+<text x="60" y="609" font-size="10" fill="#ea580c" text-anchor="start" font-weight="600" >EXPLAIN</text>
+<text x="118" y="609" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >Extra 出现 Start temporary / End temporary</text>
+<text x="60" y="628" font-size="10" fill="#ea580c" text-anchor="start" font-weight="600" >扫描</text>
+<text x="118" y="628" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >照普通 join 跑，命中行先落临时表</text>
+<text x="60" y="647" font-size="10" fill="#ea580c" text-anchor="start" font-weight="600" >代价</text>
+<text x="118" y="647" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >临时表行数 ≈ 命中的外层行数</text>
+<rect x="500" y="518" width="420" height="146" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="512" y="530" width="396" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="710.0" y="545.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >五种都绕不开的门槛</text>
+<text x="710.0" y="565.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >不满足就退回 DEPENDENT SUBQUERY</text>
+<text x="520" y="590" font-size="10" fill="#475569" text-anchor="start" font-weight="600" >位置</text>
+<text x="578" y="590" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >WHERE / ON 顶层，且是 AND 的一项</text>
+<text x="520" y="609" font-size="10" fill="#475569" text-anchor="start" font-weight="600" >排除</text>
+<text x="578" y="609" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >UNION、HAVING、聚合、LIMIT、STRAIGHT_JOIN</text>
+<text x="520" y="628" font-size="10" fill="#475569" text-anchor="start" font-weight="600" >开关</text>
+<text x="578" y="628" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >optimizer_switch 的 semijoin / firstmatch 等</text>
+<text x="520" y="647" font-size="10" fill="#475569" text-anchor="start" font-weight="600" >8.0.20+</text>
+<text x="578" y="647" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >半连接也能走 hash join，见第 12 章</text>
+<text x="40" y="706" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >读法：先看 Extra 有没有 FirstMatch / LooseScan / Start temporary，再看有没有 MATERIALIZED 行。</text>
+<text x="40" y="728" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >四种标记都没有、子查询又按行重算，就该去找 DEPENDENT SUBQUERY：不是策略选错，是它没进半连接。</text>
+</svg>

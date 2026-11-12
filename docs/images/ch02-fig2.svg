@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker></defs>
+<rect width="960" height="600" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 2-2　改良 LRU：新页只进 old 区，全表扫描冲不垮热数据</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">innodb_old_blocks_pct=37 划边界，innodb_old_blocks_time=1000 决定能否晋升</text>
+<rect x="60" y="96" width="840" height="150" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="118" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >LRU 链表（左 head → 右 tail，越靠右越先被淘汰）</text>
+<rect x="80" y="140" width="475" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="317.5" y="166.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >young 区（约 5/8）</text>
+<text x="317.5" y="186.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >二次访问且停留超 1s 才晋升到头部</text>
+<rect x="595" y="140" width="285" height="62" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="737.5" y="166.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >old 区（约 3/8）</text>
+<text x="737.5" y="186.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >新页一律插到 old 区头部</text>
+<path d="M 575.0,132.0 L 575.0,212.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="4,3"/>
+<text x="575" y="228" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >midpoint（新旧页的分界）</text>
+<text x="80" y="228" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >head：最近访问</text>
+<text x="880" y="228" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >tail：最先淘汰</text>
+<rect x="60" y="276" width="840" height="130" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="298" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >一次全表扫描，为什么只脏了 old 区</text>
+<rect x="80" y="316" width="240" height="56" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="200.0" y="339.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >① 预读整个 extent</text>
+<text x="200.0" y="359.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >64 个页全插到 old 头</text>
+<rect x="360" y="316" width="240" height="56" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480.0" y="339.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >② 1 秒内再次访问</text>
+<text x="480.0" y="359.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >old 区的页不晋升</text>
+<rect x="640" y="316" width="240" height="56" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="760.0" y="339.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >③ 扫描继续推进</text>
+<text x="760.0" y="359.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >从 old 尾部把自己挤掉</text>
+<path d="M 320.0,344.0 L 360.0,344.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 600.0,344.0 L 640.0,344.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="60" y="420" width="840" height="116" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="442" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >同一个全表扫描，两个参数值的结局</text>
+<rect x="80" y="452" width="380" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="270.0" y="477.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >innodb_old_blocks_time = 0</text>
+<text x="270.0" y="497.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每次命中都晋升，扫描把热页顶走</text>
+<rect x="500" y="452" width="380" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="690.0" y="477.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >innodb_old_blocks_time = 1000</text>
+<text x="690.0" y="497.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >1 秒内不晋升，扫描退化为顺序 IO</text>
+<text x="60" y="566" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >代价：真正的新热点要等 1 秒才能进 young 区——冷启动后的第一秒，命中率是失真的。</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="600" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 6-3　sync_binlog × innodb_flush_log_at_trx_commit</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">列 = innodb_flush_log_at_trx_commit（ftc），行 = sync_binlog；格内是三种崩溃下会丢什么</text>
+<rect x="220" y="96" width="200" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="320.0" y="113.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >ftc = 0</text>
+<text x="320.0" y="133.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >1 秒一次刷盘</text>
+<rect x="460" y="96" width="200" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="560.0" y="113.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >ftc = 1</text>
+<text x="560.0" y="133.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每次提交 fsync</text>
+<rect x="700" y="96" width="200" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="800.0" y="113.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >ftc = 2</text>
+<text x="800.0" y="133.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每次提交只 write</text>
+<rect x="60" y="160" width="120" height="76" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="120.0" y="193.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >sync = 0</text>
+<text x="120.0" y="213.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >不主动 fsync</text>
+<rect x="220" y="160" width="200" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="320.0" y="193.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >进程崩就丢</text>
+<text x="320.0" y="213.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >redo 丢 1s，binlog 却还在</text>
+<rect x="460" y="160" width="200" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="560.0" y="193.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >只扛进程崩</text>
+<text x="560.0" y="213.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >OS 崩或掉电丢 1s 的 binlog</text>
+<rect x="700" y="160" width="200" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="800.0" y="193.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >只扛进程崩</text>
+<text x="800.0" y="213.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >OS 崩时两边各丢一段</text>
+<rect x="60" y="250" width="120" height="76" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="120.0" y="283.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >sync = 1</text>
+<text x="120.0" y="303.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >默认值（8.0）</text>
+<rect x="220" y="250" width="200" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="320.0" y="283.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >进程崩就丢</text>
+<text x="320.0" y="303.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >binlog 已落盘，redo 却没落</text>
+<rect x="460" y="250" width="200" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="560.0" y="283.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >三种崩溃都可扛</text>
+<text x="560.0" y="303.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >双 1：两边的存亡边界对齐</text>
+<rect x="700" y="250" width="200" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="800.0" y="283.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >只扛进程崩</text>
+<text x="800.0" y="303.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >掉电后从库比主库多</text>
+<rect x="60" y="340" width="120" height="76" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="120.0" y="373.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >sync = N</text>
+<text x="120.0" y="393.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每 N 组 fsync</text>
+<rect x="220" y="340" width="200" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="320.0" y="373.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >进程崩就丢</text>
+<text x="320.0" y="393.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >redo 丢 1s，binlog 丢 N-1 组</text>
+<rect x="460" y="340" width="200" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="560.0" y="373.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >只扛进程崩</text>
+<text x="560.0" y="393.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >掉电丢 ≤ N-1 组 binlog</text>
+<rect x="700" y="340" width="200" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="800.0" y="373.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >只扛进程崩</text>
+<text x="800.0" y="393.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >两个窗口叠加，丢的不对齐</text>
+<text x="60" y="456" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >双 1 的意义不是「少丢几行」，而是让 redo 与 binlog 在同一条时间线上存亡——</text>
+<text x="60" y="478" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >只有边界对齐，崩溃恢复才能用「binlog 是否完整」这一个判据决定事务去留。</text>
+<path d="M 60 508 L 86 508" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="93" y="512" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >进程崩 / OS 崩 / 掉电都不丢</text>
+<path d="M 60 528 L 86 528" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="93" y="532" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >只扛进程崩，掉电丢一侧</text>
+<path d="M 60 548 L 86 548" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="93" y="552" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >进程崩就丢，且两边不对齐</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 570" width="960" height="570">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="570" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 18-3　一条索引上的三种锁：Record 锁记录，Gap 锁空位，Next-Key 两者相加</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">索引 idx_amount 的叶子记录按 amount 升序排列，括线表示加锁覆盖的区间</text>
+<text x="200" y="96" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >叶子记录（含伪记录 supremum，值恒为 +∞）</text>
+<rect x="260" y="112" width="100" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="310.0" y="139.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >amount = 500</text>
+<text x="310.0" y="159.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >id = 1</text>
+<rect x="400" y="112" width="100" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="450.0" y="139.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >amount = 800</text>
+<text x="450.0" y="159.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >id = 2</text>
+<rect x="540" y="112" width="100" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="590.0" y="139.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >amount = 1200</text>
+<text x="590.0" y="159.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >id = 3</text>
+<rect x="680" y="112" width="100" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="730.0" y="139.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >amount = 2000</text>
+<text x="730.0" y="159.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >id = 4</text>
+<rect x="820" y="112" width="100" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="870.0" y="139.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >SUPREMUM</text>
+<text x="870.0" y="159.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >+∞</text>
+<path d="M 360.0,144.0 L 400.0,144.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 500.0,144.0 L 540.0,144.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 640.0,144.0 L 680.0,144.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 780.0,144.0 L 820.0,144.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 400.0,220.0 L 400.0,232.0" fill="none" stroke="#2563eb" stroke-width="2.0" stroke-linejoin="round"/>
+<path d="M 500.0,220.0 L 500.0,232.0" fill="none" stroke="#2563eb" stroke-width="2.0" stroke-linejoin="round"/>
+<path d="M 400.0,232.0 L 500.0,232.0" fill="none" stroke="#2563eb" stroke-width="2.0" stroke-linejoin="round"/>
+<rect x="40" y="215" width="180" height="34" rx="17.0" ry="17.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="130.0" y="236.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >Record｜只锁 800 这条</text>
+<text x="200" y="262" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >锁住这条索引记录本身：别人不能改它、不能删它，但可以在它前后插入新记录。</text>
+<path d="M 500.0,310.0 L 500.0,322.0" fill="none" stroke="#dc2626" stroke-width="2.0" stroke-linejoin="round"/>
+<path d="M 540.0,310.0 L 540.0,322.0" fill="none" stroke="#dc2626" stroke-width="2.0" stroke-linejoin="round"/>
+<path d="M 500.0,322.0 L 540.0,322.0" fill="none" stroke="#dc2626" stroke-width="2.0" stroke-linejoin="round"/>
+<rect x="40" y="305" width="180" height="34" rx="17.0" ry="17.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="130.0" y="326.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >Gap｜空位 (800,1200)</text>
+<text x="200" y="352" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >只锁空位，不含两端记录：amount 落在 800 与 1200 之间的插入全部排队。</text>
+<text x="200" y="374" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >两端是开区间——800 和 1200 这两条记录本身没被它锁住。</text>
+<path d="M 500.0,400.0 L 500.0,412.0" fill="none" stroke="#ea580c" stroke-width="2.0" stroke-linejoin="round"/>
+<path d="M 640.0,400.0 L 640.0,412.0" fill="none" stroke="#ea580c" stroke-width="2.0" stroke-linejoin="round"/>
+<path d="M 500.0,412.0 L 540.0,412.0" fill="none" stroke="#dc2626" stroke-width="2.0" stroke-linejoin="round" stroke-dasharray="5,3"/>
+<path d="M 540.0,412.0 L 640.0,412.0" fill="none" stroke="#16a34a" stroke-width="2.0" stroke-linejoin="round"/>
+<rect x="40" y="395" width="180" height="34" rx="17.0" ry="17.0" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="130.0" y="416.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >Next-Key｜(800,1200]</text>
+<text x="560" y="404" font-size="10" fill="#dc2626" text-anchor="end" font-weight="400" >gap 部分</text>
+<text x="600" y="404" font-size="10" fill="#16a34a" text-anchor="start" font-weight="400" >记录部分</text>
+<text x="200" y="442" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >默认形态就是它：Gap 与 Record 相加，左开右闭。唯一索引等值命中才退化成纯 Record。</text>
+<text x="200" y="486" font-size="11" fill="#2563eb" text-anchor="start" font-weight="400" >锁对象是 (space_id, page_no, heap_no)，heap_no 是页内记录序号，不是行号——所以「不存在的行」也能被锁。</text>
+<text x="200" y="510" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >800 与 1200 之间没有任何记录，这段空位照样属于索引结构，照样可以挂一把 Gap 锁。</text>
+<text x="200" y="534" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >最后一条记录到 supremum 之间的间隙同样存在，(2000, +∞) 也能被锁——这是范围更新锁到表尾的原因。</text>
+</svg>

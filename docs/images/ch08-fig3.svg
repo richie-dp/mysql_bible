@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 632" width="960" height="632">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="632" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 8-3　自增主键与 UUID 主键：同一批数据，两种页形态</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">行宽按 200B、叶页可用 16256B 估算，一页满装约 81 行</text>
+<rect x="40" y="88" width="880" height="242" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="110" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >① 自增主键：插入永远落在最右页，新页追加到链表尾部</text>
+<rect x="700" y="98" width="140.95999999999998" height="20" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+<text x="770.48" y="112" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="600" >热点：最右一页的 latch</text>
+<path d="M 60.0,136.0 L 890.0,136.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="450.0" y="117.0" width="50.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="475.0" y="127.0" font-size="11" fill="#2563eb" text-anchor="middle" font-weight="500" >插入方向</text>
+<rect x="55" y="152" width="150" height="96" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="130.0" y="195.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >页 N-4</text>
+<text x="130.0" y="215.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >填充 94%</text>
+<rect x="65" y="226" width="130" height="10" rx="5" ry="5" fill="#f1f5f9" stroke="#d1d5db" stroke-width="1"/>
+<rect x="65" y="226" width="122.19999999999999" height="10" rx="5" ry="5" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<rect x="230" y="152" width="150" height="96" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="305.0" y="195.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >页 N-3</text>
+<text x="305.0" y="215.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >填充 94%</text>
+<rect x="240" y="226" width="130" height="10" rx="5" ry="5" fill="#f1f5f9" stroke="#d1d5db" stroke-width="1"/>
+<rect x="240" y="226" width="122.19999999999999" height="10" rx="5" ry="5" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<rect x="405" y="152" width="150" height="96" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480.0" y="195.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >页 N-2</text>
+<text x="480.0" y="215.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >填充 94%</text>
+<rect x="415" y="226" width="130" height="10" rx="5" ry="5" fill="#f1f5f9" stroke="#d1d5db" stroke-width="1"/>
+<rect x="415" y="226" width="122.19999999999999" height="10" rx="5" ry="5" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<rect x="580" y="152" width="150" height="96" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="655.0" y="195.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >页 N-1</text>
+<text x="655.0" y="215.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >填充 94%</text>
+<rect x="590" y="226" width="130" height="10" rx="5" ry="5" fill="#f1f5f9" stroke="#d1d5db" stroke-width="1"/>
+<rect x="590" y="226" width="122.19999999999999" height="10" rx="5" ry="5" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<rect x="755" y="152" width="150" height="96" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="830.0" y="195.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >页 N（正在写）</text>
+<text x="830.0" y="215.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >填充 94%</text>
+<rect x="765" y="226" width="130" height="10" rx="5" ry="5" fill="#f1f5f9" stroke="#d1d5db" stroke-width="1"/>
+<rect x="765" y="226" width="122.19999999999999" height="10" rx="5" ry="5" fill="#ea580c" stroke="#ea580c" stroke-width="1"/>
+<text x="55" y="278" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >已有页一条都不搬：新记录塞不下时，从空闲区取一个新页接在后面，原页保持 15/16 满。</text>
+<text x="55" y="302" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >填充率长期稳定在 93% 左右；一页 81 行 → 实际约 76 行/页。</text>
+<text x="55" y="324" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >代价写在另一头：所有并发写都打在最右一页的 latch 上（第 3.6 节）。</text>
+<rect x="40" y="370" width="880" height="242" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="392" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >② UUID 主键：落点随机，满页对半劈，空洞只能在页内复用</text>
+<rect x="690" y="380" width="139.64" height="20" rx="10" ry="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+<text x="759.8199999999999" y="394" font-size="11" fill="#475569" text-anchor="middle" font-weight="600" >无热点，但随机 IO 翻倍</text>
+<path d="M 890.0,418.0 L 60.0,418.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="5,3" marker-end="url(#m_e_475569)"/>
+<rect x="428.0" y="399.0" width="94.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="475.0" y="409.0" font-size="11" fill="#475569" text-anchor="middle" font-weight="500" >插入方向不再单调</text>
+<rect x="55" y="434" width="150" height="96" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="130.0" y="477.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >页 1</text>
+<text x="130.0" y="497.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >填充 50%</text>
+<rect x="65" y="508" width="130" height="10" rx="5" ry="5" fill="#fef2f2" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,2"/>
+<rect x="65" y="508" width="65.0" height="10" rx="5" ry="5" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<rect x="230" y="434" width="150" height="96" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="305.0" y="477.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >页 2</text>
+<text x="305.0" y="497.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >填充 50%</text>
+<rect x="240" y="508" width="130" height="10" rx="5" ry="5" fill="#fef2f2" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,2"/>
+<rect x="240" y="508" width="65.0" height="10" rx="5" ry="5" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<rect x="405" y="434" width="150" height="96" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="477.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >页 3</text>
+<text x="480.0" y="497.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >填充 50%</text>
+<rect x="415" y="508" width="130" height="10" rx="5" ry="5" fill="#fef2f2" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,2"/>
+<rect x="415" y="508" width="65.0" height="10" rx="5" ry="5" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<rect x="580" y="434" width="150" height="96" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="655.0" y="477.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >页 4</text>
+<text x="655.0" y="497.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >填充 50%</text>
+<rect x="590" y="508" width="130" height="10" rx="5" ry="5" fill="#fef2f2" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,2"/>
+<rect x="590" y="508" width="65.0" height="10" rx="5" ry="5" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<rect x="755" y="434" width="150" height="96" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="830.0" y="477.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >页 5</text>
+<text x="830.0" y="497.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >填充 50%</text>
+<rect x="765" y="508" width="130" height="10" rx="5" ry="5" fill="#fef2f2" stroke="#dc2626" stroke-width="1" stroke-dasharray="3,2"/>
+<rect x="765" y="508" width="65.0" height="10" rx="5" ry="5" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="55" y="556" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >满页后把一半记录搬到新页：两页各剩一半空位，这部分空间谁也借不到。</text>
+<text x="55" y="580" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >新页从 free extent 取，物理上不和原页相邻 → 范围扫描从顺序 IO 退化成随机 IO。</text>
+<text x="55" y="604" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >1 亿行 × 200B：填充 94% ≈ 130 万叶页 / 21GB；填充 50% ≈ 250 万叶页 / 41GB。</text>
+</svg>

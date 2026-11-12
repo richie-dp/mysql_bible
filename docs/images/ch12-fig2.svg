@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 710" width="960" height="710">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker></defs>
+<rect width="960" height="710" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 12-2　Hash Join 的两阶段，以及装不下时的那条落盘路径</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">MySQL 8.0.18+ 支持等值连接；8.0.20+ 起扩展到外连接与半连接，并取代 BNL 成为等值连接的默认算法</text>
+<rect x="40" y="84" width="880" height="246" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >① Build：把一侧的行按连接列压成哈希表，这一步是全有或全无的成本</text>
+<rect x="66" y="136" width="190" height="76" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="161.0" y="169.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >build 侧</text>
+<text x="161.0" y="189.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >过滤后行数较少的一侧</text>
+<path d="M 260.0,174.0 L 326.0,174.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="262.5" y="156.0" width="61.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="293.0" y="166.0" font-size="11" fill="#2563eb" text-anchor="middle" font-weight="500" >顺序扫一遍</text>
+<rect x="330" y="136" width="240" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="450.0" y="169.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >哈希表</text>
+<text x="450.0" y="189.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >桶数组 + 冲突链，常驻 join buffer</text>
+<path d="M 574.0,174.0 L 656.0,174.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="5,3" marker-end="url(#m_e_dc2626)"/>
+<rect x="595.5" y="156.0" width="39.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="615.0" y="166.0" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >装不下</text>
+<path d="M 660 147 A 80.0 11 0 0 1 820 147 L 820 201 A 80.0 11 0 0 1 660 201 Z" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<path d="M 660 147 A 80.0 11 0 0 0 820 147" fill="none" stroke="#fecaca" stroke-width="1.5"/>
+<text x="740.0" y="172.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >chunk 文件</text>
+<text x="740.0" y="190.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >磁盘临时文件</text>
+<text x="66" y="246" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >内存放得下：build 侧读一遍、probe 侧读一遍，两遍顺序扫，这就是 hash join 的全部成本。</text>
+<text x="66" y="270" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >内存放不下：超出部分按 chunk 顺序写盘，probe 阶段再逐块读回，probe 侧因此可能被扫多遍。</text>
+<text x="66" y="294" font-size="12" fill="#ea580c" text-anchor="start" font-weight="400" >默认 join_buffer_size = 256KB，按每行百字节算只装得下几千行——大表 join 的 hash join 其实是「常态溢写」。</text>
+<text x="66" y="318" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >这就是为什么把 join_buffer_size 从 256KB 调到 16~64MB，在报表类查询里常常立竿见影。</text>
+<rect x="40" y="350" width="880" height="236" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="372" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >② Probe：另一侧只扫一遍，逐行算 hash、落桶、比对完整连接键</text>
+<rect x="66" y="402" width="190" height="76" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="161.0" y="435.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >probe 侧</text>
+<text x="161.0" y="455.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >通常是大表</text>
+<path d="M 260.0,440.0 L 326.0,440.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="262.5" y="422.0" width="61.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="293.0" y="432.0" font-size="11" fill="#2563eb" text-anchor="middle" font-weight="500" >全表扫一遍</text>
+<rect x="330" y="402" width="240" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="450.0" y="435.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >定位桶 → 比对键</text>
+<text x="450.0" y="455.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >hash 相等不算匹配，还要比原值</text>
+<path d="M 574.0,440.0 L 656.0,440.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="601.0" y="422.0" width="28.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="615.0" y="432.0" font-size="11" fill="#16a34a" text-anchor="middle" font-weight="500" >命中</text>
+<rect x="660" y="402" width="190" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="755.0" y="435.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >输出配对行</text>
+<text x="755.0" y="455.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >进入下一步 join</text>
+<text x="66" y="514" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >总代价 ≈ 扫 build 侧 + 扫 probe 侧，与两侧谁大谁小基本无关。</text>
+<text x="66" y="538" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >「小表驱动大表」在这里失去意义：把小的放 build 侧，理由只剩「省内存、少溢写」。</text>
+<text x="66" y="562" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >非等值条件（&gt;, &lt;, BETWEEN, LIKE）用不了 hash join，仍然回落到 BNL。</text>
+<rect x="40" y="606" width="880" height="80" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="628" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >一句话判断</text>
+<text x="60" y="646" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >EXPLAIN 里被驱动表那行出现 Using join buffer (hash join)，就是它；FORMAT=TREE 会直接写成 Inner hash join (a.x = b.x)。</text>
+<text x="60" y="670" font-size="12" fill="#475569" text-anchor="start" font-weight="400" >它省掉的是「被驱动表被扫 N 轮」，换来的是「build 侧的一次性内存 + 可能的磁盘溢写」。</text>
+</svg>

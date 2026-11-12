@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 740" width="960" height="740">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker></defs>
+<rect width="960" height="740" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 2-3　一次脏页刷新的完整链路，以及用户线程被拖下水的位置</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">后台有预算地刷；预算不够时，三条路径会把同步 IO 压到用户线程身上</text>
+<rect x="350" y="84" width="260" height="48" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="480.0" y="103.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >UPDATE 修改数据页</text>
+<text x="480.0" y="123.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >redo 已写，页变成脏页</text>
+<path d="M 480.0,132.0 L 480.0,158.0" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="280" y="158" width="400" height="48" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="480.0" y="177.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >脏页：LRU 与 flush_list 各挂一次</text>
+<text x="480.0" y="197.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >两条链表各管一件事，互不替代</text>
+<path d="M 480.0,206.0 L 480.0,220.0" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M 200.0,220.0 L 760.0,220.0" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M 200.0,220.0 L 200.0,240.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 480.0,220.0 L 480.0,240.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 760.0,220.0 L 760.0,240.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="80" y="240" width="240" height="52" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="200.0" y="261.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >① LRU 尾部刷脏</text>
+<text x="200.0" y="281.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >腾 free frame，不保证顺序</text>
+<rect x="360" y="240" width="240" height="52" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480.0" y="261.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >② flush_list 刷脏</text>
+<text x="480.0" y="281.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >按 LSN 升序，推进 checkpoint</text>
+<rect x="640" y="240" width="240" height="52" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="760.0" y="261.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >③ 用户线程同步刷脏</text>
+<text x="760.0" y="281.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >free 见底 / redo 将满</text>
+<path d="M 200.0,292.0 L 200.0,312.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 480.0,292.0 L 480.0,312.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 760.0,292.0 L 760.0,312.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="80" y="312" width="520" height="52" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="340.0" y="333.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >page cleaner 后台线程</text>
+<text x="340.0" y="353.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每秒重算目标页数 = f(脏页比例, redo 水位) × io_capacity</text>
+<rect x="640" y="312" width="240" height="52" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="760.0" y="333.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >用户 SQL 线程</text>
+<text x="760.0" y="353.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >在同步刷脏里等 IO</text>
+<path d="M 340.0,364.0 L 340.0,404.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="345.0" y="378.0" width="50.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="348.0" y="388.0" font-size="11" fill="#2563eb" text-anchor="start" font-weight="500" >异步批量</text>
+<path d="M 760.0,364.0 L 760.0,404.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="765.0" y="378.0" width="107.6" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="768.0" y="388.0" font-size="11" fill="#dc2626" text-anchor="start" font-weight="500" >同步，SQL 停在这里</text>
+<rect x="80" y="404" width="800" height="52" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="480.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >doublewrite buffer → .ibd 数据文件</text>
+<text x="480.0" y="445.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >先顺序写双写区，再随机写数据文件</text>
+<path d="M 480.0,456.0 L 480.0,494.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="80" y="494" width="800" height="52" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="480.0" y="515.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >页变干净：移出 flush_list，仍然是 LRU 成员</text>
+<text x="480.0" y="535.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >oldest_modification 前移到下一个脏页</text>
+<path d="M 480.0,546.0 L 480.0,584.0" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<rect x="80" y="584" width="800" height="52" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="480.0" y="605.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >checkpoint 前进 → redo 可复用空间变大 → log_free_check 不再阻塞</text>
+<text x="480.0" y="625.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >用户线程回到正常路径</text>
+<path d="M 60 664 L 86 664" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="93" y="668" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >后台刷脏（有预算）</text>
+<path d="M 60 684 L 86 684" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="93" y="688" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >用户线程被迫同步刷脏</text>
+<path d="M 60 704 L 86 704" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="93" y="708" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >落盘写入</text>
+<path d="M 60 724 L 86 724" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="93" y="728" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >checkpoint / redo 空间</text>
+</svg>

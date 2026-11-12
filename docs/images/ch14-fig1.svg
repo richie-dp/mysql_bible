@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 14-1　filesort 的两条路径：全字段排序 vs rowid 排序</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">同一个 ORDER BY，进 sort buffer 的东西不同，代价的落点也不同</text>
+<rect x="300" y="82" width="360" height="54" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="480.0" y="104.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >N 行待排序数据</text>
+<text x="480.0" y="124.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >排序键 + 需要返回的列</text>
+<path d="M 480.0,136.0 L 480.0,152.0 L 250.0,152.0 L 250.0,176.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 480.0,136.0 L 480.0,152.0 L 710.0,152.0 L 710.0,176.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="40" y="176" width="420" height="320" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="198" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >路径 A｜全字段排序（single-pass）</text>
+<rect x="64" y="218" width="372" height="52" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="250.0" y="239.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >sort buffer：排序键 + 全部返回列</text>
+<text x="250.0" y="259.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >整行投影进缓冲，排完直接输出</text>
+<rect x="64" y="292" width="372" height="44" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="250.0" y="318.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >内存快排 / 多路归并</text>
+<rect x="64" y="348" width="372" height="44" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="250.0" y="374.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >零回表；单行占用大</text>
+<text x="64" y="418" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >选它：行窄、返回列少、装得进 sort_buffer</text>
+<text x="64" y="442" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >装不下 → number_of_tmp_files 变大，归并落盘</text>
+<rect x="500" y="176" width="420" height="320" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="514" y="198" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >路径 B｜rowid 排序（two-pass）</text>
+<rect x="524" y="218" width="372" height="52" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="710.0" y="239.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >sort buffer：排序键 + 主键</text>
+<text x="710.0" y="259.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >只放定位信息，单行小得多</text>
+<rect x="524" y="292" width="372" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="710.0" y="318.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >按主键逐行回表取列</text>
+<rect x="524" y="348" width="372" height="44" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="710.0" y="374.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >两次读；随机 IO 放大</text>
+<text x="524" y="418" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >选它：行宽、含 TEXT/BLOB、返回列多</text>
+<text x="524" y="442" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >回表次数 = 排序结果行数，不是 LIMIT 行数</text>
+<rect x="40" y="536" width="880" height="76" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="558" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >阈值：谁决定走哪条路</text>
+<text x="60" y="580" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >&lt; 8.0.20：行长度 &gt; max_length_for_sort_data（8.0 默认 4KB）时走 rowid 排序，拿回表换内存</text>
+<text x="60" y="602" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >[8.0.20+]：该参数废弃，路径合一——按行的实际长度打包，装不下的行才退回只带主键</text>
+</svg>

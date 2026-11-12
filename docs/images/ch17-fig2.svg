@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 790" width="960" height="790">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="790" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 17-2　可见性判断的完整决策树：四个判断，六个出口</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">顺序不能换：先认「自己」，再认「比我老」，最后才查活跃集合——换成源码以外的顺序，结论会错</text>
+<polygon points="290,105.0 460.0,150 290,195.0 120.0,150" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="290" y="154.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >DB_TRX_ID = creator ?</text>
+<polygon points="290,245.0 460.0,290 290,335.0 120.0,290" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="290" y="294.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >DB_TRX_ID &lt; min_trx_id ?</text>
+<polygon points="290,385.0 460.0,430 290,475.0 120.0,430" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="290" y="434.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >DB_TRX_ID &gt;= max_trx_id ?</text>
+<polygon points="290,525.0 460.0,570 290,615.0 120.0,570" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="290" y="574.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >DB_TRX_ID 在 m_ids 中 ?</text>
+<path d="M 290.0,195.0 L 290.0,245.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="295.0" y="214.0" width="17.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="298.0" y="224.0" font-size="11" fill="#475569" text-anchor="start" font-weight="500" >否</text>
+<path d="M 290.0,335.0 L 290.0,385.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="295.0" y="354.0" width="17.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="298.0" y="364.0" font-size="11" fill="#475569" text-anchor="start" font-weight="500" >否</text>
+<path d="M 290.0,475.0 L 290.0,525.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="295.0" y="494.0" width="17.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="298.0" y="504.0" font-size="11" fill="#475569" text-anchor="start" font-weight="500" >否</text>
+<path d="M 460.0,150.0 L 520.0,150.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="481.5" y="132.0" width="17.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="490.0" y="142.0" font-size="11" fill="#16a34a" text-anchor="middle" font-weight="500" >是</text>
+<rect x="520" y="118" width="400" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="720.0" y="145.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >可见　自己写的那一版</text>
+<text x="720.0" y="165.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >creator 无需查 m_ids，直接放行</text>
+<path d="M 460.0,290.0 L 520.0,290.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="481.5" y="272.0" width="17.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="490.0" y="282.0" font-size="11" fill="#16a34a" text-anchor="middle" font-weight="500" >是</text>
+<rect x="520" y="258" width="400" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="720.0" y="285.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >可见　视图建立前已结束</text>
+<text x="720.0" y="305.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >比 min 小 = 提交或回滚都已落定</text>
+<path d="M 460.0,430.0 L 520.0,430.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="481.5" y="412.0" width="17.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="490.0" y="422.0" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >是</text>
+<rect x="520" y="398" width="400" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="720.0" y="425.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >不可见 → 回溯</text>
+<text x="720.0" y="445.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >视图建立后才分配，肯定没提交</text>
+<path d="M 460.0,555.0 L 520.0,555.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="481.5" y="537.0" width="17.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="490.0" y="547.0" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >是</text>
+<rect x="520" y="523" width="400" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="720.0" y="550.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >不可见 → 回溯</text>
+<text x="720.0" y="570.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >建立视图时它还活着，可能没提交</text>
+<path d="M 290.0,615.0 L 290.0,660.0 L 520.0,660.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="374.0" y="642.0" width="17.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="382.5" y="652.0" font-size="11" fill="#16a34a" text-anchor="middle" font-weight="500" >否</text>
+<rect x="520" y="628" width="400" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="720.0" y="655.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >可见　已提交</text>
+<text x="720.0" y="675.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >在 [min, max) 之间，又不在 m_ids 里</text>
+<rect x="40" y="706" width="880" height="66" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.2"/>
+<text x="56" y="730" font-size="11.5" fill="#dc2626" text-anchor="start" font-weight="600" >走「不可见」的两条分支：读 DB_ROLL_PTR 指向的上一段 undo，用它的 trx_id 重跑这棵树。</text>
+<text x="56" y="754" font-size="11" fill="#7f1d1d" text-anchor="start" font-weight="400" >走到 roll_ptr = NULL 仍不可见，或取到的版本带 delete-mark → 这行对本视图不存在。</text>
+</svg>

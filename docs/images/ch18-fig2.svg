@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 18-2　意向锁兼容矩阵：表锁如何在不扫一行的情况下判断冲突</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">行 = 已持有的锁，列 = 新来的请求；绿色兼容，红色排队</text>
+<rect x="40" y="108" width="164" height="200" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="130" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >假如没有意向锁</text>
+<text x="52" y="152" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >给表加锁前必须确认</text>
+<text x="52" y="174" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >表里没有任何行锁，</text>
+<text x="52" y="196" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >只能把整张表扫一遍。</text>
+<text x="52" y="226" font-size="10" fill="#dc2626" text-anchor="start" font-weight="400" >1000 万行 = 1000 万次</text>
+<text x="52" y="248" font-size="10" fill="#dc2626" text-anchor="start" font-weight="400" >检查，锁表成了重操作。</text>
+<text x="52" y="278" font-size="10" fill="#16a34a" text-anchor="start" font-weight="400" >IS / IX 把它变成 O(1)：</text>
+<text x="52" y="296" font-size="10" fill="#16a34a" text-anchor="start" font-weight="400" >只看表上的标记。</text>
+<rect x="246" y="108" width="104" height="48" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="298.0" y="135.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >持有 ＼ 请求</text>
+<rect x="360" y="108" width="110" height="48" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="415.0" y="127.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >IS</text>
+<text x="415.0" y="147.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >意向共享</text>
+<rect x="246" y="168" width="104" height="60" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="298.0" y="193.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >IS</text>
+<text x="298.0" y="213.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >意向共享</text>
+<rect x="360" y="168" width="110" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="415.0" y="202.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >兼容</text>
+<rect x="474" y="168" width="110" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="529.0" y="202.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >兼容</text>
+<rect x="588" y="168" width="110" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="643.0" y="202.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >冲突</text>
+<rect x="702" y="168" width="110" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="757.0" y="202.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >冲突</text>
+<rect x="474" y="108" width="110" height="48" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="529.0" y="127.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >IX</text>
+<text x="529.0" y="147.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >意向排他</text>
+<rect x="246" y="232" width="104" height="60" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="298.0" y="257.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >IX</text>
+<text x="298.0" y="277.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >意向排他</text>
+<rect x="360" y="232" width="110" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="415.0" y="266.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >兼容</text>
+<rect x="474" y="232" width="110" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="529.0" y="266.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >兼容</text>
+<rect x="588" y="232" width="110" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="643.0" y="266.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >冲突</text>
+<rect x="702" y="232" width="110" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="757.0" y="266.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >冲突</text>
+<rect x="588" y="108" width="110" height="48" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="643.0" y="127.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >S</text>
+<text x="643.0" y="147.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >表级共享</text>
+<rect x="246" y="296" width="104" height="60" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="298.0" y="321.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >S</text>
+<text x="298.0" y="341.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >表级共享</text>
+<rect x="360" y="296" width="110" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="415.0" y="330.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >兼容</text>
+<rect x="474" y="296" width="110" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="529.0" y="330.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >冲突</text>
+<rect x="588" y="296" width="110" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="643.0" y="330.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >兼容</text>
+<rect x="702" y="296" width="110" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="757.0" y="330.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >冲突</text>
+<rect x="702" y="108" width="110" height="48" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="757.0" y="127.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >X</text>
+<text x="757.0" y="147.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >表级排他</text>
+<rect x="246" y="360" width="104" height="60" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="298.0" y="385.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >X</text>
+<text x="298.0" y="405.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >表级排他</text>
+<rect x="360" y="360" width="110" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="415.0" y="394.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >冲突</text>
+<rect x="474" y="360" width="110" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="529.0" y="394.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >冲突</text>
+<rect x="588" y="360" width="110" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="643.0" y="394.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >冲突</text>
+<rect x="702" y="360" width="110" height="60" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="757.0" y="394.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >冲突</text>
+<rect x="40" y="440" width="880" height="176" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="462" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >矩阵怎么被用：表锁只看这一张，行锁另算</text>
+<text x="60" y="486" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" >① IS 与 IX 永远兼容。它们是记账不是保护：若 IX 之间互斥，同表两行并发更新就退化成表级串行。</text>
+<text x="60" y="514" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >② S / X 与 IX 冲突，是因为表级锁要求整表安静；IX 说明「有人正在改行」，两者语义直接打架。</text>
+<text x="60" y="542" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >③ 于是加表锁只需读这张矩阵：命中冲突就排队，不必扫描任何一行——这正是意向锁存在的理由。</text>
+<text x="60" y="570" font-size="12" fill="#2563eb" text-anchor="start" font-weight="400" >④ 矩阵只解决「表锁 vs 行锁」。两把行锁是否冲突，要看它们是否落在同一索引记录或同一段间隙上。</text>
+<text x="60" y="598" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >⑤ 对角线全绿：同模式之间不谈冲突；X 那一行全红，排他锁与任何请求都不共存。</text>
+</svg>

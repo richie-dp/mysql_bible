@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 9-1　联合索引 (a,b,c)：有序性断在哪一列</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">同一个键前缀，条件形态不同，能走到的深度就不同；断点之后只能过滤，不能定位</text>
+<rect x="40" y="82" width="880" height="150" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="104" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >① 叶子按 (a,b,c) 字典序：先比 a，a 相同比 b，b 相同比 c</text>
+<rect x="74" y="140" width="84" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="116.0" y="168.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">(1,1,1)</text>
+<rect x="178" y="140" width="84" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="220.0" y="168.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">(1,1,2)</text>
+<rect x="282" y="140" width="84" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="324.0" y="168.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">(1,1,3)</text>
+<rect x="386" y="140" width="84" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="428.0" y="168.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">(1,2,1)</text>
+<rect x="490" y="140" width="84" height="48" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="532.0" y="168.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">(2,1,1)</text>
+<rect x="594" y="140" width="84" height="48" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="636.0" y="168.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">(2,1,2)</text>
+<rect x="698" y="140" width="84" height="48" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="740.0" y="168.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">(2,2,1)</text>
+<rect x="802" y="140" width="84" height="48" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="844.0" y="168.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">(2,2,2)</text>
+<text x="272" y="212" font-size="10.5" fill="#2563eb" text-anchor="middle" font-weight="400" >a = 1 段：b、c 在段内有序</text>
+<text x="688" y="212" font-size="10.5" fill="#475569" text-anchor="middle" font-weight="400" >a = 2 段：b、c 重新开始</text>
+<path d="M 480.0,134.0 L 480.0,204.0" fill="none" stroke="#dc2626" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="4,3"/>
+<text x="490" y="216" font-size="10" fill="#dc2626" text-anchor="start" font-weight="400" >a 一变，b、c 的序就重排</text>
+<rect x="40" y="246" width="880" height="282" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="268" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >② 同一棵树，三种写法能用到的深度</text>
+<text x="62" y="306" font-size="12.5" fill="#111827" text-anchor="start" font-weight="600" >① 等值 × 3</text>
+<text x="62" y="328" font-size="11" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">a = 1 AND b = 2 AND c = 3</text>
+<text x="62" y="348" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >三列都被固定成常量，一次下降落到唯一一段。</text>
+<rect x="548" y="294" width="92" height="30" rx="15.0" ry="15.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="594.0" y="312.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >a 定位</text>
+<rect x="648" y="294" width="92" height="30" rx="15.0" ry="15.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="694.0" y="312.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >b 定位</text>
+<rect x="748" y="294" width="92" height="30" rx="15.0" ry="15.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="794.0" y="312.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >c 定位</text>
+<text x="548" y="344" font-size="10.5" fill="#16a34a" text-anchor="start" font-weight="500" >→ 三列全部参与定位</text>
+<text x="62" y="388" font-size="12.5" fill="#111827" text-anchor="start" font-weight="600" >② 等值 + 范围 + 等值</text>
+<text x="62" y="410" font-size="11" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">a = 1 AND b &gt; 2 AND c = 3</text>
+<text x="62" y="430" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >b 是范围，有序性断在 b；c 只能逐条判。</text>
+<rect x="548" y="376" width="92" height="30" rx="15.0" ry="15.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="594.0" y="394.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >a 定位</text>
+<rect x="648" y="376" width="92" height="30" rx="15.0" ry="15.0" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="694.0" y="394.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >b 范围</text>
+<rect x="748" y="376" width="92" height="30" rx="15.0" ry="15.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="794.0" y="394.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >c 过滤</text>
+<text x="548" y="426" font-size="10.5" fill="#ea580c" text-anchor="start" font-weight="500" >→ c 只能靠 ICP 过滤，不能定位</text>
+<text x="62" y="470" font-size="12.5" fill="#111827" text-anchor="start" font-weight="600" >③ 等值 + 排序</text>
+<text x="62" y="492" font-size="11" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">a = 1 ORDER BY b, c</text>
+<text x="62" y="512" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >a 固定之后 (b,c) 整段有序，流天然是目标顺序。</text>
+<rect x="548" y="458" width="92" height="30" rx="15.0" ry="15.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="594.0" y="476.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >a 定位</text>
+<rect x="648" y="458" width="92" height="30" rx="15.0" ry="15.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="694.0" y="476.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >b 有序</text>
+<rect x="748" y="458" width="92" height="30" rx="15.0" ry="15.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="794.0" y="476.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >c 有序</text>
+<text x="548" y="508" font-size="10.5" fill="#16a34a" text-anchor="start" font-weight="500" >→ 无 filesort，扫描顺序即结果顺序</text>
+<rect x="40" y="544" width="880" height="84" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="60" y="580" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >分界线不在「第几列」，在这一列的值还被不被固定成常量：等值按住它，范围放开它，排序只要求别被打断。</text>
+<text x="60" y="604" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >所以 (a,b,c) 上 a=1 AND c=3 只能用到 a；(a,c,b) 上同样的条件能用到两列。顺序是给条件形态排的，不是给列的重要度排的。</text>
+</svg>

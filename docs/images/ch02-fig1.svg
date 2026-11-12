@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" width="960" height="700">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker></defs>
+<rect width="960" height="700" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 2-1　Buffer Pool：一个池子，N 份独立结构，三条链表</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">page hash 保证「一页只有一份」；三条链表分别回答「哪能分配 / 谁该淘汰 / 谁还没落盘」</text>
+<rect x="60" y="78" width="160" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="140.0" y="95.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >页请求</text>
+<text x="140.0" y="115.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >space_id + page_no</text>
+<path d="M 220.0,100.0 L 268.0,100.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="268" y="78" width="210" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="373.0" y="95.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >page hash</text>
+<text x="373.0" y="115.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >O(1) 定位到 frame</text>
+<path d="M 478.0,100.0 L 526.0,100.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="526" y="78" width="170" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="611.0" y="95.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >命中？</text>
+<text x="611.0" y="115.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >命中直接用</text>
+<path d="M 696.0,100.0 L 744.0,100.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="711.5" y="82.0" width="17.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="720.0" y="92.0" font-size="11" fill="#2563eb" text-anchor="middle" font-weight="500" >否</text>
+<rect x="744" y="78" width="156" height="44" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="822.0" y="95.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >未命中</text>
+<text x="822.0" y="115.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >读磁盘 16KB 页</text>
+<path d="M 350.0,122.0 L 350.0,158.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="60" y="158" width="840" height="202" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="180" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >Buffer Pool Instance #k —— 每个实例有独立的 mutex、page hash 和三条链表</text>
+<rect x="80" y="192" width="180" height="44" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="170.0" y="209.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >chunk 0</text>
+<text x="170.0" y="229.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >128MB / 8192 页</text>
+<rect x="280" y="192" width="180" height="44" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="370.0" y="209.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >chunk 1</text>
+<text x="370.0" y="229.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >扩缩容的最小单位</text>
+<text x="484" y="219" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >… 每个 chunk 切成 8192 个 16KB 的 frame</text>
+<rect x="80" y="272" width="250" height="46" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="205.0" y="290.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >free list</text>
+<text x="205.0" y="310.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >还有多少 frame 可分配</text>
+<rect x="350" y="272" width="250" height="46" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="475.0" y="290.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >LRU list</text>
+<text x="475.0" y="310.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >young 5/8 · old 3/8</text>
+<rect x="620" y="272" width="260" height="46" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="750.0" y="290.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >flush_list</text>
+<text x="750.0" y="310.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >按 oldest_modification 升序</text>
+<text x="80" y="344" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >一个页可以同时在 LRU 和 flush_list 上：前者管淘汰，后者管落盘</text>
+<rect x="60" y="380" width="840" height="210" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="402" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >同一个页的身份变化（从左到右）</text>
+<rect x="80" y="440" width="155" height="56" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="157.5" y="463.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >free list</text>
+<text x="157.5" y="483.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >空闲 frame，可分配</text>
+<rect x="295" y="440" width="155" height="56" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="372.5" y="463.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >LRU old 区</text>
+<text x="372.5" y="483.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >新页统一从这里进入</text>
+<rect x="510" y="440" width="155" height="56" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="587.5" y="463.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >LRU young 区</text>
+<text x="587.5" y="483.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >停留 &gt;1s 才晋升</text>
+<rect x="725" y="440" width="155" height="56" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="802.5" y="463.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >flush_list</text>
+<text x="802.5" y="483.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >脏页：待刷但仍在 LRU</text>
+<path d="M 235.0,468.0 L 295.0,468.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="251.0" y="450.0" width="28.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="265.0" y="460.0" font-size="11" fill="#2563eb" text-anchor="middle" font-weight="500" >读入</text>
+<path d="M 450.0,468.0 L 510.0,468.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="460.5" y="450.0" width="39.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="480.0" y="460.0" font-size="11" fill="#2563eb" text-anchor="middle" font-weight="500" >再命中</text>
+<path d="M 665.0,468.0 L 725.0,468.0" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="673.5" y="450.0" width="43.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="695.0" y="460.0" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="500" >UPDATE</text>
+<text x="80" y="545" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >刷盘后页不会离开 LRU，只是从 flush_list 摘除——「脏页比例下降」不等于「页被释放」</text>
+<path d="M 60 620 L 86 620" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="93" y="624" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >分配与落盘</text>
+<path d="M 60 640 L 86 640" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="93" y="644" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >读路径 / 链表归属</text>
+<path d="M 60 660 L 86 660" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="93" y="664" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >脏页</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker></defs>
+<rect width="960" height="600" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 13-2　派生表的两种归宿，以及 8.0.22 把过滤推到物化之前</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">同一句 FROM (SELECT ...) d：能不能摊平，取决于派生表里有没有挡住 merge 的构造</text>
+<rect x="40" y="80" width="420" height="262" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="102" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >A｜merge：派生表摊平进外层，等于手写 join</text>
+<rect x="56" y="112" width="388" height="76" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="68" y="130" font-size="9" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">SELECT o.order_no, d.sku_id</text>
+<text x="68" y="145" font-size="9" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">FROM (SELECT order_id, sku_id</text>
+<text x="68" y="160" font-size="9" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">      FROM order_item) d</text>
+<text x="68" y="175" font-size="9" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">JOIN order_main o ON o.id = d.order_id;</text>
+<text x="56" y="218" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >EXPLAIN：只有两行，select_type 全是 SIMPLE</text>
+<text x="56" y="240" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >没有 &lt;derived2&gt; —— 派生表不再是一个独立节点</text>
+<text x="56" y="262" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >条件：无聚合、GROUP BY、DISTINCT、LIMIT、UNION、</text>
+<text x="56" y="284" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >      无窗口函数、无用户变量赋值</text>
+<text x="56" y="306" font-size="10" fill="#16a34a" text-anchor="start" font-weight="400" >代价：不额外物化，外层怎么驱动就怎么读</text>
+<rect x="500" y="80" width="420" height="262" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="514" y="102" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >B｜materialize：先物化成临时表，外层再扫它</text>
+<rect x="516" y="112" width="388" height="76" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="528" y="130" font-size="9" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">SELECT o.order_no, d.cnt</text>
+<text x="528" y="145" font-size="9" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">FROM (SELECT order_id, COUNT(*) cnt</text>
+<text x="528" y="160" font-size="9" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">      FROM order_item GROUP BY order_id) d</text>
+<text x="528" y="175" font-size="9" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">JOIN order_main o ON o.id = d.order_id;</text>
+<text x="516" y="218" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >EXPLAIN：多一行 id=2、select_type=DERIVED</text>
+<text x="516" y="240" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >外层那行 table=&lt;derived2&gt;，可能借用 &lt;auto_key0&gt;</text>
+<text x="516" y="262" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >条件：出现聚合、GROUP BY、DISTINCT、LIMIT、</text>
+<text x="516" y="284" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >      UNION、窗口函数中的任意一个</text>
+<text x="516" y="306" font-size="10" fill="#dc2626" text-anchor="start" font-weight="400" >代价：先算完整个派生表，行宽也照样搬进临时表</text>
+<rect x="40" y="362" width="880" height="200" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="384" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >8.0.22 起：派生条件下推 —— 让过滤发生在物化之前</text>
+<rect x="64" y="406" width="300" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="214.0" y="433.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >物化全部派生表行</text>
+<text x="214.0" y="453.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >WHERE 在物化之后才过滤</text>
+<path d="M 368.0,438.0 L 448.0,438.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="383.0" y="419.0" width="50.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="408.0" y="429.0" font-size="11" fill="#2563eb" text-anchor="middle" font-weight="500" >条件下推</text>
+<rect x="452" y="406" width="300" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="602.0" y="433.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >只物化通过条件的行</text>
+<text x="602.0" y="453.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >条件进了派生表的 WHERE / HAVING</text>
+<text x="60" y="498" font-size="10" fill="#111827" text-anchor="start" font-weight="400" >触发：外层条件只引用派生表列。GROUP BY 的派生表上，分组列的条件推成 WHERE，非分组列的条件推成 HAVING。</text>
+<text x="60" y="520" font-size="10" fill="#dc2626" text-anchor="start" font-weight="400" >限制：派生表带 LIMIT、带窗口函数、作为外连接内表，或 CTE 被引用多次时，都不推。</text>
+<text x="60" y="542" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >开关：optimizer_switch 的 derived_condition_pushdown，默认 on；单条语句可用 NO_DERIVED_CONDITION_PUSHDOWN 关掉。</text>
+</svg>

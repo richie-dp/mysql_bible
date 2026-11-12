@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 4-1　redo log 是一个环：write pos 追着 checkpoint 跑</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">环上的每一段对应一种状态；checkpoint 想前进，必须先把最老的脏页刷下去</text>
+<circle cx="330" cy="315" r="118" fill="none" stroke="#eef2f7" stroke-width="48"/>
+<path d="M 448.00 315.00 A 118 118 0 1 1 219.12 274.64" fill="none" stroke="#e2e8f0" stroke-width="48"/>
+<path d="M 219.12 274.64 A 118 118 0 0 1 350.49 198.79" fill="none" stroke="#16a34a" stroke-width="48"/>
+<path d="M 350.49 198.79 A 118 118 0 0 1 448.00 315.00" fill="none" stroke="#ea580c" stroke-width="48"/>
+<circle cx="219.12" cy="274.64" r="8" fill="#ffffff" stroke="#16a34a" stroke-width="3"/>
+<circle cx="350.49" cy="198.79" r="8" fill="#ffffff" stroke="#ea580c" stroke-width="3"/>
+<circle cx="448.00" cy="315.00" r="8" fill="#ffffff" stroke="#475569" stroke-width="3"/>
+<text x="193.11627074726283" y="278.6416230875711" font-size="11" fill="#111827" text-anchor="end" font-weight="600" >checkpoint</text>
+<text x="350.49048496469777" y="166.79268514455947" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="600" >pages flushed up to</text>
+<text x="478.0" y="319.0" font-size="11" fill="#475569" text-anchor="start" font-weight="600" >write pos</text>
+<rect x="540" y="170" width="380" height="250" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="554" y="192" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >三个指针把环切成三段</text>
+<rect x="560" y="205" width="14" height="14" rx="3" ry="3" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="584" y="217" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >已落盘（可回收）</text>
+<text x="584" y="235" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >对应页已刷，checkpoint 越过即可覆盖</text>
+<rect x="560" y="257" width="14" height="14" rx="3" ry="3" fill="#ea580c" stroke="#ea580c" stroke-width="1"/>
+<text x="584" y="269" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >待刷脏（必须保留）</text>
+<text x="584" y="287" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >页还在 Buffer Pool 里，覆盖就永久丢</text>
+<rect x="560" y="309" width="14" height="14" rx="3" ry="3" fill="#475569" stroke="#475569" stroke-width="1"/>
+<text x="584" y="321" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >可写区间</text>
+<text x="584" y="339" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >capacity − checkpoint age</text>
+<line x1="556" y1="352" x2="904" y2="352" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="556" y="374" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">write pos        = Log sequence number</text>
+<text x="556" y="394" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">checkpoint       = Last checkpoint at</text>
+<text x="60" y="496" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >8.0.30+：容量 = innodb_redo_log_capacity，切成 32 个文件按 LSN 顺时针循环使用</text>
+<rect x="60" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="84" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="108" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="132" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="156" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="180" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="204" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="228" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="252" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="276" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="300" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="324" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="348" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="372" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="396" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="420" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="444" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="468" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="492" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="516" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="540" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="564" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="588" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="612" y="514" width="18" height="24" rx="3" ry="3" fill="#f3e8ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="636" y="514" width="18" height="24" rx="3" ry="3" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="660" y="514" width="18" height="24" rx="3" ry="3" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="684" y="514" width="18" height="24" rx="3" ry="3" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="708" y="514" width="18" height="24" rx="3" ry="3" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="732" y="514" width="18" height="24" rx="3" ry="3" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="756" y="514" width="18" height="24" rx="3" ry="3" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="780" y="514" width="18" height="24" rx="3" ry="3" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+<rect x="804" y="514" width="18" height="24" rx="3" ry="3" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+<text x="60" y="558" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >#ib_redo0</text>
+<text x="822" y="558" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >#ib_redo31</text>
+<text x="360" y="558" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >旧文件被回收后按顺序重新创建，文件名不保证连续</text>
+<path d="M 60 582 L 86 582" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="93" y="586" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >已落盘</text>
+<path d="M 60 602 L 86 602" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="93" y="606" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >待刷脏</text>
+<path d="M 60 622 L 86 622" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#m_e_475569)"/>
+<text x="93" y="626" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >可写 / 指针</text>
+</svg>

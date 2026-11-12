@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" width="960" height="680">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="680" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 6-1　一个事务在 binlog 里的完整事件序列</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">binlog 是追加写的事件流：XID 之前的一切都只是「可能提交」</text>
+<text x="80" y="96" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >① 文件头（每个文件只在开头出现一次）</text>
+<text x="80" y="208" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >② 一个事务的事件组（binlog_format = ROW）</text>
+<text x="80" y="502" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >③ 事务边界之外</text>
+<rect x="80" y="104" width="320" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="240.0" y="128.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">FORMAT_DESCRIPTION</text>
+<text x="470" y="129" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >type 15 · 文件头：binlog 版本、事件头长度</text>
+<rect x="80" y="154" width="320" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="240.0" y="178.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PREVIOUS_GTIDS</text>
+<text x="470" y="179" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >type 35 · 本文件之前已执行的 GTID 集合</text>
+<rect x="80" y="216" width="320" height="40" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="240.0" y="240.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">GTID_LOG_EVENT</text>
+<text x="470" y="241" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >type 33 · GTID + last_committed / sequence_number</text>
+<rect x="80" y="266" width="320" height="40" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="290.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">QUERY (BEGIN)</text>
+<text x="470" y="291" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >type 2 · 开事务；DDL 也走 QUERY，但没有 XID</text>
+<rect x="80" y="316" width="320" height="40" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="340.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">TABLE_MAP</text>
+<text x="470" y="341" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >type 19 · table_id → 库.表；row event 只带 table_id</text>
+<rect x="80" y="366" width="320" height="40" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="240.0" y="390.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">UPDATE_ROWS</text>
+<text x="470" y="391" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >type 31 · 前镜像 + 后镜像，细节看 binlog_row_image</text>
+<rect x="80" y="446" width="320" height="40" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="240.0" y="470.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">XID</text>
+<text x="470" y="471" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >type 16 · InnoDB 事务号；见到它才算「事件组完整」</text>
+<rect x="80" y="516" width="320" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="240.0" y="540.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">ROTATE</text>
+<text x="470" y="541" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >type 4 · 切文件；只发生在事务之间，不会切开事务</text>
+<path d="M 64.0,424.0 L 900.0,424.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="6,4"/>
+<text x="470" y="440" font-size="11" fill="#dc2626" text-anchor="start" font-weight="600" >分界线：XID 之前的事件，崩溃恢复时可能被回滚</text>
+<text x="60" y="578" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >binlog 只能往前读：事件一旦写入就不会再改（被 PURGE 掉是另一回事）。</text>
+<text x="60" y="598" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >row event 里没有库名表名，只有一个 table_id——这也是 CDC 必须缓存 TABLE_MAP 的原因。</text>
+<path d="M 60 624 L 86 624" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="93" y="628" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >行镜像 / 事务标识</text>
+<path d="M 60 644 L 86 644" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="93" y="648" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >语句与元数据</text>
+<path d="M 330 624 L 356 624" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="363" y="628" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >提交点</text>
+<path d="M 330 644 L 356 644" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#m_e_475569)"/>
+<text x="363" y="648" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >文件层事件</text>
+</svg>

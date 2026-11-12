@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker></defs>
+<rect width="960" height="620" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 24-2　超时降级：从 ON 掉到 OFF，只需要一次沉默</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">降级不报错、不断连接，只在 error log 留一条 warning；监控上唯一的变化是一个状态变量</text>
+<text x="300" y="112" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >回到 ON 的前提：某个从库的 ACK 重新落回超时窗口内（网络恢复 / 复制重建 / 手工重置 enabled）</text>
+<rect x="70" y="250" width="210" height="86" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="175.0" y="288.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >ON 半同步生效</text>
+<text x="175.0" y="308.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每个提交都等 ACK</text>
+<rect x="400" y="250" width="200" height="86" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="500.0" y="288.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >等 ACK</text>
+<text x="500.0" y="308.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >最多等 10 秒</text>
+<rect x="730" y="250" width="190" height="86" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="825.0" y="288.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >OFF 已降级</text>
+<text x="825.0" y="308.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >不再等待，异步复制</text>
+<path d="M 280.0,293.0 L 400.0,293.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 600.0,293.0 L 730.0,293.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="651.0" y="275.0" width="28.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="665.0" y="285.0" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >超时</text>
+<path d="M 825.0,250.0 L 825.0,150.0 L 175.0,150.0 L 175.0,250.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="446.2" y="132.0" width="107.6" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="500.0" y="142.0" font-size="11" fill="#16a34a" text-anchor="middle" font-weight="500" >ACK 重新落回窗口内</text>
+<path d="M 825.0,336.0 L 825.0,392.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="830.0" y="358.0" width="72.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="833.0" y="368.0" font-size="11" fill="#dc2626" text-anchor="start" font-weight="500" >期间所有提交</text>
+<rect x="710" y="392" width="210" height="96" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="815.0" y="435.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >降级窗口</text>
+<text x="815.0" y="455.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >主从不一致无上限</text>
+<text x="710" y="512" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >窗口本身不丢数据，只把风险押给下一次故障</text>
+<text x="70" y="380" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >唯一的状态信号</text>
+<text x="70" y="400" font-size="11" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Rpl_semi_sync_source_status</text>
+<text x="70" y="420" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >ON → OFF，就是降级的全部痕迹</text>
+<rect x="70" y="440" width="470" height="74" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="82" y="457" font-size="11" fill="#94a3b8" text-anchor="start" font-weight="400" >error log</text>
+<text x="82" y="478" font-size="9" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">[Warning] Timeout waiting for reply of binlog</text>
+<text x="82" y="493" font-size="9" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">(file: mysql-bin.000021, pos: ...), semi-sync up to ...</text>
+<text x="82" y="508" font-size="9" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">-- 整条链路上只有这一行，没有第二次提醒</text>
+<path d="M 600 540 L 626 540" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="633" y="544" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >半同步生效</text>
+<path d="M 600 560 L 626 560" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="633" y="564" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >已降级为异步</text>
+<path d="M 600 580 L 626 580" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="633" y="584" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >等 ACK 的提交</text>
+</svg>

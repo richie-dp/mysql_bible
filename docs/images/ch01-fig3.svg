@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 1-3　同一张表，两条完全不同的读路径</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">快照读不加锁、走 undo 版本链；当前读加锁、读最新已提交版本</text>
+<rect x="60" y="96" width="400" height="380" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="118" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >快照读　SELECT ... (RR)</text>
+<rect x="100" y="140" width="170" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="185.0" y="159.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >一致性读视图</text>
+<text x="185.0" y="179.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >首条 SELECT 时创建</text>
+<path d="M 185.0,188.0 L 185.0,232.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="100" y="232" width="170" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="185.0" y="251.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >判断可见性</text>
+<text x="185.0" y="271.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >trx_id &lt; min_trx_id ?</text>
+<path d="M 185.0,280.0 L 185.0,324.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="190.0" y="296.0" width="72.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="193.0" y="306.0" font-size="11" fill="#2563eb" text-anchor="start" font-weight="500" >不可见则回溯</text>
+<path d="M 100 335 A 85.0 11 0 0 1 270 335 L 270 369 A 85.0 11 0 0 1 100 369 Z" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<path d="M 100 335 A 85.0 11 0 0 0 270 335" fill="none" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="185.0" y="350.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >undo 版本链</text>
+<text x="185.0" y="368.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >DB_ROLL_PTR 串联</text>
+<path d="M 270.0,352.0 L 310.0,352.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="310" y="328" width="130" height="48" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="375.0" y="347.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >返回历史版本</text>
+<text x="375.0" y="367.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >不加任何锁</text>
+<text x="100" y="410" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >不阻塞写入，也不被写入阻塞（除 DDL）</text>
+<text x="100" y="430" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >代价：可能读到「旧」数据</text>
+<rect x="500" y="96" width="400" height="380" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="514" y="118" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >当前读　UPDATE / FOR UPDATE / DELETE</text>
+<rect x="540" y="140" width="170" height="48" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="625.0" y="159.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >加锁读</text>
+<text x="625.0" y="179.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >Next-Key Lock</text>
+<path d="M 625.0,188.0 L 625.0,232.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="540" y="232" width="170" height="48" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="625.0" y="251.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >读最新已提交版本</text>
+<text x="625.0" y="271.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >在 Buffer Pool 中</text>
+<path d="M 625.0,280.0 L 625.0,324.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="540" y="324" width="170" height="48" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="625.0" y="343.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >改写 + undo / redo</text>
+<text x="625.0" y="363.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >细节见第 4、5 章</text>
+<path d="M 710.0,348.0 L 745.0,348.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="745" y="324" width="130" height="48" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="810.0" y="343.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >阻塞其他写</text>
+<text x="810.0" y="363.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >等锁 / 死锁</text>
+<text x="540" y="410" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >读到的一定是最新数据（当前读语义）</text>
+<text x="540" y="430" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >代价：并发下降、可能死锁</text>
+<text x="60" y="512" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >同一条 SQL 里，UPDATE 的 WHERE 走当前读，而它前面的 SELECT 可能走快照读——这就是「同一事务两次查询结果不同」的根源。</text>
+</svg>

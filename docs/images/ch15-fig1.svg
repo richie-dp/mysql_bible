@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker></defs>
+<rect width="960" height="540" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 15-1　深分页：原写法与三条解法的访问路径</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">offset = 1,000,000、LIMIT 20；横条长度按行数对数刻度绘制</text>
+<line x1="403.0" y1="98" x2="403.0" y2="392" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="403.0" y="90" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >1e3</text>
+<line x1="458.0" y1="98" x2="458.0" y2="392" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="458.0" y="90" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >1e4</text>
+<line x1="513.0" y1="98" x2="513.0" y2="392" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="513.0" y="90" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >1e5</text>
+<line x1="568.0" y1="98" x2="568.0" y2="392" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="568.0" y="90" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >1e6</text>
+<text x="60" y="126" font-size="13" fill="#111827" text-anchor="start" font-weight="600" >① 原写法（offset）</text>
+<text x="60" y="144" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >LIMIT 1000000, 20</text>
+<rect x="238" y="112" width="330.0004777191529" height="15" rx="3" ry="3" fill="#2563eb" stroke="#2563eb" stroke-width="0"/>
+<rect x="238" y="133" width="330.0004777191529" height="15" rx="3" ry="3" fill="#ea580c" stroke="#ea580c" stroke-width="0"/>
+<text x="590" y="124" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >索引 1,000,020 行</text>
+<text x="590" y="145" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >回表 1,000,020 次</text>
+<rect x="770" y="117" width="110" height="28" rx="14.0" ry="14.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="825.0" y="134.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >能跳页</text>
+<text x="60" y="200" font-size="13" fill="#111827" text-anchor="start" font-weight="600" >② 延迟关联</text>
+<text x="60" y="218" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >JOIN (SELECT id … LIMIT)</text>
+<rect x="238" y="186" width="330.0004777191529" height="15" rx="3" ry="3" fill="#2563eb" stroke="#2563eb" stroke-width="0"/>
+<rect x="238" y="207" width="71.55664976151897" height="15" rx="3" ry="3" fill="#ea580c" stroke="#ea580c" stroke-width="0"/>
+<text x="590" y="198" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >索引 1,000,020 行</text>
+<text x="590" y="219" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >回表 20 次</text>
+<rect x="770" y="191" width="110" height="28" rx="14.0" ry="14.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="825.0" y="208.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >能跳页</text>
+<text x="60" y="274" font-size="13" fill="#111827" text-anchor="start" font-weight="600" >③ 游标 seek</text>
+<text x="60" y="292" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >WHERE id &gt; ? ORDER BY id</text>
+<rect x="238" y="260" width="71.55664976151897" height="15" rx="3" ry="3" fill="#2563eb" stroke="#2563eb" stroke-width="0"/>
+<rect x="238" y="281" width="71.55664976151897" height="15" rx="3" ry="3" fill="#ea580c" stroke="#ea580c" stroke-width="0"/>
+<text x="590" y="272" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >索引 20 行</text>
+<text x="590" y="293" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >回表 20 次</text>
+<rect x="770" y="265" width="110" height="28" rx="14.0" ry="14.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="825.0" y="282.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >不能跳页</text>
+<text x="60" y="348" font-size="13" fill="#111827" text-anchor="start" font-weight="600" >④ 覆盖索引 + 子查询</text>
+<text x="60" y="366" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >两次查询，应用拼装 ID</text>
+<rect x="238" y="334" width="330.0004777191529" height="15" rx="3" ry="3" fill="#2563eb" stroke="#2563eb" stroke-width="0"/>
+<rect x="238" y="355" width="71.55664976151897" height="15" rx="3" ry="3" fill="#ea580c" stroke="#ea580c" stroke-width="0"/>
+<text x="590" y="346" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >索引 1,000,020 行</text>
+<text x="590" y="367" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >回表 20 次</text>
+<rect x="770" y="339" width="110" height="28" rx="14.0" ry="14.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="825.0" y="356.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >能跳页</text>
+<path d="M 60 416 L 86 416" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="93" y="420" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >索引扫描行数</text>
+<path d="M 60 436 L 86 436" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="93" y="440" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >回表次数</text>
+<text x="300" y="426" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >offset 越大，前两条越长；只有游标法不随页码增长。</text>
+<text x="60" y="474" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >延迟关联与“覆盖索引 + 子查询”仍然要扫 offset + limit 行索引，它们只是把回表压到 limit 次。</text>
+</svg>

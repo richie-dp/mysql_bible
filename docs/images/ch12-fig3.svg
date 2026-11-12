@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 668" width="960" height="668">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="668" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 12-3　ON 与 WHERE 之间，隔着一整个「补 NULL」的动作</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">同一条 LEFT JOIN，条件放错位置结果就不同；放对位置之后，优化器还会把它改写成内连接</text>
+<rect x="40" y="76" width="430" height="392" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="98" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >A｜条件写在 ON 里：右表先筛，再补 NULL</text>
+<rect x="56" y="108" width="398" height="128" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="68" y="125" font-size="11" fill="#94a3b8" text-anchor="start" font-weight="400" >SQL A｜谓词在 ON</text>
+<text x="68" y="146" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">SELECT o.order_no, p.tier</text>
+<text x="68" y="162" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">FROM orders o</text>
+<text x="68" y="178" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">LEFT JOIN user_profile p</text>
+<text x="68" y="194" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">  ON p.user_id = o.user_id</text>
+<text x="68" y="210" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"> AND p.tier = &#x27;GOLD&#x27;;</text>
+<rect x="56" y="246" width="398" height="32" rx="0" ry="0" fill="#f1f5f9" stroke="#d1d5db" stroke-width="1"/>
+<text x="70" y="267" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >order_no</text>
+<text x="236" y="267" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >p.tier</text>
+<rect x="56" y="278" width="398" height="32" rx="0" ry="0" fill="#f0fdf4" stroke="#d1d5db" stroke-width="1"/>
+<text x="70" y="299" font-size="12" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">A1001</text>
+<text x="236" y="299" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">GOLD</text>
+<rect x="56" y="278" width="4" height="32" rx="0" ry="0" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<rect x="56" y="310" width="398" height="32" rx="0" ry="0" fill="#f0fdf4" stroke="#d1d5db" stroke-width="1"/>
+<text x="70" y="331" font-size="12" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">A1002</text>
+<text x="236" y="331" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">NULL</text>
+<rect x="56" y="310" width="4" height="32" rx="0" ry="0" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<rect x="56" y="342" width="398" height="32" rx="0" ry="0" fill="#f0fdf4" stroke="#d1d5db" stroke-width="1"/>
+<text x="70" y="363" font-size="12" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">A1003</text>
+<text x="236" y="363" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">NULL</text>
+<rect x="56" y="342" width="4" height="32" rx="0" ry="0" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="56" y="402" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" >右表没匹配上的行保留下来，补 NULL —— 左表 3 行一行不少。</text>
+<text x="56" y="426" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >ON 只决定「怎么匹配」，不决定「留不留」，这是外连接的语义地基。</text>
+<text x="56" y="450" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >想「只连 GOLD 用户，且没有画像的订单也要」，只能这么写。</text>
+<rect x="490" y="76" width="430" height="392" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="504" y="98" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >B｜条件写在 WHERE 里：补完 NULL 再筛，NULL 行被杀掉</text>
+<rect x="506" y="108" width="398" height="128" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="518" y="125" font-size="11" fill="#94a3b8" text-anchor="start" font-weight="400" >SQL B｜谓词在 WHERE</text>
+<text x="518" y="146" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">SELECT o.order_no, p.tier</text>
+<text x="518" y="162" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">FROM orders o</text>
+<text x="518" y="178" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">LEFT JOIN user_profile p</text>
+<text x="518" y="194" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">  ON p.user_id = o.user_id</text>
+<text x="518" y="210" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">WHERE p.tier = &#x27;GOLD&#x27;;</text>
+<rect x="506" y="246" width="398" height="32" rx="0" ry="0" fill="#f1f5f9" stroke="#d1d5db" stroke-width="1"/>
+<text x="520" y="267" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >order_no</text>
+<text x="686" y="267" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >p.tier</text>
+<rect x="506" y="278" width="398" height="32" rx="0" ry="0" fill="#f0fdf4" stroke="#d1d5db" stroke-width="1"/>
+<text x="520" y="299" font-size="12" fill="#111827" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">A1001</text>
+<text x="686" y="299" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">GOLD</text>
+<rect x="506" y="278" width="4" height="32" rx="0" ry="0" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<rect x="506" y="310" width="398" height="32" rx="0" ry="0" fill="#fef2f2" stroke="#d1d5db" stroke-width="1"/>
+<text x="520" y="331" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">A1002</text>
+<text x="686" y="331" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">NULL</text>
+<rect x="506" y="310" width="4" height="32" rx="0" ry="0" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<rect x="516" y="327" width="44" height="1.4" rx="0" ry="0" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<rect x="506" y="342" width="398" height="32" rx="0" ry="0" fill="#fef2f2" stroke="#d1d5db" stroke-width="1"/>
+<text x="520" y="363" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">A1003</text>
+<text x="686" y="363" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">NULL</text>
+<rect x="506" y="342" width="4" height="32" rx="0" ry="0" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<rect x="516" y="359" width="44" height="1.4" rx="0" ry="0" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<text x="506" y="402" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >NULL = &#x27;GOLD&#x27; 的结果是 UNKNOWN，不是 TRUE，两行被吃掉。</text>
+<text x="506" y="426" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >结果等价于 INNER JOIN；优化器据此把外连接重写成内连接。</text>
+<text x="506" y="450" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >写法是外连接，执行是内连接 —— 最容易骗过 code review 的一种写法。</text>
+<rect x="40" y="486" width="880" height="158" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="508" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >三句话记住这个差别</text>
+<text x="60" y="526" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >1. ON 是匹配条件，在补 NULL 之前生效；WHERE 是结果过滤，在补 NULL 之后生效。</text>
+<text x="60" y="552" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >2. WHERE 里对被驱动表列写 =、IN、&gt;、IS NOT NULL，等于声明「这列不能为 NULL」，外连接降级成内连接。</text>
+<text x="60" y="578" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" >3. 唯一例外是 WHERE p.col IS NULL —— 那是故意找「没匹配上的行」，是反连接，不会被改写。</text>
+<text x="60" y="608" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >判定口径：EXPLAIN 的 select_type 从 LEFT JOIN 变成 SIMPLE，就说明优化器已经按内连接处理了。</text>
+</svg>

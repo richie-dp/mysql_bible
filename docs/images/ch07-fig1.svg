@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 730" width="960" height="730">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="730" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 7-1　partial write：为什么 redo 修不好一个坏页</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">以 4KB 扇区为例：16KB 的页分四次落地，掉电可能停在第三块；doublewrite 用完整副本兜住，再写回原位</text>
+<rect x="40" y="78" width="880" height="180" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="100" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >一次 16KB 的页写入，可能只落地了一半</text>
+<rect x="64" y="118" width="424" height="112" rx="6" ry="6" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<rect x="76" y="138" width="92" height="72" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="122.0" y="169.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >块 0</text>
+<text x="122.0" y="189.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >已落盘</text>
+<rect x="180" y="138" width="92" height="72" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="226.0" y="169.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >块 1</text>
+<text x="226.0" y="189.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >已落盘</text>
+<rect x="284" y="138" width="92" height="72" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="330.0" y="169.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >块 2</text>
+<text x="330.0" y="189.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >旧数据</text>
+<rect x="388" y="138" width="92" height="72" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="434.0" y="169.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >块 3</text>
+<text x="434.0" y="189.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >旧数据</text>
+<text x="520" y="136" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >一次 write 落在 4 个 4KB 扇区上，不是一个原子动作</text>
+<text x="520" y="162" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >掉电停在第 3 块之前：前 8KB 是新版本，后 8KB 是旧版本</text>
+<text x="520" y="184" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >页头的 LSN 已经是新的，checksum 却对不上</text>
+<text x="520" y="210" font-size="11" fill="#dc2626" text-anchor="start" font-weight="600" >这一页既不是新页，也不是旧页</text>
+<rect x="40" y="280" width="420" height="146" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="302" font-size="13" fill="#dc2626" text-anchor="start" font-weight="600" >只有 redo：无处下手</text>
+<rect x="60" y="318" width="380" height="44" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="250.0" y="335.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >页的结构已经不可信</text>
+<text x="250.0" y="355.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >记录槽 / 页目录 / checksum 全对不上</text>
+<text x="60" y="392" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >redo 是 physiological：先按页号找到页，</text>
+<text x="60" y="412" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >再在页内定位记录槽。前提是页还能被解析。</text>
+<rect x="500" y="280" width="420" height="146" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="514" y="302" font-size="13" fill="#16a34a" text-anchor="start" font-weight="600" >有 doublewrite：整页覆盖后再重放</text>
+<rect x="520" y="318" width="380" height="44" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="710.0" y="335.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >dblwr 里的副本是完整的</text>
+<text x="710.0" y="355.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >写数据文件之前就已经 fsync</text>
+<text x="520" y="392" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >用副本整页覆盖，页结构恢复原状；</text>
+<text x="520" y="412" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >再从这个页的 LSN 往后重放 redo。</text>
+<rect x="40" y="452" width="880" height="190" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="474" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >正常刷脏的两段式写入：副本先落地，原位后写</text>
+<rect x="60" y="500" width="240" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="180.0" y="527.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >① 写 dblwr 区</text>
+<text x="180.0" y="547.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >连续追加，顺序 IO</text>
+<rect x="360" y="500" width="240" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="480.0" y="527.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >② fsync 副本</text>
+<text x="480.0" y="547.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >副本没落盘就不往下走</text>
+<rect x="660" y="500" width="240" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="780.0" y="527.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >③ 写 .ibd 原位</text>
+<text x="780.0" y="547.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >离散随机，失败也不致命</text>
+<path d="M 300.0,532.0 L 360.0,532.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<path d="M 600.0,532.0 L 660.0,532.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<text x="60" y="600" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >恢复时先扫 dblwr：.ibd 里校验失败的页用副本整页覆盖，再交给 redo 前滚。</text>
+<text x="60" y="622" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >顺序反了就没意义 —— 副本还没持久化就写原位，崩溃后两份都是坏的。</text>
+<path d="M 60 668 L 86 668" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="93" y="672" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >完整落盘</text>
+<path d="M 60 688 L 86 688" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="93" y="692" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >页损坏</text>
+<path d="M 60 708 L 86 708" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="93" y="712" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >随机写回原位</text>
+</svg>

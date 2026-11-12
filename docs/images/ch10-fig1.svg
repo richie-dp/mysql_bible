@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="720" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 10-1　优化器的决策链：五步，每步只依赖有限的几个数</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">左边是它做的事，右边是它做这件事时唯一能看到的信息；看不到的，只能靠假设</text>
+<rect x="40" y="84" width="536" height="556" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >决策链（自上而下，逐层收窄）</text>
+<rect x="596" y="84" width="324" height="556" rx="10" ry="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="610" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >这一步依赖的统计值</text>
+<rect x="64" y="116" width="488" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="308.0" y="142.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >① 枚举候选索引</text>
+<text x="308.0" y="162.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >potential_range_indexes</text>
+<rect x="612" y="116" width="292" height="62" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="758.0" y="142.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >索引定义 + WHERE 的列</text>
+<text x="758.0" y="162.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >只看「能不能用」，不看数据长什么样</text>
+<path d="M 308.0,178.0 L 308.0,222.0" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 552.0,147.0 L 612.0,147.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="64" y="222" width="488" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="308.0" y="248.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >② 每个候选估行数</text>
+<text x="308.0" y="268.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >range_analysis / analyze_range</text>
+<rect x="612" y="222" width="292" height="62" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="758.0" y="248.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >n_diff 与表行数</text>
+<text x="758.0" y="268.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >估计值 = n_rows ÷ n_diff × 过滤率</text>
+<path d="M 308.0,284.0 L 308.0,328.0" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 552.0,253.0 L 612.0,253.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="64" y="328" width="488" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="308.0" y="354.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >③ 叠加回表、排序、LIMIT</text>
+<text x="308.0" y="374.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >best_access_path</text>
+<rect x="612" y="328" width="292" height="62" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="758.0" y="354.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >rows × io_block_read_cost</text>
+<text x="758.0" y="374.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >回表按「每行一次块读」计价</text>
+<path d="M 308.0,390.0 L 308.0,434.0" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 552.0,359.0 L 612.0,359.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="64" y="434" width="488" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="308.0" y="460.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >④ 逐个比总成本</text>
+<text x="308.0" y="480.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >considered_execution_plans</text>
+<rect x="612" y="434" width="292" height="62" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="758.0" y="460.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >server_cost / engine_cost</text>
+<text x="758.0" y="480.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >8 个常数决定「谁更贵」</text>
+<path d="M 308.0,496.0 L 308.0,540.0" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 552.0,465.0 L 612.0,465.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="64" y="540" width="488" height="62" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="308.0" y="566.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >⑤ 选定并产出计划</text>
+<text x="308.0" y="586.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >chosen = 1</text>
+<rect x="612" y="540" width="292" height="62" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="758.0" y="566.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >到此为止，没有别的输入了</text>
+<text x="758.0" y="586.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >选错了只能靠 trace 回放它的推理</text>
+<path d="M 552.0,571.0 L 612.0,571.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 40 668 L 66 668" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="73" y="672" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >决策流程</text>
+<path d="M 40 688 L 66 688" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<text x="73" y="692" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >读取某个统计值 / 成本常数</text>
+<text x="560" y="668" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >成本单位无量纲：1.0 只表示「一个磁盘块读」，不等于 1 毫秒</text>
+</svg>

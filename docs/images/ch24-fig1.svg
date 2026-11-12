@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 690" width="960" height="690">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker></defs>
+<rect width="960" height="690" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 24-1　等待点差一步：AFTER_COMMIT 与 AFTER_SYNC</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">两条时序都从 binlog fsync 开始；区别只有一个：ACK 等待插在引擎 COMMIT 之前还是之后</text>
+<rect x="70" y="100" width="380" height="44" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="260.0" y="117.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >AFTER_COMMIT</text>
+<text x="260.0" y="137.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >5.5 / 5.6 的唯一行为，8.0 仍可切回</text>
+<rect x="510" y="100" width="380" height="44" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="700.0" y="117.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >AFTER_SYNC</text>
+<text x="700.0" y="137.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >5.7 起的 loss-less，8.0 默认</text>
+<rect x="70" y="160" width="380" height="44" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="260.0" y="177.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >① binlog 写入 + fsync</text>
+<text x="260.0" y="197.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >sync_binlog=1，组提交共享一次</text>
+<rect x="70" y="228" width="380" height="44" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="260.0" y="245.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >② 引擎 COMMIT</text>
+<text x="260.0" y="265.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >事务已对其他会话可见</text>
+<rect x="510" y="160" width="380" height="44" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="700.0" y="177.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >① binlog 写入 + fsync</text>
+<text x="700.0" y="197.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >同上，此时事务还是 prepare</text>
+<rect x="510" y="228" width="380" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="700.0" y="245.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >② 等从库 ACK</text>
+<text x="700.0" y="265.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >引擎层没提交，别人看不到</text>
+<rect x="70" y="296" width="380" height="34" rx="6" ry="6" fill="#fef2f2" stroke="#fecaca" stroke-width="1.4" stroke-dasharray="5,3"/>
+<text x="260.0" y="316.5" font-size="10" fill="#dc2626" text-anchor="middle" font-weight="600" >崩溃窗口：已提交、未应答</text>
+<rect x="510" y="296" width="380" height="34" rx="6" ry="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.4" stroke-dasharray="5,3"/>
+<text x="700.0" y="316.5" font-size="10" fill="#16a34a" text-anchor="middle" font-weight="600" >崩溃窗口：已 fsync、未提交</text>
+<rect x="70" y="354" width="380" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="260.0" y="371.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >③ 等从库 ACK</text>
+<text x="260.0" y="391.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >等的是 RTT + 从库 relay log</text>
+<rect x="70" y="422" width="380" height="44" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="260.0" y="439.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >④ 返回客户端</text>
+<text x="260.0" y="459.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >客户端拿到「成功」</text>
+<rect x="510" y="354" width="380" height="44" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="700.0" y="371.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >③ 引擎 COMMIT</text>
+<text x="700.0" y="391.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >等到了才提交</text>
+<rect x="510" y="422" width="380" height="44" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="700.0" y="439.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >④ 返回客户端</text>
+<text x="700.0" y="459.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >客户端拿到「成功」</text>
+<path d="M 260.0,204.0 L 260.0,228.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 260.0,272.0 L 260.0,296.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 260.0,330.0 L 260.0,354.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 260.0,398.0 L 260.0,422.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 700.0,204.0 L 700.0,228.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 700.0,272.0 L 700.0,296.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 700.0,330.0 L 700.0,354.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 700.0,398.0 L 700.0,422.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="70" y="490" width="380" height="86" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="260.0" y="528.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >主库已提交，从库可能没有</text>
+<text x="260.0" y="548.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >切换后这笔账消失；客户端重试还会重复</text>
+<rect x="510" y="490" width="380" height="86" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="700.0" y="528.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >主库未提交，binlog 已完整</text>
+<text x="700.0" y="548.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >恢复时照样前滚：不丢，重试才会重复</text>
+<text x="70" y="610" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >等待在前，崩溃最多产生重复；等待在后，崩溃可能产生缺口。</text>
+<text x="70" y="632" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >所以 AFTER_SYNC 叫 loss-less，不叫 exactly-once：不丢它管，重复要靠业务幂等。</text>
+<path d="M 70 654 L 96 654" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="103" y="658" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >binlog 落盘</text>
+<path d="M 250 654 L 276 654" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="283" y="658" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >等 ACK</text>
+<path d="M 400 654 L 426 654" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="433" y="658" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >危险：已提交</text>
+<path d="M 580 654 L 606 654" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="613" y="658" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >安全：未提交</text>
+</svg>

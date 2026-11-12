@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="720" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 20-3　锁等待的雪崩链：一条慢事务如何拖垮服务</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">数据库只坏了一点点，应用层把「等待」放大成了「不可用」</text>
+<rect x="120" y="90" width="720" height="240" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="134" y="112" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >MySQL 内部：这一侧几乎没有报警</text>
+<rect x="120" y="330" width="720" height="340" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="134" y="352" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >应用与编排层</text>
+<rect x="320" y="120" width="320" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="480.0" y="147.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >① 慢事务</text>
+<text x="480.0" y="167.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >持锁 8 秒，事务里有 RPC</text>
+<text x="660" y="156" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >唯一的异常在这里</text>
+<rect x="320" y="230" width="320" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="257.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >② 行锁等待堆积</text>
+<text x="480.0" y="277.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >同一热点行排队</text>
+<text x="660" y="266" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >不在慢日志里</text>
+<rect x="320" y="340" width="320" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="367.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >③ 连接池耗尽</text>
+<text x="480.0" y="387.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >等待期间连接不归还</text>
+<text x="660" y="376" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >池一满，全都慢</text>
+<rect x="320" y="450" width="320" height="64" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="480.0" y="477.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >④ 健康检查失败</text>
+<text x="480.0" y="497.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >探针也要拿连接</text>
+<text x="660" y="486" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >readiness 探针超时</text>
+<rect x="320" y="560" width="320" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="480.0" y="587.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑤ 服务不可用</text>
+<text x="480.0" y="607.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >摘流，剩余实例更挤</text>
+<text x="660" y="596" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >故障开始扩散</text>
+<path d="M 480.0,184.0 L 480.0,230.0" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<path d="M 480.0,294.0 L 480.0,340.0" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<path d="M 480.0,404.0 L 480.0,450.0" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<path d="M 480.0,514.0 L 480.0,560.0" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<path d="M 320.0,592.0 L 210.0,592.0 L 210.0,152.0 L 320.0,152.0" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-linejoin="round" stroke-dasharray="5,4" marker-end="url(#m_e_dc2626)"/>
+<rect x="215.0" y="366.0" width="50.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="218.0" y="376.0" font-size="11" fill="#dc2626" text-anchor="start" font-weight="500" >重试风暴</text>
+<text x="140" y="690" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >反馈回路：越不可用 → 重试越多 → 热点行越挤 → 越不可用</text>
+</svg>

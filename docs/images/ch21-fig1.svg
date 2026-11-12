@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 21-1　长事务的三维评估：时长、undo/水位、影响面</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">任何一维到 2 分都不能按 P2 处理；undo 这一维看的是「是不是最老 ReadView」，不是改了多少行</text>
+<rect x="40" y="84" width="264" height="286" rx="10" ry="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.2"/>
+<text x="56" y="112" font-size="14" fill="#2563eb" text-anchor="start" font-weight="700" >① 持续时长</text>
+<text x="56" y="132" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >trx_started → NOW()</text>
+<rect x="56" y="142" width="232" height="1" rx="0" ry="0" fill="#e5e7eb" stroke="none" stroke-width="1.5"/>
+<rect x="56" y="154" width="232" height="56" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="172.0" y="177.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >0 分 · 秒级</text>
+<text x="172.0" y="197.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >单语句事务，正常</text>
+<rect x="56" y="222" width="232" height="56" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="172.0" y="245.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >1 分 · 少于 10 分钟</text>
+<text x="172.0" y="265.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >开始值得看一眼</text>
+<rect x="56" y="290" width="232" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="172.0" y="313.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >2 分 · 10 分钟及以上</text>
+<text x="172.0" y="333.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >进入长事务区间</text>
+<rect x="344" y="84" width="264" height="286" rx="10" ry="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.2"/>
+<text x="360" y="112" font-size="14" fill="#ea580c" text-anchor="start" font-weight="700" >② undo 持有 / 水位</text>
+<text x="360" y="132" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >行数只是估值，水位才是判据</text>
+<rect x="360" y="142" width="232" height="1" rx="0" ry="0" fill="#e5e7eb" stroke="none" stroke-width="1.5"/>
+<rect x="360" y="154" width="232" height="56" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="476.0" y="177.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >0 分 · 无持有</text>
+<text x="476.0" y="197.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >不写 undo，也不是最老视图</text>
+<rect x="360" y="222" width="232" height="56" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="476.0" y="245.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >1 分 · 有修改 / 持锁</text>
+<text x="476.0" y="265.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >按行数估，不按字节</text>
+<rect x="360" y="290" width="232" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="476.0" y="313.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >2 分 · 最老 ReadView</text>
+<text x="476.0" y="333.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >0 行修改也可能是 2 分</text>
+<rect x="648" y="84" width="264" height="286" rx="10" ry="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.2"/>
+<text x="664" y="112" font-size="14" fill="#dc2626" text-anchor="start" font-weight="700" >③ 影响面</text>
+<text x="664" y="132" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >锁了谁、挡了谁、拖了谁</text>
+<rect x="664" y="142" width="232" height="1" rx="0" ry="0" fill="#e5e7eb" stroke="none" stroke-width="1.5"/>
+<rect x="664" y="154" width="232" height="56" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="780.0" y="177.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >0 分 · 无人等待</text>
+<text x="780.0" y="197.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >锁着，但没人排队</text>
+<rect x="664" y="222" width="232" height="56" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="780.0" y="245.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >1 分 · 锁住热点行</text>
+<text x="780.0" y="265.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >等待在积累</text>
+<rect x="664" y="290" width="232" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="780.0" y="313.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >2 分 · 已阻塞</text>
+<text x="780.0" y="333.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >会话 / DDL / 从库回放</text>
+<text x="40" y="404" font-size="13" fill="#111827" text-anchor="start" font-weight="700" >三维打分与判定</text>
+<rect x="40" y="414" width="880" height="32" rx="4" ry="4" fill="#f1f5f9" stroke="#e5e7eb" stroke-width="1"/>
+<text x="50" y="435" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >典型组合</text>
+<text x="360" y="435" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >时长</text>
+<text x="440" y="435" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >undo / 水位</text>
+<text x="690" y="435" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >影响面</text>
+<text x="790" y="435" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >判定</text>
+<rect x="40" y="446" width="880" height="34" rx="4" ry="4" fill="#fef2f2" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="40" y="446" width="4" height="34" rx="2" ry="2" fill="#dc2626" stroke="none" stroke-width="1.5"/>
+<text x="52" y="468" font-size="11" fill="#111827" text-anchor="start" font-weight="500" >只读对账事务，10 分钟</text>
+<text x="360" y="468" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >2</text>
+<text x="440" y="468" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >2（最老视图，0 行修改）</text>
+<text x="690" y="468" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >0</text>
+<text x="790" y="468" font-size="12" fill="#dc2626" text-anchor="start" font-weight="700" >P0</text>
+<rect x="40" y="480" width="880" height="34" rx="4" ry="4" fill="#fef2f2" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="40" y="480" width="4" height="34" rx="2" ry="2" fill="#dc2626" stroke="none" stroke-width="1.5"/>
+<text x="52" y="502" font-size="11" fill="#111827" text-anchor="start" font-weight="500" >状态回刷，300 万行，40 分钟</text>
+<text x="360" y="502" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >2</text>
+<text x="440" y="502" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >2（自己产生 300 万条 undo）</text>
+<text x="690" y="502" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >2</text>
+<text x="790" y="502" font-size="12" fill="#dc2626" text-anchor="start" font-weight="700" >P0</text>
+<rect x="40" y="514" width="880" height="34" rx="4" ry="4" fill="#fef2f2" stroke="#e5e7eb" stroke-width="1"/>
+<rect x="40" y="514" width="4" height="34" rx="2" ry="2" fill="#dc2626" stroke="none" stroke-width="1.5"/>
+<text x="52" y="536" font-size="11" fill="#111827" text-anchor="start" font-weight="500" >空闲事务，12 分钟，持 MDL 挡 DDL</text>
+<text x="360" y="536" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >2</text>
+<text x="440" y="536" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >1（持锁，但不是水位）</text>
+<text x="690" y="536" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >2</text>
+<text x="790" y="536" font-size="12" fill="#dc2626" text-anchor="start" font-weight="700" >P0</text>
+<rect x="40" y="548" width="880" height="34" rx="4" ry="4" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+<text x="52" y="570" font-size="11" fill="#111827" text-anchor="start" font-weight="500" >普通订单查询，90 秒</text>
+<text x="360" y="570" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >1</text>
+<text x="440" y="570" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >0（不是最老视图）</text>
+<text x="690" y="570" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >0</text>
+<text x="790" y="570" font-size="12" fill="#16a34a" text-anchor="start" font-weight="700" >P2</text>
+<text x="40" y="608" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >判定：任一维 2 分且总分 ≥ 4 → P0；总分 2~3 → P1；≤ 1 → P2。水位维的 2 分不看修改行数。</text>
+</svg>

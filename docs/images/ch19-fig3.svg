@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="620" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 19-3　无索引 UPDATE：逐条临键锁 = 事实上的表锁</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">同一张 6 行表，UPDATE t_lock SET pad=&#x27;z&#x27; WHERE ...，RR 隔离级别</text>
+<rect x="40" y="92" width="880" height="206" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="114" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >① WHERE pad = &#x27;x&#x27;（pad 无索引）：聚簇索引从头扫到尾</text>
+<rect x="60" y="140" width="110" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="115.0" y="172.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >id=1</text>
+<rect x="210" y="140" width="110" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="265.0" y="172.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >id=2</text>
+<rect x="360" y="140" width="110" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="415.0" y="172.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >id=3</text>
+<rect x="510" y="140" width="110" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="565.0" y="172.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >id=5</text>
+<rect x="660" y="140" width="110" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="715.0" y="172.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >id=6</text>
+<rect x="810" y="140" width="110" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="865.0" y="163.0" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >supremum</text>
+<text x="865.0" y="183.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >伪记录</text>
+<rect x="60" y="208" width="860" height="14" rx="4" ry="4" fill="#dc2626" stroke="#dc2626" stroke-width="1" opacity="0.88"/>
+<path d="M 920 204 L 920 226" stroke="#dc2626" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 60 207 L 60 223" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="2,2"/>
+<text x="490.0" y="218.6" font-size="10" fill="#ffffff" text-anchor="middle" font-weight="600" >(-∞,1] (1,2] (2,3] (3,5] (5,6] (6,supremum]</text>
+<text x="60" y="252" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >6 条记录 + supremum 全部加锁：data_locks 里 7 条 RECORD/X。LOCK_TYPE 仍是 RECORD，效果却等价于表锁。</text>
+<text x="60" y="274" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >加锁发生在读取路径上：引擎读一条、加一条，它不知道 WHERE 最终会留下谁。</text>
+<rect x="40" y="320" width="880" height="190" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="342" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >② WHERE id = 3（主键）：一次定位，退化成记录锁</text>
+<rect x="60" y="368" width="110" height="56" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="115.0" y="400.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >id=1</text>
+<rect x="210" y="368" width="110" height="56" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="265.0" y="400.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >id=2</text>
+<rect x="360" y="368" width="110" height="56" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="415.0" y="400.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >id=3</text>
+<rect x="510" y="368" width="110" height="56" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="565.0" y="400.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >id=5</text>
+<rect x="660" y="368" width="110" height="56" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="715.0" y="400.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >id=6</text>
+<rect x="810" y="368" width="110" height="56" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="865.0" y="391.0" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >supremum</text>
+<text x="865.0" y="411.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >伪记录</text>
+<rect x="360" y="436" width="110" height="12" rx="4" ry="4" fill="#16a34a" stroke="#16a34a" stroke-width="1" opacity="0.88"/>
+<path d="M 470 432 L 470 452" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 360 435 L 360 449" stroke="#16a34a" stroke-width="1.2" stroke-dasharray="2,2"/>
+<text x="415.0" y="445.6" font-size="10" fill="#ffffff" text-anchor="middle" font-weight="600" >(2,3]</text>
+<text x="60" y="474" font-size="11" fill="#16a34a" text-anchor="start" font-weight="400" >只锁 3 这一条，左右两侧的间隙都能继续插入。差的不是“用了索引”，差的是“只访问了一条记录”。</text>
+<text x="40" y="552" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >锁的规模由访问到的记录条数决定：访问 1 条 = 1 把锁，访问全表 = 全表锁 + supremum。</text>
+<text x="40" y="578" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >所以“没有索引就不加锁”是反的：没有索引不是不锁，是锁得最狠。</text>
+</svg>

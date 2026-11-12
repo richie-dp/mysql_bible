@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" width="960" height="680">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_s_16a34a" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="10 0, 0 3.5, 10 7" fill="#16a34a"/></marker></defs>
+<rect width="960" height="680" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 8-1　三层 B+ 树：非叶子只做路由，叶子才放数据</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">按扇出 1000、叶页 75 行估算；真实值由主键长度与行宽决定，可用 innodb_index_stats 反推</text>
+<text x="46" y="152" font-size="12" fill="#475569" text-anchor="start" font-weight="600" >层 3</text>
+<text x="46" y="320" font-size="12" fill="#475569" text-anchor="start" font-weight="600" >层 2</text>
+<text x="46" y="466" font-size="12" fill="#475569" text-anchor="start" font-weight="600" >层 1</text>
+<rect x="390" y="112" width="220" height="68" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="500.0" y="141.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >根页（1 个页）</text>
+<text x="500.0" y="161.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >≈ 1000 个键 + 子页号</text>
+<rect x="124" y="282" width="140" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="194.0" y="309.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >非叶子页 1</text>
+<text x="194.0" y="329.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >≈ 1000 个子页</text>
+<rect x="328" y="282" width="140" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="398.0" y="309.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >非叶子页 2</text>
+<text x="398.0" y="329.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >≈ 1000 个子页</text>
+<rect x="532" y="282" width="140" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="602.0" y="309.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >非叶子页 3</text>
+<text x="602.0" y="329.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >≈ 1000 个子页</text>
+<rect x="736" y="282" width="140" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="806.0" y="309.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >非叶子页 4</text>
+<text x="806.0" y="329.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >≈ 1000 个子页</text>
+<rect x="110" y="422" width="66" height="84" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="143.0" y="459.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >页 1</text>
+<text x="143.0" y="479.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >75 行</text>
+<rect x="212" y="422" width="66" height="84" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="245.0" y="459.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >页 2</text>
+<text x="245.0" y="479.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >75 行</text>
+<rect x="314" y="422" width="66" height="84" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="347.0" y="459.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >页 3</text>
+<text x="347.0" y="479.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >75 行</text>
+<rect x="416" y="422" width="66" height="84" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="449.0" y="459.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >页 4</text>
+<text x="449.0" y="479.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >75 行</text>
+<rect x="518" y="422" width="66" height="84" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="551.0" y="459.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >页 5</text>
+<text x="551.0" y="479.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >75 行</text>
+<rect x="620" y="422" width="66" height="84" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="653.0" y="459.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >页 6</text>
+<text x="653.0" y="479.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >75 行</text>
+<rect x="722" y="422" width="66" height="84" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="755.0" y="459.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >页 7</text>
+<text x="755.0" y="479.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >75 行</text>
+<rect x="824" y="422" width="66" height="84" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="857.0" y="459.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >页 8</text>
+<text x="857.0" y="479.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >75 行</text>
+<path d="M 500.0,180.0 L 500.0,232.0 L 194.0,232.0 L 194.0,282.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 500.0,180.0 L 500.0,232.0 L 398.0,232.0 L 398.0,282.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 500.0,180.0 L 500.0,232.0 L 602.0,232.0 L 602.0,282.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 500.0,180.0 L 500.0,232.0 L 806.0,232.0 L 806.0,282.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 194.0,346.0 L 194.0,386.0 L 143.0,386.0 L 143.0,422.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 194.0,346.0 L 194.0,386.0 L 245.0,386.0 L 245.0,422.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 398.0,346.0 L 398.0,386.0 L 347.0,386.0 L 347.0,422.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 398.0,346.0 L 398.0,386.0 L 449.0,386.0 L 449.0,422.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 602.0,346.0 L 602.0,386.0 L 551.0,386.0 L 551.0,422.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 602.0,346.0 L 602.0,386.0 L 653.0,386.0 L 653.0,422.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 806.0,346.0 L 806.0,386.0 L 755.0,386.0 L 755.0,422.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 806.0,346.0 L 806.0,386.0 L 857.0,386.0 L 857.0,422.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 500.0,180.0 L 500.0,232.0 L 602.0,232.0 L 602.0,282.0" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 602.0,346.0 L 602.0,386.0 L 551.0,386.0 L 551.0,422.0" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<text x="612" y="260" font-size="11" fill="#2563eb" text-anchor="start" font-weight="600" >点查路径</text>
+<path d="M 178.0,464.0 L 210.0,464.0" fill="none" stroke="#16a34a" stroke-width="1.3" stroke-linejoin="round" marker-start="url(#m_s_16a34a)" marker-end="url(#m_e_16a34a)"/>
+<path d="M 280.0,464.0 L 312.0,464.0" fill="none" stroke="#16a34a" stroke-width="1.3" stroke-linejoin="round" marker-start="url(#m_s_16a34a)" marker-end="url(#m_e_16a34a)"/>
+<path d="M 382.0,464.0 L 414.0,464.0" fill="none" stroke="#16a34a" stroke-width="1.3" stroke-linejoin="round" marker-start="url(#m_s_16a34a)" marker-end="url(#m_e_16a34a)"/>
+<path d="M 484.0,464.0 L 516.0,464.0" fill="none" stroke="#16a34a" stroke-width="1.3" stroke-linejoin="round" marker-start="url(#m_s_16a34a)" marker-end="url(#m_e_16a34a)"/>
+<path d="M 586.0,464.0 L 618.0,464.0" fill="none" stroke="#16a34a" stroke-width="1.3" stroke-linejoin="round" marker-start="url(#m_s_16a34a)" marker-end="url(#m_e_16a34a)"/>
+<path d="M 688.0,464.0 L 720.0,464.0" fill="none" stroke="#16a34a" stroke-width="1.3" stroke-linejoin="round" marker-start="url(#m_s_16a34a)" marker-end="url(#m_e_16a34a)"/>
+<path d="M 790.0,464.0 L 822.0,464.0" fill="none" stroke="#16a34a" stroke-width="1.3" stroke-linejoin="round" marker-start="url(#m_s_16a34a)" marker-end="url(#m_e_16a34a)"/>
+<text x="110" y="528" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >叶子页之间是双向链表（FIL_PAGE_PREV / FIL_PAGE_NEXT）</text>
+<rect x="40" y="546" width="880" height="114" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="568" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >每层能定位的范围（扇出 1000、每叶 75 行）</text>
+<text x="60" y="598" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >层 3：1 个根页把全部键切成 ≈1000 段；整层只有 1 页，常驻 Buffer Pool。</text>
+<text x="60" y="620" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >层 2：≈1000 个非叶子页切成 ≈100 万段，合计约 15MB，基本可以整层缓存。</text>
+<text x="60" y="642" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" >层 1：≈100 万个叶子页 × 75 行 ≈ 7500 万行——点查真正读盘的只有这一层。</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker></defs>
+<rect width="960" height="600" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 20-2　交叉更新死锁：环形成的那一刻</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">两个事务对 A、B 两行用了相反的加锁顺序，各自的等待在第四步闭合成环</text>
+<rect x="190" y="76" width="220" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="300.0" y="95.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >事务 T1</text>
+<text x="300.0" y="115.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >先锁 A（sku 1001）</text>
+<rect x="550" y="76" width="220" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="660.0" y="95.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >事务 T2</text>
+<text x="660.0" y="115.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >先锁 B（sku 2002）</text>
+<line x1="300" y1="124" x2="300" y2="470" stroke="#d1d5db" stroke-width="1.2" stroke-dasharray="5,5"/>
+<line x1="660" y1="124" x2="660" y2="470" stroke="#d1d5db" stroke-width="1.2" stroke-dasharray="5,5"/>
+<rect x="190" y="148" width="220" height="36" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="300.0" y="170.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >① 持有 A 的 X 锁</text>
+<rect x="550" y="200" width="220" height="36" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="660.0" y="222.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >② 持有 B 的 X 锁</text>
+<path d="M 300.0,280.0 L 660.0,280.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="426.2" y="262.0" width="107.6" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="480.0" y="272.0" font-size="11" fill="#475569" text-anchor="middle" font-weight="500" >③ 请求 B：进入等待</text>
+<path d="M 660.0,350.0 L 300.0,350.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="431.7" y="332.0" width="96.6" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="480.0" y="342.0" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >④ 请求 A：环闭合</text>
+<text x="480" y="320" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="600" >环形成</text>
+<path d="M 300.0,380.0 L 300.0,414.0" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<path d="M 660.0,380.0 L 660.0,414.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="190" y="414" width="220" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="300.0" y="431.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >⑤ T1 被回滚</text>
+<text x="300.0" y="451.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >1213 → 整个事务重做</text>
+<rect x="550" y="414" width="220" height="44" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="660.0" y="431.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >⑥ T2 拿到锁，继续</text>
+<text x="660.0" y="451.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >提交成功</text>
+<rect x="60" y="486" width="840" height="76" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="72" y="503" font-size="11" fill="#94a3b8" text-anchor="start" font-weight="400" >LATEST DETECTED DEADLOCK 里能直接对照的三行</text>
+<text x="72" y="524" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">HOLDS: lock_mode X locks rec but not gap        ← 双方各持一把</text>
+<text x="72" y="540" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">WAITING FOR THIS LOCK TO BE GRANTED: ... waiting  ← heap no 互相指向</text>
+<text x="72" y="556" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">WE ROLL BACK TRANSACTION (1)                     ← 括号是编号，不是顺序</text>
+</svg>

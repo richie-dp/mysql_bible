@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_s_16a34a" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="10 0, 0 3.5, 10 7" fill="#16a34a"/></marker><marker id="m_s_ea580c" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="10 0, 0 3.5, 10 7" fill="#ea580c"/></marker><marker id="m_s_2563eb" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto"><polygon points="10 0, 0 3.5, 10 7" fill="#2563eb"/></marker></defs>
+<rect width="960" height="620" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 4-2　四个 LSN 在同一条时间轴上的位置</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">顺序不可颠倒：checkpoint ≤ pages flushed ≤ log flushed ≤ lsn</text>
+<path d="M 100.0,320.0 L 884.0,320.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<text x="884" y="342" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >LSN 单调递增 →</text>
+<rect x="115" y="132" width="150" height="54" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="190.0" y="154.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >last checkpoint at</text>
+<text x="190.0" y="174.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >可覆盖的起点</text>
+<rect x="565" y="132" width="150" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="640.0" y="154.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >log flushed up to</text>
+<text x="640.0" y="174.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >已 fsync 到磁盘</text>
+<rect x="275" y="210" width="150" height="54" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="350.0" y="232.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >pages flushed up to</text>
+<text x="350.0" y="252.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >脏页刷盘的水位</text>
+<rect x="745" y="210" width="150" height="54" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="820.0" y="232.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >log sequence number</text>
+<text x="820.0" y="252.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >已写入 log buffer</text>
+<path d="M 190.0,186.0 L 190.0,312.0" fill="none" stroke="#16a34a" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_16a34a)"/>
+<path d="M 640.0,186.0 L 640.0,312.0" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_2563eb)"/>
+<path d="M 350.0,264.0 L 350.0,312.0" fill="none" stroke="#ea580c" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_ea580c)"/>
+<path d="M 820.0,264.0 L 820.0,312.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<circle cx="190" cy="320" r="6" fill="#ffffff" stroke="#16a34a" stroke-width="2.5"/>
+<circle cx="350" cy="320" r="6" fill="#ffffff" stroke="#ea580c" stroke-width="2.5"/>
+<circle cx="640" cy="320" r="6" fill="#ffffff" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="820" cy="320" r="6" fill="#ffffff" stroke="#475569" stroke-width="2.5"/>
+<path d="M 196.0,352.0 L 344.0,352.0" fill="none" stroke="#16a34a" stroke-width="1.4" stroke-linejoin="round" marker-start="url(#m_s_16a34a)" marker-end="url(#m_e_16a34a)"/>
+<text x="270.0" y="374" font-size="10" fill="#16a34a" text-anchor="middle" font-weight="400" >已落盘，checkpoint 未推进</text>
+<path d="M 356.0,352.0 L 634.0,352.0" fill="none" stroke="#ea580c" stroke-width="1.4" stroke-linejoin="round" marker-start="url(#m_s_ea580c)" marker-end="url(#m_e_ea580c)"/>
+<text x="495.0" y="374" font-size="10" fill="#ea580c" text-anchor="middle" font-weight="400" >刷脏欠账：页还没刷</text>
+<path d="M 646.0,352.0 L 814.0,352.0" fill="none" stroke="#2563eb" stroke-width="1.4" stroke-linejoin="round" marker-start="url(#m_s_2563eb)" marker-end="url(#m_e_2563eb)"/>
+<text x="730.0" y="374" font-size="10" fill="#2563eb" text-anchor="middle" font-weight="400" >还没 fsync</text>
+<text x="120" y="404" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >innodb_redo_log_capacity（默认 100MB）</text>
+<text x="840" y="404" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >剩余可写</text>
+<rect x="120" y="410" width="720" height="26" rx="8" ry="8" fill="#f1f5f9" stroke="#d1d5db" stroke-width="1"/>
+<rect x="120" y="410" width="468" height="26" rx="8" ry="8" fill="#ea580c" stroke="#ea580c" stroke-width="1" opacity="0.75"/>
+<text x="130" y="428" font-size="10" fill="#ffffff" text-anchor="start" font-weight="600" >checkpoint age：不可覆盖</text>
+<line x1="660" y1="402" x2="660" y2="444" stroke="#dc2626" stroke-width="1.4" stroke-dasharray="4,3"/>
+<text x="660" y="458" font-size="10" fill="#dc2626" text-anchor="middle" font-weight="400" >75% 是工程告警线，不是 InnoDB 的硬阈值</text>
+<rect x="120" y="486" width="720" height="86" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="132" y="503" font-size="11" fill="#94a3b8" text-anchor="start" font-weight="400" >三个差值各自指向一个故障方向</text>
+<text x="132" y="524" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">lsn  −  log flushed      -&gt; 还在内存里的 redo   -&gt; 盯 fsync / 组提交</text>
+<text x="132" y="541" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">flushed −  pages flushed -&gt; 刷脏欠账             -&gt; 盯 checkpoint age</text>
+<text x="132" y="558" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">lsn  −  last checkpoint  -&gt; 不可覆盖量            -&gt; 除以容量 = 年龄</text>
+</svg>

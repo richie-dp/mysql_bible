@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 3-2　一个 16KB 数据页的内部布局</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">横向按功能区划分，不按字节比例；上方数字是页内真实字节偏移</text>
+<text x="110.0" y="92" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">0–37</text>
+<text x="229.0" y="92" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">38–93</text>
+<text x="338.0" y="92" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">94–119</text>
+<text x="476.0" y="92" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">120 →</text>
+<text x="616.0" y="92" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">可变</text>
+<text x="729.0" y="92" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">← 16375</text>
+<text x="840.0" y="92" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">16376–16383</text>
+<rect x="50" y="100" width="120" height="86" rx="3" ry="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="110.0" y="138.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >File Header</text>
+<text x="110.0" y="158.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >38B · 页号 / LSN</text>
+<rect x="170" y="100" width="118" height="86" rx="3" ry="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="229.0" y="138.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >Page Header</text>
+<text x="229.0" y="158.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >56B · 槽数 / 堆顶</text>
+<rect x="288" y="100" width="100" height="86" rx="3" ry="3" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="338.0" y="138.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >Inf / Sup</text>
+<text x="338.0" y="158.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >26B · 两条哨兵</text>
+<rect x="388" y="100" width="176" height="86" rx="3" ry="3" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="476.0" y="138.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >User Records</text>
+<text x="476.0" y="158.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >按键升序的单链表</text>
+<rect x="564" y="100" width="104" height="86" rx="3" ry="3" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="616.0" y="138.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >Free Space</text>
+<text x="616.0" y="158.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >删除留下的空洞</text>
+<rect x="668" y="100" width="122" height="86" rx="3" ry="3" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="729.0" y="138.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >Page Directory</text>
+<text x="729.0" y="158.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >2B/槽 · 4~8 条一组</text>
+<rect x="790" y="100" width="100" height="86" rx="3" ry="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="840.0" y="138.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >File Trailer</text>
+<text x="840.0" y="158.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >8B · 尾部校验</text>
+<text x="392" y="210" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >↑ 记录向高地址生长</text>
+<text x="570" y="210" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >空洞</text>
+<text x="668" y="210" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >↓ 目录向低地址生长</text>
+<rect x="50" y="240" width="430" height="210" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="64" y="262" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >Page Header 关键字段（56 字节）</text>
+<text x="70" y="282" font-size="10" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PAGE_N_DIR_SLOTS</text>
+<text x="258" y="282" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >目录槽数量</text>
+<text x="70" y="302" font-size="10" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PAGE_HEAP_TOP</text>
+<text x="258" y="302" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >已分配到哪个偏移</text>
+<text x="70" y="322" font-size="10" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PAGE_N_HEAP</text>
+<text x="258" y="322" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >记录数（含 Inf / Sup）</text>
+<text x="70" y="342" font-size="10" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PAGE_FREE</text>
+<text x="258" y="342" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >可复用记录链表头</text>
+<text x="70" y="362" font-size="10" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PAGE_GARBAGE</text>
+<text x="258" y="362" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >可复用字节数</text>
+<text x="70" y="382" font-size="10" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PAGE_LAST_INSERT</text>
+<text x="258" y="382" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >上次插入的记录位置</text>
+<text x="70" y="402" font-size="10" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PAGE_DIRECTION</text>
+<text x="258" y="402" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >插入方向：右 / 左 / 随机</text>
+<text x="70" y="422" font-size="10" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PAGE_N_RECS</text>
+<text x="258" y="422" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >用户记录数</text>
+<text x="70" y="442" font-size="10" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">PAGE_LEVEL</text>
+<text x="258" y="442" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >0 = 叶子页</text>
+<rect x="500" y="240" width="400" height="210" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="514" y="262" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >页内查找：目录二分 + 组内线性</text>
+<rect x="512" y="286" width="40" height="30" rx="4" ry="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="532" y="306" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >10</text>
+<rect x="558" y="286" width="40" height="30" rx="4" ry="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="578" y="306" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >20</text>
+<rect x="604" y="286" width="40" height="30" rx="4" ry="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="624" y="306" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >30</text>
+<rect x="650" y="286" width="40" height="30" rx="4" ry="4" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2"/>
+<text x="670" y="306" font-size="11" fill="#2563eb" text-anchor="middle" font-weight="600" >40</text>
+<rect x="696" y="286" width="40" height="30" rx="4" ry="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="716" y="306" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >50</text>
+<rect x="742" y="286" width="40" height="30" rx="4" ry="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="762" y="306" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >60</text>
+<rect x="788" y="286" width="40" height="30" rx="4" ry="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="808" y="306" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >70</text>
+<rect x="834" y="286" width="40" height="30" rx="4" ry="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="854" y="306" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >80</text>
+<text x="512" y="336" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >① 对槽位二分，落到 40 这一组（此处只画了 8 个）</text>
+<rect x="512" y="352" width="52" height="28" rx="4" ry="4" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="538" y="371" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >40</text>
+<rect x="572" y="352" width="52" height="28" rx="4" ry="4" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="598" y="371" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >41</text>
+<rect x="632" y="352" width="52" height="28" rx="4" ry="4" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="658" y="371" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >44</text>
+<rect x="692" y="352" width="52" height="28" rx="4" ry="4" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.2"/>
+<text x="718" y="371" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="600" >47</text>
+<rect x="752" y="352" width="52" height="28" rx="4" ry="4" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="778" y="371" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >48</text>
+<rect x="812" y="352" width="52" height="28" rx="4" ry="4" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="838" y="371" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >50</text>
+<text x="512" y="402" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >② 进槽后沿 next_record 顺序走，最多 8 条</text>
+<text x="512" y="426" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >5 次二分 + 最多 8 次组内 ≈ 13 次比较；顺序扫要上百次</text>
+<rect x="50" y="470" width="850" height="130" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="64" y="492" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >为什么要留 8 字节的 File Trailer</text>
+<text x="70" y="512" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >写一页的顺序：先写页内容，最后写 trailer 里的 checksum 与 LSN 低 32 位。</text>
+<text x="70" y="538" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >恢复时比对 trailer 与页头 checksum：对不上说明这页只写了一半，16KB 可能只落了 4KB。</text>
+<text x="70" y="566" font-size="12" fill="#2563eb" text-anchor="start" font-weight="400" >这就是 doublewrite 存在的理由：先把页写进 dblwr，再写回 .ibd（见第 7 章）。</text>
+</svg>

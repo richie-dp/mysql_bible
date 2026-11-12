@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" width="960" height="700">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="700" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 10-2　倾斜数据下，基数与真实分布是两回事</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">示例：480 万行的订单表 / 2050 个商户；数值只表达量级，不是实测</text>
+<rect x="40" y="84" width="880" height="266" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >① 真实分布：一根尖刺 + 一条长尾（月底结算的连锁商户）</text>
+<rect x="88" y="314" width="796" height="1.2" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="0"/>
+<text x="48" y="132" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >行数</text>
+<text x="48" y="150" font-size="9" fill="#6b7280" text-anchor="start" font-weight="400" >（示意）</text>
+<rect x="100" y="300" width="34" height="14" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="154" y="304" width="34" height="10" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="208" y="146" width="34" height="168" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.2"/>
+<rect x="262" y="296" width="34" height="18" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="316" y="305" width="34" height="9" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="370" y="302" width="34" height="12" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="424" y="306" width="34" height="8" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="478" y="298" width="34" height="16" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="532" y="294" width="34" height="20" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="586" y="304" width="34" height="10" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="640" y="301" width="34" height="13" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="694" y="303" width="34" height="11" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="748" y="306" width="34" height="8" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<rect x="802" y="302" width="34" height="12" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+<text x="225" y="332" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="600" >8842</text>
+<text x="225" y="136" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="600" >60%</text>
+<text x="600" y="146" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >其余 2049 个商户合计 40%</text>
+<text x="600" y="170" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >单商户平均不到 0.05%（约 900 行）</text>
+<text x="600" y="194" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >「平均每个商户 2340 行」这句话</text>
+<text x="600" y="214" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >对这张表不成立</text>
+<rect x="40" y="366" width="420" height="238" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="388" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >② 优化器脑中的分布（dive 退场后）</text>
+<rect x="62" y="480" width="370" height="1.2" rx="0" ry="0" fill="#d1d5db" stroke="#d1d5db" stroke-width="0"/>
+<rect x="62" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="88" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="114" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="140" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="166" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="192" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="218" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="244" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="270" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="296" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="322" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="348" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="374" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<rect x="400" y="452" width="20" height="28" rx="3" ry="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.1"/>
+<text x="62" y="508" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >480 万 ÷ 2050 ≈ 2340 行 / 商户</text>
+<text x="62" y="532" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >对 8842：低估约 1200 倍</text>
+<text x="62" y="556" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >对小商户：高估 2~3 倍</text>
+<text x="62" y="580" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >等值单查会走 index dive，那时用不上这一步</text>
+<rect x="500" y="366" width="420" height="238" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="514" y="388" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >③ n_diff 从哪来：20 个叶子页</text>
+<rect x="520" y="410" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="557" y="410" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="594" y="410" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="631" y="410" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="668" y="410" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="705" y="410" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="742" y="410" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="779" y="410" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="816" y="410" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="853" y="410" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="520" y="444" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="557" y="444" width="28" height="22" rx="3" ry="3" fill="#fee2e2" stroke="#dc2626" stroke-width="1.1"/>
+<rect x="594" y="444" width="28" height="22" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.1"/>
+<rect x="631" y="444" width="28" height="22" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.1"/>
+<rect x="668" y="444" width="28" height="22" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.1"/>
+<rect x="705" y="444" width="28" height="22" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.1"/>
+<rect x="742" y="444" width="28" height="22" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.1"/>
+<rect x="779" y="444" width="28" height="22" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.1"/>
+<rect x="816" y="444" width="28" height="22" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.1"/>
+<rect x="853" y="444" width="28" height="22" rx="3" ry="3" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.1"/>
+<text x="520" y="490" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >20 页 × 80 行 = 1600 行，要估 480 万行</text>
+<text x="520" y="513" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >两次 ANALYZE：1800 / 2600（示例）</text>
+<text x="520" y="536" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >真实 2050 —— 误差两三成</text>
+<text x="520" y="559" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >这点误差，解释不了 1200 倍</text>
+<text x="520" y="582" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >真正的错在下一步：拿它做除法</text>
+<text x="40" y="654" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >n_diff 只差两三成，但用它做除法，把 60% 的行摊成了 0.05%——选错计划的地方在这里，不在采样精度。</text>
+</svg>

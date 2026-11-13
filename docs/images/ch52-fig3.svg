@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 52-3　止血五招的代价坐标：快不等于便宜，慢不等于安全</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">横轴是生效速度，纵轴是业务代价；位置是取舍，不是优劣</text>
+<path d="M 110.0,470.0 L 110.0,128.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 110.0,470.0 L 900.0,470.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<text x="102" y="136" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >代价高</text>
+<text x="102" y="470" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >代价低</text>
+<text x="112" y="492" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >慢</text>
+<text x="890" y="492" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >快 →</text>
+<path d="M 760.0,470.0 L 760.0,462.0" fill="none" stroke="#475569" stroke-width="1.0" stroke-linejoin="round"/>
+<text x="760" y="458" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >秒级</text>
+<path d="M 520.0,470.0 L 520.0,462.0" fill="none" stroke="#475569" stroke-width="1.0" stroke-linejoin="round"/>
+<text x="520" y="458" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >一分钟级</text>
+<path d="M 300.0,470.0 L 300.0,462.0" fill="none" stroke="#475569" stroke-width="1.0" stroke-linejoin="round"/>
+<text x="300" y="458" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >十分钟级</text>
+<rect x="280" y="196" width="130" height="46" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="345.0" y="214.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >切从库</text>
+<text x="345.0" y="234.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >丢最近的写入</text>
+<rect x="680" y="236" width="130" height="46" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="745.0" y="254.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >限流</text>
+<text x="745.0" y="274.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >部分用户失败</text>
+<rect x="770" y="330" width="130" height="46" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="835.0" y="348.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >回滚</text>
+<text x="835.0" y="368.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >丢掉这个版本</text>
+<rect x="580" y="322" width="130" height="46" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="645.0" y="340.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >熔断</text>
+<text x="645.0" y="360.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >一个功能停掉</text>
+<rect x="470" y="392" width="130" height="46" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="535.0" y="410.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >降级</text>
+<text x="535.0" y="430.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >读到旧数据</text>
+<rect x="280" y="170" width="92.0" height="20" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+<text x="326.0" y="184" font-size="9.5" fill="#dc2626" text-anchor="middle" font-weight="600" >最慢，代价却最高</text>
+<text x="130" y="442" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >越慢：窗口越难抢</text>
+<text x="900" y="150" font-size="10.5" fill="#6b7280" text-anchor="end" font-weight="400" >越快：伤害越当场兑现</text>
+<rect x="48" y="500" width="864" height="106" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="62" y="522" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >不能用它的条件（写在卡片背面，比用法更重要）</text>
+<text x="64" y="550" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >限流：堵不住已在排队的线程；降级：对写路径无效；熔断：依赖是核心链路时等于全停。</text>
+<text x="64" y="572" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >切从库：RPO 不为 0 且业务不接受丢单；回滚：已执行不可逆 DDL，或已向外部发出成功回执。</text>
+<text x="64" y="594" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="400" >五条共同的前提：动作本身可回滚，且动手之前已经抓了现场。</text>
+</svg>

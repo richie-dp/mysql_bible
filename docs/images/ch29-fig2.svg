@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker></defs>
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 29-2　DATETIME 存字面量，TIMESTAMP 存 UTC 再按会话还原</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">同一行数据、同一条 SELECT，两个 time_zone 会话看到的字符串不同</text>
+<rect x="40" y="88" width="420" height="380" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="110" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >DATETIME：存什么读什么（5 字节）</text>
+<rect x="80" y="130" width="340" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="250.0" y="156.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >会话 A  time_zone = &#x27;+08:00&#x27;</text>
+<text x="250.0" y="176.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >INSERT &#x27;2026-11-12 10:00:00&#x27;</text>
+<rect x="80" y="232" width="340" height="62" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="250.0" y="258.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >列值 &#x27;2026-11-12 10:00:00&#x27;</text>
+<text x="250.0" y="278.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >5 字节，不带任何时区信息</text>
+<rect x="80" y="334" width="340" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="250.0" y="360.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >会话 B  time_zone = &#x27;+00:00&#x27; 读</text>
+<text x="250.0" y="380.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >还是 &#x27;2026-11-12 10:00:00&#x27;</text>
+<path d="M 250.0,192.0 L 250.0,232.0" fill="none" stroke="#2563eb" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 250.0,294.0 L 250.0,334.0" fill="none" stroke="#2563eb" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<text x="80" y="428" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >两个会话读到同一个字符串，但它对应的绝对时刻相差 8 小时。</text>
+<text x="80" y="450" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >跨时区协作时，&quot;10 点&quot;到底是哪儿的 10 点，只能靠人约定。</text>
+<rect x="480" y="88" width="440" height="380" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="494" y="110" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >TIMESTAMP：写时转 UTC，读时按会话还原（4 字节）</text>
+<rect x="520" y="122" width="360" height="56" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="700.0" y="145.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >会话 A（+08:00）写入</text>
+<text x="700.0" y="165.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >&#x27;2026-11-12 10:00:00&#x27;</text>
+<rect x="520" y="202" width="360" height="56" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="700.0" y="225.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >转成 UTC：2026-11-12 02:00:00</text>
+<text x="700.0" y="245.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >按会话时区减 8 小时</text>
+<rect x="520" y="282" width="360" height="56" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="700.0" y="305.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >存 4 字节 epoch</text>
+<text x="700.0" y="325.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >内部是 UTC 秒，与任何时区无关</text>
+<rect x="520" y="362" width="360" height="56" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="700.0" y="385.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >会话 B（+00:00）读出</text>
+<text x="700.0" y="405.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >&#x27;2026-11-12 02:00:00&#x27;</text>
+<path d="M 700.0,178.0 L 700.0,202.0" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<path d="M 700.0,258.0 L 700.0,282.0" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<path d="M 700.0,338.0 L 700.0,362.0" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<text x="520" y="444" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" >同一条记录看到不同值，是设计意图，不是 bug。</text>
+<text x="40" y="504" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >反过来才危险：两个会话写入同一个字面量，TIMESTAMP 落成两个绝对时刻，DATETIME 落成同一个字符串。</text>
+<text x="40" y="528" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >选哪个不取决于谁更省 1 字节，取决于这一列的语义是&quot;绝对时刻&quot;还是&quot;墙上时间&quot;，以及 2038 年要不要迁移。</text>
+</svg>

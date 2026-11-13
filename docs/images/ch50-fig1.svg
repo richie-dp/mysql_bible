@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" width="960" height="680">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker></defs>
+<rect width="960" height="680" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 50-1　三种计数方案的写入路径与准确性</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">三行的差别不在写得多快，在&quot;允许错多久&quot;——最后一行决定选型，不是第一行</text>
+<text x="141" y="86" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >方案</text>
+<text x="296" y="86" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >写并发上限</text>
+<text x="466" y="86" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >读代价</text>
+<text x="636" y="86" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >准确性承诺</text>
+<text x="806" y="86" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="600" >何时必须换</text>
+<rect x="60" y="96" width="840" height="152" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="76" y="122" width="130" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="141.0" y="155.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >单行更新</text>
+<text x="141.0" y="175.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >UPDATE cnt + 1</text>
+<rect x="216" y="122" width="158" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="295.0" y="155.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >每秒几百~两千</text>
+<text x="295.0" y="175.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >同一行严格串行</text>
+<rect x="386" y="122" width="158" height="76" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="465.0" y="155.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >主键点查 1 行</text>
+<text x="465.0" y="175.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >微秒级，最快</text>
+<rect x="556" y="122" width="158" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="635.0" y="155.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >精确</text>
+<text x="635.0" y="175.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >永不丢，也永不快</text>
+<rect x="726" y="122" width="158" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="805.0" y="155.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >并发过两千/秒</text>
+<text x="805.0" y="175.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >或热内容被刷屏</text>
+<rect x="556" y="122" width="158" height="76" rx="8" ry="8" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="5,3"/>
+<rect x="562" y="98" width="71.0" height="20" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+<text x="597.5" y="112" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="600" >选型的落点</text>
+<text x="76" y="224" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="400" >没有业务判断就没有保护：库存还有 qty &gt;= 1 兜底，计数只有排队</text>
+<rect x="60" y="262" width="840" height="152" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="76" y="288" width="130" height="76" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="141.0" y="321.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >分桶计数</text>
+<text x="141.0" y="341.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >counter_bucket</text>
+<rect x="216" y="288" width="158" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="295.0" y="321.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >单桶 1/N 并发</text>
+<text x="295.0" y="341.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >9000/16 → 560/秒</text>
+<rect x="386" y="288" width="158" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="465.0" y="321.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >SUM N 行</text>
+<text x="465.0" y="341.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >1~2 页，读侧要缓存</text>
+<rect x="556" y="288" width="158" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="635.0" y="321.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >精确（聚合后）</text>
+<text x="635.0" y="341.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >写侧与读侧分开算</text>
+<rect x="726" y="288" width="158" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="805.0" y="321.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >桶数要扩容</text>
+<text x="805.0" y="341.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >或要 WHERE cnt &gt; x</text>
+<rect x="556" y="288" width="158" height="76" rx="8" ry="8" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="5,3"/>
+<rect x="562" y="264" width="71.0" height="20" rx="10" ry="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1"/>
+<text x="597.5" y="278" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="600" >选型的落点</text>
+<text x="76" y="390" font-size="10.5" fill="#ea580c" text-anchor="start" font-weight="400" >写并发放大 N 倍，代价是读要 SUM、桶会偏、总量不能直接比较</text>
+<rect x="60" y="428" width="840" height="152" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="76" y="454" width="130" height="76" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="141.0" y="487.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >Redis 落库</text>
+<text x="141.0" y="507.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >INCR + 定时刷</text>
+<rect x="216" y="454" width="158" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="295.0" y="487.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >单 key 十万量级</text>
+<text x="295.0" y="507.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >单线程天然串行</text>
+<rect x="386" y="454" width="158" height="76" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="465.0" y="487.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >内存读</text>
+<text x="465.0" y="507.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >微秒级，不占 MySQL</text>
+<rect x="556" y="454" width="158" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="635.0" y="487.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >近似，会丢</text>
+<text x="635.0" y="507.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >宕机丢一段增量</text>
+<rect x="726" y="454" width="158" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="805.0" y="487.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >涉及对账 / 审计</text>
+<text x="805.0" y="507.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >或数字不能有延迟</text>
+<rect x="556" y="454" width="158" height="76" rx="8" ry="8" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="5,3"/>
+<rect x="562" y="430" width="71.0" height="20" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+<text x="597.5" y="444" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="600" >选型的落点</text>
+<text x="76" y="556" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="400" >拿准确性换吞吐：丢的是一个时间窗内的增量，对账要能把差额找回来</text>
+<text x="60" y="606" font-size="11.5" fill="#111827" text-anchor="start" font-weight="600" >写并发上限决定你撑不撑得住今晚，准确性承诺决定你三年后要不要重做一次对账</text>
+<path d="M 60 636 L 86 636" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="93" y="640" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >串行 / 丢数据</text>
+<path d="M 220 636 L 246 636" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="253" y="640" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >可接受路径</text>
+<path d="M 380 636 L 406 636" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="413" y="640" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >聚合 / 延迟</text>
+<path d="M 540 636 L 566 636" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="573" y="640" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >外部组件</text>
+<path d="M 700 636 L 726 636" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="733" y="640" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >主数据路径</text>
+</svg>

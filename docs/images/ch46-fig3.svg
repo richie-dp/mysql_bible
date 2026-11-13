@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker></defs>
+<rect width="960" height="720" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 46-3　gh-ost 与 pt-osc：两条增量路径，同一个结尾</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">左边从复制流里读增量，右边从触发器里拿增量；最后都靠一次原子 RENAME 换名</text>
+<path d="M 480.0,100.0 L 480.0,570.0" fill="none" stroke="#475569" stroke-width="1" stroke-linejoin="round" stroke-dasharray="4,6"/>
+<rect x="56" y="124" width="368" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="143.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >主库 order_main</text>
+<text x="240.0" y="163.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >业务照常读写</text>
+<path d="M 240.0,172.0 L 240.0,196.0" fill="none" stroke="#9333ea" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<rect x="56" y="196" width="368" height="48" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="240.0" y="215.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >伪装成从库拉 binlog</text>
+<text x="240.0" y="235.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >ROW 格式 + 复制权限</text>
+<path d="M 240.0,244.0 L 240.0,268.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="56" y="268" width="368" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="287.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >_order_main_gho 影子表</text>
+<text x="240.0" y="307.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >同结构，按主键分块拷</text>
+<path d="M 240.0,316.0 L 240.0,340.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="56" y="340" width="368" height="48" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="240.0" y="359.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >_order_main_ghc 状态表</text>
+<text x="240.0" y="379.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >断点续传 + 限流记录</text>
+<path d="M 240.0,388.0 L 240.0,412.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="56" y="412" width="368" height="48" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="240.0" y="431.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >限流开关 max-load</text>
+<text x="240.0" y="451.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >超 --max-lag 就暂停拷贝</text>
+<path d="M 240.0,460.0 L 240.0,484.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="56" y="484" width="368" height="48" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="240.0" y="503.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >cut-over：写锁 + RENAME</text>
+<text x="240.0" y="523.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >原表改名 _del，确认后删</text>
+<rect x="536" y="124" width="368" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="720.0" y="143.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >主库 order_main</text>
+<text x="720.0" y="163.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >业务照常读写</text>
+<path d="M 720.0,172.0 L 720.0,196.0" fill="none" stroke="#ea580c" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="536" y="196" width="368" height="48" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="720.0" y="215.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >3 个触发器 INS/UPD/DEL</text>
+<text x="720.0" y="235.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >增量同事务写进新表</text>
+<path d="M 720.0,244.0 L 720.0,268.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="536" y="268" width="368" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="720.0" y="287.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >_order_main_new 新表</text>
+<text x="720.0" y="307.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >同结构，按主键分块拷</text>
+<path d="M 720.0,316.0 L 720.0,340.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="536" y="340" width="368" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="720.0" y="359.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >存量分块拷贝</text>
+<text x="720.0" y="379.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >chunk-time 控制每块时长</text>
+<path d="M 720.0,388.0 L 720.0,412.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="536" y="412" width="368" height="48" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="720.0" y="431.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >触发器自身的代价</text>
+<text x="720.0" y="451.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每次写入多一次执行</text>
+<path d="M 720.0,460.0 L 720.0,484.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="536" y="484" width="368" height="48" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="720.0" y="503.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >RENAME TABLE 原子替换</text>
+<text x="720.0" y="523.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >再删旧表与 3 个触发器</text>
+<text x="56" y="100" font-size="12" fill="#9333ea" text-anchor="start" font-weight="600" >gh-ost：增量来自复制流</text>
+<text x="536" y="100" font-size="12" fill="#ea580c" text-anchor="start" font-weight="600" >pt-osc：增量来自触发器</text>
+<rect x="40" y="596" width="880" height="56" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="480.0" y="619.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >共同点：最后都靠一次原子 RENAME</text>
+<text x="480.0" y="639.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >cut-over 那一瞬仍要拿排它锁；表上只要有长事务，这一段照样等</text>
+<text x="40" y="690" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >区别在增量从哪来：一个读日志，碰不到写路径；一个挂触发器，与业务写同生共死。</text>
+</svg>

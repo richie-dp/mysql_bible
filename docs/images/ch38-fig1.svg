@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 810" width="960" height="810">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="810" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 38-1　pt-query-digest 报告的三层结构</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">同一份报告，三层回答三个不同的问题；跳过任一层都会得出错误结论</text>
+<rect x="60" y="100" width="520" height="112" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="72" y="118" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Overall: 1.23k total, 12 unique, 0.05 QPS</text>
+<text x="72" y="135" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Attribute        total    min    max    avg    95%  median</text>
+<text x="72" y="152" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># ==========     ======= ====== ====== ====== ====== =======</text>
+<text x="72" y="169" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Exec time         523s   10ms     2s  430ms   900ms   400ms</text>
+<text x="72" y="186" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Rows examined      48M      0    90k    39k    98k     31k</text>
+<path d="M 580.0,156.0 L 630.0,156.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="630" y="114.0" width="280" height="84" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="770.0" y="151.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >① Overall 段</text>
+<text x="770.0" y="171.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >规模与形状：多少条、多少类、离散度多大</text>
+<rect x="60" y="232" width="520" height="112" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="72" y="250" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Profile</text>
+<text x="72" y="267" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Rank Query ID        Response time  Calls  R/Call  V/M</text>
+<text x="72" y="284" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># ==== =============== ============== ====== ======= ====</text>
+<text x="72" y="301" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">#    1 0x7f3c2a...       235.4s 45.0%   1200   196ms  0.31</text>
+<text x="72" y="318" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">#    2 0x91ab07...       141.2s 27.0%     18   7.8s   0.02</text>
+<path d="M 580.0,288.0 L 630.0,288.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="630" y="246.0" width="280" height="84" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="770.0" y="283.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >② Profile 段</text>
+<text x="770.0" y="303.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >按「总耗时」排序：先看谁，不等于先优化谁</text>
+<rect x="60" y="364" width="520" height="146" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="72" y="382" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Query 1: 0.02 QPS, ID 0x7f3c2a... at byte 88213</text>
+<text x="72" y="399" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Attribute     pct   total     min     max     avg     95%  median</text>
+<text x="72" y="416" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Count          10    1200</text>
+<text x="72" y="433" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Exec time      45    235s    80ms      2s   196ms   420ms   180ms</text>
+<text x="72" y="450" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Lock time      31     73s       0   900ms    61ms   210ms    40ms</text>
+<text x="72" y="467" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Rows sent       4    120k       1     900     100     210      96</text>
+<text x="72" y="484" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Rows examine   82     41M       0     90k     34k     76k     29k</text>
+<path d="M 580.0,437.0 L 630.0,437.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="630" y="395.0" width="280" height="84" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="770.0" y="432.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >③ 单条明细段</text>
+<text x="770.0" y="452.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >Rows examine : Rows sent —— 诊断重点在这里</text>
+<rect x="60" y="530" width="520" height="112" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="72" y="548" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Query_time distribution</text>
+<text x="72" y="565" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">#   1ms</text>
+<text x="72" y="582" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">#  10ms  ####</text>
+<text x="72" y="599" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># 100ms  ####################</text>
+<text x="72" y="616" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">#    1s  ###</text>
+<path d="M 580.0,586.0 L 630.0,586.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="630" y="544.0" width="280" height="84" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="770.0" y="581.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >④ 直方图段</text>
+<text x="770.0" y="601.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >稳定慢还是长尾；双峰最容易被平均值掩盖</text>
+<rect x="60" y="662" width="520" height="94" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="72" y="680" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># Tables</text>
+<text x="72" y="697" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">#   SHOW CREATE TABLE `shop`.`order_main`\G</text>
+<text x="72" y="714" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace"># EXPLAIN /*!50100 PARTITIONS*/</text>
+<text x="72" y="731" font-size="11" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">#   SELECT * FROM order_main WHERE merchant_id=? AND status=?</text>
+<path d="M 580.0,709.0 L 630.0,709.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="630" y="667.0" width="280" height="84" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="770.0" y="704.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑤ Tables / EXPLAIN</text>
+<text x="770.0" y="724.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >把这条 SQL 落到具体的表与执行计划</text>
+<text x="60" y="782" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">命令：pt-query-digest --explain h=127.0.0.1,u=ro slow.log &gt; report.txt</text>
+</svg>

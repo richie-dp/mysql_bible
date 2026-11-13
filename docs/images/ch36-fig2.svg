@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="620" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 36-2　吞吐-延迟曲线：拐点之后，加并发等于加排队</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">L = λ × W；同样的并发增量，在拐点两侧买到的东西完全不同</text>
+<line x1="400" y1="150" x2="400" y2="500" stroke="#d1d5db" stroke-width="1.1" stroke-dasharray="4,5"/>
+<line x1="580" y1="150" x2="580" y2="500" stroke="#d1d5db" stroke-width="1.1" stroke-dasharray="4,5"/>
+<rect x="150" y="158" width="200" height="3" rx="1" ry="1" fill="#16a34a" stroke="none" stroke-width="0"/>
+<rect x="430" y="158" width="120" height="3" rx="1" ry="1" fill="#ea580c" stroke="none" stroke-width="0"/>
+<rect x="660" y="158" width="140" height="3" rx="1" ry="1" fill="#dc2626" stroke="none" stroke-width="0"/>
+<line x1="100" y1="500" x2="880" y2="500" stroke="#d1d5db" stroke-width="1.4"/>
+<line x1="100" y1="500" x2="100" y2="130" stroke="#d1d5db" stroke-width="1.4"/>
+<line x1="880" y1="500" x2="880" y2="130" stroke="#d1d5db" stroke-width="1.4"/>
+<text x="104" y="122" font-size="11" fill="#2563eb" text-anchor="start" font-weight="600" >λ  QPS</text>
+<text x="876" y="122" font-size="11" fill="#dc2626" text-anchor="end" font-weight="600" >W  ms</text>
+<text x="880" y="528" font-size="11.5" fill="#475569" text-anchor="end" font-weight="400" >并发（Threads_running）</text>
+<text x="250" y="152" font-size="11" fill="#16a34a" text-anchor="middle" font-weight="600" >富余区：加并发直接换成吞吐</text>
+<text x="490" y="152" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="600" >饱和区</text>
+<text x="730" y="152" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="600" >过载区：加并发换成排队</text>
+<path d="M 100,500 C 150,470 220,430 300,395 C 360,368 420,352 470,345 C 520,340 560,342 600,350 C 660,362 750,390 820,420 C 845,431 865,440 878,447" fill="none" stroke="#2563eb" stroke-width="2.6"/>
+<path d="M 100,494 C 250,491 380,487 430,478 C 470,468 495,446 520,412 C 560,352 620,290 700,225 C 760,180 820,160 878,150" fill="none" stroke="#dc2626" stroke-width="2.6"/>
+<line x1="525" y1="172" x2="525" y2="500" stroke="#9333ea" stroke-width="1.3" stroke-dasharray="5,4"/>
+<text x="533" y="196" font-size="11.5" fill="#9333ea" text-anchor="start" font-weight="600" >拐点</text>
+<text x="533" y="214" font-size="10.5" fill="#9333ea" text-anchor="start" font-weight="400" >λ 增量趋零</text>
+<text x="300" y="372" font-size="11" fill="#2563eb" text-anchor="start" font-weight="400" >λ 见顶</text>
+<text x="700" y="205" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >W 陡升</text>
+<path d="M 660.0,358.0 L 820.0,421.0" fill="none" stroke="#dc2626" stroke-width="1.3" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_dc2626)"/>
+<rect x="700.3" y="398.6" width="95.3" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="748.0" y="408.65" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >再加并发，λ 反降</text>
+<text x="100" y="555" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >横轴向右＝并发加大：线性区的并发是产能，过载区的并发只是排队。</text>
+<rect x="560" y="540" width="320" height="56" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="720.0" y="563.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >L = λ × W</text>
+<text x="720.0" y="583.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >恒等式：并发 = 吞吐 × 响应时间</text>
+</svg>

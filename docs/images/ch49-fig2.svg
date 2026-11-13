@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker></defs>
+<rect width="960" height="720" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 49-2　三种扣减方案：热点分别落在哪一步</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">判断与扣减是否在同一条语句里，决定了这把锁能不能挡住超卖</text>
+<rect x="60" y="96" width="840" height="148" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="76" y="130" width="110" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="131.0" y="157.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >方案一</text>
+<text x="131.0" y="177.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >条件更新</text>
+<rect x="208" y="130" width="136" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="276.0" y="157.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >请求：扣 1 件</text>
+<text x="276.0" y="177.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >爆款 2400 次/秒</text>
+<path d="M 344.0,162.0 L 384.0,162.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="384" y="130" width="136" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="452.0" y="157.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >同一条 UPDATE</text>
+<text x="452.0" y="177.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >判断在 WHERE 里</text>
+<path d="M 520.0,162.0 L 560.0,162.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="560" y="130" width="136" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="628.0" y="157.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >行 X 锁</text>
+<text x="628.0" y="177.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >同 SKU 严格串行</text>
+<path d="M 696.0,162.0 L 736.0,162.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="736" y="130" width="136" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="804.0" y="157.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >提交等 fsync</text>
+<text x="804.0" y="177.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >单行几百~两千 TPS</text>
+<rect x="560" y="130" width="136" height="64" rx="8" ry="8" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="5,3"/>
+<rect x="566" y="104" width="38.0" height="20" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+<text x="585.0" y="118" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="600" >热点</text>
+<text x="76" y="220" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >热点：一把行锁。正确，但有天花板；超出上限时排队，不超卖</text>
+<rect x="60" y="262" width="840" height="148" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="76" y="296" width="110" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="131.0" y="323.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >方案二</text>
+<text x="131.0" y="343.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >乐观锁</text>
+<rect x="208" y="296" width="136" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="276.0" y="323.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >先读 version</text>
+<text x="276.0" y="343.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >普通快照读，不持锁</text>
+<path d="M 344.0,328.0 L 384.0,328.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="384" y="296" width="136" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="452.0" y="323.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >带版本号更新</text>
+<text x="452.0" y="343.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >冲突时影响行数 0</text>
+<path d="M 520.0,328.0 L 560.0,328.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="560" y="296" width="136" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="628.0" y="323.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >应用重试</text>
+<text x="628.0" y="343.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >冲突率越高越糟</text>
+<path d="M 696.0,328.0 L 736.0,328.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="736" y="296" width="136" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="804.0" y="323.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >提交</text>
+<text x="804.0" y="343.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >低冲突不持锁等待</text>
+<rect x="560" y="296" width="136" height="64" rx="8" ry="8" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="5,3"/>
+<rect x="566" y="270" width="38.0" height="20" rx="10" ry="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1"/>
+<text x="585.0" y="284" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="600" >热点</text>
+<text x="76" y="386" font-size="11" fill="#ea580c" text-anchor="start" font-weight="400" >冲突率过约 20% 后重试放大：一次成功要 1/(1-p) 次尝试，吞吐反低于方案一</text>
+<rect x="60" y="428" width="840" height="148" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="76" y="462" width="110" height="64" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="131.0" y="489.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >方案三</text>
+<text x="131.0" y="509.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >预扣 + 流水</text>
+<rect x="208" y="462" width="136" height="64" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="276.0" y="489.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >INSERT 流水</text>
+<text x="276.0" y="509.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >顺序写，无热点行</text>
+<path d="M 344.0,494.0 L 384.0,494.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="384" y="462" width="136" height="64" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="452.0" y="489.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >可用量靠聚合</text>
+<text x="452.0" y="509.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >总量 − SUM(占用)</text>
+<path d="M 520.0,494.0 L 560.0,494.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="560" y="462" width="136" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="628.0" y="489.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >余量字段异步</text>
+<text x="628.0" y="509.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >窗口内可超卖</text>
+<path d="M 696.0,494.0 L 736.0,494.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="736" y="462" width="136" height="64" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="804.0" y="489.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >定期结算</text>
+<text x="804.0" y="509.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >近实时，不精确</text>
+<rect x="384" y="462" width="136" height="64" rx="8" ry="8" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="5,3"/>
+<rect x="390" y="436" width="38.0" height="20" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+<text x="409.0" y="450" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="600" >热点</text>
+<text x="76" y="552" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >热点从行锁转移到聚合读与余量字段；形态是预留 + 结算，不是实时精确</text>
+<rect x="60" y="592" width="840" height="60" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="616" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >数据库能挡住的只有&quot;余额变负&quot;：WHERE qty &gt;= 1 是当前读，判断在锁内完成</text>
+<text x="74" y="638" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >挡不住&quot;看到有货但下单失败&quot;（体验问题），也挡不住跨 SKU 的事务（见第 34 章）</text>
+<path d="M 60 684 L 86 684" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="93" y="688" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >判断在锁内</text>
+<path d="M 250 684 L 276 684" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="283" y="688" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >等待 / 重试</text>
+<path d="M 440 684 L 466 684" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="473" y="688" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >热点 / 超卖窗口</text>
+<path d="M 650 684 L 676 684" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="683" y="688" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >流水 / 聚合</text>
+</svg>

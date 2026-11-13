@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 25-1　延迟的本质：进水管比出水管粗，积压只会单调增长</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">延迟读数是一个积分量 Q(t)，不是一个状态量；决定它涨不涨的是斜率 λ − μ</text>
+<rect x="50" y="86" width="250" height="190" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="64" y="108" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >主库 source</text>
+<rect x="70" y="134" width="210" height="52" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="175.0" y="155.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >M 个事务同时在跑</text>
+<text x="175.0" y="175.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >并发写入 × 组提交批</text>
+<rect x="70" y="196" width="210" height="52" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="175.0" y="217.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >λ = M / t_exec</text>
+<text x="175.0" y="237.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每秒进队的事务数</text>
+<rect x="340" y="86" width="280" height="190" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="354" y="108" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >relay log 里的积压</text>
+<path d="M 380 145 A 100.0 11 0 0 1 580 145 L 580 233 A 100.0 11 0 0 1 380 233 Z" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<path d="M 380 145 A 100.0 11 0 0 0 580 145" fill="none" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="187.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >积压 Q(t)</text>
+<text x="480.0" y="205.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >λ &gt; μ 时只涨不落</text>
+<rect x="660" y="86" width="250" height="190" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="674" y="108" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >从库 replica</text>
+<rect x="680" y="134" width="210" height="52" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="785.0" y="155.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >N 个 worker</text>
+<text x="785.0" y="175.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >真正并行的 N_eff ≤ N</text>
+<rect x="680" y="196" width="210" height="52" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="785.0" y="217.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >μ = N_eff / t_apply</text>
+<text x="785.0" y="237.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每秒回放完的事务数</text>
+<path d="M 300.0,160.0 L 336.0,160.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="311.9" y="140.0" width="12.2" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="318.0" y="150.0" font-size="11" fill="#2563eb" text-anchor="middle" font-weight="500" >λ</text>
+<path d="M 620.0,160.0 L 656.0,160.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="631.9" y="140.0" width="12.2" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="638.0" y="150.0" font-size="11" fill="#16a34a" text-anchor="middle" font-weight="500" >μ</text>
+<rect x="50" y="300" width="430" height="120" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="265.0" y="355.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >M × t_apply &gt; N × t_exec 时积压增长</text>
+<text x="265.0" y="375.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >Q(t) = Q₀ + (λ − μ)·t，延迟读数 L ≈ Q / λ</text>
+<path d="M 520.0,470.0 L 520.0,290.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 520.0,470.0 L 892.0,470.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<text x="530" y="302" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >积压 Q</text>
+<text x="884" y="492" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >时间 t →</text>
+<path d="M 524.0,462.0 L 570.0,452.0 L 620.0,438.0 L 670.0,418.0 L 720.0,390.0 L 770.0,354.0 L 820.0,320.0 L 866.0,296.0" fill="none" stroke="#dc2626" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<text x="530" y="336" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >斜率 = λ − μ，恒为正</text>
+<text x="530" y="356" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >截距由三次 fsync 决定</text>
+<text x="50" y="492" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >截距让延迟永远不会是 0；斜率决定它会不会涨到三个小时。前者是物理限制，后者是容量问题。</text>
+<path d="M 52 520 L 78 520" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="85" y="524" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >主库产出事务</text>
+<path d="M 52 540 L 78 540" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="85" y="544" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >从库消费事务</text>
+<path d="M 560 520 L 586 520" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="593" y="524" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >积压增长（危险）</text>
+<path d="M 560 540 L 586 540" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#m_e_475569)"/>
+<text x="593" y="544" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >坐标轴</text>
+</svg>

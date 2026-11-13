@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 730" width="960" height="730">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker></defs>
+<rect width="960" height="730" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 28-1　XtraBackup：拷页 + 拷 redo，prepare 要跑两遍恢复</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">拷页只保证「每个页是某一时刻的完整版本」；页与页之间的 LSN 差，靠 redo 前滚补齐，靠 undo 撤掉未提交</text>
+<rect x="40" y="76" width="880" height="344" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="98" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >三个动作，一条时间线：备份集从「能拷」变成「能起」</text>
+<line x1="380" y1="112" x2="380" y2="406" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="4,5"/>
+<line x1="680" y1="112" x2="680" y2="406" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="4,5"/>
+<text x="60" y="126" font-size="12" fill="#2563eb" text-anchor="start" font-weight="600" >① 备份期间：页在变，redo 在记</text>
+<text x="400" y="126" font-size="12" fill="#9333ea" text-anchor="start" font-weight="600" >② 前滚：把所有页拉到同一 LSN</text>
+<text x="700" y="126" font-size="12" fill="#ea580c" text-anchor="start" font-weight="600" >③ 回滚：撤掉未提交的事务</text>
+<rect x="60" y="146" width="130" height="50" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="125.0" y="166.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >拷 .ibd 页</text>
+<text x="125.0" y="186.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >拷的瞬间各不相同</text>
+<rect x="210" y="146" width="130" height="50" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="275.0" y="166.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >拷 redo</text>
+<text x="275.0" y="186.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >记录窗口内所有变更</text>
+<rect x="60" y="222" width="280" height="54" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="200.0" y="244.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >每个页的 LSN 都不一样</text>
+<text x="200.0" y="264.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >备份集不是一致快照</text>
+<path d="M 125.0,196.0 L 125.0,222.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 275.0,196.0 L 275.0,222.0" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<text x="60" y="302" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >拷页与拷日志是两个线程，同时启动。</text>
+<text x="60" y="324" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >页是快照的原材料，redo 是把它们</text>
+<text x="60" y="344" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >焊死在同一时刻的焊条。</text>
+<text x="60" y="378" font-size="11" fill="#dc2626" text-anchor="start" font-weight="600" >此刻的备份集：能拷，不能起。</text>
+<text x="400" y="152" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >页 LSN（备份集原样）</text>
+<rect x="400" y="160" width="64" height="38" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="432.0" y="183.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >96</text>
+<path d="M 432.0,198.0 L 432.0,230.0" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<rect x="476" y="160" width="64" height="38" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="508.0" y="183.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >100</text>
+<path d="M 508.0,198.0 L 508.0,230.0" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<rect x="552" y="160" width="64" height="38" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="584.0" y="183.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >102</text>
+<path d="M 584.0,198.0 L 584.0,230.0" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<rect x="400" y="230" width="64" height="38" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="432.0" y="253.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >104</text>
+<rect x="476" y="230" width="64" height="38" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="508.0" y="253.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >104</text>
+<rect x="552" y="230" width="64" height="38" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="584.0" y="253.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >104</text>
+<rect x="400" y="280" width="216" height="24" rx="12.0" ry="12.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="508.0" y="296.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >所有页到达同一 LSN</text>
+<text x="400" y="330" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >redo 只做加法：每条记录按页头</text>
+<text x="400" y="350" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >LSN 幂等，应用到 104 就停。</text>
+<text x="400" y="386" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >等价于崩溃恢复的「重做」。</text>
+<rect x="700" y="160" width="180" height="48" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="790.0" y="179.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >undo 逆序回放</text>
+<text x="790.0" y="199.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >未提交事务的修改</text>
+<path d="M 790.0,208.0 L 790.0,238.0" fill="none" stroke="#ea580c" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="700" y="238" width="180" height="48" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="790.0" y="257.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >这些行消失</text>
+<text x="790.0" y="277.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >备份集 = 干净关闭</text>
+<text x="700" y="318" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >回滚本身也写 redo，否则回滚到</text>
+<text x="700" y="338" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >一半再崩，就永远回滚不完。</text>
+<text x="700" y="386" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >等价于崩溃恢复的「回滚」。</text>
+<rect x="40" y="440" width="880" height="190" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="462" font-size="13" fill="#dc2626" text-anchor="start" font-weight="600" >跳过 prepare，直接把备份集当 datadir 起</text>
+<rect x="60" y="482" width="430" height="132" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="72" y="499" font-size="11" fill="#94a3b8" text-anchor="start" font-weight="400" >error log（输出形态，未实跑）</text>
+<text x="72" y="520" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">[ERROR] [InnoDB] Database page corruption on disk</text>
+<text x="72" y="536" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">or a failed file read of page [page id: space=42,</text>
+<text x="72" y="552" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">page number=118].</text>
+<text x="72" y="568" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">[ERROR] [InnoDB] You may have to recover from a backup.</text>
+<text x="520" y="502" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >页是一个完整的旧版本，但每页的旧版本</text>
+<text x="520" y="524" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >来自不同时刻；页头 LSN 与日志里的</text>
+<text x="520" y="546" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >checkpoint 对不上，前滚的起点就是错的。</text>
+<text x="520" y="590" font-size="12" fill="#dc2626" text-anchor="start" font-weight="600" >不是备份坏了，是备份还没被恢复。</text>
+<path d="M 60 640 L 86 640" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="93" y="644" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >拷页 / 前滚</text>
+<path d="M 60 660 L 86 660" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="93" y="664" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >redo 日志流</text>
+<path d="M 60 680 L 86 680" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="93" y="684" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >undo 回滚</text>
+<path d="M 60 700 L 86 700" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="93" y="704" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >一致状态</text>
+</svg>

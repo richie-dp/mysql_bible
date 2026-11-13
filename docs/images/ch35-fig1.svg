@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" width="960" height="760">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="760" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 35-1　冷热三层：每层三个刻度，两条迁移触发条件</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">箭头是数据流，不是查询流；分层判据是访问概率，不是数据年龄</text>
+<text x="330" y="104" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >访问延迟</text>
+<text x="500" y="104" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >存储成本</text>
+<text x="640" y="104" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >谁在查它</text>
+<rect x="40" y="120" width="760" height="118" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="60" y="158" font-size="15" fill="#111827" text-anchor="start" font-weight="600" >热｜InnoDB 主库</text>
+<text x="60" y="182" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >近 7 天，或状态未终态</text>
+<text x="330" y="160" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >单行 &lt; 1ms</text>
+<text x="330" y="182" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >全在 buffer pool</text>
+<text x="500" y="160" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >最高</text>
+<text x="500" y="182" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >SSD + 多副本</text>
+<text x="640" y="160" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >下单、支付、客服查单</text>
+<text x="640" y="182" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >高并发、低延迟</text>
+<path d="M 200.0,238.0 L 200.0,300.0" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="205.0" y="263.0" width="161.8" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="208.0" y="273.0" font-size="11" fill="#ea580c" text-anchor="start" font-weight="500" >行龄 &gt; 90 天 且 30 天零命中</text>
+<text x="208" y="288" font-size="10" fill="#ea580c" text-anchor="start" font-weight="400" >按主键分批，批间看复制延迟</text>
+<rect x="40" y="300" width="760" height="118" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="60" y="338" font-size="15" fill="#111827" text-anchor="start" font-weight="600" >温｜order_archive</text>
+<text x="60" y="362" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >90 天至 1 年，偶发查</text>
+<text x="330" y="340" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >百 ms 级</text>
+<text x="330" y="362" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >允许落盘读</text>
+<text x="500" y="340" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >中</text>
+<text x="500" y="362" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >大容量盘、单副本</text>
+<text x="640" y="340" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >客诉回溯、日终对账</text>
+<text x="640" y="362" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >低频、可排队</text>
+<path d="M 200.0,418.0 L 200.0,480.0" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="205.0" y="443.0" width="145.5" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="208.0" y="453.0" font-size="11" fill="#ea580c" text-anchor="start" font-weight="500" >满 1 年无人查，仅合规留存</text>
+<rect x="40" y="480" width="760" height="118" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="60" y="518" font-size="15" fill="#111827" text-anchor="start" font-weight="600" >冷｜对象存储 / OLAP</text>
+<text x="60" y="542" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >只作留痕，不再承诺查询</text>
+<text x="330" y="520" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >秒到分钟</text>
+<text x="330" y="542" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >异步导出</text>
+<text x="500" y="520" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >最低</text>
+<text x="500" y="542" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >按量计费</text>
+<text x="640" y="520" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >审计、法务、离线分析</text>
+<text x="640" y="542" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >几乎不在线</text>
+<path d="M 800.0,540.0 L 880.0,540.0 L 880.0,179.0 L 802.0,179.0" fill="none" stroke="#475569" stroke-width="1.6" stroke-linejoin="round" stroke-dasharray="5,4" marker-end="url(#m_e_475569)"/>
+<text x="868" y="168" font-size="10" fill="#475569" text-anchor="end" font-weight="400" >冷数据回查</text>
+<rect x="40" y="600" width="840" height="64" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="60" y="626" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >按「多久以前产生」分层，是用写入节奏去赌查询节奏；按「多久被访问一次」分层，才是容量决策。</text>
+<text x="60" y="650" font-size="12" fill="#475569" text-anchor="start" font-weight="400" >冷层不是「不要的数据」，是「不再承诺在线查询的数据」——这句话决定了回查只能异步。</text>
+<path d="M 40 680 L 66 680" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="73" y="684" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >迁移任务：分批复制 → 校验 → 删除</text>
+<path d="M 40 700 L 66 700" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="5,4" marker-end="url(#m_e_475569)"/>
+<text x="73" y="704" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >冷数据回查：异步导出，不承诺延迟</text>
+</svg>

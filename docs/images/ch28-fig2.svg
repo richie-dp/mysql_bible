@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 690" width="960" height="690">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="690" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 28-2　PITR 的时间轴：全备之后，binlog 必须连续</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">恢复点在误操作前 1 秒；全备位点与 binlog 的衔接点差一个事务，后面全部错位</text>
+<rect x="40" y="84" width="880" height="330" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >时间轴：全备 → binlog 连续区间 → 误操作 → 恢复点</text>
+<rect x="60" y="140" width="150" height="60" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="135.0" y="165.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >全备结束</text>
+<text x="135.0" y="185.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >to_lsn / GTID</text>
+<path d="M 210.0,170.0 L 860.0,170.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="210" y="186" width="630" height="26" rx="6" ry="6" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.2"/>
+<text x="222" y="204" font-size="11" fill="#9333ea" text-anchor="start" font-weight="400" >binlog 连续区间：差一个事务就接不上</text>
+<line x1="210" y1="170" x2="210" y2="186" stroke="#ea580c" stroke-width="1.6"/>
+<circle cx="210" cy="170" r="5.5" fill="#ffffff" stroke="#ea580c" stroke-width="2.5"/>
+<line x1="620" y1="170" x2="620" y2="186" stroke="#16a34a" stroke-width="1.6"/>
+<circle cx="620" cy="170" r="5.5" fill="#ffffff" stroke="#16a34a" stroke-width="2.5"/>
+<line x1="700" y1="170" x2="700" y2="186" stroke="#dc2626" stroke-width="1.6"/>
+<circle cx="700" cy="170" r="5.5" fill="#ffffff" stroke="#dc2626" stroke-width="2.5"/>
+<line x1="840" y1="170" x2="840" y2="186" stroke="#475569" stroke-width="1.6"/>
+<circle cx="840" cy="170" r="5.5" fill="#ffffff" stroke="#475569" stroke-width="2.5"/>
+<text x="620" y="134" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >恢复点</text>
+<text x="620" y="154" font-size="12" fill="#16a34a" text-anchor="middle" font-weight="600" >t_bad − 1s</text>
+<text x="700" y="134" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >误操作 COMMIT</text>
+<text x="700" y="154" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="600" >t_bad</text>
+<text x="210" y="244" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="600" >t0 全备结束</text>
+<text x="210" y="264" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >位点 = 某个 end_log_pos</text>
+<text x="700" y="244" font-size="10" fill="#dc2626" text-anchor="middle" font-weight="600" >20:41:07 DELETE</text>
+<text x="840" y="244" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >binlog 尾</text>
+<rect x="520" y="296" width="200" height="56" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="620.0" y="319.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >恢复到临时实例</text>
+<text x="620.0" y="339.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >stop-position = t_bad − 1s</text>
+<path d="M 620.0,296.0 L 620.0,214.0" fill="none" stroke="#16a34a" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<text x="60" y="320" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >原实例不动，binlog 继续写；</text>
+<text x="60" y="342" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >恢复产物落在一个新的 datadir 上，</text>
+<text x="60" y="364" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >校验通过再切回。</text>
+<rect x="40" y="440" width="880" height="120" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="462" font-size="13" fill="#dc2626" text-anchor="start" font-weight="600" >衔接点出问题，只有这三种结局</text>
+<rect x="60" y="482" width="253" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="186.5" y="505.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >① 备份位点已被 purge</text>
+<text x="186.5" y="525.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >链断在第一步</text>
+<rect x="353" y="482" width="253" height="56" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="479.5" y="505.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >② 用时间当刀口</text>
+<text x="479.5" y="525.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >多恢复或少恢复</text>
+<rect x="646" y="482" width="253" height="56" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="772.5" y="505.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >③ 只恢复全备</text>
+<text x="772.5" y="525.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >备份之后的写入全丢</text>
+<path d="M 60 600 L 86 600" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="93" y="604" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >全备节点</text>
+<path d="M 60 620 L 86 620" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="93" y="624" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >binlog 区间</text>
+<path d="M 60 640 L 86 640" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="93" y="644" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >恢复点</text>
+<path d="M 60 660 L 86 660" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="93" y="664" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >误操作 / 断链</text>
+</svg>

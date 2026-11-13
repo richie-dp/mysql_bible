@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="540" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 38-2　慢查询治理闭环：五个环节，缺一环就原地打转</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">红色回环是最常见的走法——把「定责」省了，改完的索引三个月后照样失效</text>
+<rect x="46" y="150" width="140" height="104" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="116.0" y="197.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >① 采集</text>
+<text x="116.0" y="217.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >慢日志 / p_s digest</text>
+<text x="116" y="242" font-size="10" fill="#2563eb" text-anchor="middle" font-weight="600" >产出：原始日志</text>
+<rect x="228" y="150" width="140" height="104" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="298.0" y="197.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >② 归类</text>
+<text x="298.0" y="217.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >按 DIGEST 合并同类</text>
+<text x="298" y="242" font-size="10" fill="#2563eb" text-anchor="middle" font-weight="600" >产出：Top 20 清单</text>
+<rect x="410" y="150" width="140" height="104" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="197.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >③ 定责</text>
+<text x="480.0" y="217.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >落到业务方与接口</text>
+<text x="480" y="242" font-size="10" fill="#dc2626" text-anchor="middle" font-weight="600" >产出：负责人表</text>
+<rect x="592" y="150" width="140" height="104" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="662.0" y="197.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >④ 优化</text>
+<text x="662.0" y="217.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >索引 / 改写 / 拆分</text>
+<text x="662" y="242" font-size="10" fill="#16a34a" text-anchor="middle" font-weight="600" >产出：变更单</text>
+<rect x="774" y="150" width="140" height="104" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="844.0" y="197.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑤ 回归</text>
+<text x="844.0" y="217.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >比行数、比分位</text>
+<text x="844" y="242" font-size="10" fill="#16a34a" text-anchor="middle" font-weight="600" >产出：对比快照</text>
+<path d="M 186.0,202.0 L 228.0,202.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 368.0,202.0 L 410.0,202.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 550.0,202.0 L 592.0,202.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 732.0,202.0 L 774.0,202.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 714.0,254.0 L 714.0,430.0 L 178.0,430.0 L 178.0,254.0" fill="none" stroke="#dc2626" stroke-width="1.6" stroke-linejoin="round" stroke-dasharray="6,5" marker-end="url(#m_e_dc2626)"/>
+<text x="480" y="324" font-size="10.5" fill="#dc2626" text-anchor="middle" font-weight="600" >跳过这一步</text>
+<text x="446" y="460" font-size="11.5" fill="#dc2626" text-anchor="middle" font-weight="500" >跳过定责：改完的 SQL 没有归属，三个月后同一批 digest 重新上榜</text>
+<text x="60" y="504" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >闭环的判据不是「改了几条 SQL」，而是「下一次同类 SQL 出现时，有人认领」。</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 650" width="960" height="650">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker></defs>
+<rect width="960" height="650" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 31-2　反范式三手段：写入路径、不一致窗口与补偿动作</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">窗口长度由写入路径决定；补偿动作的幂等性决定重放会不会把旧值写回去</text>
+<rect x="40" y="84" width="266" height="424" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >① 冗余字段　receiver_name</text>
+<rect x="53" y="132" width="240" height="76" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="173.0" y="165.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >写入路径</text>
+<text x="173.0" y="185.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >下单事务内写快照</text>
+<path d="M 173.0,208.0 L 173.0,256.0" fill="none" stroke="#475569" stroke-width="1.8" stroke-linejoin="round" stroke-dasharray="5,3" marker-end="url(#m_e_475569)"/>
+<rect x="53" y="256" width="240" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="173.0" y="289.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >不一致窗口</text>
+<text x="173.0" y="309.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >快照 0；当前值=回填延迟</text>
+<path d="M 173.0,332.0 L 173.0,380.0" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="53" y="380" width="240" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="173.0" y="413.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >补偿动作</text>
+<text x="173.0" y="433.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >变更消息 + 分批回填</text>
+<rect x="347" y="84" width="266" height="424" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="361" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >② 汇总表　account_balance</text>
+<rect x="360" y="132" width="240" height="76" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480.0" y="165.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >写入路径</text>
+<text x="480.0" y="185.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >流水与余额同事务双写</text>
+<path d="M 480.0,208.0 L 480.0,256.0" fill="none" stroke="#475569" stroke-width="1.8" stroke-linejoin="round" stroke-dasharray="5,3" marker-end="url(#m_e_475569)"/>
+<rect x="360" y="256" width="240" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="289.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >不一致窗口</text>
+<text x="480.0" y="309.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >跨库=消息延迟；漏写永久</text>
+<path d="M 480.0,332.0 L 480.0,380.0" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="360" y="380" width="240" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="480.0" y="413.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >补偿动作</text>
+<text x="480.0" y="433.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >日终对账 + 幂等重算</text>
+<rect x="654" y="84" width="266" height="424" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="668" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >③ 宽表　order_wide</text>
+<rect x="667" y="132" width="240" height="76" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="787.0" y="165.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >写入路径</text>
+<text x="787.0" y="185.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >订单变更 → 异步重建宽表</text>
+<path d="M 787.0,208.0 L 787.0,256.0" fill="none" stroke="#475569" stroke-width="1.8" stroke-linejoin="round" stroke-dasharray="5,3" marker-end="url(#m_e_475569)"/>
+<rect x="667" y="256" width="240" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="787.0" y="289.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >不一致窗口</text>
+<text x="787.0" y="309.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >秒级到分钟级</text>
+<path d="M 787.0,332.0 L 787.0,380.0" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="667" y="380" width="240" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="787.0" y="413.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >补偿动作</text>
+<text x="787.0" y="433.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >版本号比对 + 全量重建</text>
+<rect x="40" y="528" width="880" height="96" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="550" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >三条不变式</text>
+<text x="62" y="574" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >1　写入路径越长，窗口越长：同事务双写为 0，异步重建以秒计，跨库消息以消息延迟计。</text>
+<text x="62" y="596" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >2　窗口内所有读都可能读到旧值，所以「读多写少」是反范式成立的前提。</text>
+<text x="62" y="616" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >3　补偿必须幂等：以事实源（流水 / 订单）覆盖派生值，重放多少次结果都一样。</text>
+</svg>

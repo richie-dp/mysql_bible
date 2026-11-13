@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="720" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 37-1　四层指标的判读卡：正常长什么样，异常长什么样</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">红色是本章点名的最高频误读——把命中率当健康度，把延迟归零当追平</text>
+<path d="M 690 70 L 716 70" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="723" y="74" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >正常形态</text>
+<path d="M 690 90 L 716 90" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="723" y="94" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >异常 / 误读</text>
+<rect x="40" y="96" width="420" height="250" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="56" y="122" font-size="13.5" fill="#9333ea" text-anchor="start" font-weight="600" >连接层</text>
+<text x="132" y="122" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >占用的坑 vs 正在干活的人</text>
+<text x="58" y="152" font-size="11" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Threads_connected</text>
+<text x="58" y="171" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　日周期波动，峰谷比稳定</text>
+<text x="58" y="187" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　阶梯上涨不回落 = 池泄漏</text>
+<text x="58" y="216" font-size="11" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Threads_running</text>
+<text x="58" y="235" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　峰值 ≤ 核数 × 2~3</text>
+<text x="58" y="251" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　高位平台而 QPS 不涨 = 排队</text>
+<text x="58" y="280" font-size="11" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Aborted_connects / Aborted_clients</text>
+<text x="58" y="299" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　仅发布窗口尖峰</text>
+<text x="58" y="315" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　持续 &gt; 0，且要分因排查</text>
+<rect x="500" y="96" width="420" height="250" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="516" y="122" font-size="13.5" fill="#2563eb" text-anchor="start" font-weight="600" >吞吐层</text>
+<text x="592" y="122" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >比例变了才有信息量</text>
+<text x="518" y="152" font-size="11" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Questions 增速</text>
+<text x="518" y="171" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　与业务 QPS 同步</text>
+<text x="518" y="187" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　平台期突变 = 上游重试</text>
+<text x="518" y="216" font-size="11" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Com_select 占比</text>
+<text x="518" y="235" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　日内稳定</text>
+<text x="518" y="251" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　骤降 = 缓存生效或切流</text>
+<text x="518" y="280" font-size="11" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Innodb_rows_read / Com_select</text>
+<text x="518" y="299" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　接近基线（OLTP 个位数）</text>
+<text x="518" y="315" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　翻倍 = 索引退化</text>
+<rect x="40" y="386" width="420" height="250" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="56" y="412" font-size="13.5" fill="#16a34a" text-anchor="start" font-weight="600" >InnoDB 层</text>
+<text x="132" y="412" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >三个容易算错的公式</text>
+<rect x="48" y="426" width="3" height="44" rx="1.5" ry="1.5" fill="#dc2626" stroke="none" stroke-width="0"/>
+<text x="58" y="442" font-size="11" fill="#dc2626" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">BP 命中率（百分比）</text>
+<text x="58" y="461" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　不用百分比判断</text>
+<text x="58" y="477" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　99.9% 仍可能是百万次物理读</text>
+<text x="58" y="506" font-size="11" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">pages_dirty / pages_total</text>
+<text x="58" y="525" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　在 lwm 与 max 之间</text>
+<text x="58" y="541" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　逼近 max = 强制刷脏</text>
+<text x="58" y="570" font-size="11" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">checkpoint age / 容量</text>
+<text x="58" y="589" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　&lt; 60%，按刷脏能力推</text>
+<text x="58" y="605" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　&gt; 75% 出现周期性抖动</text>
+<rect x="500" y="386" width="420" height="250" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="516" y="412" font-size="13.5" fill="#475569" text-anchor="start" font-weight="600" >复制层</text>
+<text x="592" y="412" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >延迟是最不可靠的那个数</text>
+<rect x="508" y="426" width="3" height="44" rx="1.5" ry="1.5" fill="#dc2626" stroke="none" stroke-width="0"/>
+<text x="518" y="442" font-size="11" fill="#dc2626" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Seconds_Behind_Source</text>
+<text x="518" y="461" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　只作参考值</text>
+<text x="518" y="477" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　归零 ≠ 追平</text>
+<text x="518" y="506" font-size="11" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">GTID 差值 received − executed</text>
+<text x="518" y="525" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　收敛到 0</text>
+<text x="518" y="541" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　双停不动 = 复制断了</text>
+<text x="518" y="570" font-size="11" fill="#111827" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">Relay_Log_Space</text>
+<text x="518" y="589" font-size="9.5" fill="#16a34a" text-anchor="start" font-weight="400" >正常　锯齿，不贴上限</text>
+<text x="518" y="605" font-size="9.5" fill="#dc2626" text-anchor="start" font-weight="400" >异常　贴顶锯齿 = applier 落后</text>
+<text x="40" y="682" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >四层不是四个仪表盘：先看连接与占比，再看 InnoDB 的机制量，最后才轮到复制。</text>
+</svg>

@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 790" width="960" height="790">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker></defs>
+<rect width="960" height="790" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 36-3　一次排障的真实形态：14:20 → 15:40</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">红色是被推翻的判断，橙色是「KILL 之后并没有立刻好」的那 30 分钟</text>
+<path d="M 545 84 L 571 84" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="578" y="88" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >错误判断</text>
+<path d="M 650 84 L 676 84" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="683" y="88" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >定位成功</text>
+<path d="M 770 84 L 796 84" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="803" y="88" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >等待 / 回滚</text>
+<rect x="90" y="150" width="146" height="62" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="102" y="174" font-size="12" fill="#475569" text-anchor="start" font-weight="600" >试错</text>
+<text x="102" y="194" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >14:20–14:35</text>
+<rect x="244" y="150" width="142" height="62" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="256" y="174" font-size="12" fill="#16a34a" text-anchor="start" font-weight="600" >定位</text>
+<text x="256" y="194" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >14:35–14:50</text>
+<rect x="394" y="150" width="112" height="62" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="406" y="174" font-size="12" fill="#ea580c" text-anchor="start" font-weight="600" >决策</text>
+<text x="406" y="194" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >14:50–15:02</text>
+<rect x="514" y="150" width="72" height="62" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="526" y="174" font-size="12" fill="#ea580c" text-anchor="start" font-weight="600" >KILL</text>
+<text x="526" y="194" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >15:02</text>
+<rect x="594" y="150" width="294" height="62" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="606" y="174" font-size="12" fill="#ea580c" text-anchor="start" font-weight="600" >回滚等待 30 分钟</text>
+<text x="606" y="194" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >15:10–15:40 锁未释放</text>
+<line x1="90" y1="250" x2="890" y2="250" stroke="#475569" stroke-width="1.6"/>
+<line x1="90" y1="244" x2="90" y2="250" stroke="#475569" stroke-width="1.2"/>
+<text x="90" y="238" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >14:20</text>
+<line x1="190" y1="244" x2="190" y2="250" stroke="#475569" stroke-width="1.2"/>
+<text x="190" y="238" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >14:30</text>
+<line x1="290" y1="244" x2="290" y2="250" stroke="#475569" stroke-width="1.2"/>
+<text x="290" y="238" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >14:40</text>
+<line x1="390" y1="244" x2="390" y2="250" stroke="#475569" stroke-width="1.2"/>
+<text x="390" y="238" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >14:50</text>
+<line x1="490" y1="244" x2="490" y2="250" stroke="#475569" stroke-width="1.2"/>
+<text x="490" y="238" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >15:00</text>
+<line x1="590" y1="244" x2="590" y2="250" stroke="#475569" stroke-width="1.2"/>
+<text x="590" y="238" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >15:10</text>
+<line x1="690" y1="244" x2="690" y2="250" stroke="#475569" stroke-width="1.2"/>
+<text x="690" y="238" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >15:20</text>
+<line x1="790" y1="244" x2="790" y2="250" stroke="#475569" stroke-width="1.2"/>
+<text x="790" y="238" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >15:30</text>
+<line x1="890" y1="244" x2="890" y2="250" stroke="#475569" stroke-width="1.2"/>
+<text x="890" y="238" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >15:40</text>
+<path d="M 90.0,250.0 L 90.0,293.0" fill="none" stroke="#dc2626" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="75" y="294" width="30" height="22" rx="11.0" ry="11.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="90.0" y="308.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >1</text>
+<path d="M 140.0,250.0 L 140.0,293.0" fill="none" stroke="#dc2626" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="125" y="294" width="30" height="22" rx="11.0" ry="11.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="140.0" y="308.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >2</text>
+<path d="M 190.0,250.0 L 190.0,293.0" fill="none" stroke="#9333ea" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<rect x="175" y="294" width="30" height="22" rx="11.0" ry="11.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="190.0" y="308.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >3</text>
+<path d="M 240.0,250.0 L 240.0,293.0" fill="none" stroke="#9333ea" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<rect x="225" y="294" width="30" height="22" rx="11.0" ry="11.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="240.0" y="308.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >4</text>
+<path d="M 290.0,250.0 L 290.0,293.0" fill="none" stroke="#16a34a" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="275" y="294" width="30" height="22" rx="11.0" ry="11.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="290.0" y="308.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >5</text>
+<path d="M 340.0,250.0 L 340.0,293.0" fill="none" stroke="#16a34a" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="325" y="294" width="30" height="22" rx="11.0" ry="11.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="340.0" y="308.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >6</text>
+<path d="M 390.0,250.0 L 390.0,293.0" fill="none" stroke="#16a34a" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="375" y="294" width="30" height="22" rx="11.0" ry="11.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="390.0" y="308.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >7</text>
+<path d="M 440.0,250.0 L 440.0,293.0" fill="none" stroke="#ea580c" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="425" y="294" width="30" height="22" rx="11.0" ry="11.0" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="440.0" y="308.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >8</text>
+<path d="M 510.0,250.0 L 510.0,293.0" fill="none" stroke="#ea580c" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="495" y="294" width="30" height="22" rx="11.0" ry="11.0" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="510.0" y="308.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >9</text>
+<path d="M 590.0,250.0 L 590.0,293.0" fill="none" stroke="#ea580c" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="575" y="294" width="30" height="22" rx="11.0" ry="11.0" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="590.0" y="308.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >10</text>
+<path d="M 890.0,250.0 L 890.0,293.0" fill="none" stroke="#16a34a" stroke-width="1.2" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="875" y="294" width="30" height="22" rx="11.0" ry="11.0" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="890.0" y="308.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >11</text>
+<rect x="90" y="350" width="255" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="217.5" y="383.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >① 14:20　告警</text>
+<text x="217.5" y="403.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >P99 80ms → 2.3s</text>
+<rect x="375" y="350" width="255" height="76" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="502.5" y="383.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >② 14:25　查发布</text>
+<text x="502.5" y="403.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >无变更 → 方向错</text>
+<rect x="660" y="350" width="255" height="76" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="787.5" y="383.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >③ 14:30　CPU us 40%</text>
+<text x="787.5" y="403.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >不是计算密集</text>
+<rect x="90" y="442" width="255" height="76" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="217.5" y="475.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >④ 14:35　并发 8 → 90</text>
+<text x="217.5" y="495.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >CPU 不高 → 在等</text>
+<rect x="375" y="442" width="255" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="502.5" y="475.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑤ 14:40　PROCESSLIST</text>
+<text x="502.5" y="495.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >60+ 线程等行锁</text>
+<rect x="660" y="442" width="255" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="787.5" y="475.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑥ 14:45　锁等待视图</text>
+<text x="787.5" y="495.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >指向同一个事务</text>
+<rect x="90" y="534" width="255" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="217.5" y="567.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑦ 14:50　innodb_trx</text>
+<text x="217.5" y="587.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >22 分钟｜180 万行</text>
+<rect x="375" y="534" width="255" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="502.5" y="567.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑧ 14:55　评估回滚</text>
+<text x="502.5" y="587.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >不立即 KILL</text>
+<rect x="660" y="534" width="255" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="787.5" y="567.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑨ 15:02　KILL 会话</text>
+<text x="787.5" y="587.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >等业务确认后执行</text>
+<rect x="90" y="626" width="255" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="217.5" y="659.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑩ 15:10　ROLLING BACK</text>
+<text x="217.5" y="679.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >锁仍在，等了 30 分钟</text>
+<rect x="375" y="626" width="255" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="502.5" y="659.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑪ 15:40　恢复</text>
+<text x="502.5" y="679.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >P99 回到 80ms</text>
+<rect x="660" y="626" width="255" height="76" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="787.5" y="659.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >合计 80 分钟</text>
+<text x="787.5" y="679.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >定位 20 ｜ 回滚 38</text>
+<text x="90" y="742" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >两次判断被推翻：② 只查了应用发布、③ 把「CPU 不高」读成「库没问题」；真正耗时的是 ⑩ 那 30 分钟。</text>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 740" width="960" height="740">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="740" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 35-2　多租户三模型：隔离强度、成本，与那条没人写进合同的隐性代价</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">隔离越弱，越省钱，也越容易让一个租户的事故变成所有租户的事故</text>
+<rect x="200" y="108" width="200" height="44" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="300.0" y="134.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >独立库</text>
+<rect x="440" y="108" width="200" height="44" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="540.0" y="134.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >共享库独立 schema</text>
+<rect x="680" y="108" width="200" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="780.0" y="134.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >共享表 + tenant_id</text>
+<text x="40" y="200" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >隔离强度</text>
+<rect x="200" y="164" width="200" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="300.0" y="189.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >最强</text>
+<text x="300.0" y="209.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >独立实例，故障不扩散</text>
+<rect x="440" y="164" width="200" height="60" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="540.0" y="189.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >中</text>
+<text x="540.0" y="209.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >同实例，共享 buffer pool</text>
+<rect x="680" y="164" width="200" height="60" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="780.0" y="189.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >最弱</text>
+<text x="780.0" y="209.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >靠 tenant_id 与代码自觉</text>
+<text x="40" y="268" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >成本</text>
+<rect x="200" y="232" width="200" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="300.0" y="257.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >最高</text>
+<text x="300.0" y="277.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >一租户一套实例</text>
+<rect x="440" y="232" width="200" height="60" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="540.0" y="257.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >中</text>
+<text x="540.0" y="277.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >共享实例，逻辑隔离</text>
+<rect x="680" y="232" width="200" height="60" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="780.0" y="257.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >最低</text>
+<text x="780.0" y="277.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >一张表装下所有租户</text>
+<text x="40" y="336" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >运维复杂度</text>
+<rect x="200" y="300" width="200" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="300.0" y="325.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >最高</text>
+<text x="300.0" y="345.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >N 套备份与升级</text>
+<rect x="440" y="300" width="200" height="60" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="540.0" y="325.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >中</text>
+<text x="540.0" y="345.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >DDL 广播到每个 schema</text>
+<rect x="680" y="300" width="200" height="60" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="780.0" y="325.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >低</text>
+<text x="780.0" y="345.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >一次 DDL 全租户生效</text>
+<text x="40" y="404" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >单实例租户上限</text>
+<rect x="200" y="368" width="200" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="300.0" y="393.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >几十</text>
+<text x="300.0" y="413.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >受实例成本约束</text>
+<rect x="440" y="368" width="200" height="60" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="540.0" y="393.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >几千到几万</text>
+<text x="540.0" y="413.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >元数据先变慢</text>
+<rect x="680" y="368" width="200" height="60" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="780.0" y="393.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >十万级</text>
+<text x="780.0" y="413.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >受单表容量约束</text>
+<text x="40" y="472" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >典型场景</text>
+<rect x="200" y="436" width="200" height="60" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="300.0" y="461.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >金融、政企</text>
+<text x="300.0" y="481.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >数据驻留要求</text>
+<rect x="440" y="436" width="200" height="60" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="540.0" y="461.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >中大型客户</text>
+<text x="540.0" y="481.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >需按租户授权</text>
+<rect x="680" y="436" width="200" height="60" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="780.0" y="461.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >SaaS 长尾</text>
+<text x="780.0" y="481.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >绝大多数</text>
+<rect x="40" y="528" width="840" height="180" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="550" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >共享表方案的隐性代价：一次大租户全表扫描，所有人一起掉命中率</text>
+<text x="60" y="578" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >buffer pool 里的页（示意）</text>
+<rect x="60" y="588" width="560" height="26" rx="4" ry="4" fill="#fee2e2" stroke="#dc2626" stroke-width="1.2"/>
+<rect x="60" y="588" width="336" height="26" rx="4" ry="4" fill="#fecaca" stroke="#dc2626" stroke-width="1.2"/>
+<rect x="396" y="588" width="112" height="26" rx="4" ry="4" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.2"/>
+<rect x="508" y="588" width="112" height="26" rx="4" ry="4" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.2"/>
+<text x="66" y="605" font-size="10" fill="#dc2626" text-anchor="start" font-weight="400" >大租户扫描带入的冷页</text>
+<text x="402" y="605" font-size="10" fill="#2563eb" text-anchor="start" font-weight="400" >其他租户热页</text>
+<text x="514" y="605" font-size="10" fill="#16a34a" text-anchor="start" font-weight="400" >空闲</text>
+<text x="60" y="646" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >LRU 是全局的：大租户的扫描把冷页灌进 young 区，别人的热页被推到 old 区并淘汰。</text>
+<text x="60" y="668" font-size="11.5" fill="#dc2626" text-anchor="start" font-weight="400" >症状是所有租户命中率一起掉，监控上只看到 IOPS 上涨——除非按 tenant_id 记录扫描行数，否则查不到是谁干的。</text>
+<text x="60" y="690" font-size="11.5" fill="#475569" text-anchor="start" font-weight="400" >治它只有两条：消掉那次全表扫描（补索引、归档），或把大租户搬到独立库。</text>
+</svg>

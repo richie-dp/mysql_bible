@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="720" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 42-1　会让旧结论失效的特性矩阵</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">每一格只回答一件事：读完它，你手上哪个“以前这么做是对的”要改</text>
+<rect x="40" y="84" width="420" height="286" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="106" font-size="13" fill="#2563eb" text-anchor="start" font-weight="600" >① 数据字典：元数据搬了家</text>
+<rect x="54" y="124" width="148" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="128.0" y="146.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >原子 DDL</text>
+<text x="128.0" y="166.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >[8.0]</text>
+<text x="216" y="145" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 DDL 崩溃留半张表</text>
+<text x="216" y="165" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 结构变更与引擎同生共死</text>
+<rect x="54" y="190" width="148" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="128.0" y="212.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >I_S 不再读 .frm</text>
+<text x="128.0" y="232.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >[8.0]</text>
+<text x="216" y="211" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 小表多的库元数据慢</text>
+<text x="216" y="231" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 改查 DD 表，毫秒级</text>
+<rect x="54" y="256" width="148" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="128.0" y="278.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >ibd2sdi</text>
+<text x="128.0" y="298.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >替代 .frm</text>
+<text x="216" y="277" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 拷 .frm 就能修表</text>
+<text x="216" y="297" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 只能从 .ibd 抽 SDI</text>
+<text x="54" y="340" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >代价：mysql.ibd 成了核心；SHOW TABLE STATUS 带 86400 秒缓存</text>
+<rect x="500" y="84" width="420" height="286" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="514" y="106" font-size="13" fill="#2563eb" text-anchor="start" font-weight="600" >② 执行器：算法与语义各变一次</text>
+<rect x="514" y="124" width="148" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="588.0" y="146.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >Hash Join</text>
+<text x="588.0" y="166.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >[8.0.18+]</text>
+<text x="676" y="145" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 无索引 join 必打满 CPU</text>
+<text x="676" y="165" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 建表 + 探测，O(N+M)</text>
+<rect x="514" y="190" width="148" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="588.0" y="212.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >GROUP BY</text>
+<text x="588.0" y="232.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >8.0 起不隐式排序</text>
+<text x="676" y="211" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 GROUP BY 顺带排好序</text>
+<text x="676" y="231" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 顺序不保证，分页错行</text>
+<rect x="514" y="256" width="148" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="588.0" y="278.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >LATERAL 派生表</text>
+<text x="588.0" y="298.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >[8.0.14]</text>
+<text x="676" y="277" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 FROM 里不能引用外层</text>
+<text x="676" y="297" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 能写，但按外层行数放大</text>
+<text x="514" y="340" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >Hash Join 省的是内层重复扫描，驱动表全扫一分没少</text>
+<rect x="40" y="382" width="420" height="286" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="404" font-size="13" fill="#16a34a" text-anchor="start" font-weight="600" >③ 索引：四件武器，四种代价</text>
+<rect x="54" y="422" width="148" height="50" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="128.0" y="442.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >降序索引</text>
+<text x="128.0" y="462.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >[8.0]</text>
+<text x="216" y="443" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 DESC 只是被忽略的语法</text>
+<text x="216" y="463" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 混向排序才真的有用</text>
+<rect x="54" y="480" width="148" height="50" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="128.0" y="500.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >不可见索引</text>
+<text x="128.0" y="520.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >[8.0]</text>
+<text x="216" y="501" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 验证能否删只能先删</text>
+<text x="216" y="521" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 INVISIBLE 一周再 DROP</text>
+<rect x="54" y="538" width="148" height="50" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="128.0" y="558.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >函数索引</text>
+<text x="128.0" y="578.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >[8.0.13+]</text>
+<text x="216" y="559" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 列上套函数必然全扫</text>
+<text x="216" y="579" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 表达式一字不差才命中</text>
+<rect x="54" y="596" width="148" height="50" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="128.0" y="616.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >多值索引</text>
+<text x="128.0" y="636.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >[8.0.17+]</text>
+<text x="216" y="617" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 JSON 数组包含只能全扫</text>
+<text x="216" y="637" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 一项对多键，写入放大</text>
+<rect x="500" y="382" width="420" height="286" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="514" y="404" font-size="13" fill="#dc2626" text-anchor="start" font-weight="600" >④ 认证：升级当天的头号故障</text>
+<rect x="514" y="422" width="148" height="54" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="588.0" y="444.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >caching_sha2</text>
+<text x="588.0" y="464.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >[8.0] 默认</text>
+<text x="676" y="443" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 建连只有一次往返</text>
+<text x="676" y="463" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 首认证要 RSA 或 TLS</text>
+<rect x="514" y="488" width="148" height="54" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="588.0" y="510.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >老驱动</text>
+<text x="588.0" y="530.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >Connector/J 5.x</text>
+<text x="676" y="509" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 驱动不动也能连上</text>
+<text x="676" y="529" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 报插件无法加载</text>
+<rect x="514" y="554" width="148" height="54" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="588.0" y="576.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >native 插件</text>
+<text x="588.0" y="596.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >[8.4] 默认禁用</text>
+<text x="676" y="575" font-size="10.5" fill="#475569" text-anchor="start" font-weight="400" >旧 应急可改回 native</text>
+<text x="676" y="595" font-size="10.5" fill="#111827" text-anchor="start" font-weight="600" >新 要显式开启才能用</text>
+<text x="514" y="638" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >先摸清所有连接方的驱动版本，比升级完再逐个报错便宜</text>
+<path d="M 40 692 L 66 692" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="73" y="696" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >主流程 / 新事实</text>
+<path d="M 240 692 L 266 692" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="273" y="696" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >索引路径</text>
+<path d="M 400 692 L 426 692" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="433" y="696" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >危险失效点</text>
+<path d="M 560 692 L 586 692" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#m_e_475569)"/>
+<text x="593" y="696" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >“旧”＝从今天起不再可靠的判断</text>
+</svg>

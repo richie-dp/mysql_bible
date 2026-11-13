@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 740" width="960" height="740">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker></defs>
+<rect width="960" height="740" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 38-3　performance_schema 的三层：采集、消费、存储</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">内存只在第三层；前两层是开关，所以「关掉采集」是唯一能在线降开销的手段</text>
+<rect x="60" y="104" width="560" height="150" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="126" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >① 生产者　setup_instruments：每个采集点一个开关位</text>
+<rect x="76" y="148" width="150" height="62" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="151.0" y="174.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >statement/sql/*</text>
+<text x="151.0" y="194.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >语句层</text>
+<rect x="266" y="148" width="150" height="62" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="341.0" y="174.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >wait/io/file/*</text>
+<text x="341.0" y="194.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >文件 IO</text>
+<rect x="456" y="148" width="150" height="62" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="531.0" y="174.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >wait/synch/*</text>
+<text x="531.0" y="194.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >内部同步</text>
+<rect x="478" y="112" width="62.64" height="20" rx="10" ry="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1"/>
+<text x="509.32" y="126" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="600" >内存 ≈ 0</text>
+<rect x="60" y="290" width="560" height="160" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="312" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >② 消费者　setup_consumers：决定写不写明细表</text>
+<rect x="76" y="336" width="150" height="62" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="151.0" y="362.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >*_current</text>
+<text x="151.0" y="382.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >当前事件</text>
+<rect x="266" y="336" width="150" height="62" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="341.0" y="362.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >*_history</text>
+<text x="341.0" y="382.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每线程 N 条</text>
+<rect x="456" y="336" width="150" height="62" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="531.0" y="362.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >*_history_long</text>
+<text x="531.0" y="382.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >全局环形缓冲</text>
+<rect x="406" y="298" width="133.48" height="20" rx="10" ry="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1"/>
+<text x="472.74" y="312" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="600" >内存：条数 × 单条宽度</text>
+<rect x="60" y="490" width="560" height="160" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="512" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >③ 存储　performance_schema 表：内存真正花在这里</text>
+<rect x="72" y="536" width="250" height="62" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="197.0" y="562.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >events_statements_</text>
+<text x="197.0" y="582.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >summary_by_digest</text>
+<rect x="362" y="536" width="250" height="62" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="487.0" y="562.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >file_summary_</text>
+<text x="487.0" y="582.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >by_instance</text>
+<rect x="446" y="498" width="133.48" height="20" rx="10" ry="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1"/>
+<text x="512.74" y="512" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="600" >内存：行数 × 文本长度</text>
+<rect x="650" y="104" width="270" height="150" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.4"/>
+<text x="664" y="130" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >开关：可在线改</text>
+<text x="664" y="152" font-size="10" fill="#475569" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">UPDATE setup_instruments</text>
+<text x="664" y="168" font-size="10" fill="#475569" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">  SET ENABLED=&#x27;NO&#x27;</text>
+<text x="664" y="192" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >关掉 = 不采集，但不释放</text>
+<text x="664" y="210" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >已分配的表内存</text>
+<path d="M 620.0,179.0 L 650.0,179.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="650" y="290" width="270" height="160" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.4"/>
+<text x="664" y="316" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >条数上限（需重启）</text>
+<text x="664" y="338" font-size="10" fill="#475569" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">..._events_statements_</text>
+<text x="664" y="354" font-size="10" fill="#475569" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">   history_long_size</text>
+<text x="664" y="378" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >高 QPS 下环形缓冲只够</text>
+<text x="664" y="396" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >存几秒，不是归档</text>
+<path d="M 620.0,370.0 L 650.0,370.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="650" y="490" width="270" height="160" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.4"/>
+<text x="664" y="516" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >长度 × 行数（需重启）</text>
+<text x="664" y="538" font-size="9.5" fill="#475569" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">performance_schema_digests_size</text>
+<text x="664" y="554" font-size="9.5" fill="#475569" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">performance_schema_max_digest_length</text>
+<text x="664" y="578" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >两者相乘：调大一档</text>
+<text x="664" y="598" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >内存按乘法涨</text>
+<path d="M 620.0,570.0 L 650.0,570.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<path d="M 340.0,254.0 L 340.0,290.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="345.0" y="266.0" width="61.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="348.0" y="276.0" font-size="11" fill="#2563eb" text-anchor="start" font-weight="500" >交给消费者</text>
+<path d="M 340.0,450.0 L 340.0,490.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="345.0" y="464.0" width="39.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="348.0" y="474.0" font-size="11" fill="#2563eb" text-anchor="start" font-weight="500" >落到表</text>
+<text x="60" y="700" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >最小可用配置：留 global_instrumentation + thread_instrumentation 的 summary 层，关掉 stages 与 history_long。</text>
+</svg>

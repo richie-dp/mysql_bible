@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" width="960" height="700">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker></defs>
+<rect width="960" height="700" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 26-2　脑裂的三道闸门：每道挡住什么，又从哪漏过去</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">三道防线是叠加关系，不是替代关系；任何一道单独用，都有一条现成的绕行路径</text>
+<rect x="60" y="88" width="840" height="54" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="110.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >前提：老主没有被真正隔离——进程还在、连接还在、VIP 还能收包</text>
+<text x="480.0" y="130.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >此时提升新主，等于给第二个写入点发许可证</text>
+<rect x="60" y="170" width="250" height="28" rx="14.0" ry="14.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="185.0" y="187.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >防线 1｜VIP 漂移</text>
+<rect x="60" y="210" width="250" height="80" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="185.0" y="245.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >闸门</text>
+<text x="185.0" y="265.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >keepalived / VRRP</text>
+<rect x="60" y="310" width="250" height="78" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="185.0" y="344.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >新连接落到新主</text>
+<text x="185.0" y="364.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >客户端按 VIP 连</text>
+<rect x="60" y="408" width="250" height="86" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="185.0" y="446.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >ARP 缓存未过期</text>
+<text x="185.0" y="466.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >应用直连 IP 也绕过</text>
+<path d="M 185.0,494.0 L 185.0,530.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="5,4" marker-end="url(#m_e_dc2626)"/>
+<rect x="355" y="170" width="250" height="28" rx="14.0" ry="14.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="480.0" y="187.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >防线 2｜网关仲裁</text>
+<rect x="355" y="210" width="250" height="80" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="480.0" y="245.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >闸门</text>
+<text x="480.0" y="265.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >fencing / STONITH</text>
+<rect x="355" y="310" width="250" height="78" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="480.0" y="344.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >老主被强制断电</text>
+<text x="480.0" y="364.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >IPMI、交换机端口</text>
+<rect x="355" y="408" width="250" height="86" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="446.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >只撤 VIP 不断电</text>
+<text x="480.0" y="466.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >老主网卡还活着</text>
+<path d="M 480.0,494.0 L 480.0,530.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="5,4" marker-end="url(#m_e_dc2626)"/>
+<rect x="650" y="170" width="250" height="28" rx="14.0" ry="14.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="775.0" y="187.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >防线 3｜super_read_only</text>
+<rect x="650" y="210" width="250" height="80" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="775.0" y="245.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >闸门</text>
+<text x="775.0" y="265.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >只读围栏 [5.7.8+]</text>
+<rect x="650" y="310" width="250" height="78" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="775.0" y="344.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >新写入被拒绝</text>
+<text x="775.0" y="364.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >ERROR 1290</text>
+<rect x="650" y="408" width="250" height="86" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="775.0" y="446.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >已建立的事务</text>
+<text x="775.0" y="466.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >开启前的连接照常 COMMIT</text>
+<path d="M 775.0,494.0 L 775.0,530.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="5,4" marker-end="url(#m_e_dc2626)"/>
+<rect x="60" y="530" width="840" height="130" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="552" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >漏网路径：三道闸门都拦不住的三种组合</text>
+<text x="78" y="572" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >① 只读开启前已建立的连接：super_read_only 拒绝新语句，但不 kill 会话，未提交事务照常 COMMIT。</text>
+<text x="78" y="600" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >② 有 SUPER 权限的账号：read_only 挡不住，super_read_only 才挡；账号权限不收，围栏就是摆设。</text>
+<text x="78" y="628" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >③ 没有 fencing 的 VIP 漂移：漂移只是「多了一个入口」，不是「少了旧的」，老主网卡仍在收包。</text>
+<path d="M 60 668 L 86 668" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="93" y="672" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >挡得住</text>
+<path d="M 220 668 L 246 668" stroke="#dc2626" stroke-width="1.5" fill="none" stroke-dasharray="5,4" marker-end="url(#m_e_dc2626)"/>
+<text x="253" y="672" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >漏掉的路径</text>
+</svg>

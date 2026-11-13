@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" width="960" height="680">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker></defs>
+<rect width="960" height="680" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 45-1　两种架构的写入路径：网络上运的东西变了</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">上半：页在两地各写一次；下半：只有日志记录进网络，页由存储层物化</text>
+<rect x="40" y="78" width="880" height="246" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="100" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >① 自建主从：一次提交，两份完整数据页</text>
+<rect x="64" y="118" width="170" height="72" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="149.0" y="149.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >主库</text>
+<text x="149.0" y="169.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >改页 → redo → binlog</text>
+<path d="M 64 225 A 85.0 11 0 0 1 234 225 L 234 277 A 85.0 11 0 0 1 64 277 Z" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<path d="M 64 225 A 85.0 11 0 0 0 234 225" fill="none" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="149.0" y="249.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >主库数据盘</text>
+<text x="149.0" y="267.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >整份数据 + redo</text>
+<rect x="420" y="118" width="170" height="72" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="505.0" y="149.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >从库</text>
+<text x="505.0" y="169.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >收 binlog 再执行一遍</text>
+<path d="M 420 225 A 85.0 11 0 0 1 590 225 L 590 277 A 85.0 11 0 0 1 420 277 Z" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<path d="M 420 225 A 85.0 11 0 0 0 590 225" fill="none" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="505.0" y="249.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >从库数据盘</text>
+<text x="505.0" y="267.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >另一份完整数据</text>
+<path d="M 149.0,190.0 L 149.0,214.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<path d="M 505.0,190.0 L 505.0,214.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<path d="M 234.0,154.0 L 420.0,154.0" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<rect x="272.5" y="136.0" width="109.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="327.0" y="146.0" font-size="11" fill="#9333ea" text-anchor="middle" font-weight="500" >binlog（逻辑事件）</text>
+<rect x="650" y="118" width="240" height="100" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="770.0" y="163.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >写放大 = 页</text>
+<text x="770.0" y="183.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >页 16KB，两地各落一次盘</text>
+<text x="650" y="244" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >从库持有第二份完整数据，</text>
+<text x="650" y="264" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >扩容 = 全量拷贝 + 追增量</text>
+<rect x="40" y="350" width="880" height="256" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="372" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >② 存算分离：网络上传的只有 redo 记录，页由存储层物化</text>
+<rect x="64" y="394" width="180" height="76" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="154.0" y="427.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >主计算节点</text>
+<text x="154.0" y="447.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >只发 redo，不写页</text>
+<rect x="304" y="394" width="180" height="76" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="394.0" y="427.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >只读计算节点</text>
+<text x="394.0" y="447.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >回放同一份日志</text>
+<rect x="650" y="394" width="260" height="76" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="780.0" y="427.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >单 AZ 故障不影响写</text>
+<text x="780.0" y="447.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >4/6 与 3/6 的法定人数</text>
+<path d="M 64 539 A 280.0 11 0 0 1 624 539 L 624 583 A 280.0 11 0 0 1 64 583 Z" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<path d="M 64 539 A 280.0 11 0 0 0 624 539" fill="none" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="344.0" y="559.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >共享存储卷 · 6 副本 / 3 个可用区</text>
+<text x="344.0" y="577.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >写需 4/6 确认 · 读需 3/6 确认</text>
+<path d="M 154.0,470.0 L 154.0,528.0" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<rect x="159.0" y="493.0" width="58.8" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="162.0" y="503.0" font-size="11" fill="#9333ea" text-anchor="start" font-weight="500" >redo 记录</text>
+<path d="M 394.0,470.0 L 394.0,528.0" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<rect x="399.0" y="493.0" width="61.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="402.0" y="503.0" font-size="11" fill="#9333ea" text-anchor="start" font-weight="500" >读页并回放</text>
+<text x="650" y="500" font-size="11.5" fill="#111827" text-anchor="start" font-weight="600" >只读副本延迟的组成</text>
+<text x="650" y="520" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >自建：回放线程追不追得上</text>
+<text x="650" y="538" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >共享存储：日志何时到达</text>
+<text x="650" y="560" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >后者与算力无关（第 25 章失效）</text>
+<path d="M 64 620 L 90 620" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="97" y="624" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >数据页（整份副本）</text>
+<path d="M 300 620 L 326 620" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="333" y="624" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >日志记录 / redo</text>
+<path d="M 520 620 L 546 620" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="553" y="624" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >计算节点</text>
+</svg>

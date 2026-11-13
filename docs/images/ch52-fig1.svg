@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="620" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 52-1　事故分级与动作权限：级别决定能跳过哪一道审批</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">判定标准要能被监控数字直接命中；级别越高，允许的动作越激进，事后追认的要求也越硬</text>
+<rect x="48" y="92" width="204" height="46" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="150.0" y="110.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >P0</text>
+<text x="150.0" y="130.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >影响成交或资金</text>
+<rect x="48" y="146" width="204" height="274" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="60" y="174" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >判定标准</text>
+<text x="60" y="196" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >下单失败率 &gt; 5%</text>
+<text x="60" y="214" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >或资金接口不可用</text>
+<text x="60" y="254" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >谁在场</text>
+<text x="60" y="276" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >值班 + 业务负责人</text>
+<text x="60" y="294" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >业务方必须在线</text>
+<text x="60" y="332" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >允许的动作</text>
+<text x="60" y="354" font-size="9.8" fill="#dc2626" text-anchor="start" font-weight="600" >跳过变更审批</text>
+<text x="60" y="372" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >直接止血、先回滚</text>
+<text x="60" y="390" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >24 小时内补审批</text>
+<rect x="272" y="92" width="204" height="46" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="374.0" y="110.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >P1</text>
+<text x="374.0" y="130.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >影响部分用户可用</text>
+<rect x="272" y="146" width="204" height="274" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="284" y="174" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >判定标准</text>
+<text x="284" y="196" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >某功能整体不可用</text>
+<text x="284" y="214" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >或某地域不可用</text>
+<text x="284" y="254" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >谁在场</text>
+<text x="284" y="276" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >值班 + 模块 Owner</text>
+<text x="284" y="332" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >允许的动作</text>
+<text x="284" y="354" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >快速通道：单人审批</text>
+<text x="284" y="372" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >止血动作必须留记录</text>
+<text x="284" y="390" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >事后仍需复核</text>
+<rect x="496" y="92" width="204" height="46" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="598.0" y="110.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >P2</text>
+<text x="598.0" y="130.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >性能下降未破 SLA</text>
+<rect x="496" y="146" width="204" height="274" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="508" y="174" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >判定标准</text>
+<text x="508" y="196" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >P99 抬升</text>
+<text x="508" y="214" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >错误率没有变化</text>
+<text x="508" y="254" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >谁在场</text>
+<text x="508" y="276" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >值班即可</text>
+<text x="508" y="332" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >允许的动作</text>
+<text x="508" y="354" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >不允许跳审批</text>
+<text x="508" y="372" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >只做可回滚的调参</text>
+<text x="508" y="390" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >排到次日窗口</text>
+<rect x="720" y="92" width="204" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="822.0" y="110.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >P3</text>
+<text x="822.0" y="130.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >单点异常有兜底</text>
+<rect x="720" y="146" width="204" height="274" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="732" y="174" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >判定标准</text>
+<text x="732" y="196" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >单实例或单分片异常</text>
+<text x="732" y="214" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >有冗余、用户无感</text>
+<text x="732" y="254" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >谁在场</text>
+<text x="732" y="276" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >不必叫醒</text>
+<text x="732" y="294" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >记录后进迭代</text>
+<text x="732" y="332" font-size="9" fill="#6b7280" text-anchor="start" font-weight="600" >允许的动作</text>
+<text x="732" y="354" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >不占用故障窗口</text>
+<text x="732" y="372" font-size="9.8" fill="#111827" text-anchor="start" font-weight="400" >不做临时变更</text>
+<rect x="48" y="440" width="864" height="62" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="466.0" font-size="15" fill="#111827" text-anchor="middle" font-weight="600" >P0 可以不等审批就止血</text>
+<text x="480.0" y="486.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >代价是事后追认：动作、依据、审批人，24 小时内补齐</text>
+<text x="48" y="536" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >分级的用途不是决定上报谁，是决定这一次能跳过哪一道审批。</text>
+<path d="M 48 568 L 74 568" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="81" y="572" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >P0：跳审批直接止血 / P1：单人审批 / P2、P3：走完整流程</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" width="960" height="680">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker></defs>
+<rect width="960" height="680" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 48-1　四级账号的权限格子：每一格都写清「能」与「不能」</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">四格里最反直觉的是运维格——能改参数、能 KILL、能做备份，但不该能读业务表</text>
+<rect x="48" y="96" width="420" height="232" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="62" y="118" font-size="13" fill="#2563eb" text-anchor="start" font-weight="600" >① 应用只读</text>
+<rect x="62" y="130" width="188" height="182" rx="6" ry="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+<text x="72" y="150" font-size="10.5" fill="#16a34a" text-anchor="start" font-weight="600" >能做什么</text>
+<text x="74" y="174" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >SELECT 到指定库指定表</text>
+<text x="74" y="199" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >只连只读从库</text>
+<text x="74" y="224" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >通过视图收窄列</text>
+<rect x="266" y="130" width="188" height="182" rx="6" ry="6" fill="#ffffff" stroke="#fecaca" stroke-width="1.2"/>
+<text x="276" y="150" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="600" >不能做什么</text>
+<text x="278" y="174" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >SELECT 到 mysql 库</text>
+<text x="278" y="199" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >任何 INSERT/UPDATE</text>
+<text x="278" y="224" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >SELECT ... INTO OUTFILE</text>
+<rect x="492" y="96" width="420" height="232" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="506" y="118" font-size="13" fill="#2563eb" text-anchor="start" font-weight="600" >② 应用读写</text>
+<rect x="506" y="130" width="188" height="182" rx="6" ry="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+<text x="516" y="150" font-size="10.5" fill="#16a34a" text-anchor="start" font-weight="600" >能做什么</text>
+<text x="518" y="174" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >SELECT/INSERT/UPDATE</text>
+<text x="518" y="199" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >归档表的 DELETE</text>
+<text x="518" y="224" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >事务内锁行、批量写</text>
+<rect x="710" y="130" width="188" height="182" rx="6" ry="6" fill="#ffffff" stroke="#fecaca" stroke-width="1.2"/>
+<text x="720" y="150" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="600" >不能做什么</text>
+<text x="722" y="174" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >核心交易表的 DELETE</text>
+<text x="722" y="199" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >DROP / ALTER / TRUNCATE</text>
+<text x="722" y="224" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >FILE、SUPER、GRANT</text>
+<rect x="48" y="348" width="420" height="232" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="62" y="370" font-size="13" fill="#ea580c" text-anchor="start" font-weight="600" >③ 运维</text>
+<rect x="62" y="382" width="188" height="182" rx="6" ry="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+<text x="72" y="402" font-size="10.5" fill="#16a34a" text-anchor="start" font-weight="600" >能做什么</text>
+<text x="74" y="426" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >改参数、看状态变量</text>
+<text x="74" y="451" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >备份、KILL 会话</text>
+<text x="74" y="476" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >查 p_s 与慢日志</text>
+<rect x="266" y="382" width="188" height="182" rx="6" ry="6" fill="#ffffff" stroke="#fecaca" stroke-width="1.2"/>
+<text x="276" y="402" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="600" >不能做什么</text>
+<rect x="274" y="411" width="172" height="23" rx="4" ry="4" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<text x="280" y="426" font-size="10.5" fill="#ffffff" text-anchor="start" font-weight="600" >读业务表数据</text>
+<text x="278" y="451" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >改业务数据</text>
+<text x="278" y="476" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >把权限授给别人</text>
+<rect x="492" y="348" width="420" height="232" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="506" y="370" font-size="13" fill="#dc2626" text-anchor="start" font-weight="600" >④ DBA</text>
+<rect x="506" y="382" width="188" height="182" rx="6" ry="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.2"/>
+<text x="516" y="402" font-size="10.5" fill="#16a34a" text-anchor="start" font-weight="600" >能做什么</text>
+<text x="518" y="426" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >全库全表、恢复实例</text>
+<text x="518" y="451" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >建账号、授权与回收</text>
+<text x="518" y="476" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >主从切换与 DDL</text>
+<rect x="710" y="382" width="188" height="182" rx="6" ry="6" fill="#ffffff" stroke="#fecaca" stroke-width="1.2"/>
+<text x="720" y="402" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="600" >不能做什么</text>
+<text x="722" y="426" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >无审计的直连操作</text>
+<text x="722" y="451" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >单人执行高危 DDL</text>
+<text x="722" y="476" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >共享账号、长期不收回</text>
+<rect x="48" y="594" width="864" height="38" rx="6" ry="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="480" y="618" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >权限设计的目标不是防恶意，是把无意的破坏限制在一个格子里</text>
+<path d="M 48 660 L 74 660" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="81" y="664" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >允许</text>
+<path d="M 150 660 L 176 660" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="183" y="664" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >禁止 / 最常被破坏的一条</text>
+<path d="M 400 660 L 426 660" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="433" y="664" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >运维：权限最容易被「临时需要」撑大</text>
+</svg>

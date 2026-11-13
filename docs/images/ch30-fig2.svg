@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 590" width="960" height="590">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="590" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 30-2　五种分布式 ID 方案：四个维度，没有全优解</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">绿=优　橙=有代价　红=存在硬伤　灰=取决于实现</text>
+<rect x="40" y="96" width="180" height="40" rx="6" ry="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="130.0" y="120.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >方案</text>
+<rect x="224" y="96" width="170" height="40" rx="6" ry="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="309.0" y="120.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >单调性</text>
+<rect x="398" y="96" width="170" height="40" rx="6" ry="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="483.0" y="120.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >长度</text>
+<rect x="572" y="96" width="170" height="40" rx="6" ry="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="657.0" y="120.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >时钟依赖</text>
+<rect x="746" y="96" width="170" height="40" rx="6" ry="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="831.0" y="120.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >分片友好度</text>
+<rect x="40" y="140" width="180" height="52" rx="6" ry="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="130.0" y="161.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >号段模式</text>
+<text x="130.0" y="181.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >Leaf / segment</text>
+<rect x="224" y="140" width="170" height="52" rx="6" ry="6" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="309.0" y="170.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >趋势递增</text>
+<rect x="398" y="140" width="170" height="52" rx="6" ry="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="483.0" y="170.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >8B</text>
+<rect x="572" y="140" width="170" height="52" rx="6" ry="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="657.0" y="170.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >不依赖</text>
+<rect x="746" y="140" width="170" height="52" rx="6" ry="6" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="831.0" y="170.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >需 biz_tag</text>
+<rect x="40" y="196" width="180" height="52" rx="6" ry="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="130.0" y="217.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >雪花算法</text>
+<text x="130.0" y="237.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >Snowflake</text>
+<rect x="224" y="196" width="170" height="52" rx="6" ry="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="309.0" y="226.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >单机单调</text>
+<rect x="398" y="196" width="170" height="52" rx="6" ry="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="483.0" y="226.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >8B</text>
+<rect x="572" y="196" width="170" height="52" rx="6" ry="6" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="657.0" y="226.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >强依赖</text>
+<rect x="746" y="196" width="170" height="52" rx="6" ry="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="831.0" y="226.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >位内嵌</text>
+<rect x="40" y="252" width="180" height="52" rx="6" ry="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="130.0" y="273.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >UUIDv7</text>
+<text x="130.0" y="293.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >RFC 9562</text>
+<rect x="224" y="252" width="170" height="52" rx="6" ry="6" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="309.0" y="282.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >近似有序</text>
+<rect x="398" y="252" width="170" height="52" rx="6" ry="6" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="483.0" y="282.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >16B</text>
+<rect x="572" y="252" width="170" height="52" rx="6" ry="6" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="657.0" y="282.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >弱依赖</text>
+<rect x="746" y="252" width="170" height="52" rx="6" ry="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="831.0" y="282.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >前缀可路由</text>
+<rect x="40" y="308" width="180" height="52" rx="6" ry="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="130.0" y="329.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >UUIDv4</text>
+<text x="130.0" y="349.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >纯随机</text>
+<rect x="224" y="308" width="170" height="52" rx="6" ry="6" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="309.0" y="338.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >完全随机</text>
+<rect x="398" y="308" width="170" height="52" rx="6" ry="6" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="483.0" y="338.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >16B</text>
+<rect x="572" y="308" width="170" height="52" rx="6" ry="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="657.0" y="338.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >不依赖</text>
+<rect x="746" y="308" width="170" height="52" rx="6" ry="6" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="831.0" y="338.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >需映射表</text>
+<rect x="40" y="364" width="180" height="52" rx="6" ry="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="130.0" y="385.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >Redis INCR</text>
+<text x="130.0" y="405.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >单点自增</text>
+<rect x="224" y="364" width="170" height="52" rx="6" ry="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="309.0" y="394.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >严格递增</text>
+<rect x="398" y="364" width="170" height="52" rx="6" ry="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="483.0" y="394.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >8B</text>
+<rect x="572" y="364" width="170" height="52" rx="6" ry="6" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="657.0" y="394.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >不依赖</text>
+<rect x="746" y="364" width="170" height="52" rx="6" ry="6" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="831.0" y="394.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >单点写</text>
+<rect x="40" y="424" width="13" height="13" rx="3" ry="3" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.2"/>
+<text x="60" y="436" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >优</text>
+<rect x="128" y="424" width="13" height="13" rx="3" ry="3" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.2"/>
+<text x="148" y="436" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >有代价</text>
+<rect x="268" y="424" width="13" height="13" rx="3" ry="3" fill="#fef2f2" stroke="#fecaca" stroke-width="1.2"/>
+<text x="288" y="436" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >硬伤</text>
+<rect x="40" y="452" width="880" height="110" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="474" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >读法：四个维度问的是四件事</text>
+<text x="60" y="490" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >单调性决定写入落点与能否排序；时钟依赖决定机房断电重启后还能不能继续发号。</text>
+<text x="60" y="514" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >号段与 Redis 把唯一性押在中心存储，雪花押在机器 ID 分配，UUID 押在随机数的概率上。</text>
+<text x="60" y="538" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >分片友好度问的是：只拿到 ID，能不能算出它属于哪个分片？算不出，就得再维护一张映射表。</text>
+</svg>

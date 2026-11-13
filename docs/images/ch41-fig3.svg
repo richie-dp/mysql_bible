@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker></defs>
+<rect width="960" height="620" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 41-3　案例二的因果链：报警在末端，原因在起点</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">从导入到报警跨了 23 小时：报警在第 4 步，原因在第 1 步，中间三步都没有指标</text>
+<rect x="60" y="180" width="136" height="80" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="128.0" y="215.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >① 批量导入</text>
+<text x="128.0" y="235.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >200 万行历史订单</text>
+<text x="128.0" y="278" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">前一日 22:40</text>
+<rect x="73" y="292" width="110" height="22" rx="11.0" ry="11.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="128.0" y="306.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >无人看见</text>
+<text x="128.0" y="344" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >脚本跑完就退出</text>
+<text x="128.0" y="362" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >没人算过统计信息</text>
+<rect x="236" y="180" width="136" height="80" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="304.0" y="215.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >② 统计陈旧</text>
+<text x="304.0" y="235.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >基数停在旧分布</text>
+<text x="304.0" y="278" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">前一日 22:41</text>
+<rect x="249" y="292" width="110" height="22" rx="11.0" ry="11.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="304.0" y="306.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >无人看见</text>
+<text x="304.0" y="344" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >优化器仍按</text>
+<text x="304.0" y="362" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >旧分布估行数</text>
+<path d="M 196.0,220.0 L 236.0,220.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="412" y="180" width="136" height="80" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="480.0" y="215.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >③ IN 超阈值</text>
+<text x="480.0" y="235.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >越过 dive 上限</text>
+<text x="480.0" y="278" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">当日 21:05</text>
+<rect x="425" y="292" width="110" height="22" rx="11.0" ry="11.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="480.0" y="306.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >无人看见</text>
+<text x="480.0" y="344" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >默认阈值 200</text>
+<text x="480.0" y="362" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >没人监控长度</text>
+<path d="M 372.0,220.0 L 412.0,220.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="588" y="180" width="136" height="80" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="656.0" y="215.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >④ 计划变 ALL</text>
+<text x="656.0" y="235.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >扫 800 万行</text>
+<text x="656.0" y="278" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">当日 21:12</text>
+<rect x="601" y="292" width="110" height="22" rx="11.0" ry="11.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="656.0" y="306.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >报警在此</text>
+<text x="656.0" y="344" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >BP 热页被冲掉</text>
+<text x="656.0" y="362" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >命中率掉到 71%</text>
+<path d="M 548.0,220.0 L 588.0,220.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="764" y="180" width="136" height="80" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="832.0" y="215.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >⑤ 全站变慢</text>
+<text x="832.0" y="235.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >P99 抬到 3s</text>
+<text x="832.0" y="278" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">当日 21:13</text>
+<rect x="777" y="292" width="110" height="22" rx="11.0" ry="11.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="832.0" y="306.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >业务可见</text>
+<text x="832.0" y="344" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >QPS 掉了 90%</text>
+<text x="832.0" y="362" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >错误率反而低</text>
+<path d="M 724.0,220.0 L 764.0,220.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 656.0,180.0 L 656.0,130.0 L 128.0,130.0 L 128.0,180.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="6,4" marker-end="url(#m_e_dc2626)"/>
+<text x="480" y="120" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="600" >报警响在第四步，原因埋在第一步：中间隔了 23 小时</text>
+<rect x="60" y="400" width="840" height="100" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="422" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >这条链上的观测分布</text>
+<text x="84" y="440" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >五个环节里只有最后一个有现成指标。前四个的证据分别是：导入脚本的执行记录、统计信息的时间戳、IN 列表长度、EXPLAIN 输出。</text>
+<text x="84" y="468" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >前三个默认没人采集。复盘的任务不是解释第 5 步，是把第 1 步也变成一条曲线。</text>
+<path d="M 60 540 L 86 540" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="93" y="544" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >结果与报警</text>
+<path d="M 200 540 L 226 540" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="233" y="544" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >阈值被越过</text>
+<path d="M 340 540 L 366 540" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="373" y="544" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >隐患埋下</text>
+<path d="M 460 540 L 486 540" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#m_e_475569)"/>
+<text x="493" y="544" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >因果推进</text>
+</svg>

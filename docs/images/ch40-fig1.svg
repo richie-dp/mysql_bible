@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 800" width="960" height="800">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker></defs>
+<rect width="960" height="800" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 40-1　MySQL 进程的内存：一个大方块，加一个随连接数增长的乘法</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">buffer pool 是启动时按 chunk 分配好的固定预算；连接级 buffer 是执行期临时申请的，用完才还</text>
+<rect x="60" y="84" width="840" height="270" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >同一实例的内存占用（示意）：两条线，两种斜率</text>
+<path d="M 150.0,318.0 L 150.0,140.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 150.0,318.0 L 880.0,318.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<text x="150" y="128" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >内存 RSS</text>
+<text x="880" y="336" font-size="10.5" fill="#6b7280" text-anchor="end" font-weight="400" >时间 →</text>
+<path d="M 150.0,190.0 L 880.0,190.0" fill="none" stroke="#dc2626" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="6,4"/>
+<text x="874" y="182" font-size="10.5" fill="#dc2626" text-anchor="end" font-weight="400" >上限：物理内存或 cgroup limit</text>
+<path d="M 170.0,306.0 L 320.0,294.0 L 480.0,280.0 L 660.0,264.0 L 860.0,248.0" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="858" y="238" font-size="11" fill="#16a34a" text-anchor="end" font-weight="400" >BP 调大：缓升</text>
+<path d="M 170.0,306.0 L 300.0,296.0 L 370.0,268.0 L 420.0,228.0 L 452.0,190.0" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<text x="196" y="246" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >连接数暴涨</text>
+<text x="470" y="178" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >OOM Killer 在这里动手</text>
+<path d="M 150.0,340.0 L 176.0,340.0" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="184" y="344" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >调大 BP</text>
+<path d="M 280.0,340.0 L 306.0,340.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="314" y="344" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >连接级 buffer × 活跃连接</text>
+<rect x="60" y="394" width="840" height="250" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="416" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >同一台 128GB 机器，两种负载下的账本（条宽按比例）</text>
+<text x="84" y="434" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >① 日常：20 个活跃连接，sort_buffer_size = 2M</text>
+<rect x="84" y="444" width="600" height="40" rx="4" ry="4" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<rect x="684" y="444" width="125" height="40" rx="4" ry="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<rect x="809" y="444" width="6" height="40" rx="0" ry="0" fill="#dc2626" stroke="#dc2626" stroke-width="1.5"/>
+<rect x="815" y="444" width="69" height="40" rx="4" ry="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="384" y="469" font-size="12" fill="#9333ea" text-anchor="middle" font-weight="600" >buffer pool 96GB</text>
+<text x="746" y="468" font-size="9.5" fill="#475569" text-anchor="middle" font-weight="400" >page cache 20GB</text>
+<text x="849" y="468" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >其他 11GB</text>
+<text x="84" y="502" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >连接级 buffer 合计 1GB，在这张图上几乎看不见 —— 这正是它平时不被怀疑的原因</text>
+<text x="84" y="534" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >② 报表并发：180 个活跃连接，sort_buffer_size = 512M</text>
+<rect x="84" y="544" width="600" height="40" rx="4" ry="4" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<rect x="684" y="544" width="125" height="40" rx="4" ry="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<rect x="809" y="544" width="75" height="40" rx="4" ry="4" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="384" y="569" font-size="12" fill="#9333ea" text-anchor="middle" font-weight="600" >buffer pool 96GB（没变）</text>
+<text x="746" y="568" font-size="9.5" fill="#475569" text-anchor="middle" font-weight="400" >page cache 20GB</text>
+<text x="846" y="568" font-size="9" fill="#dc2626" text-anchor="middle" font-weight="400" >只剩 12GB</text>
+<text x="84" y="604" font-size="11.5" fill="#dc2626" text-anchor="start" font-weight="400" >实际需要 96 + 20 + 92 = 208GB，超出的 80GB 没有地方放，内核挑最大的进程杀</text>
+<text x="84" y="626" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >把 BP 从 96GB 调到 64GB，等于把省下的 32GB 交给这个乘法</text>
+<rect x="60" y="664" width="260" height="64" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="190.0" y="691.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >固定块</text>
+<text x="190.0" y="711.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >BP + log buffer，按 chunk 预分配</text>
+<rect x="360" y="664" width="260" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="490.0" y="691.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >浮动块</text>
+<text x="490.0" y="711.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每连接 buffer，按查询需要申请</text>
+<rect x="660" y="664" width="260" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="790.0" y="691.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >OOM 的第一嫌疑</text>
+<text x="790.0" y="711.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >sort_buffer_size × Threads_running</text>
+<path d="M 60 748 L 86 748" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="93" y="752" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >固定内存预算</text>
+<path d="M 60 768 L 86 768" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="93" y="772" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >浮动内存 / 超限风险</text>
+</svg>

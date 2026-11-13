@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" width="960" height="700">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="700" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 46-1　三档算法：差别只在「碰不碰行数据」</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">COPY 重写全部行；INPLACE 按操作决定要不要重写；INSTANT 只改数据字典，给表加一个行版本号</text>
+<rect x="40" y="92" width="280" height="500" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="56" y="104" width="248" height="44" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="180.0" y="121.0" font-size="16" fill="#111827" text-anchor="middle" font-weight="600" >COPY</text>
+<text x="180.0" y="141.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >建新表 → 逐行拷 → 换名</text>
+<rect x="56" y="166" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="180.0" y="188.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >原表 order_main</text>
+<text x="180.0" y="208.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >全程被 MDL X 独占</text>
+<rect x="56" y="236" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="180.0" y="258.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >新表 #sql-xxx</text>
+<text x="180.0" y="278.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >按目标结构建一张</text>
+<rect x="56" y="306" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="180.0" y="328.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >拷贝行数据</text>
+<text x="180.0" y="348.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >是，全表逐行重写</text>
+<rect x="56" y="376" width="248" height="54" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="180.0" y="398.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >并发 DML</text>
+<text x="180.0" y="418.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >不允许，读写都停</text>
+<rect x="56" y="446" width="248" height="54" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="180.0" y="468.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >耗时量级</text>
+<text x="180.0" y="488.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >与表大小成正比</text>
+<rect x="56" y="516" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="180.0" y="538.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >一句话</text>
+<text x="180.0" y="558.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >最慢，却最常被静默选中</text>
+<rect x="340" y="92" width="280" height="500" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="356" y="104" width="248" height="44" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480.0" y="121.0" font-size="16" fill="#111827" text-anchor="middle" font-weight="600" >INPLACE</text>
+<text x="480.0" y="141.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >在原表上做，增量回放</text>
+<rect x="356" y="166" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="480.0" y="188.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >原表 order_main</text>
+<text x="480.0" y="208.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >原地改，或原地重建</text>
+<rect x="356" y="236" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="480.0" y="258.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >新表 #sql-xxx</text>
+<text x="480.0" y="278.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >只有重建时才有</text>
+<rect x="356" y="306" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="480.0" y="328.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >拷贝行数据</text>
+<text x="480.0" y="348.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >重建类要，加索引不要</text>
+<rect x="356" y="376" width="248" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480.0" y="398.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >并发 DML</text>
+<text x="480.0" y="418.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >允许，增量进 online log</text>
+<rect x="356" y="446" width="248" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480.0" y="468.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >耗时量级</text>
+<text x="480.0" y="488.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >重建类与表大小成正比</text>
+<rect x="356" y="516" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="480.0" y="538.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >一句话</text>
+<text x="480.0" y="558.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >不重建的那部分才叫真在线</text>
+<rect x="640" y="92" width="280" height="500" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="656" y="104" width="248" height="44" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="780.0" y="121.0" font-size="16" fill="#111827" text-anchor="middle" font-weight="600" >INSTANT</text>
+<text x="780.0" y="141.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >只改元数据，不碰行</text>
+<rect x="656" y="166" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="780.0" y="188.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >原表 order_main</text>
+<text x="780.0" y="208.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >只改数据字典</text>
+<rect x="656" y="236" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="780.0" y="258.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >新表</text>
+<text x="780.0" y="278.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >不建，没有临时表</text>
+<rect x="656" y="306" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="780.0" y="328.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >拷贝行数据</text>
+<text x="780.0" y="348.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >一行都不碰</text>
+<rect x="656" y="376" width="248" height="54" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="780.0" y="398.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >并发 DML</text>
+<text x="780.0" y="418.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >允许</text>
+<rect x="656" y="446" width="248" height="54" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="780.0" y="468.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >耗时量级</text>
+<text x="780.0" y="488.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >与表大小无关</text>
+<rect x="656" y="516" width="248" height="54" rx="8" ry="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="780.0" y="538.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >一句话</text>
+<text x="780.0" y="558.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >代价挪到了每一次读老行</text>
+<rect x="40" y="612" width="880" height="56" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="480.0" y="635.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >分界不是新旧，是「碰不碰行数据」</text>
+<text x="480.0" y="655.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >COPY 重写每一行 · INPLACE 按操作决定 · INSTANT 一行不碰，只加一个 7 位行版本号</text>
+</svg>

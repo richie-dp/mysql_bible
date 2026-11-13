@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 800" width="960" height="800">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_0d9488" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#0d9488"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="800" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 41-1　十个案例的导航矩阵：先认类型，再找信号，最后回看章节</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">类型 A 把结果当原因 / B 把局部当全局 / C 把配置当银弹；同一类型的处置动作天然不同</text>
+<text x="80" y="92" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >案例</text>
+<text x="336" y="92" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >类型</text>
+<text x="400" y="92" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >当时唯一有效的信号</text>
+<text x="740" y="92" font-size="11" fill="#6b7280" text-anchor="start" font-weight="600" >回看章节</text>
+<rect x="56" y="104" width="848" height="56" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="66" y="112" width="246" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="189.0" y="136.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >① 连接数被打满</text>
+<rect x="322" y="120" width="50" height="24" rx="12.0" ry="12.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="347.0" y="136.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >A</text>
+<rect x="386" y="112" width="330" height="40" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="551.0" y="135.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" >Sleep 上千秒，Running 个位数</text>
+<rect x="726" y="112" width="168" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="810.0" y="135.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >第 21·37·40 章</text>
+<rect x="56" y="168" width="848" height="56" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="66" y="176" width="246" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="189.0" y="200.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >② QPS 骤降 90%</text>
+<rect x="322" y="184" width="50" height="24" rx="12.0" ry="12.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="347.0" y="200.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >A</text>
+<rect x="386" y="176" width="330" height="40" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="551.0" y="199.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" >计划 range→ALL，物理读暴涨</text>
+<rect x="726" y="176" width="168" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="810.0" y="199.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >第 10·11·40 章</text>
+<rect x="56" y="232" width="848" height="56" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="66" y="240" width="246" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="189.0" y="264.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >③ RT 周期性抖动</text>
+<rect x="322" y="248" width="50" height="24" rx="12.0" ry="12.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="347.0" y="264.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >A</text>
+<rect x="386" y="240" width="330" height="40" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="551.0" y="263.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" >wait_free 与 checkpoint 年龄</text>
+<rect x="726" y="240" width="168" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="810.0" y="263.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >第 4·39·40 章</text>
+<rect x="56" y="296" width="848" height="56" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="66" y="304" width="246" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="189.0" y="328.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >④ 主从延迟 6 小时</text>
+<rect x="322" y="312" width="50" height="24" rx="12.0" ry="12.0" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="347.0" y="328.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >B</text>
+<rect x="386" y="304" width="330" height="40" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="551.0" y="327.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" >位点成台阶，无主键表回放</text>
+<rect x="726" y="304" width="168" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="810.0" y="327.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >第 22·25·30 章</text>
+<rect x="56" y="360" width="848" height="56" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="66" y="368" width="246" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="189.0" y="392.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >⑤ 全站锁死</text>
+<rect x="322" y="376" width="50" height="24" rx="12.0" ry="12.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="347.0" y="392.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >A</text>
+<rect x="386" y="368" width="330" height="40" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="551.0" y="391.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" >GRANTED 挂在 Sleep 线程上</text>
+<rect x="726" y="368" width="168" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="810.0" y="391.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >第 18·21·36 章</text>
+<rect x="56" y="424" width="848" height="56" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="66" y="432" width="246" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="189.0" y="456.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >⑥ 死锁风暴</text>
+<rect x="322" y="440" width="50" height="24" rx="12.0" ry="12.0" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="347.0" y="456.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >C</text>
+<rect x="386" y="432" width="330" height="40" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="551.0" y="455.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" >两个事务加锁顺序刚好相反</text>
+<rect x="726" y="432" width="168" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="810.0" y="455.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >第 19·20 章</text>
+<rect x="56" y="488" width="848" height="56" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="66" y="496" width="246" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="189.0" y="520.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >⑦ 磁盘爆满</text>
+<rect x="322" y="504" width="50" height="24" rx="12.0" ry="12.0" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="347.0" y="520.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >B</text>
+<rect x="386" y="496" width="330" height="40" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="551.0" y="519.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" >undo 几百 G，history 千万级</text>
+<rect x="726" y="496" width="168" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="810.0" y="519.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >第 3·5·28·35 章</text>
+<rect x="56" y="552" width="848" height="56" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="66" y="560" width="246" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="189.0" y="584.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >⑧ 内存 OOM</text>
+<rect x="322" y="568" width="50" height="24" rx="12.0" ry="12.0" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="347.0" y="584.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >A</text>
+<rect x="386" y="560" width="330" height="40" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="551.0" y="583.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" >排序与临时表内存 × 并发数</text>
+<rect x="726" y="560" width="168" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="810.0" y="583.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >第 14·37·40 章</text>
+<rect x="56" y="616" width="848" height="56" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="66" y="624" width="246" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="189.0" y="648.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >⑨ 数据不一致</text>
+<rect x="322" y="632" width="50" height="24" rx="12.0" ry="12.0" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="347.0" y="648.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >C</text>
+<rect x="386" y="624" width="330" height="40" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="551.0" y="647.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" >半同步状态 OFF，延迟却是 0</text>
+<rect x="726" y="624" width="168" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="810.0" y="647.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >第 24·26·37 章</text>
+<rect x="56" y="680" width="848" height="56" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="66" y="688" width="246" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="189.0" y="712.375" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >⑩ 误删 40 万行</text>
+<rect x="322" y="696" width="50" height="24" rx="12.0" ry="12.0" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="347.0" y="712.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >C</text>
+<rect x="386" y="688" width="330" height="40" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="551.0" y="711.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" >全备 + binlog，stop-position</text>
+<rect x="726" y="688" width="168" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="810.0" y="711.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >第 28·48 章</text>
+<path d="M 60 752 L 86 752" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="93" y="756" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >A 把结果当原因：指标动了就修这一层</text>
+<path d="M 60 774 L 86 774" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="93" y="778" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >B 把局部当全局：加一个更大号的同一层</text>
+<path d="M 560 752 L 586 752" stroke="#0d9488" stroke-width="1.5" fill="none" marker-end="url(#m_e_0d9488)"/>
+<text x="593" y="756" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >C 把配置当银弹：好了就说参数对了</text>
+<path d="M 560 774 L 586 774" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#m_e_475569)"/>
+<text x="593" y="778" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >导航：类型决定先查什么，章节决定翻哪一页</text>
+</svg>

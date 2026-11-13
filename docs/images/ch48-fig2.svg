@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="620" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 48-2　三道屏障各自挡住什么：越往里，越接近明文</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">三者不能互相替代；任意一道被当成「我们加密了」，另外两道就会失守</text>
+<rect x="196" y="92" width="716" height="444" rx="14" ry="14" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.6"/>
+<rect x="264" y="156" width="580" height="322" rx="14" ry="14" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.6"/>
+<rect x="332" y="220" width="444" height="196" rx="14" ry="14" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.6"/>
+<text x="210" y="118" font-size="12" fill="#ea580c" text-anchor="start" font-weight="600" >① TDE 表空间加密</text>
+<text x="360" y="118" font-size="10.5" fill="#16a34a" text-anchor="start" font-weight="400" >挡住：磁盘、备份文件被整块拷走</text>
+<text x="210" y="514" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="400" >挡不住：拿着一个合法账号连上来的人</text>
+<text x="278" y="182" font-size="12" fill="#2563eb" text-anchor="start" font-weight="600" >② 账号权限 + 列级加密</text>
+<text x="452" y="182" font-size="10.5" fill="#16a34a" text-anchor="start" font-weight="400" >挡住：越权 SQL，以及读了也不懂的列</text>
+<text x="278" y="466" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="400" >挡不住：本来就该读这些列的人</text>
+<text x="346" y="246" font-size="12" fill="#16a34a" text-anchor="start" font-weight="600" >③ 脱敏视图</text>
+<text x="432" y="246" font-size="10.5" fill="#16a34a" text-anchor="start" font-weight="400" >挡住：联调与报表看到全量手机号</text>
+<text x="346" y="404" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="400" >挡不住：基表权限没收回，视图等于白建</text>
+<rect x="404" y="264" width="300" height="84" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="554.0" y="301.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >敏感字段的明文</text>
+<text x="554.0" y="321.0" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >卡号 / 手机号 / 身份证号</text>
+<path d="M 118.0,520.0 L 118.0,132.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="5,4" marker-end="url(#m_e_475569)"/>
+<text x="118" y="120" font-size="10.5" fill="#6b7280" text-anchor="middle" font-weight="400" >越往里越窄</text>
+<text x="48" y="556" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >外层只挡「盘」</text>
+<text x="48" y="576" font-size="11" fill="#111827" text-anchor="start" font-weight="600" >内层才挡「人」</text>
+<path d="M 48 600 L 74 600" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="81" y="604" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >存储侧</text>
+<path d="M 180 600 L 206 600" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="213" y="604" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >权限与密钥</text>
+<path d="M 330 600 L 356 600" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="363" y="604" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >展示层</text>
+<path d="M 460 600 L 486 600" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="493" y="604" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >挡不住的部分</text>
+</svg>

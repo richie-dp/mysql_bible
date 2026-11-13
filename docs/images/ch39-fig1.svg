@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" width="960" height="760">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="760" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 39-1　SHOW ENGINE INNODB STATUS 的分段地图</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">按排障价值排序，不按输出顺序：四段必看、三段按需、一段可跳过</text>
+<text x="286" y="96" font-size="11" fill="#475569" text-anchor="end" font-weight="600" >这里能回答什么</text>
+<text x="344" y="96" font-size="11" fill="#475569" text-anchor="start" font-weight="600" >段名（按输出顺序）</text>
+<text x="672" y="96" font-size="11" fill="#475569" text-anchor="start" font-weight="600" >判读次序与入口字段</text>
+<line x1="303" y1="112" x2="303" y2="660" stroke="#d1d5db" stroke-width="1.2" stroke-dasharray="5,5"/>
+<text x="303" y="678" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >输出从上到下</text>
+<rect x="330" y="112" width="330" height="58" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="495.0" y="144.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">BACKGROUND THREAD</text>
+<text x="286" y="146" font-size="10.5" fill="#111827" text-anchor="end" font-weight="400" >主线程在忙什么</text>
+<rect x="672" y="122" width="36.0" height="20" rx="10" ry="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+<text x="690.0" y="136" font-size="10" fill="#475569" text-anchor="middle" font-weight="600" >跳过</text>
+<text x="672" y="158" font-size="9.5" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">只有 loops 三段计数</text>
+<rect x="330" y="182" width="330" height="58" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="495.0" y="214.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">SEMAPHORES</text>
+<text x="286" y="216" font-size="10.5" fill="#111827" text-anchor="end" font-weight="400" >内部在争哪把锁</text>
+<rect x="672" y="192" width="47.2" height="20" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+<text x="695.6" y="206" font-size="10" fill="#dc2626" text-anchor="middle" font-weight="600" >② 必看</text>
+<text x="672" y="228" font-size="9.5" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">OS waits 在不在涨</text>
+<rect x="330" y="252" width="330" height="58" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="495.0" y="284.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">TRANSACTIONS</text>
+<text x="286" y="286" font-size="10.5" fill="#111827" text-anchor="end" font-weight="400" >谁在改、改了多久</text>
+<rect x="672" y="262" width="47.2" height="20" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+<text x="695.6" y="276" font-size="10" fill="#dc2626" text-anchor="middle" font-weight="600" >① 必看</text>
+<text x="672" y="298" font-size="9.5" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">undo log entries</text>
+<rect x="330" y="322" width="330" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="495.0" y="354.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">FILE I/O</text>
+<text x="286" y="356" font-size="10.5" fill="#111827" text-anchor="end" font-weight="400" >IO 是排队还是闲</text>
+<rect x="672" y="332" width="36.0" height="20" rx="10" ry="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+<text x="690.0" y="346" font-size="10" fill="#2563eb" text-anchor="middle" font-weight="600" >按需</text>
+<text x="672" y="368" font-size="9.5" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">pending aio / fsync</text>
+<rect x="330" y="392" width="330" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="495.0" y="424.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">INSERT BUFFER AND ADAPTIVE HASH INDEX</text>
+<text x="286" y="426" font-size="10.5" fill="#111827" text-anchor="end" font-weight="400" >写放大有多大</text>
+<rect x="672" y="402" width="36.0" height="20" rx="10" ry="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+<text x="690.0" y="416" font-size="10" fill="#2563eb" text-anchor="middle" font-weight="600" >按需</text>
+<text x="672" y="438" font-size="9.5" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">merges 与 size 的差</text>
+<rect x="330" y="462" width="330" height="58" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="495.0" y="494.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">LOG</text>
+<text x="286" y="496" font-size="10.5" fill="#111827" text-anchor="end" font-weight="400" >checkpoint 落后多远</text>
+<rect x="672" y="472" width="47.2" height="20" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+<text x="695.6" y="486" font-size="10" fill="#dc2626" text-anchor="middle" font-weight="600" >④ 必看</text>
+<text x="672" y="508" font-size="9.5" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">LSN − Last checkpoint</text>
+<rect x="330" y="532" width="330" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="495.0" y="564.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">BUFFER POOL AND MEMORY</text>
+<text x="286" y="566" font-size="10.5" fill="#111827" text-anchor="end" font-weight="400" >脏页与命中率</text>
+<rect x="672" y="542" width="36.0" height="20" rx="10" ry="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+<text x="690.0" y="556" font-size="10" fill="#2563eb" text-anchor="middle" font-weight="600" >按需</text>
+<text x="672" y="578" font-size="9.5" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">old 区占比、脏页数</text>
+<rect x="330" y="602" width="330" height="58" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="495.0" y="634.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">ROW OPERATIONS</text>
+<text x="286" y="636" font-size="10.5" fill="#111827" text-anchor="end" font-weight="400" >入口堵没堵</text>
+<rect x="672" y="612" width="47.2" height="20" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+<text x="695.6" y="626" font-size="10" fill="#dc2626" text-anchor="middle" font-weight="600" >③ 必看</text>
+<text x="672" y="648" font-size="9.5" fill="#6b7280" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">queries in queue</text>
+<text x="60" y="706" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >读这份输出的次序由「能不能定方向」决定，与打印顺序无关；认字段名，不要认行号。</text>
+<text x="60" y="728" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >同一份输出里快照值与累计值混着：ACTIVE 22 sec 是此刻，Number of rows read 是自启动累计。</text>
+</svg>

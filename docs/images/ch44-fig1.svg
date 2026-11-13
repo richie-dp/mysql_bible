@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker></defs>
+<rect width="960" height="720" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 44-1　一条 SQL 的两个世界：Server 层不知道 B+ 树，引擎不知道你要干嘛</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">左边每一步都在 sql/，右边每一步都在 storage/innobase/；两列之间只隔着 handler 这一道门</text>
+<rect x="40" y="100" width="400" height="556" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="122" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >Server 层　sql/</text>
+<rect x="520" y="100" width="400" height="556" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="534" y="122" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >InnoDB　storage/innobase/</text>
+<path d="M 480.0,104.0 L 480.0,652.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="6,4"/>
+<rect x="410" y="74" width="140" height="24" rx="12.0" ry="12.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="480.0" y="89.85" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >handler 接口</text>
+<rect x="60" y="140" width="360" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="167.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">mysql_execute_command</text>
+<text x="240.0" y="187.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >sql/sql_parse.cc</text>
+<rect x="60" y="236" width="360" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="263.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">JOIN::optimize</text>
+<text x="240.0" y="283.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >sql/sql_optimizer.cc　选表 / 选索引 / 算代价</text>
+<rect x="60" y="332" width="360" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="359.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">JOIN::exec</text>
+<text x="240.0" y="379.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >按执行计划驱动算子</text>
+<rect x="60" y="428" width="360" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="455.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">do_select</text>
+<text x="240.0" y="475.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >sql/sql_executor.cc　逐行取、逐行判</text>
+<rect x="60" y="524" width="360" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="240.0" y="551.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">handler::ha_index_read_map</text>
+<text x="240.0" y="571.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >sql/handler.cc　跨层调用点</text>
+<rect x="540" y="236" width="360" height="64" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="720.0" y="263.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">ha_innobase::index_read</text>
+<text x="720.0" y="283.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >handler/ha_innodb.cc</text>
+<rect x="540" y="332" width="360" height="64" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="720.0" y="359.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">row_search_mvcc</text>
+<text x="720.0" y="379.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >row/row0sel.cc　判可见性、做回表</text>
+<rect x="540" y="428" width="360" height="64" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="720.0" y="455.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">btr_cur_search_to_nth_level</text>
+<text x="720.0" y="475.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >btr/btr0cur.cc　逐层下降</text>
+<rect x="540" y="524" width="360" height="64" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="720.0" y="551.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">mtr_t::commit</text>
+<text x="720.0" y="571.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >mtr/mtr0mtr.cc　写 redo、放页锁</text>
+<path d="M 240.0,204.0 L 240.0,236.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 240.0,300.0 L 240.0,332.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 240.0,396.0 L 240.0,428.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 240.0,492.0 L 240.0,524.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 720.0,300.0 L 720.0,332.0" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<path d="M 720.0,396.0 L 720.0,428.0" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<path d="M 720.0,492.0 L 720.0,524.0" fill="none" stroke="#9333ea" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<path d="M 420.0,556.0 L 500.0,556.0 L 500.0,268.0 L 540.0,268.0" fill="none" stroke="#475569" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<text x="60" y="626" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >这一侧只认识执行计划：读哪个索引、什么方向、给几行</text>
+<text x="540" y="626" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >这一侧只认识页与记录：在哪个页、加不加锁、算不算可见</text>
+<text x="540" y="166" font-size="10.5" fill="#475569" text-anchor="start" font-weight="600" >跨过这道门，引擎只收到三件事：</text>
+<text x="540" y="190" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >① 用哪个索引　② 往哪个方向　③ 要不要加锁</text>
+<text x="540" y="214" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >它不知道这些行是给谁看的、为什么要看</text>
+<path d="M 40 686 L 66 686" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="73" y="690" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >Server 层执行</text>
+<path d="M 220 686 L 246 686" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="253" y="690" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >引擎层读取</text>
+<path d="M 400 686 L 426 686" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="433" y="690" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >写入落盘</text>
+<path d="M 560 686 L 586 686" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#m_e_475569)"/>
+<text x="593" y="690" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >跨层调用的唯一入口</text>
+</svg>

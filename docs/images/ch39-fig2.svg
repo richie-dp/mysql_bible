@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="580" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 39-2　queries inside InnoDB 与 queries in queue 的四种组合</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">两个数是入口的读数；配上看得到的 CPU，才分得清「在算」和「在等名额」</text>
+<rect x="60" y="110" width="400" height="155" rx="10" ry="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.6"/>
+<text x="78" y="140" font-size="11.5" fill="#16a34a" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">inside 12, queue 0</text>
+<text x="442" y="140" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >CPU 31%</text>
+<text x="78" y="172" font-size="14" fill="#111827" text-anchor="start" font-weight="600" >正常：有活干，不排队</text>
+<text x="78" y="200" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >InnoDB 内部在执行，入口没有积压。</text>
+<text x="78" y="238" font-size="10.5" fill="#16a34a" text-anchor="start" font-weight="500" >→ 继续看 SQL 与慢日志</text>
+<rect x="500" y="110" width="400" height="155" rx="10" ry="10" fill="#fef2f2" stroke="#fecaca" stroke-width="1.6"/>
+<text x="518" y="140" font-size="11.5" fill="#dc2626" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">inside 64, queue 87</text>
+<text x="882" y="140" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >CPU 28%</text>
+<text x="518" y="172" font-size="14" fill="#111827" text-anchor="start" font-weight="600" >入口排队：名额不够</text>
+<text x="518" y="200" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >并发超过 innodb_thread_concurrency 的允许值。</text>
+<text x="518" y="238" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="500" >→ 先查这个参数，别加 CPU</text>
+<rect x="60" y="305" width="400" height="155" rx="10" ry="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.6"/>
+<text x="78" y="335" font-size="11.5" fill="#475569" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">inside 0, queue 0</text>
+<text x="442" y="335" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >CPU 12%</text>
+<text x="78" y="367" font-size="14" fill="#111827" text-anchor="start" font-weight="600" >不在 InnoDB 内部</text>
+<text x="78" y="395" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >线程在 Server 层、网络，或者在等行锁。</text>
+<text x="78" y="433" font-size="10.5" fill="#475569" text-anchor="start" font-weight="500" >→ 转 PROCESSLIST 与 data_lock_waits</text>
+<rect x="500" y="305" width="400" height="155" rx="10" ry="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.6"/>
+<text x="518" y="335" font-size="11.5" fill="#ea580c" text-anchor="start" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">inside 40, queue 0</text>
+<text x="882" y="335" font-size="10" fill="#6b7280" text-anchor="end" font-weight="400" >CPU 88%</text>
+<text x="518" y="367" font-size="14" fill="#111827" text-anchor="start" font-weight="600" >真在算：瓶颈在 SQL</text>
+<text x="518" y="395" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >没有排队，线程确实在消耗 CPU 干活。</text>
+<text x="518" y="433" font-size="10.5" fill="#ea580c" text-anchor="start" font-weight="500" >→ 看执行计划与扫描行数</text>
+<text x="60" y="520" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >queue &gt; 0 是入口问题（限流或内部 latch），inside &gt; 0 且 CPU 高是计算问题，两个 0 而业务在等是别处的问题。</text>
+<text x="60" y="544" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >只看一处数字就会误判：同样 queue 为 0，CPU 88% 和 CPU 12% 是两个完全不同的结论。</text>
+</svg>

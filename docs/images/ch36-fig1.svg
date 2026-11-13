@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="580" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 36-1　三层定位法：从业务指标往下收敛</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">每一层只排除一类原因；反过来从系统指标往上猜，永远落不到具体 SQL</text>
+<text x="60" y="82" font-size="11.5" fill="#475569" text-anchor="start" font-weight="600" >这一层能排除什么</text>
+<rect x="300" y="104" width="320" height="92" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="460.0" y="145.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >① 业务指标</text>
+<text x="460.0" y="165.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >P99 RT ／ 错误率 ／ QPS</text>
+<rect x="310" y="236" width="300" height="104" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="460.0" y="283.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >② DB 指标</text>
+<text x="460.0" y="303.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >Threads_running ／ 锁等待 ／ 命中率</text>
+<rect x="320" y="380" width="280" height="92" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="460.0" y="421.0" font-size="14" fill="#111827" text-anchor="middle" font-weight="600" >③ 系统指标</text>
+<text x="460.0" y="441.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >CPU us/sy/wa ／ await ／ swap</text>
+<path d="M 460.0,196.0 L 460.0,236.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="465.0" y="210.0" width="72.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="468.0" y="220.0" font-size="11" fill="#2563eb" text-anchor="start" font-weight="500" >还慢，往下走</text>
+<path d="M 460.0,340.0 L 460.0,380.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="465.0" y="354.0" width="94.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="468.0" y="364.0" font-size="11" fill="#2563eb" text-anchor="start" font-weight="500" >还不定位，再往下</text>
+<text x="60" y="128" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >排除：不是全局故障</text>
+<text x="60" y="148" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >定位到接口、商户、时刻</text>
+<text x="60" y="262" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >排除：SQL 慢 ／ 锁 ／ 容量</text>
+<text x="60" y="282" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >决定要不要拉 EXPLAIN</text>
+<text x="60" y="406" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >排除：资源瓶颈</text>
+<text x="60" y="426" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >但给不出「哪条 SQL」</text>
+<rect x="660" y="104" width="260" height="400" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="674" y="126" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >反向：从系统指标往上猜</text>
+<path d="M 690.0,480.0 L 690.0,150.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="5,4" marker-end="url(#m_e_dc2626)"/>
+<text x="706" y="470" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="600" >↑ 方向相反</text>
+<text x="706" y="185" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >CPU 不高 → 结论被误读</text>
+<text x="706" y="203" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >成「数据库没问题」</text>
+<text x="706" y="250" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >系统指标只证明资源够</text>
+<text x="706" y="268" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >给不出下一步查什么</text>
+<text x="706" y="315" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >等你看完 iostat</text>
+<text x="706" y="333" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >锁等待已积压 20 分钟</text>
+<text x="60" y="545" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >三层不是三个仪表盘，而是一条排除链：上层给方向，下层给证据；跳层就是从结论倒推原因。</text>
+</svg>

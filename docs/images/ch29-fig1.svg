@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" width="960" height="480">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker></defs>
+<rect width="960" height="480" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 29-1　一行订单记录的字节布局：行内 83 字节，TEXT 只剩指针</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">DYNAMIC 行格式、utf8mb4、所有列 NOT NULL（NULL 位图 0 字节）；取 order_no 为 14 字节 ASCII</text>
+<rect x="40" y="82" width="880" height="150" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="104" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >主键页内的一条记录（记录头 → 长度列表 → 列数据 → 隐藏列）</text>
+<text x="94.0" y="118" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >记录头</text>
+<rect x="58" y="126" width="72" height="80" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="94.0" y="161.0" font-size="9" fill="#111827" text-anchor="middle" font-weight="600" >5 B</text>
+<text x="94.0" y="181.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >状态位</text>
+<text x="190.0" y="118" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >变长长度列表</text>
+<rect x="148" y="126" width="84" height="80" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="190.0" y="161.0" font-size="9" fill="#111827" text-anchor="middle" font-weight="600" >4 B</text>
+<text x="190.0" y="181.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >2 + 2</text>
+<text x="287.0" y="118" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >id</text>
+<rect x="250" y="126" width="74" height="80" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="287.0" y="161.0" font-size="9" fill="#111827" text-anchor="middle" font-weight="600" >BIGINT</text>
+<text x="287.0" y="181.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >8 B</text>
+<text x="392.0" y="118" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >amount</text>
+<rect x="342" y="126" width="100" height="80" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="392.0" y="161.0" font-size="9" fill="#111827" text-anchor="middle" font-weight="600" >DECIMAL(18,2)</text>
+<text x="392.0" y="181.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >9 B</text>
+<text x="512.0" y="118" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >order_no</text>
+<rect x="460" y="126" width="104" height="80" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="512.0" y="161.0" font-size="9" fill="#111827" text-anchor="middle" font-weight="600" >VARCHAR(64)</text>
+<text x="512.0" y="181.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >2 + 14 B</text>
+<text x="624.0" y="118" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >remark</text>
+<rect x="582" y="126" width="84" height="80" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="624.0" y="161.0" font-size="9" fill="#111827" text-anchor="middle" font-weight="600" >TEXT</text>
+<text x="624.0" y="181.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >20 B 指针</text>
+<text x="730.0" y="118" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >created_at</text>
+<rect x="684" y="126" width="92" height="80" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="730.0" y="161.0" font-size="9" fill="#111827" text-anchor="middle" font-weight="600" >DATETIME(6)</text>
+<text x="730.0" y="181.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >8 B</text>
+<text x="846.0" y="118" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >隐藏列</text>
+<rect x="794" y="126" width="104" height="80" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="846.0" y="161.0" font-size="9" fill="#111827" text-anchor="middle" font-weight="600" >DB_TRX_ID</text>
+<text x="846.0" y="181.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >+ ROLL_PTR 13B</text>
+<path d="M 624.0,206.0 L 624.0,300.0 L 760.0,300.0 L 760.0,330.0" fill="none" stroke="#9333ea" stroke-width="2.0" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<text x="632" y="292" font-size="11" fill="#9333ea" text-anchor="start" font-weight="600" >20 字节指针</text>
+<rect x="40" y="262" width="500" height="170" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="284" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >行内长度与&quot;会不会读溢出页&quot;是两件事</text>
+<text x="56" y="310" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >行内合计 83 字节：5 + 4 + 8 + 9 + 16 + 20 + 8 + 13。</text>
+<text x="56" y="336" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >16KB 页可用约 16256 字节，一页装得下约 195 行。</text>
+<text x="56" y="362" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >remark 写多长，行内都是 20 字节——溢出页独立分配。</text>
+<text x="56" y="388" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >SELECT * 每行多一次随机 IO，慢在跳转不在行数。</text>
+<text x="56" y="414" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >退回 COMPACT + VARCHAR(8000)：行宽 851 字节，一页 19 行。</text>
+<rect x="620" y="330" width="280" height="96" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="760.0" y="373.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >remark 的溢出页</text>
+<text x="760.0" y="393.0" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >独立 BLOB 页，物理上不与主键页相邻</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 37-2　Threads_connected 与 Threads_running：三种形态</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">同一组坐标轴上，两条线的相对走势比各自的绝对值更能定性</text>
+<path d="M 40 84 L 66 84" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="73" y="88" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >Threads_connected　资源占用</text>
+<path d="M 40 104 L 66 104" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="73" y="108" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >Threads_running　并发压力</text>
+<path d="M 40 124 L 66 124" stroke="#dc2626" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#m_e_dc2626)"/>
+<text x="73" y="128" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >异常段标注</text>
+<rect x="40" y="110" width="265" height="340" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="132" font-size="12.5" fill="#111827" text-anchor="start" font-weight="600" >① 连接池泄漏</text>
+<line x1="72" y1="400" x2="280" y2="400" stroke="#d1d5db" stroke-width="1.2"/>
+<line x1="72" y1="400" x2="72" y2="180" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="66" y="184" font-size="9" fill="#475569" text-anchor="end" font-weight="400" >高</text>
+<text x="66" y="400" font-size="9" fill="#475569" text-anchor="end" font-weight="400" >低</text>
+<text x="280" y="416" font-size="9" fill="#475569" text-anchor="end" font-weight="400" >时间 →</text>
+<path d="M 72,388 L 117,388 L 117,356 L 160,356 L 160,322 L 202,322 L 202,288 L 247,288 L 247,252 L 274,252" fill="none" stroke="#2563eb" stroke-width="2.4"/>
+<path d="M 72,382 L 132,384 L 192,381 L 274,383" fill="none" stroke="#9333ea" stroke-width="2.2"/>
+<text x="272" y="242" font-size="9.5" fill="#2563eb" text-anchor="end" font-weight="600" >connected ↑</text>
+<text x="272" y="370" font-size="9.5" fill="#9333ea" text-anchor="end" font-weight="600" >running →</text>
+<path d="M 134.0,222.0 L 206.0,222.0" fill="none" stroke="#dc2626" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="5,3" marker-end="url(#m_e_dc2626)"/>
+<rect x="145.0" y="205.0" width="50.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="170.0" y="215.0" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >持续上行</text>
+<text x="54" y="472" font-size="9.8" fill="#111827" text-anchor="start" font-weight="600" >connected 阶梯上行，running 平稳</text>
+<text x="54" y="491" font-size="9.8" fill="#6b7280" text-anchor="start" font-weight="400" >→ 连接只增不减，池子永不回收</text>
+<rect x="345" y="110" width="265" height="340" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="359" y="132" font-size="12.5" fill="#111827" text-anchor="start" font-weight="600" >② 突发流量</text>
+<line x1="377" y1="400" x2="585" y2="400" stroke="#d1d5db" stroke-width="1.2"/>
+<line x1="377" y1="400" x2="377" y2="180" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="371" y="184" font-size="9" fill="#475569" text-anchor="end" font-weight="400" >高</text>
+<text x="371" y="400" font-size="9" fill="#475569" text-anchor="end" font-weight="400" >低</text>
+<text x="585" y="416" font-size="9" fill="#475569" text-anchor="end" font-weight="400" >时间 →</text>
+<path d="M 377,390 C 417,386 439,340 473,272 C 495,228 517,250 579,376" fill="none" stroke="#2563eb" stroke-width="2.4"/>
+<path d="M 377,376 C 421,374 447,330 479,288 C 501,258 523,280 579,360" fill="none" stroke="#9333ea" stroke-width="2.2"/>
+<text x="577" y="242" font-size="9.5" fill="#2563eb" text-anchor="end" font-weight="600" >connected</text>
+<text x="575" y="386" font-size="9.5" fill="#9333ea" text-anchor="end" font-weight="600" >running</text>
+<text x="359" y="472" font-size="9.8" fill="#111827" text-anchor="start" font-weight="600" >两条线同向陡升陡降</text>
+<text x="359" y="491" font-size="9.8" fill="#6b7280" text-anchor="start" font-weight="400" >→ 请求真的多了，连接与并发一起涨</text>
+<rect x="650" y="110" width="265" height="340" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="664" y="132" font-size="12.5" fill="#111827" text-anchor="start" font-weight="600" >③ 锁等待积压</text>
+<line x1="682" y1="400" x2="890" y2="400" stroke="#d1d5db" stroke-width="1.2"/>
+<line x1="682" y1="400" x2="682" y2="180" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="676" y="184" font-size="9" fill="#475569" text-anchor="end" font-weight="400" >高</text>
+<text x="676" y="400" font-size="9" fill="#475569" text-anchor="end" font-weight="400" >低</text>
+<text x="890" y="416" font-size="9" fill="#475569" text-anchor="end" font-weight="400" >时间 →</text>
+<path d="M 682,366 L 752,366 L 884,367" fill="none" stroke="#2563eb" stroke-width="2.4"/>
+<path d="M 682,382 L 734,382 L 734,250 L 884,252" fill="none" stroke="#9333ea" stroke-width="2.2"/>
+<text x="882" y="356" font-size="9.5" fill="#2563eb" text-anchor="end" font-weight="600" >connected →</text>
+<text x="882" y="240" font-size="9.5" fill="#9333ea" text-anchor="end" font-weight="600" >running ↑</text>
+<path d="M 778.0,280.0 L 854.0,280.0" fill="none" stroke="#dc2626" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="5,3" marker-end="url(#m_e_dc2626)"/>
+<rect x="791.0" y="263.0" width="50.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="816.0" y="273.0" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >持续不降</text>
+<text x="664" y="472" font-size="9.8" fill="#111827" text-anchor="start" font-weight="600" >connected 不变，running 冲高不降</text>
+<text x="664" y="491" font-size="9.8" fill="#6b7280" text-anchor="start" font-weight="400" >→ 连接都卡在同一把锁上</text>
+<text x="40" y="528" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >判据不是单点读数，而是两条线的相对走势；同一时刻的绝对连接数说明不了谁在等谁。</text>
+</svg>

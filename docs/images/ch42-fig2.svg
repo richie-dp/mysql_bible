@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker></defs>
+<rect width="960" height="620" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 42-2　升级后变慢的三条机制链</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">三条链都从“默认值变了”出发，在同一条订单查询上汇合；没有一条来自执行器</text>
+<rect x="40" y="78" width="266" height="52" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="173.0" y="99.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >字符集默认值</text>
+<text x="173.0" y="119.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >latin1 → utf8mb4</text>
+<rect x="40" y="176" width="266" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="173.0" y="202.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >VARCHAR(64) 键变宽</text>
+<text x="173.0" y="222.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >64 字节 → 最多 256 字节</text>
+<path d="M 173.0,130.0 L 173.0,176.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="40" y="300" width="266" height="62" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="173.0" y="326.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >索引页键数变少</text>
+<text x="173.0" y="346.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >非叶页扇出掉到约四分之一</text>
+<path d="M 173.0,238.0 L 173.0,300.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="40" y="424" width="266" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="173.0" y="450.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >树高 +1</text>
+<text x="173.0" y="470.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >每次等值多一次页访问</text>
+<path d="M 173.0,362.0 L 173.0,424.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 173.0,486.0 L 173.0,536.0" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="347" y="78" width="266" height="52" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480.0" y="99.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >排序规则默认值</text>
+<text x="480.0" y="119.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >general_ci → 0900_ai_ci</text>
+<rect x="347" y="176" width="266" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480.0" y="202.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >PAD SPACE 变 NO PAD</text>
+<text x="480.0" y="222.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >“SH”与“SH ”不再相等</text>
+<path d="M 480.0,130.0 L 480.0,176.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="347" y="300" width="266" height="62" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="326.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >唯一键判等松了</text>
+<text x="480.0" y="346.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >旧数据里冒出“重复”行</text>
+<path d="M 480.0,238.0 L 480.0,300.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="347" y="424" width="266" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="480.0" y="450.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >GROUP BY 多一组</text>
+<text x="480.0" y="470.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >报表按商户拆成两行</text>
+<path d="M 480.0,362.0 L 480.0,424.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 480.0,486.0 L 480.0,536.0" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="654" y="78" width="266" height="52" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="787.0" y="99.0" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >统计口径</text>
+<text x="787.0" y="119.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >旧快照 + 新增直方图</text>
+<rect x="654" y="176" width="266" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="787.0" y="202.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >统计还是 5.7 的</text>
+<text x="787.0" y="222.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >行宽、页数都已变</text>
+<path d="M 787.0,130.0 L 787.0,176.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="654" y="300" width="266" height="62" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="787.0" y="326.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >估算行数偏了</text>
+<text x="787.0" y="346.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >计划从 ref 换成 ALL</text>
+<path d="M 787.0,238.0 L 787.0,300.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="654" y="424" width="266" height="62" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="787.0" y="450.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >多扫几万行</text>
+<text x="787.0" y="470.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >回表把热页冲掉</text>
+<path d="M 787.0,362.0 L 787.0,424.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 787.0,486.0 L 787.0,536.0" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="40" y="536" width="880" height="52" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="480.0" y="557.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >同一条订单查询，P99 涨三成</text>
+<text x="480.0" y="577.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >三条链叠加的结果：不是版本慢，是同一套配置在新版本里含义变了</text>
+<path d="M 40 606 L 66 606" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="73" y="610" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >机制推进</text>
+<path d="M 200 606 L 226 606" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="233" y="610" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >失效点：旧结论在这里不成立</text>
+</svg>

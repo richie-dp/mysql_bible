@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 840" width="960" height="840">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker></defs>
+<rect width="960" height="840" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 26-1　切换的七个步骤：每一步跳过或换序，都有对应的事故形态</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">蓝线是动作顺序；右侧红色框是「这一步没做对」的后果，第 2 步与第 5 步的顺序不能交换</text>
+<text x="60" y="92" font-size="12" fill="#6b7280" text-anchor="start" font-weight="600" >步骤</text>
+<text x="250" y="92" font-size="12" fill="#6b7280" text-anchor="start" font-weight="600" >检查点 / 关键动作</text>
+<text x="620" y="92" font-size="12" fill="#6b7280" text-anchor="start" font-weight="600" >跳过或顺序错误的后果</text>
+<rect x="60" y="108" width="150" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="135.0" y="132.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >① 检测</text>
+<text x="135.0" y="152.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >谁来判断主库死了</text>
+<rect x="250" y="108" width="330" height="58" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="415.0" y="132.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >探活 N 次失败 / SELECT 1 超时</text>
+<text x="415.0" y="152.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >先分清「不可达」与「假死」</text>
+<rect x="620" y="108" width="280" height="58" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="760.0" y="132.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >假死当成宕机</text>
+<text x="760.0" y="152.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >老主还在写就切了</text>
+<path d="M 135.0,166.0 L 135.0,206.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="60" y="206" width="150" height="58" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="135.0" y="230.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >② 隔离</text>
+<text x="135.0" y="250.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >先拿走老主的写权限</text>
+<rect x="250" y="206" width="330" height="58" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="415.0" y="230.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >super_read_only + KILL + 撤 VIP</text>
+<text x="415.0" y="250.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >顺序：先隔离，再选主</text>
+<rect x="620" y="206" width="280" height="58" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="760.0" y="230.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >未隔离就提升 = 脑裂</text>
+<text x="760.0" y="250.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >两台都能写，各写各的</text>
+<path d="M 135.0,264.0 L 135.0,304.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="60" y="304" width="150" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="135.0" y="328.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >③ 选主</text>
+<text x="135.0" y="348.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >选 GTID 最全的那台</text>
+<rect x="250" y="304" width="330" height="58" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="415.0" y="328.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >GTID_SUBSET 比包含关系</text>
+<text x="415.0" y="348.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >同等完整度再看延迟</text>
+<rect x="620" y="304" width="280" height="58" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="760.0" y="328.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >选到缺事务的从库</text>
+<text x="760.0" y="348.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >那段事务永久缺口</text>
+<path d="M 135.0,362.0 L 135.0,402.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="60" y="402" width="150" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="135.0" y="426.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >④ 补数据</text>
+<text x="135.0" y="446.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >老主 binlog 的差集</text>
+<rect x="250" y="402" width="330" height="58" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="415.0" y="426.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >mysqlbinlog 捞出，重放新主</text>
+<text x="415.0" y="446.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >老主已死则只能接受丢失</text>
+<rect x="620" y="402" width="280" height="58" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="760.0" y="426.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >跳过补数据</text>
+<text x="760.0" y="446.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >RPO 兑现成真实缺口</text>
+<path d="M 135.0,460.0 L 135.0,500.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="60" y="500" width="150" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="135.0" y="524.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑤ 提升</text>
+<text x="135.0" y="544.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >让新主可写</text>
+<rect x="250" y="500" width="330" height="58" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="415.0" y="524.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >STOP REPLICA; RESET REPLICA ALL</text>
+<text x="415.0" y="544.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >read_only=OFF 连带清 super_read_only</text>
+<rect x="620" y="500" width="280" height="58" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="760.0" y="524.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >忘了 RESET REPLICA ALL</text>
+<text x="760.0" y="544.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >新主还挂着老主的通道</text>
+<path d="M 135.0,558.0 L 135.0,598.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="60" y="598" width="150" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="135.0" y="622.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑥ 改指向</text>
+<text x="135.0" y="642.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >从库与应用一起改</text>
+<rect x="250" y="598" width="330" height="58" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="415.0" y="622.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >CHANGE REPLICATION SOURCE TO</text>
+<text x="415.0" y="642.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >VIP / 连接串 / 中间件三选一</text>
+<rect x="620" y="598" width="280" height="58" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="760.0" y="622.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >漏一台从库</text>
+<text x="760.0" y="642.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >它还在追老主，数据分叉</text>
+<path d="M 135.0,656.0 L 135.0,696.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="60" y="696" width="150" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="135.0" y="720.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >⑦ 验证</text>
+<text x="135.0" y="740.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >切完不等于切对</text>
+<rect x="250" y="696" width="330" height="58" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="415.0" y="720.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >GTID 相等 + 行数抽查 + 探活</text>
+<text x="415.0" y="740.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >全量校验放低峰</text>
+<rect x="620" y="696" width="280" height="58" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="760.0" y="720.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >不验证就宣布成功</text>
+<text x="760.0" y="740.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >几天后对账才发现少一批</text>
+<text x="60" y="790" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >第 2 步与第 5 步之间没有「等一会儿」：隔离完成后老主只剩只读，提升才有意义。</text>
+<path d="M 60 812 L 86 812" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="93" y="816" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >主流程</text>
+<path d="M 220 812 L 246 812" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="253" y="816" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >脑裂 / 丢数据</text>
+<path d="M 430 812 L 456 812" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="463" y="816" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >复制与日志动作</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="960" height="620">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="620" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 29-3　字符集的四级继承与连接三级：哪一级没对齐，坏在哪</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">建库建表不写字符集，就一路继承；列上写死，继承链在这里断掉</text>
+<rect x="40" y="88" width="400" height="350" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="110" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >四级继承：不写就往下继承</text>
+<rect x="64" y="126" width="352" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="150.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >character_set_server</text>
+<text x="240.0" y="170.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >utf8mb4 —— 新库的默认值</text>
+<path d="M 240.0,184.0 L 240.0,208.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="64" y="208" width="352" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="232.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >database</text>
+<text x="240.0" y="252.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >建库没写 → 继承 server</text>
+<path d="M 240.0,266.0 L 240.0,290.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="64" y="290" width="352" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="240.0" y="314.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >table</text>
+<text x="240.0" y="334.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >建表没写 → 继承库</text>
+<path d="M 240.0,348.0 L 240.0,372.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="64" y="372" width="352" height="58" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="240.0" y="396.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >column</text>
+<text x="240.0" y="416.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >列上写死 utf8mb3 → 链在这里断</text>
+<rect x="480" y="88" width="440" height="350" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="494" y="110" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >连接三级：SET NAMES 一次改三个</text>
+<rect x="510" y="126" width="380" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="700.0" y="150.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >character_set_client</text>
+<text x="700.0" y="170.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >服务端按它解释客户端发来的字节</text>
+<path d="M 700.0,184.0 L 700.0,206.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="510" y="206" width="380" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="700.0" y="230.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >character_set_connection</text>
+<text x="700.0" y="250.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >字面量按它解析，比较前按它转换</text>
+<path d="M 700.0,264.0 L 700.0,286.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="4,3" marker-end="url(#m_e_475569)"/>
+<rect x="510" y="286" width="380" height="58" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="700.0" y="310.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >character_set_results</text>
+<text x="700.0" y="330.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >返回给客户端的字节按它编码</text>
+<text x="510" y="392" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" >SET NAMES utf8mb4 等价于同时设这三个变量。</text>
+<text x="510" y="416" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >写死其中任何一个，乱码就挪到另一个环节去。</text>
+<rect x="40" y="462" width="880" height="128" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="54" y="484" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >对不齐的三种后果，以及唯一的安全姿势</text>
+<text x="56" y="502" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >乱码 A：character_set_client 与真实字节不符 → 双重编码，存进去的数据本身就是错的。</text>
+<text x="56" y="526" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >乱码 B：character_set_results 与客户端期望不符 → 数据是对的，显示是坏的（用 HEX() 区分）。</text>
+<text x="56" y="550" font-size="12" fill="#dc2626" text-anchor="start" font-weight="400" >索引失效：JOIN 两侧列的字符集或 collation 不同，转换落在被驱动列上，B+ 树给不出序（第 9 章）。</text>
+<text x="56" y="574" font-size="12" fill="#16a34a" text-anchor="start" font-weight="400" >对齐：server → 库 → 表 → 列 全用 utf8mb4；连接三件套用 SET NAMES utf8mb4 一次设齐。</text>
+</svg>

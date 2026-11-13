@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 34-1　XA 的持锁时间轴 vs 本地事务</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">本地事务的持锁区间由语句决定；XA 的持锁区间由最慢的那个资源管理器决定</text>
+<text x="60" y="96" font-size="12" fill="#6b7280" text-anchor="start" font-weight="600" >A　本地事务：锁从第一条写语句持有到 COMMIT</text>
+<rect x="60" y="110" width="110" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="115.0" y="137.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">BEGIN</text>
+<rect x="190" y="110" width="160" height="46" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="270.0" y="137.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">UPDATE stock</text>
+<rect x="370" y="110" width="120" height="46" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="430.0" y="137.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">COMMIT</text>
+<path d="M 170.0,133.0 L 190.0,133.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 350.0,133.0 L 370.0,133.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="190" y="166" width="300" height="12" rx="3" ry="3" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+<text x="340" y="200" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="400" >持锁区间 = 语句到 COMMIT，毫秒级</text>
+<text x="60" y="240" font-size="12" fill="#6b7280" text-anchor="start" font-weight="600" >B　XA：PREPARE 之后行锁一直不放，协调者慢一步就放大 N 倍</text>
+<rect x="60" y="254" width="110" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="115.0" y="281.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">XA START</text>
+<rect x="190" y="254" width="150" height="46" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="265.0" y="281.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">UPDATE stock</text>
+<rect x="360" y="254" width="100" height="46" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="410.0" y="281.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">XA END</text>
+<rect x="480" y="254" width="130" height="46" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="545.0" y="281.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">XA PREPARE</text>
+<rect x="760" y="254" width="130" height="46" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="825.0" y="281.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">XA COMMIT</text>
+<path d="M 170.0,277.0 L 190.0,277.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 340.0,277.0 L 360.0,277.0" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 460.0,277.0 L 480.0,277.0" fill="none" stroke="#475569" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<path d="M 610.0,277.0 L 760.0,277.0" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="6,4" marker-end="url(#m_e_dc2626)"/>
+<rect x="660.0" y="259.0" width="50.0" height="16" fill="#ffffff" opacity="0.92" rx="3"/>
+<text x="685.0" y="269.0" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="500" >等协调者</text>
+<rect x="190" y="310" width="290" height="12" rx="3" ry="3" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+<rect x="480" y="310" width="280" height="12" rx="3" ry="3" fill="#fff7ed" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="5,3"/>
+<text x="470" y="344" font-size="11" fill="#dc2626" text-anchor="middle" font-weight="400" >锁的持有区间 = 语句到 XA COMMIT，中间是 N 次网络往返</text>
+<rect x="60" y="378" width="840" height="140" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="74" y="400" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >串联电路：三个库的延迟相加，不是取最大</text>
+<text x="80" y="430" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >库存库的 XA PREPARE 每慢一个 RTT，订单库 order_main 的行锁就多持有同样长的时间。</text>
+<text x="80" y="456" font-size="12" fill="#111827" text-anchor="start" font-weight="400" >本地事务下三个库各自提交、延迟取最大；XA 下三个库都要等同一个协调者，延迟求和、可用性相乘。</text>
+<text x="80" y="482" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >放大倍数取决于网络 RTT 与协调者调度，没有固定值——这才是它被弃用的机制原因。</text>
+<text x="60" y="548" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >同样是「两个阶段」，一个是引擎与 binlog 的对齐，一个是多个实例之间的协调。</text>
+<path d="M 60 574 L 86 574" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#m_e_dc2626)"/>
+<text x="93" y="578" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >行锁被持有</text>
+<path d="M 60 594 L 86 594" stroke="#ea580c" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#m_e_ea580c)"/>
+<text x="93" y="598" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >PREPARED 段：锁不放</text>
+<path d="M 320 574 L 346 574" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="353" y="578" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >业务写</text>
+<path d="M 320 594 L 346 594" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#m_e_475569)"/>
+<text x="353" y="598" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >协议语句</text>
+</svg>

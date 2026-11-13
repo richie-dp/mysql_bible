@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" width="960" height="700">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="700" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 51-1　容量模型的三个乘法：同一组输入，三种撞墙顺序</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">输入是一样的三个量（QPS、行数、行宽）；哪个先撞墙，由业务形态决定，不由你最关心的那个指标决定</text>
+<rect x="50" y="88" width="276" height="408" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="62" y="104" width="252" height="44" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="188.0" y="130.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >① 内存：装不装得下</text>
+<rect x="62" y="158" width="252" height="66" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="74" y="176" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">工作集 = 热行数 × 行宽 × 1.2</text>
+<text x="74" y="192" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">40GB ÷ (600B × 1.2) ≈ 5960 万行</text>
+<text x="74" y="208" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">命中率 = 常驻行数 ÷ 总行数</text>
+<rect x="62" y="236" width="252" height="84" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="188.0" y="273.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >表 192GB / 池 40GB</text>
+<text x="188.0" y="293.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >只能常驻 20%，其余靠物理读</text>
+<rect x="62" y="330" width="252" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="188.0" y="363.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >聚合型：全表扫、大结果集</text>
+<text x="188.0" y="383.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >把叶子层整段换进来又换出去</text>
+<text x="64" y="436" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="600" >记住这句：</text>
+<text x="64" y="456" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >判据不是总行数，是最近 30 天</text>
+<text x="64" y="472" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >那 2400 万行装不装得下</text>
+<rect x="356" y="88" width="276" height="408" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="368" y="104" width="252" height="44" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="494.0" y="130.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >② IO：等不等得到盘</text>
+<rect x="368" y="158" width="252" height="66" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="380" y="176" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">物理读/秒 = QPS × 页数 × 缺失率</text>
+<text x="380" y="192" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">32000 × 4 × 3% ≈ 3800 次/秒</text>
+<text x="380" y="208" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">缺失率 = 1 − 命中率</text>
+<rect x="368" y="236" width="252" height="84" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="494.0" y="273.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >3800 / 50000 IOPS</text>
+<text x="494.0" y="293.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >占单盘 7.7%，看着很安全</text>
+<rect x="368" y="330" width="252" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="494.0" y="363.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >点查型：一次缺页一次随机读</text>
+<text x="494.0" y="383.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >命中率掉 1 点 = 1280 次/秒</text>
+<text x="370" y="436" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="600" >记住这句：</text>
+<text x="370" y="456" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >平均值的安全感来自长尾之外，</text>
+<text x="370" y="472" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >而长尾才决定 P99</text>
+<rect x="662" y="88" width="276" height="408" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="674" y="104" width="252" height="44" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="800.0" y="130.55" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >③ 带宽：发不发得出去</text>
+<rect x="674" y="158" width="252" height="66" rx="6" ry="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+<text x="686" y="176" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">字节/秒 = QPS × 返回行数 × 行宽</text>
+<text x="686" y="192" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">32000 × 20 × 600B ≈ 384MB/s</text>
+<text x="686" y="208" font-size="10" fill="#e2e8f0" text-anchor="start" font-weight="400" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">行宽 = 整行字节 + 索引开销</text>
+<rect x="674" y="236" width="252" height="84" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="800.0" y="273.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >10GbE 上限 1.25GB/s</text>
+<text x="800.0" y="293.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >已用 31%，监控里看不见</text>
+<rect x="674" y="330" width="252" height="76" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="800.0" y="363.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >列表型：一页 20 行、导出</text>
+<text x="800.0" y="383.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >网卡先满，CPU 还闲着</text>
+<text x="676" y="436" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="600" >记住这句：</text>
+<text x="676" y="456" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >它在 MySQL 里不显眼，</text>
+<text x="676" y="472" font-size="10" fill="#6b7280" text-anchor="start" font-weight="400" >在交换机上一眼就能看到</text>
+<rect x="50" y="520" width="888" height="140" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="64" y="542" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >三个乘法必须用同一组数字算一遍</text>
+<rect x="141" y="556" width="210" height="36" rx="18.0" ry="18.0" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="246.0" y="578.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >点查型 → 先撞 IO</text>
+<rect x="389" y="556" width="210" height="36" rx="18.0" ry="18.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="494.0" y="578.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >列表型 → 先撞带宽</text>
+<rect x="637" y="556" width="210" height="36" rx="18.0" ry="18.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="742.0" y="578.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >聚合型 → 先撞内存</text>
+<text x="64" y="622" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >只算你最关心的那一项，等于只检查最容易过的那一门：内存算下来很宽裕的表，IO 可能早就满了</text>
+</svg>

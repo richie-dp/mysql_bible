@@ -158,7 +158,69 @@ mysql_execute_command()        sql/sql_parse.cc        命令分发
 
 一个具体练习：拿第 19 章那条加了 `FOR UPDATE` 的 SQL，从 `mysql_execute_command` 一路断到 `lock_rec_lock`，在第 N 次命中时打印 `lock->type_mode`，看 `LOCK_GAP` 与 `LOCK_REC_NOT_GAP` 这两个位到底哪个被置上了。**你会亲眼看到"唯一索引等值命中退化为记录锁"这件事发生在哪一行判断里**——那一行之后，第 18、19 章的所有规则都只是它的推论。
 
-## 44.8 常见误区：读源码的五种错误姿势
+## 44.8 关键结论
+
+1. **目录名稳定，函数名易变。** 先建立"子系统 → 目录"的映射，再往目录里填函数。
+2. **`handler` 是唯一的层次边界。** 越过它，才从"处理 SQL"进入"存取数据"；事务、锁、MVCC 全在门内侧。
+3. **`mtr` 是比事务更细的原子单位。** 它让页级修改对 redo 原子，也让页锁只需活到 mtr 结束。
+4. **计数器统计的是调用次数，不是工作量。** `Handler_read_*` 看不见引擎内部扫过的行，别拿它当"实际扫描行数"。
+5. **调试版加符号表，是唯一可验证的读法。** 只读不跑的结论，八成要返工。
+
+## 44.9 实验验证：把"门被敲了几次"数出来
+
+44.3 那句"`Handler_read_*` 数的是调用次数"，不读源码也能验证，代价是一条 SQL。
+
+拿 `order_main` 的 `idx_merchant_created (merchant_id, created_at)` 做样本，前后各取一次会话计数器：
+
+```sql
+SHOW SESSION STATUS LIKE 'Handler_read%';
+
+SELECT COUNT(*) FROM order_main WHERE merchant_id = 10086;
+
+SHOW SESSION STATUS LIKE 'Handler_read%';
+```
+
+```text
+# 输出形态（未实跑，字段含义以此为准；数字随种子数据量变化）
+Variable_name          两次之差   含义
+Handler_read_key       1          一次 B+ 树下降，定位到该商户的起点
+Handler_read_next      2841       沿叶链顺序读，等于这个商户的订单数
+Handler_read_rnd_next  0          没有全表扫
+```
+
+三个数的比例就是路径的形状：`read_key = 1` 说明只下降了一次树，范围是它的末端；`read_next` 等于命中行数，说明扫的是叶链；`rnd_next` 为 0，说明没有走全表。把它换成 `SELECT *`（需要回表），`Handler_read_*` 的三个数**一个都不变**——回表发生在 `row_search_mvcc()` 内部，Server 层压根不知道。变的是 `Innodb_rows_read`，它按"索引行 + 回表行"计。两个计数器在同一条 SQL 上给出两个数，这就是 44.3 那张图要表达的层次差。
+
+要更硬的证据，就把门两侧的入口钉死。编译调试版后下断点：
+
+```text
+(gdb) b ha_innobase::index_read
+(gdb) commands
+> silent
+> printf "index_read %s\n", index->name
+> continue
+> end
+(gdb) continue
+```
+
+在另一个会话跑上面那条 `COUNT(*)`，数命中次数。它会跟 `Handler_read_key` 的增量对上，但**不会**等于 `Handler_read_next`——后者对应的是另一个入口 `ha_innobase::index_next()`，两者都汇进 `general_fetch()` 那一层。两个计数器、两个入口函数，一一对应。看清这一点，"计数器统计调用次数"就不再是背下来的结论，而是一个可以复述的映射表：
+
+| `Handler_*` | 引擎侧入口 |
+|---|---|
+| `Handler_read_key` | `ha_innobase::index_read()` |
+| `Handler_read_next` | `ha_innobase::index_next()` / `index_next_same()` |
+| `Handler_read_rnd` | `ha_innobase::rnd_pos()`（按主键定位一行） |
+| `Handler_read_rnd_next` | `ha_innobase::rnd_next()`（全表顺序扫） |
+
+没有调试版也能做：在带符号表的二进制上用 `perf probe` 打 uprobe，用 `perf stat` 数次数，开销比 gdb 小得多，适合在压测时观察。
+
+```bash
+perf probe -x /usr/sbin/mysqld 'innodb_index_read=ha_innobase::index_read'
+perf stat -e probe_mysqld:innodb_index_read -a -- sleep 10
+```
+
+前提是二进制里有 `.debug_info`（发行版包里通常被剥掉了，得装 `mysql-server-debuginfo` 一类）。`perf stat` 输出的是这段时间的总次数，除以秒数就是"每秒敲了几次门"——和第 37 章讲的"计数器求差"是同一件事，只是采样点换到了函数入口。
+
+## 44.10 常见误区：读源码的五种错误姿势
 
 ⚠️ **"应该从 `main()` 开始读"** → 错在把源码当小说。`mysqld_main()` 里是参数、信号、插件初始化的汪洋，读完也见不到一条 SQL。正确做法：从一次运行中的调用栈切进去，让栈决定你读哪一段。
 
@@ -170,15 +232,7 @@ mysql_execute_command()        sql/sql_parse.cc        命令分发
 
 ⚠️ **"README 里的架构图就是真实调用关系"** → 错在架构图画的是模块依赖，不是运行时路径。真实路径由虚函数表和条件分支决定，只有栈能告诉你。正确理解：架构图用来记名字，栈用来记顺序。
 
-## 44.9 关键结论
-
-1. **目录名稳定，函数名易变。** 先建立"子系统 → 目录"的映射，再往目录里填函数。
-2. **`handler` 是唯一的层次边界。** 越过它，才从"处理 SQL"进入"存取数据"；事务、锁、MVCC 全在门内侧。
-3. **`mtr` 是比事务更细的原子单位。** 它让页级修改对 redo 原子，也让页锁只需活到 mtr 结束。
-4. **计数器统计的是调用次数，不是工作量。** `Handler_read_*` 看不见引擎内部扫过的行，别拿它当"实际扫描行数"。
-5. **调试版加符号表，是唯一可验证的读法。** 只读不跑的结论，八成要返工。
-
-## 44.10 生产 Checklist：什么时候值得读源码
+## 44.11 生产 Checklist：什么时候值得读源码
 
 - [ ] 官方文档、release notes、p_s 视图都查过了，仍然解释不了现象
 - [ ] 监控能指出"哪里慢"，但指不出"为什么慢"
@@ -189,7 +243,7 @@ mysql_execute_command()        sql/sql_parse.cc        命令分发
 - [ ] 只是配置问题（连接数、缓冲区大小、超时）——**不值得**，调参数就行
 - [ ] 只是想"了解一下内核"——**不值得**，没有具体问题做锚，读三页就忘
 
-## 44.11 延伸
+## 44.12 延伸
 
 - **关联章节**：第 1 章（同一件事的机制版，本章是它的文件版）、第 4 章（redo 与 mtr 的落盘单位）、第 8 章（B+ 树的物理形态）、第 18 章（锁对象为什么是索引记录）、第 39 章（page cleaner 与 checkpoint 年龄）。
 - **面试追问**：

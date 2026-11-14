@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs></defs>
+<rect width="960" height="720" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 F-1　三层同心圆：知识的结构与章节归属</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">画成环，是因为三层共享同一套机制；读的顺序不等于画的顺序</text>
+<rect x="40" y="88" width="880" height="608" rx="26" ry="26" fill="none" stroke="#2563eb" stroke-width="2"/>
+<rect x="148" y="186" width="664" height="422" rx="22" ry="22" fill="none" stroke="#9333ea" stroke-width="2"/>
+<rect x="256" y="284" width="448" height="236" rx="18" ry="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<rect x="64" y="104" width="178" height="30" rx="15.0" ry="15.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="153.0" y="123.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >第一层 · 能用对</text>
+<text x="262" y="118" font-size="13" fill="#2563eb" text-anchor="start" font-weight="600" >Ch1 → Ch2/3 → Ch8/9 → Ch10~12</text>
+<text x="262" y="142" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >一条 SQL 从文本到一行数据，经过哪些排队点</text>
+<text x="262" y="164" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >产出：写对 SQL、看懂 EXPLAIN、说清慢在哪一层</text>
+<rect x="172" y="202" width="178" height="30" rx="15.0" ry="15.0" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="261.0" y="221.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >第二层 · 能诊断</text>
+<text x="370" y="216" font-size="13" fill="#9333ea" text-anchor="start" font-weight="600" >Ch4/5 → Ch17~20 → Ch6/7</text>
+<text x="370" y="240" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >数据怎么落到盘、怎么保证不丢不错</text>
+<text x="370" y="262" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >产出：定位到层、改对参数、做一次在线 DDL</text>
+<text x="480" y="334" font-size="13.5" fill="#16a34a" text-anchor="middle" font-weight="600" >第三层 · 能读源码</text>
+<text x="480" y="362" font-size="12.5" fill="#111827" text-anchor="middle" font-weight="600" >Ch22~28 → Ch33/34　＋　Ch44</text>
+<text x="480" y="390" font-size="11.5" fill="#6b7280" text-anchor="middle" font-weight="400" >多个实例怎么协同：复制、切换、分片、分布式事务</text>
+<text x="480" y="414" font-size="11.5" fill="#6b7280" text-anchor="middle" font-weight="400" >这一层的问题，单机的答案常常不够用</text>
+<text x="480" y="446" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >从库回放慢、切换丢事务、跨分片不一致——</text>
+<text x="480" y="468" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="400" >都要回到第 4、6 章的日志格式里找根因</text>
+<text x="172" y="548" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >第二层的两条链：第 4→5→6→7 章（数据怎么落盘、怎么恢复），第 17→18→19→20 章（并发时谁挡住谁）。</text>
+<text x="172" y="572" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >两条链的交汇点是 redo 与 undo 同时参与一次提交——这也是第 6 章读起来最费力的原因。</text>
+<text x="172" y="596" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >两个最常见的错觉：以为 redo 是写缓存，以为 undo 是备份。</text>
+<text x="64" y="636" font-size="12" fill="#dc2626" text-anchor="start" font-weight="600" >第 1 章是全书的索引：读不懂它，后面每一章都会吃力。</text>
+<text x="64" y="662" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >三层不是能力等级，是问题域的扩张；跨层学习是大多数人的卡点。</text>
+<text x="64" y="686" font-size="11.5" fill="#6b7280" text-anchor="start" font-weight="400" >画成同心圆，是因为三层共享同一套机制，不是因为外层包含内层。</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" width="960" height="680">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="680" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 B-1　错误的四个来源：一条语句从左往右走，一个错误码从右往左被包装</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">先确认码是谁报的；同一个数字在不同层，可能是两件完全不同的事</text>
+<rect x="48" y="96" width="190" height="200" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="62" y="118" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >① 客户端 / 驱动</text>
+<rect x="56" y="136" width="174" height="54" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="143.0" y="158.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >连接与握手</text>
+<text x="143.0" y="178.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >2059 / 08S01</text>
+<rect x="56" y="204" width="174" height="54" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="143.0" y="226.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >驱动层改写</text>
+<text x="143.0" y="246.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >文案由驱动决定</text>
+<rect x="272" y="96" width="190" height="200" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="286" y="118" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >② Server 层</text>
+<rect x="280" y="136" width="174" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="367.0" y="158.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >解析、权限、元数据</text>
+<text x="367.0" y="178.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >1040 · 1290 · 3024</text>
+<rect x="280" y="204" width="174" height="54" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="367.0" y="226.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >临时表也在这里</text>
+<text x="367.0" y="246.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >1114 的一种成因</text>
+<rect x="496" y="96" width="190" height="200" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="510" y="118" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >③ InnoDB 层</text>
+<rect x="504" y="136" width="174" height="54" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="591.0" y="158.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >锁、表空间、日志</text>
+<text x="591.0" y="178.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >1205 · 1213 · 1467</text>
+<rect x="504" y="204" width="174" height="54" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="591.0" y="226.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >现场在 data_locks</text>
+<text x="591.0" y="246.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >和 INNODB STATUS</text>
+<rect x="720" y="96" width="190" height="200" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="734" y="118" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >④ 复制线程</text>
+<rect x="728" y="136" width="174" height="54" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="815.0" y="158.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >IO 线程 / SQL 线程</text>
+<text x="815.0" y="178.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >1032 · 1062 · 1236</text>
+<rect x="728" y="204" width="174" height="54" rx="8" ry="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+<text x="815.0" y="226.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >码不进客户端</text>
+<text x="815.0" y="246.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >进 Last_SQL_Errno</text>
+<path d="M 244.0,190.0 L 272.0,190.0" fill="none" stroke="#2563eb" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 462.0,190.0 L 496.0,190.0" fill="none" stroke="#2563eb" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 686.0,190.0 L 720.0,190.0" fill="none" stroke="#2563eb" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="44" y="90" width="196" height="212" rx="12" ry="12" fill="none" stroke="#475569" stroke-width="1.4" stroke-dasharray="5,4"/>
+<text x="143" y="84" font-size="10" fill="#475569" text-anchor="middle" font-weight="400" >应用只看到这一层</text>
+<text x="48" y="322" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >语句向右穿过四层；错误码向左被逐层包装，越往外信息越少、越像「网络问题」。</text>
+<rect x="300" y="336" width="360" height="34" rx="17.0" ry="17.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="480.0" y="357.2" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >同一个数字，在不同层可能是不同的事</text>
+<rect x="48" y="396" width="864" height="58" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="58" y="405" width="150" height="40" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="133.0" y="420.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">1062</text>
+<text x="133.0" y="440.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >两个来源</text>
+<text x="228" y="423" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >客户端：唯一键冲突，是幂等信号；复制线程：从库已有该行，是数据分叉</text>
+<text x="228" y="442" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >同码不同因 —— 一个该重试，一个该补数据</text>
+<rect x="48" y="462" width="864" height="58" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="58" y="471" width="150" height="40" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="133.0" y="486.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">1205 / 1213</text>
+<text x="133.0" y="506.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >一对关系</text>
+<text x="228" y="489" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >都表现为「等锁」，方向相反：1205 没有环，要缩短持锁；1213 有环，要改加锁顺序</text>
+<text x="228" y="508" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >看 LATEST DETECTED DEADLOCK 是空的还是有两段对调的 HOLDS</text>
+<rect x="48" y="528" width="864" height="58" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="58" y="537" width="150" height="40" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="133.0" y="552.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" font-family="'SF Mono', Menlo, Consolas, 'Courier New', monospace">1114 / 1878</text>
+<text x="133.0" y="572.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >同一块盘</text>
+<text x="228" y="555" font-size="11.5" fill="#111827" text-anchor="start" font-weight="400" >1114 是「没地方写」，1878 是「写了一半失败」；同一个磁盘满，报哪个取决于谁先撞上</text>
+<text x="228" y="574" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >先 df 数据目录，再 df tmpdir —— 两块盘常常不是同一块</text>
+<text x="48" y="612" font-size="11" fill="#dc2626" text-anchor="start" font-weight="400" >读日志的顺序与因果顺序相反：最晚出现的那个码最不可能是原因。</text>
+<path d="M 56 642 L 82 642" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="89" y="646" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >语句下发的方向</text>
+<path d="M 520 642 L 546 642" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="5,4" marker-end="url(#m_e_475569)"/>
+<text x="553" y="646" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >应用看到的码往往是最外层那个</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_dc2626" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+<rect width="960" height="600" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 D-2　锁等待的两种形态：扇出与链式，读法都是倒着找 GRANTED</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">data_lock_waits 一行就是一条边；边长什么样，决定你先动谁</text>
+<rect x="48" y="96" width="424" height="340" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="62" y="118" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >形态一：一个持有者，多个等待者（最常见）</text>
+<rect x="186" y="140" width="148" height="52" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="260.0" y="161.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >txn A</text>
+<text x="260.0" y="181.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >GRANTED · X</text>
+<rect x="72" y="300" width="108" height="46" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="126.0" y="318.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >txn B</text>
+<text x="126.0" y="338.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >WAITING</text>
+<path d="M 240.0,192.0 L 126.0,300.0" fill="none" stroke="#dc2626" stroke-width="1.3" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="215" y="300" width="108" height="46" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="269.0" y="318.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >txn C</text>
+<text x="269.0" y="338.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >WAITING</text>
+<path d="M 260.0,192.0 L 269.0,300.0" fill="none" stroke="#dc2626" stroke-width="1.3" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="352" y="300" width="108" height="46" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="406.0" y="318.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >txn D</text>
+<text x="406.0" y="338.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >WAITING</text>
+<path d="M 280.0,192.0 L 406.0,300.0" fill="none" stroke="#dc2626" stroke-width="1.3" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<text x="64" y="400" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="400" >杀一个 GRANTED，后面全通；杀 WAITING 只是换个人排队。</text>
+<rect x="504" y="96" width="408" height="340" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="518" y="118" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >形态二：链式（A 等 B，B 又等 C）</text>
+<rect x="596" y="136" width="220" height="48" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="706.0" y="155.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >txn A  WAITING</text>
+<text x="706.0" y="175.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >等 order_main 的 PK</text>
+<path d="M 706.0,184.0 L 706.0,232.0" fill="none" stroke="#dc2626" stroke-width="1.3" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="596" y="232" width="220" height="48" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="706.0" y="251.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >txn B  GRANTED</text>
+<text x="706.0" y="271.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >自己也卡在别处</text>
+<path d="M 706.0,280.0 L 706.0,328.0" fill="none" stroke="#dc2626" stroke-width="1.3" stroke-linejoin="round" marker-end="url(#m_e_dc2626)"/>
+<rect x="596" y="328" width="220" height="48" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="706.0" y="347.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >txn C  GRANTED</text>
+<text x="706.0" y="367.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="400" >真正握着锁的那个</text>
+<text x="520" y="400" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="400" >链越长，杀错一个只是让链变短，不会解开。</text>
+<rect x="48" y="456" width="864" height="104" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="62" y="478" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >LOCK_DATA 告诉你的三件事</text>
+<text x="64" y="492" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >一个值（如 10086）→ 等的是这条索引记录；supremum pseudo-record → 等的是最后一段间隙；</text>
+<text x="64" y="514" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >NULL → 表级或元数据锁，去看 metadata_locks；LOCK_MODE 里的 GAP 表示只锁间隙，不锁记录。</text>
+<text x="64" y="540" font-size="10.5" fill="#6b7280" text-anchor="start" font-weight="400" >锁的信息只说明「谁在等谁」，不说明「为什么等」——后者要回到事务里看它前面做了什么。</text>
+</svg>

@@ -108,7 +108,7 @@ FROM information_schema.processlist GROUP BY Command;
 
 ## 41.6 案例五：全站锁死——一个 Sleep 连接堵住了整张表
 
-**现象**　14:05 起，所有涉及 `order_detail` 的查询全部卡住，接口全线超时。`SHOW PROCESSLIST` 里一片 `Waiting for table metadata lock`，几分钟内堆到几百个，新请求还在进。
+**现象**　14:05 起，所有涉及 `order_item` 的查询全部卡住，接口全线超时。`SHOW PROCESSLIST` 里一片 `Waiting for table metadata lock`，几分钟内堆到几百个，新请求还在进。
 
 **误判**　"DBA 在加索引，等它跑完就好"。十分钟前确实有人发了加索引的 DDL，因果看上去完整，于是大家等了二十分钟。队列只增不减，DDL 本身也一直没进展。
 
@@ -117,13 +117,13 @@ FROM information_schema.processlist GROUP BY Command;
 ```sql
 SELECT OBJECT_NAME, LOCK_TYPE, LOCK_STATUS, OWNER_THREAD_ID
 FROM performance_schema.metadata_locks
-WHERE OBJECT_SCHEMA = 'trade' AND OBJECT_NAME = 'order_detail';
+WHERE OBJECT_SCHEMA = 'shop' AND OBJECT_NAME = 'order_item';
 -- 输出形态（未实跑，字段含义以此为准）
--- order_detail  SHARED_READ   GRANTED  48211
--- order_detail  EXCLUSIVE     PENDING  48390
+-- order_item  SHARED_READ   GRANTED  48211
+-- order_item  EXCLUSIVE     PENDING  48390
 ```
 
-**根因**　那个连接四小时前开过事务、读过 `order_detail`，事务没提交，MDL 就一直挂在它身上。DDL 的排它锁在队列里等它；而 MDL 队列是**写优先**的——后来的普通 `SELECT` 也必须排在 `PENDING` 的 `EXCLUSIVE` 后面。整张表被一个什么都没在干的连接堵死。
+**根因**　那个连接四小时前开过事务、读过 `order_item`，事务没提交，MDL 就一直挂在它身上。DDL 的排它锁在队列里等它；而 MDL 队列是**写优先**的——后来的普通 `SELECT` 也必须排在 `PENDING` 的 `EXCLUSIVE` 后面。整张表被一个什么都没在干的连接堵死。
 
 **处置**　找到那个 `PROCESSLIST_ID` 直接 `KILL`，队列瞬间疏通，DDL 自己会继续跑（失败就重试）。`KILL` 之前先确认它不在事务中间状态（`information_schema.innodb_trx` 里看 `trx_state` 与 `trx_rows_modified`），回滚代价大的要评估，第 21 章有判断方法。
 
@@ -255,7 +255,27 @@ mysqlbinlog --start-position=4 --stop-position=198342711 \
 5. **参数改动必须双向验证。** 改前有可复现的坏指标，改后同一压力下它变好，并且没有别的指标变坏。
 6. **长效措施的颗粒度决定复盘的价值。** "加强巡检"不是措施，"把 `Sleep > 60s` 的连接数做成一条曲线"才是。
 
-## 41.14 常见误区：关于"复盘"本身
+## 41.14 实验验证：三个案例可以亲手跑一遍
+
+十个案例里有七个只能读、不能做——案例七要等 undo 涨到几百 GB，案例九要等半同步静默降级，案例十要真删一次生产数据。剩下三个的现场是"造得出来"的，`labs/ch41/` 备了三份脚本，跑完就能看见那张误判的证据长什么样。
+
+| 案例 | 脚本 | 造出来的现场 | 跑完只盯一个数 |
+|---|---|---|---|
+| 一、连接数打满 | `case-01-connections.sql` | `max_connections` 压到 80，循环开 70 个 `SELECT SLEEP(900)` | `Threads_running` 与 `Sleep` 连接数的反差 |
+| 五、全站锁死 | `case-02-mdl.sql` | A 开事务读一行不提交，B 发 `ALTER`，C 发普通查询 | `metadata_locks` 里那行 `GRANTED` 的持有者是谁 |
+| 四、台阶状延迟 | `case-03-no-pk-lag.sql` | 主库一个事务往无主键的 `stock_flow` 写 20 万行 | 只有一个 worker 的 `applying_ms` 在涨 |
+
+跑之前先按 `labs/README.md` 把一主两从配起来、导入 `seed/01-schema.sql`。三个脚本开头都写了"开几个终端、谁先执行、预期看到什么"，`labs/ch41/case-md.md` 是索引页，另有收尾清单（恢复 `max_connections`、删掉探针索引、`TRUNCATE shop.stock_flow`）。
+
+案例一的判据可以被彻底证伪，值得单独说：如果 `Sleep` 上千秒的连接有七十个、`Threads_running` 是个位数、`Aborted_clients` 几乎不动，那么"流量真的涨了"这个假设**不成立**——真实流量涨上来时 `Threads_running` 会同步抬升，`Sleep` 不会堆到七十个。三个数一起看，两种假设只剩一种活着。这就是 41.12 说的"能区分两种假设的观测"，它在实验里可复现，不是事后回忆出来的。
+
+案例五要盯 `GRANTED` 那行的 `OWNER_THREAD_ID`，不是 `PROCESSLIST` 里状态为 `Waiting` 的那些。脚本让 A 读完一行就挂着不提交，这个窗口内 `PROCESSLIST` 里 A 显示 `Sleep`、B 显示 `Waiting for table metadata lock`、C 也显示 `Waiting`——按"谁在等就杀谁"处置，会连杀两个无辜会话而队列一点不动。
+
+案例四的台阶在小数据量下不明显，容器里的回放本来就快。想让曲线像案例里那样明显有两个办法：把 `replica_parallel_workers` 改成 1（串行回放，台阶变斜坡，用来做对照），或者把 `stock_flow` 灌到百万行。前者改一行就能看出差别，后者更接近生产。跑完再把主键补上重跑一次，延迟峰值会低一截——这一步比读十遍正文更能说明"没有主键"到底贵在哪。
+
+剩下七个案例复现成本高，但证据形态可以照抄：每个案例那一段的"决定性观测"正文里都点明了，把它做成一条曲线或一条随手能跑的 SQL。下次遇到同样的形状，先跑那一条，再决定叫谁。
+
+## 41.15 常见误区：关于"复盘"本身
 
 ⚠️ **"复盘就是写清楚谁操作错了"**
 人是最容易替换的变量，机制不换，换个人照样犯。同一份报告里，"某人在生产执行了 `DELETE`"只能作为事实记录；有价值的是"为什么这个账号有 `DELETE` 权限、为什么没有 `WHERE` 校验"。复盘的对象是判断依据，不是手指。
@@ -269,7 +289,7 @@ mysqlbinlog --start-position=4 --stop-position=198342711 \
 ⚠️ **"事故报告写得越长越有价值"**
 长度通常来自时间线的细节堆砌，而下一个值班的人只会看前三十秒。真正被复用的是两样东西：一条三十秒能读完的判断路径，一条能被机器执行的检查项。
 
-## 41.15 生产 Checklist：事故发生时的前 30 分钟
+## 41.16 生产 Checklist：事故发生时的前 30 分钟
 
 - [ ] 0~2 分钟：先确认影响面——读还是写、单库还是全站、有没有错误码。错误码记下来，它是唯一不会骗人的证据
 - [ ] 2~5 分钟：止血优先于定位。限流、切从库、回滚发布，哪个最快做哪个，别在故障中做优化
@@ -282,7 +302,7 @@ mysqlbinlog --start-position=4 --stop-position=198342711 \
 - [ ] 全程：一次只做一个变更，否则事后无法归因
 - [ ] 恢复后 24 小时内：把这次用的那个观测变成一条常驻曲线，否则下次还得现查
 
-## 41.16 延伸
+## 41.17 延伸
 
 - **关联章节**：第 36 章（性能排查方法论）、第 37 章（指标与比值）、第 38 章（慢日志与 `performance_schema`）、第 39 章（`INNODB STATUS` 逐段读法）、第 52 章（应急 SOP 与处置卡片）。
 - **面试追问**：

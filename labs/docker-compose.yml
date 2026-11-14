@@ -1,0 +1,78 @@
+# 8.0 一主两从。复制关系故意不写在这里：从库要用 GTID 自动定位，
+# 得等主库把第一个事务写完才有的可对齐，交给 README 里的 CHANGE REPLICATION SOURCE TO。
+# 不加 --default-authentication-plugin=mysql_native_password：8.4 已移除该参数，
+# 加了这份文件三年后换镜像就跑不起来；认证走 8.0 默认的 caching_sha2_password。
+name: mysql-bible-lab
+
+services:
+  mysql-master:
+    image: mysql:8.0
+    container_name: mysql-master
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "labpass"
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: "shop"
+      TZ: "Asia/Shanghai"
+    volumes:
+      - ./conf/master.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - master-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 40s
+
+  mysql-replica1:
+    image: mysql:8.0
+    container_name: mysql-replica1
+    restart: unless-stopped
+    depends_on:
+      mysql-master:
+        condition: service_healthy
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "labpass"
+      MYSQL_ROOT_HOST: "%"
+      TZ: "Asia/Shanghai"
+    volumes:
+      - ./conf/replica1.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - replica1-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 40s
+
+  mysql-replica2:
+    image: mysql:8.0
+    container_name: mysql-replica2
+    restart: unless-stopped
+    depends_on:
+      mysql-master:
+        condition: service_healthy
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "labpass"
+      MYSQL_ROOT_HOST: "%"
+      TZ: "Asia/Shanghai"
+    volumes:
+      - ./conf/replica2.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - replica2-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 40s
+
+volumes:
+  master-data:
+  replica1-data:
+  replica2-data:

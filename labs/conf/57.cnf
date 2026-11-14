@@ -1,0 +1,15 @@
+# 5.7 单实例：只做版本对比，不参与复制
+[mysqld]
+server-id                = 10
+log-bin                  = mysql-bin
+binlog_format            = ROW
+gtid_mode                = ON
+enforce_gtid_consistency = ON
+# 5.7 的默认字符集是 latin1，不显式写这一行，建出来的表就是 latin1，
+# 中文会在插入时变成 "??"，而且 SHOW CREATE TABLE 里看不出来源
+character-set-server     = utf8mb4
+# 5.7 没有 utf8mb4_0900_ai_ci，那套排序规则是 8.0 才加的
+collation-server         = utf8mb4_general_ci
+innodb_buffer_pool_size  = 256M
+slow_query_log           = ON
+long_query_time          = 0.5

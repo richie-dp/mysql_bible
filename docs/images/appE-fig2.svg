@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker></defs>
+<rect width="960" height="720" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 E-2　六个高频误读：错答与真实机制只差一层</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">左列是面试里最常听到的那句话，右列是能继续往下追问的机制</text>
+<text x="48" y="92" font-size="10" fill="#6b7280" text-anchor="start" font-weight="600" >考点</text>
+<text x="192" y="92" font-size="10" fill="#dc2626" text-anchor="start" font-weight="600" >常见错答（候选人常说的那句）</text>
+<text x="556" y="92" font-size="10" fill="#2563eb" text-anchor="start" font-weight="600" >真实机制（能继续往下推的那层）</text>
+<rect x="48" y="110" width="128" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="112.0" y="145.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >Sending data</text>
+<rect x="192" y="110" width="330" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="357.0" y="137.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >在发数据，网络慢</text>
+<text x="357.0" y="157.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >其实是扫描量在拖</text>
+<path d="M 526.0,142.0 L 552.0,142.0" fill="none" stroke="#475569" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="556" y="110" width="356" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="734.0" y="137.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >读行 + 处理 + 发送</text>
+<text x="734.0" y="157.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >扫描时间全算在这一段</text>
+<rect x="48" y="210" width="128" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="112.0" y="245.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >checkpoint</text>
+<rect x="192" y="210" width="330" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="357.0" y="237.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >用时间戳相减</text>
+<text x="357.0" y="257.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >系统性低估落后量</text>
+<path d="M 526.0,242.0 L 552.0,242.0" fill="none" stroke="#475569" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="556" y="210" width="356" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="734.0" y="237.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >两个 LSN 相减</text>
+<text x="734.0" y="257.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >单位是字节，不是秒</text>
+<rect x="48" y="310" width="128" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="112.0" y="345.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >Handler_read</text>
+<rect x="192" y="310" width="330" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="357.0" y="337.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >引擎扫过的行数</text>
+<text x="357.0" y="357.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >拿它和扫描行数对账</text>
+<path d="M 526.0,342.0 L 552.0,342.0" fill="none" stroke="#475569" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="556" y="310" width="356" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="734.0" y="337.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >Server 向引擎要行</text>
+<text x="734.0" y="357.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >ICP 与覆盖索引下不相等</text>
+<rect x="48" y="410" width="128" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="112.0" y="445.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >eq_range 上限</text>
+<rect x="192" y="410" width="330" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="357.0" y="437.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >索引失效了</text>
+<text x="357.0" y="457.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >以为要重建或强推索引</text>
+<path d="M 526.0,442.0 L 552.0,442.0" fill="none" stroke="#475569" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="556" y="410" width="356" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="734.0" y="437.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >改用统计估算</text>
+<text x="734.0" y="457.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >计划仍走索引，估错行数</text>
+<rect x="48" y="510" width="128" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="112.0" y="545.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >GRANT 之后</text>
+<rect x="192" y="510" width="330" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="357.0" y="537.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >还得再 flush</text>
+<text x="357.0" y="557.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >不加就担心权限不生效</text>
+<path d="M 526.0,542.0 L 552.0,542.0" fill="none" stroke="#475569" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="556" y="510" width="356" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="734.0" y="537.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >语句级立即生效</text>
+<text x="734.0" y="557.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >只有直接改授权表才需要</text>
+<rect x="48" y="610" width="128" height="64" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="112.0" y="645.5" font-size="10" fill="#111827" text-anchor="middle" font-weight="600" >INSTANT 加列</text>
+<rect x="192" y="610" width="330" height="64" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="357.0" y="637.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >可以无限加</text>
+<text x="357.0" y="657.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >以为永远是秒级</text>
+<path d="M 526.0,642.0 L 552.0,642.0" fill="none" stroke="#475569" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="556" y="610" width="356" height="64" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="734.0" y="637.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >每表上限 64 次</text>
+<text x="734.0" y="657.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >第 65 次整表重建</text>
+<text x="48" y="690" font-size="10.5" fill="#111827" text-anchor="start" font-weight="400" >六条都指向同一个毛病：把「名字」当成「语义」。面试里只要多问一句「那这个数字是怎么算出来的」，就会露底。</text>
+</svg>

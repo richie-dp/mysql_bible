@@ -78,7 +78,7 @@ ALTER TABLE order_item ADD KEY idx_order_cover (order_id, sku_id, qty, price);
 
 被驱动表的连接列没有可用索引时，5.7 和 8.0.20 之前的版本走 BNL：外层一次读一批行进 `join buffer`，然后拿这批行去扫一遍被驱动表，命中就输出。一批扫一遍，所以：
 
-```
+```text
 被驱动表扫描轮数 = ceil(驱动侧行数 ÷ K)，K = join_buffer_size ÷ 单行字节数
 ```
 

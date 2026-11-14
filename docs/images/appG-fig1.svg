@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_9333ea" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/></marker></defs>
+<rect width="960" height="640" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 G-1　实验环境：三个容器、一条 binlog 流、一个装脚本的目录</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">容器负责把机制跑出来；跑出来的数字不能当容量依据</text>
+<rect x="48" y="84" width="320" height="264" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="62" y="106" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >宿主机　mysql_bible/labs</text>
+<rect x="64" y="120" width="288" height="52" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="208.0" y="141.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >labs/</text>
+<text x="208.0" y="161.0" font-size="9.2" fill="#6b7280" text-anchor="middle" font-weight="400" >compose · conf · seed · ch01/19/41/52</text>
+<rect x="64" y="186" width="300" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="214.0" y="209.64" font-size="10.4" fill="#111827" text-anchor="middle" font-weight="600" >conf/*.cnf　server-id · GTID · 只读</text>
+<rect x="64" y="232" width="300" height="40" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="214.0" y="255.64" font-size="10.4" fill="#111827" text-anchor="middle" font-weight="600" >seed/*.sql　万级 / 千万 / 倾斜</text>
+<rect x="64" y="278" width="300" height="42" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="214.0" y="294.0" font-size="10.4" fill="#111827" text-anchor="middle" font-weight="600" >chXX/*.sql　每章一份</text>
+<text x="214.0" y="314.0" font-size="8.8" fill="#6b7280" text-anchor="middle" font-weight="400" >端口：3306 / 3307 / 3308 / 3309</text>
+<rect x="520" y="92" width="392" height="92" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="716.0" y="133.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >mysql-master　宿主 3306</text>
+<text x="716.0" y="153.0" font-size="9.4" fill="#6b7280" text-anchor="middle" font-weight="400" >server-id=1 · ROW binlog · GTID · pool 512M</text>
+<rect x="520" y="236" width="392" height="78" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="716.0" y="270.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >mysql-replica1　宿主 3307</text>
+<text x="716.0" y="290.0" font-size="9.4" fill="#6b7280" text-anchor="middle" font-weight="400" >read_only · relay log · 4 个回放线程</text>
+<rect x="520" y="334" width="392" height="78" rx="8" ry="8" fill="#f0fdfa" stroke="#99f6e4" stroke-width="1.5"/>
+<text x="716.0" y="368.0" font-size="13" fill="#111827" text-anchor="middle" font-weight="600" >mysql-replica2　宿主 3308</text>
+<text x="716.0" y="388.0" font-size="9.4" fill="#6b7280" text-anchor="middle" font-weight="400" >与 replica1 只差 server-id</text>
+<rect x="520" y="438" width="392" height="34" rx="17.0" ry="17.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="716.0" y="458.675" font-size="10.5" fill="#111827" text-anchor="middle" font-weight="600" >mysql-57（可选）宿主 3309 · 只做版本对比</text>
+<path d="M 374.0,206.0 L 430.0,206.0 L 430.0,168.0 L 520.0,168.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="6,4" marker-end="url(#m_e_475569)"/>
+<path d="M 374.0,206.0 L 430.0,206.0 L 430.0,274.0 L 520.0,274.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="6,4" marker-end="url(#m_e_475569)"/>
+<path d="M 374.0,206.0 L 430.0,206.0 L 430.0,372.0 L 520.0,372.0" fill="none" stroke="#475569" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="6,4" marker-end="url(#m_e_475569)"/>
+<path d="M 760.0,184.0 L 760.0,236.0" fill="none" stroke="#9333ea" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<path d="M 900.0,184.0 L 930.0,184.0 L 930.0,354.0 L 912.0,354.0" fill="none" stroke="#9333ea" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#m_e_9333ea)"/>
+<path d="M 48 372 L 74 372" stroke="#9333ea" stroke-width="1.5" fill="none" marker-end="url(#m_e_9333ea)"/>
+<text x="81" y="376" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >binlog 复制流，GTID 自动定位</text>
+<path d="M 48 392 L 74 392" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="6,4" marker-end="url(#m_e_475569)"/>
+<text x="81" y="396" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >conf 只读挂载</text>
+<rect x="48" y="500" width="420" height="124" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="62" y="522" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >容器里能验</text>
+<text x="64" y="548" font-size="9.6" fill="#111827" text-anchor="start" font-weight="400" >· 页 / redo / undo / 锁 / MDL 的单机机制</text>
+<text x="64" y="570" font-size="9.6" fill="#111827" text-anchor="start" font-weight="400" >· 主从复制、GTID、延迟的三段分解</text>
+<text x="64" y="592" font-size="9.6" fill="#111827" text-anchor="start" font-weight="400" >· DDL 的 INSTANT / INPLACE 行为差异</text>
+<text x="64" y="614" font-size="9.6" fill="#111827" text-anchor="start" font-weight="400" >· 附录 D 的诊断 SQL 与 p_s 视图</text>
+<rect x="492" y="500" width="420" height="124" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="506" y="522" font-size="13" fill="#6b7280" text-anchor="start" font-weight="600" >容器里不能验</text>
+<text x="508" y="548" font-size="9.6" fill="#dc2626" text-anchor="start" font-weight="400" >· 真实 IOPS 与 fsync 延迟（共享盘 + 虚拟化）</text>
+<text x="508" y="570" font-size="9.6" fill="#dc2626" text-anchor="start" font-weight="400" >· 千万级数据的性能结论（CPU 是笔记本的）</text>
+<text x="508" y="592" font-size="9.6" fill="#dc2626" text-anchor="start" font-weight="400" >· 云上代理、存储层、连接代理的行为</text>
+<text x="508" y="614" font-size="9.4" fill="#6b7280" text-anchor="start" font-weight="400" >这三件事必须真机或云上验，容器数字不作容量依据</text>
+</svg>

@@ -407,7 +407,7 @@ UPDATE bill SET status=2 WHERE bill_id=9001;
 
 预期形态（三行，`hop` 递增）：
 
-```
+```text
 hop  waiter   blocker  blocker_state  blocker_age_sec
 1    4217xx   4217yy   RUNNING        12
 2    4217yy   4217zz   RUNNING        12

@@ -1,0 +1,16 @@
+# 从库 2：与 replica1 只差 server-id，用来观察"两个从库延迟不同步"
+[mysqld]
+server-id                     = 3
+relay_log                     = relay-bin
+read_only                     = ON
+gtid_mode                     = ON
+enforce_gtid_consistency      = ON
+# 8.0.26 起 log_slave_updates 改名 log_replica_updates，旧名仍兼容，新配置一律用新名
+log_replica_updates           = ON
+replica_parallel_workers      = 4
+replica_preserve_commit_order = ON
+relay_log_recovery            = ON
+# super_read_only 首次启动时不能开：docker-entrypoint 要用 root 改 mysql.user，
+# 开了会报 ERROR 1290 直接退出。配完复制后执行一次
+#   SET PERSIST super_read_only = ON;
+# 持久化在 mysqld-auto.cnf 里，重启后依然生效，效果与写在这份文件里相同。

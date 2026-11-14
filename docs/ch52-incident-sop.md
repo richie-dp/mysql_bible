@@ -82,7 +82,7 @@ on-call 交接必须给三样东西，缺一样就等于让接班人从零重建
 
 **认出它**：`SHOW REPLICA STATUS` 里 `Replica_SQL_Running_State` 是 `Waiting for dependent transaction to commit`，`Exec_Source_Log_Pos` 长时间不动然后跳一段。
 
-**三分钟判断**：`SHOW CREATE TABLE trade.stock_flow\G` 看不到 `PRIMARY KEY`，写集就算不出来，这批事务的回放退化成串行，加核只会让 CPU 曲线更平。
+**三分钟判断**：`SHOW CREATE TABLE shop.stock_flow\G` 看不到 `PRIMARY KEY`，写集就算不出来，这批事务的回放退化成串行，加核只会让 CPU 曲线更平。
 
 **止血**：先摘掉这台从库的读流量（代价是主库读压力上升），把批量更新按几千行切批；补主键走 `pt-online-schema-change`，单独排期。
 
@@ -97,7 +97,7 @@ on-call 交接必须给三样东西，缺一样就等于让接班人从零重建
 ```sql
 SELECT OBJECT_NAME, LOCK_TYPE, LOCK_STATUS, OWNER_THREAD_ID
 FROM performance_schema.metadata_locks
-WHERE OBJECT_SCHEMA = 'trade' AND OBJECT_NAME = 'order_detail';
+WHERE OBJECT_SCHEMA = 'shop' AND OBJECT_NAME = 'order_item';
 ```
 
 同时看到 `GRANTED` 与 `PENDING`，就是队列前面堵着一个没提交的事务，不是 DDL 在跑。
@@ -242,23 +242,23 @@ WHERE OBJECT_SCHEMA = 'trade' AND OBJECT_NAME = 'order_detail';
 ```sql
 -- 会话 A：开事务、读一张表，然后挂着不提交
 BEGIN;
-SELECT COUNT(*) FROM trade.order_detail WHERE order_id = 202611110001;
+SELECT COUNT(*) FROM shop.order_item WHERE order_id = 202611110001;
 
 -- 会话 B：加索引，会卡在 MDL 队列里
-ALTER TABLE trade.order_detail ADD INDEX idx_created (created_at);
+ALTER TABLE shop.order_item ADD INDEX idx_created (created_at);
 
 -- 会话 C：另一个普通查询，也会被卡住（MDL 队列写优先）
-SELECT * FROM trade.order_detail WHERE order_id = 202611110002;
+SELECT * FROM shop.order_item WHERE order_id = 202611110002;
 ```
 
 ```sql
 SELECT OBJECT_NAME, LOCK_TYPE, LOCK_STATUS, OWNER_THREAD_ID
 FROM performance_schema.metadata_locks
-WHERE OBJECT_SCHEMA = 'trade' AND OBJECT_NAME = 'order_detail';
+WHERE OBJECT_SCHEMA = 'shop' AND OBJECT_NAME = 'order_item';
 -- 输出形态（未实跑，字段含义以此为准）
--- order_detail  SHARED_READ   GRANTED  48211
--- order_detail  EXCLUSIVE     PENDING  48390
--- order_detail  SHARED_READ   PENDING  48402
+-- order_item  SHARED_READ   GRANTED  48211
+-- order_item  EXCLUSIVE     PENDING  48390
+-- order_item  SHARED_READ   PENDING  48402
 ```
 
 **读法**：第三行是会话 C，它既没改表也没等 DDL，同样卡住了——MDL 队列写优先，后来的共享锁也要排在 `PENDING` 的排它锁后面。该杀的是 `48211`，不是 `PENDING` 的那两个。
@@ -268,11 +268,11 @@ WHERE OBJECT_SCHEMA = 'trade' AND OBJECT_NAME = 'order_detail';
 ```sql
 -- 会话 A
 BEGIN;
-UPDATE trade.stock SET qty = qty - 1 WHERE sku_id = 8842 AND warehouse_id = 3;
+UPDATE shop.stock SET qty = qty - 1 WHERE sku_id = 8842 AND qty >= 1;
 -- 不提交
 
 -- 会话 B：同一行，开始等锁
-UPDATE trade.stock SET qty = qty - 1 WHERE sku_id = 8842 AND warehouse_id = 3;
+UPDATE shop.stock SET qty = qty - 1 WHERE sku_id = 8842 AND qty >= 1;
 
 -- 会话 C：杀掉 A
 KILL 48211;

@@ -10,7 +10,7 @@
 
 真正该看的三行，在 `SHOW ENGINE INNODB STATUS` 里：
 
-```
+```text
 BUFFER POOL AND MEMORY
 ----------------------
 Free buffers            0
@@ -159,7 +159,7 @@ merge 发生在三个时机：① 索引页被读入 buffer pool，被动触发�
 
 观察位置是 `SHOW ENGINE INNODB STATUS` 的 `INSERT BUFFER AND ADAPTIVE HASH INDEX` 段：
 
-```
+```text
 Ibuf: size 1, free list len 0, seg size 2, 0 merges
 ```
 
@@ -240,7 +240,7 @@ FROM (SELECT CAST(VARIABLE_VALUE AS DECIMAL(20,0)) AS v
 
 预期形态（`# 输出形态（未实跑，字段含义以此为准）`）：
 
-```
+```text
 +---------------+
 | hit_rate_pct  |
 +---------------+
@@ -260,7 +260,7 @@ FROM information_schema.INNODB_BUFFER_POOL_STATS;
 
 预期形态（`# 输出形态（未实跑，字段含义以此为准）`）：
 
-```
+```text
 POOL_ID  POOL_SIZE  FREE_BUFFERS  DATABASE_PAGES  OLD_DATABASE_PAGES  MODIFIED_DATABASE_PAGES  HIT_RATE
       0       7680             0            7680                2841                     2410       998
       1       7680             3            7677                2790                     2207       999
@@ -289,7 +289,7 @@ SHOW ENGINE INNODB STATUS\G
 
 只看 `LOG` 段四行：
 
-```
+```text
 Log sequence number          3210987654
 Log flushed up to            3210987654
 Pages flushed up to          2964512203
@@ -308,7 +308,7 @@ SHOW ENGINE INNODB STATUS\G
 
 预期形态（`# 输出形态（未实跑，字段含义以此为准）`）：
 
-```
+```text
 INSERT BUFFER AND ADAPTIVE HASH INDEX
 -------------------------------------
 Ibuf: size 4182, free list len 37, seg size 4220, 1204 merges

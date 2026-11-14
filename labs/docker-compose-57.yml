@@ -1,0 +1,30 @@
+# 5.7 单实例，只做版本对比：同一个实验在 5.7 上跑一遍，看结论从哪一版开始变。
+# Apple Silicon 必须写 platform: linux/amd64 —— mysql:5.7 没有 arm64 镜像，
+# 不写会报 "no matching manifest for linux/arm64/v8"。走 Rosetta 模拟，慢但能跑。
+name: mysql-bible-lab57
+
+services:
+  mysql-57:
+    image: mysql:5.7
+    container_name: mysql-57
+    platform: linux/amd64
+    restart: unless-stopped
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "labpass"
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: "shop"
+      TZ: "Asia/Shanghai"
+    volumes:
+      - ./conf/57.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - mysql57-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 40s
+
+volumes:
+  mysql57-data:

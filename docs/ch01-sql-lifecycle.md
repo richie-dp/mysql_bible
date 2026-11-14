@@ -75,7 +75,7 @@ SELECT 1 FROM no_such_table;    -- ERROR 1146 (42S02): Table 'db.no_such_table' 
 
 一条 `SELECT` 的真实路径是：
 
-```
+```text
 SQL 文本
   → 解析器：词法/语法 → 语法树
   → 预处理器：语义检查、权限、视图展开 → 规范化语法树
@@ -211,7 +211,7 @@ SHOW SESSION STATUS WHERE Variable_name IN
 
 预期形态（`Handler_read_next` 应约等于该 user_id 的行数；因为 `id`、`user_id` 都在 `idx_user` 里，**不需要回表**，`Handler_read_key` 不会随行数增长）：
 
-```
+```text
 Handler_read_key        1
 Handler_read_next      98     <- 索引上扫过的行数
 Handler_read_rnd_next   0
@@ -241,7 +241,7 @@ SHOW ENGINE INNODB STATUS\G
 
 看 `LOG` 段：
 
-```
+```text
 Log sequence number          123456789     <- 已写入 redo 的 LSN
 Log flushed up to            123456789     <- 已 fsync 的 LSN
 Pages flushed up to          123400000     <- 已落盘的数据页对应 LSN

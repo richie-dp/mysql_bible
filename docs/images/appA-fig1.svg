@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 672" width="960" height="672">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_475569" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker><marker id="m_e_ea580c" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker><marker id="m_e_16a34a" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker></defs>
+<rect width="960" height="672" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 A-1　参数的四种生效路径：改在哪里，谁看得见</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">同一条参数，走哪条路径决定了「改完要不要重启」和「老连接认不认」</text>
+<rect x="48" y="86" width="864" height="112" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="60" y="98" width="144" height="50" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="132.0" y="118.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >my.cnf 静态</text>
+<text x="132.0" y="138.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >写文件，重启才读</text>
+<path d="M 206.0,123.0 L 246.0,123.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="248" y="98" width="188" height="50" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="342.0" y="118.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >重启 mysqld</text>
+<text x="342.0" y="138.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >停机窗口内完成</text>
+<path d="M 438.0,123.0 L 478.0,123.0" fill="none" stroke="#475569" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_475569)"/>
+<rect x="480" y="98" width="196" height="50" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="578.0" y="118.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >全实例生效</text>
+<text x="578.0" y="138.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >启动时读一次</text>
+<text x="700" y="116" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="500" >骗你：改了没重启，值根本没变</text>
+<text x="60" y="174" font-size="9.8" fill="#6b7280" text-anchor="start" font-weight="400" >适用：innodb_page_size、chunk_size、lower_case_table_names</text>
+<rect x="48" y="210" width="864" height="112" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="60" y="222" width="144" height="50" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="132.0" y="242.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >SET GLOBAL</text>
+<text x="132.0" y="262.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >立即改内存里的值</text>
+<path d="M 206.0,247.0 L 246.0,247.0" fill="none" stroke="#2563eb" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="248" y="222" width="188" height="50" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="342.0" y="242.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >立即生效</text>
+<text x="342.0" y="262.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >不用重启</text>
+<path d="M 438.0,247.0 L 478.0,247.0" fill="none" stroke="#2563eb" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<rect x="480" y="222" width="196" height="50" rx="8" ry="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="578.0" y="242.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >新老会话都变</text>
+<text x="578.0" y="262.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >读的是全局值</text>
+<text x="700" y="240" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="500" >骗你：重启后回到 my.cnf 的旧值</text>
+<text x="60" y="298" font-size="9.8" fill="#6b7280" text-anchor="start" font-weight="400" >适用：innodb_io_capacity、max_connections、sync_binlog</text>
+<rect x="48" y="334" width="864" height="112" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="60" y="346" width="144" height="50" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="132.0" y="366.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >仅新连接</text>
+<text x="132.0" y="386.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >SET GLOBAL 的半生效态</text>
+<path d="M 206.0,371.0 L 246.0,371.0" fill="none" stroke="#ea580c" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="248" y="346" width="188" height="50" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="342.0" y="366.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >只影响新会话</text>
+<text x="342.0" y="386.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >老连接不重读</text>
+<path d="M 438.0,371.0 L 478.0,371.0" fill="none" stroke="#ea580c" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_ea580c)"/>
+<rect x="480" y="346" width="196" height="50" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="578.0" y="366.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >老连接仍用旧值</text>
+<text x="578.0" y="386.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >要重连才拿到</text>
+<text x="700" y="364" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="500" >骗你：监控变了，跑批连接还是旧值</text>
+<text x="60" y="422" font-size="9.8" fill="#6b7280" text-anchor="start" font-weight="400" >适用：wait_timeout、sort_buffer_size、sql_mode</text>
+<rect x="48" y="458" width="864" height="112" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<rect x="60" y="470" width="144" height="50" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="132.0" y="490.0" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >SET SESSION</text>
+<text x="132.0" y="510.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >只改当前连接</text>
+<path d="M 206.0,495.0 L 246.0,495.0" fill="none" stroke="#16a34a" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="248" y="470" width="188" height="50" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="342.0" y="490.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >仅本会话生效</text>
+<text x="342.0" y="510.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >别的会话看不见</text>
+<path d="M 438.0,495.0 L 478.0,495.0" fill="none" stroke="#16a34a" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#m_e_16a34a)"/>
+<rect x="480" y="470" width="196" height="50" rx="8" ry="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+<text x="578.0" y="490.0" font-size="11" fill="#111827" text-anchor="middle" font-weight="600" >断开即恢复</text>
+<text x="578.0" y="510.0" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >写不进 my.cnf</text>
+<text x="700" y="488" font-size="10.5" fill="#dc2626" text-anchor="start" font-weight="500" >骗你：你试好了，应用连上来还是默认值</text>
+<text x="60" y="546" font-size="9.8" fill="#6b7280" text-anchor="start" font-weight="400" >适用：optimizer_switch、单条 SQL 的 sort_buffer_size</text>
+<text x="48" y="596" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >前两条是「改完就生效」，后两条是「改完只对一部分人生效」——值班时的误判全部发生在后两条。</text>
+<path d="M 48 616 L 74 616" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#m_e_475569)"/>
+<text x="81" y="620" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >重启才生效：要停机窗口</text>
+<path d="M 48 636 L 74 636" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#m_e_2563eb)"/>
+<text x="81" y="640" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >动态生效：立刻可见，重启丢失</text>
+<path d="M 520 616 L 546 616" stroke="#ea580c" stroke-width="1.5" fill="none" marker-end="url(#m_e_ea580c)"/>
+<text x="553" y="620" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >仅新连接：老会话保持旧值</text>
+<path d="M 520 636 L 546 636" stroke="#16a34a" stroke-width="1.5" fill="none" marker-end="url(#m_e_16a34a)"/>
+<text x="553" y="640" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >仅本会话：断开即失效</text>
+</svg>

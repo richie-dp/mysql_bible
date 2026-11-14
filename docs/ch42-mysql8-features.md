@@ -124,7 +124,7 @@ ORDER BY TABLE_NAME LIMIT 5;
 
 预期形态（`# 输出形态（未实跑，字段含义以此为准）`）：
 
-```
+```text
 @@character_set_server  @@collation_server
 utf8mb4                 utf8mb4_0900_ai_ci
 
@@ -160,7 +160,7 @@ WHERE merchant_id = 8842 ORDER BY merchant_id ASC, settled_at DESC;
 
 预期形态（`# 输出形态（未实跑，字段含义以此为准）`）：
 
-```
+```text
 -- idx_asc ：key = idx_asc  Extra = Using where; Using filesort
 -- idx_desc：key = idx_desc Extra = Using where
 ```
@@ -182,7 +182,7 @@ WHERE OBJECT_SCHEMA = 'order_db' AND OBJECT_NAME = 'order_main';
 
 预期形态（`# 输出形态（未实跑，字段含义以此为准）`）：
 
-```
+```text
 key = NULL   type = ALL   Extra = Using where; Using filesort
 
 INDEX_NAME   COUNT_STAR   COUNT_READ
@@ -204,7 +204,7 @@ WHERE SCHEMA_NAME = 'order_db' AND TABLE_NAME = 'order_main';
 
 预期形态（`# 输出形态（未实跑，字段含义以此为准）`）：
 
-```
+```text
 COLUMN_NAME   buckets
 status             16
 ```

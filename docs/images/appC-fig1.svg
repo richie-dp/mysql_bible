@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<style>text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'SimHei', sans-serif; }</style>
+<defs><marker id="m_e_2563eb" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker></defs>
+<rect width="960" height="720" fill="#ffffff"/>
+<text x="24" y="38" font-size="17" font-weight="600" fill="#111827">图 C-1　工具在数据生命周期里的位置</text>
+<text x="24" y="60" font-size="12" fill="#6b7280">主干是数据流经的六个环节；颜色是它坏了以后，伤在哪一层</text>
+<rect x="48" y="96" width="112" height="34" rx="17.0" ry="17.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="104.0" y="117.025" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >写入</text>
+<rect x="200" y="96" width="112" height="34" rx="17.0" ry="17.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="256.0" y="117.025" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >变更</text>
+<rect x="352" y="96" width="112" height="34" rx="17.0" ry="17.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="408.0" y="117.025" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >备份</text>
+<rect x="504" y="96" width="112" height="34" rx="17.0" ry="17.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="560.0" y="117.025" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >复制</text>
+<rect x="656" y="96" width="112" height="34" rx="17.0" ry="17.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="712.0" y="117.025" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >诊断</text>
+<rect x="808" y="96" width="112" height="34" rx="17.0" ry="17.0" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+<text x="864.0" y="117.025" font-size="11.5" fill="#111827" text-anchor="middle" font-weight="600" >接入</text>
+<path d="M 48.0,150.0 L 912.0,150.0" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round" marker-end="url(#m_e_2563eb)"/>
+<path d="M 104.0,132.0 L 104.0,148.0" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M 256.0,132.0 L 256.0,148.0" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M 408.0,132.0 L 408.0,148.0" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M 560.0,132.0 L 560.0,148.0" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M 712.0,132.0 L 712.0,148.0" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M 864.0,132.0 L 864.0,148.0" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-linejoin="round"/>
+<rect x="44" y="160" width="120" height="230" rx="10" ry="10" fill="#f9fafb" stroke="#eef2f7" stroke-width="1"/>
+<rect x="196" y="160" width="120" height="230" rx="10" ry="10" fill="#f9fafb" stroke="#eef2f7" stroke-width="1"/>
+<rect x="348" y="160" width="120" height="230" rx="10" ry="10" fill="#f9fafb" stroke="#eef2f7" stroke-width="1"/>
+<rect x="500" y="160" width="120" height="230" rx="10" ry="10" fill="#f9fafb" stroke="#eef2f7" stroke-width="1"/>
+<rect x="652" y="160" width="120" height="230" rx="10" ry="10" fill="#f9fafb" stroke="#eef2f7" stroke-width="1"/>
+<rect x="804" y="160" width="120" height="230" rx="10" ry="10" fill="#f9fafb" stroke="#eef2f7" stroke-width="1"/>
+<rect x="48" y="172" width="112" height="44" rx="8" ry="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="5,4"/>
+<text x="104" y="192" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >无第三方组件</text>
+<text x="104" y="208" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >写路径上不插组件</text>
+<text x="104" y="250" font-size="9" fill="#475569" text-anchor="middle" font-weight="400" >空着是对的</text>
+<rect x="200" y="172" width="112" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="256.0" y="189.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >gh-ost</text>
+<text x="256.0" y="209.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：变更卡住</text>
+<rect x="200" y="226" width="112" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="256.0" y="243.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >pt-osc</text>
+<text x="256.0" y="263.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：写入变慢</text>
+<rect x="200" y="280" width="112" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="256.0" y="297.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >pt-table-checksum</text>
+<text x="256.0" y="317.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：差异没发现</text>
+<rect x="352" y="172" width="112" height="44" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="408.0" y="189.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >XtraBackup</text>
+<text x="408.0" y="209.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：恢复不出来</text>
+<rect x="352" y="226" width="112" height="44" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="408.0" y="243.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >mysqlbinlog</text>
+<text x="408.0" y="263.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：点恢复不对</text>
+<rect x="352" y="280" width="112" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="408.0" y="297.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >Clone</text>
+<text x="408.0" y="317.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：加从库失败</text>
+<rect x="504" y="172" width="112" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="560.0" y="189.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >orchestrator</text>
+<text x="560.0" y="209.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：不会自动切</text>
+<rect x="504" y="226" width="112" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="560.0" y="243.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >MHA</text>
+<text x="560.0" y="263.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：切换靠人</text>
+<rect x="504" y="280" width="112" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="560.0" y="297.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >ProxySQL</text>
+<text x="560.0" y="317.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：全部连不上</text>
+<rect x="504" y="334" width="112" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="560.0" y="351.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >pt-heartbeat</text>
+<text x="560.0" y="371.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：延迟看不见</text>
+<rect x="656" y="172" width="112" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="712.0" y="189.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >pt-query-digest</text>
+<text x="712.0" y="209.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：看不出热点</text>
+<rect x="656" y="226" width="112" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="712.0" y="243.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >innotop</text>
+<text x="712.0" y="263.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：只能敲 SHOW</text>
+<rect x="656" y="280" width="112" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="712.0" y="297.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >mysqld_exporter</text>
+<text x="712.0" y="317.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：没有趋势</text>
+<rect x="656" y="334" width="112" height="44" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="712.0" y="351.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >PMM</text>
+<text x="712.0" y="371.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：曲线断一截</text>
+<rect x="808" y="172" width="112" height="44" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="864.0" y="189.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >ShardingSphere</text>
+<text x="864.0" y="209.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：SQL 走错片</text>
+<rect x="808" y="226" width="112" height="44" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="864.0" y="243.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >Canal</text>
+<text x="864.0" y="263.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：下游缺数</text>
+<rect x="808" y="280" width="112" height="44" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="864.0" y="297.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >Debezium</text>
+<text x="864.0" y="317.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：下游断流</text>
+<rect x="808" y="334" width="112" height="44" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="864.0" y="351.0" font-size="9.5" fill="#111827" text-anchor="middle" font-weight="600" >MaxScale</text>
+<text x="864.0" y="371.0" font-size="8.5" fill="#6b7280" text-anchor="middle" font-weight="400" >坏了：连不上库</text>
+<text x="48" y="418" font-size="12" fill="#111827" text-anchor="start" font-weight="600" >同一句「挂了」，在六个环节里的后果完全不同：</text>
+<rect x="48" y="434" width="260" height="68" rx="8" ry="8" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5"/>
+<text x="178.0" y="463.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >写坏数据 / 回不来</text>
+<text x="178.0" y="483.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >变更、备份、同步：出事那天才发现</text>
+<rect x="350" y="434" width="260" height="68" rx="8" ry="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="480.0" y="463.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >暂时不可用</text>
+<text x="480.0" y="483.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >复制、路由：告警会响，切完就好</text>
+<rect x="652" y="434" width="260" height="68" rx="8" ry="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+<text x="782.0" y="463.0" font-size="12" fill="#111827" text-anchor="middle" font-weight="600" >只是看不见</text>
+<text x="782.0" y="483.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >诊断：不响，等你从业务报错里发现</text>
+<text x="48" y="534" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >颜色往右（SLATE）的可以晚上线、可以少人维护；颜色往左（RED）的必须有人值班、必须有演练。</text>
+<text x="48" y="556" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >位置越靠近接入与同步，一次故障波及的请求比例越高 —— 这是 ProxySQL 与一个定时校验脚本的根本差别。</text>
+<rect x="48" y="584" width="864" height="88" rx="10" ry="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.2" stroke-dasharray="6,4"/>
+<text x="68" y="616" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >越往右，故障面越大：诊断工具挂了，你失去的是视野；接入层挂了，你失去的是全部请求。</text>
+<text x="68" y="640" font-size="11" fill="#111827" text-anchor="start" font-weight="400" >所以左边两段可以容忍「用得少」，右边两段必须有人随时知道它现在是什么状态。</text>
+</svg>

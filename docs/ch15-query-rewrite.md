@@ -385,7 +385,7 @@ SHOW SESSION STATUS WHERE Variable_name IN
 
 预期形态（未实跑，字段含义以此为准）：
 
-```
+```text
 Handler_read_key      1000020   <- 每次回表一次索引查找
 Handler_read_next     1000020   <- 沿 idx_created_id 扫过的索引条目
 Handler_read_rnd_next       0

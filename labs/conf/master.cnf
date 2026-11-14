@@ -1,0 +1,18 @@
+# 主库：binlog 是复制的唯一数据源，GTID 省掉手工记位点
+[mysqld]
+server-id                   = 1
+log-bin                     = mysql-bin
+binlog_format               = ROW
+binlog_row_image            = FULL
+gtid_mode                   = ON
+enforce_gtid_consistency    = ON
+binlog_expire_logs_seconds  = 604800
+# 实验机别开大：512M 足够放下订单热页，也给另外两个容器留出内存
+innodb_buffer_pool_size     = 512M
+slow_query_log              = ON
+long_query_time             = 0.5
+# 每次死锁都写错误日志（docker logs 里看），而不是只留最近一次
+innodb_print_all_deadlocks  = ON
+character-set-server        = utf8mb4
+collation-server            = utf8mb4_0900_ai_ci
+bind-address                = 0.0.0.0
